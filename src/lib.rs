@@ -5,7 +5,7 @@
 #![allow(clippy::precedence)]
 
 extern crate drone_core;
-extern crate drone_stm32;
+extern crate drone_cortex_m;
 extern crate drone_stm32_map_piece_1;
 extern crate drone_stm32_map_piece_10;
 extern crate drone_stm32_map_piece_11;

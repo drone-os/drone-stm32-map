@@ -1,6 +1,6 @@
 //! Memory-mapped register mappings.
 
-pub use drone_stm32::reg::map::*;
+pub use drone_cortex_m::reg::map::*;
 pub use drone_stm32_map_piece_1::reg::*;
 pub use drone_stm32_map_piece_10::reg::*;
 pub use drone_stm32_map_piece_11::reg::*;

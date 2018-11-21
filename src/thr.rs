@@ -1,12 +1,12 @@
 //! Interrupt mappings.
 
-pub use drone_stm32::thr::map::*;
+pub use drone_cortex_m::thr::map::*;
 
 mod map {
   #[allow(unused_imports)]
-  use drone_stm32::thr::int;
+  use drone_cortex_m::thr::int;
   #[allow(unused_imports)]
-  use drone_stm32::thr::prelude::*;
+  use drone_cortex_m::thr::prelude::*;
 
   include!(concat!(env!("OUT_DIR"), "/svd_interrupts.rs"));
 }
