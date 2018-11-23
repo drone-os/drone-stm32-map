@@ -1,6 +1,6 @@
 //! Interrupt mappings.
 
-pub use drone_cortex_m::thr::map::*;
+pub use drone_cortex_m::map::thr::*;
 
 mod map {
   #[allow(unused_imports)]

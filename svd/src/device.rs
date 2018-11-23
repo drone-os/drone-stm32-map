@@ -12,7 +12,6 @@ const BIT_BAND: Range<u32> = 0x4000_0000..0x4010_0000;
 #[serde(rename_all = "camelCase")]
 #[derive(Deserialize)]
 pub struct Device {
-  name: String,
   peripherals: Peripherals,
 }
 
@@ -117,9 +116,11 @@ impl Device {
     except: &[&str],
   ) -> Result<(), Error> {
     let mut int_names = HashSet::new();
-    writeln!(reg_tokens, "tokens! {{")?;
-    writeln!(reg_tokens, "  /// Register tokens for {}", self.name)?;
-    writeln!(reg_tokens, "  pub struct RegIdx;")?;
+    writeln!(reg_tokens, "#[macro_export]")?;
+    writeln!(reg_tokens, "macro_rules! stm32_reg_tokens {{")?;
+    writeln!(reg_tokens, "  ($($body:tt)*) => {{")?;
+    writeln!(reg_tokens, "    cortex_m_reg_tokens! {{")?;
+    writeln!(reg_tokens, "      $($body)*")?;
     for peripheral in self.peripherals.peripheral.values() {
       peripheral.generate_rest(
         &self.peripherals,
@@ -129,6 +130,9 @@ impl Device {
         except,
       )?;
     }
+    writeln!(reg_tokens, "    }}")?;
+    writeln!(reg_tokens, "  }};")?;
+    writeln!(reg_tokens, "}}")?;
     Ok(())
   }
 }
@@ -201,13 +205,13 @@ impl Peripheral {
       None
     };
     if except.iter().all(|&except| except != name) {
-      writeln!(reg_tokens, "  {} {{", name)?;
+      writeln!(reg_tokens, "      {} {{", name)?;
       registers
         .as_ref()
         .or_else(|| parent.and_then(|x| x.registers.as_ref()))
         .ok_or_else(|| err_msg("Peripheral registers not found"))?
         .generate_reg_tokens(reg_tokens)?;
-      writeln!(reg_tokens, "  }}")?;
+      writeln!(reg_tokens, "      }}")?;
     }
     interrupt.generate(int_names, interrupts)?;
     Ok(())
@@ -306,15 +310,8 @@ impl Registers {
 
   fn generate_reg_tokens(&self, reg_tokens: &mut File) -> Result<(), Error> {
     for register in &self.register {
-      let &Register {
-        ref name,
-        ref description,
-        ..
-      } = register;
-      for line in description.lines() {
-        writeln!(reg_tokens, "    /// {}", line.trim())?;
-      }
-      writeln!(reg_tokens, "    {};", name)?;
+      let Register { name, .. } = register;
+      writeln!(reg_tokens, "        {};", name)?;
     }
     Ok(())
   }

@@ -1,6 +1,4 @@
 //! Drone STM32 SVD bindings generator.
-//!
-//! See `drone-stm32-map` documentation for details.
 
 #![feature(range_contains)]
 #![feature(transpose_result)]
@@ -8,8 +6,6 @@
 #![allow(clippy::precedence)]
 
 extern crate drone_mirror_failure as failure;
-#[macro_use]
-extern crate lazy_static;
 extern crate serde;
 #[macro_use]
 extern crate serde_derive;
@@ -30,23 +26,16 @@ use xml::reader::XmlEvent as ReaderEvent;
 use xml::writer::XmlEvent as WriterEvent;
 use xml::{EventReader, EventWriter};
 
-lazy_static! {
-  static ref CORE_REG: [(&'static str, Vec<&'static str>); 3] = [
-    ("ITM", vec!["TPR", "TCR", "LAR"]),
-    (
-      "SCB",
-      vec![
-        "CPUID", "ICSR", "VTOR", "AIRCR", "SCR", "CCR", "SHPR1", "SHPR2",
-        "SHPR3", "SHCSR", "MMFSR", "BFSR", "UFSR", "HFSR", "DFSR", "MMFAR",
-        "BFAR", "AFSR", "DEMCR",
-      ],
-    ),
-    (
-      "MPU",
-      vec!["MPU_TYPE", "MPU_CTRL", "MPU_RNR", "MPU_RBAR", "MPU_RASR"],
-    ),
-  ];
-}
+const REG_EXCLUDE: &[&str] = &[
+  "FPU",
+  "FPU_CPACR",
+  "ITM",
+  "MPU",
+  "NVIC",
+  "SCB",
+  "STK",
+  "TPIU",
+];
 
 /// Returns a device string based on features.
 #[macro_export]
@@ -99,7 +88,7 @@ pub fn generate_reg_map(feature: &str, pool_number: usize, pool_size: usize) {
     let mut reg_map = File::create(out_dir.join("svd_reg_map.rs"))?;
     device.generate_reg_map(
       &mut reg_map,
-      &CORE_REG.iter().map(|(block, _)| *block).collect::<Vec<_>>(),
+      REG_EXCLUDE,
       pool_number,
       pool_size,
     )?;
@@ -119,19 +108,7 @@ pub fn generate_rest(feature: &str) {
     let device = svd_deserialize(feature, &out_dir)?;
     let mut reg_tokens = File::create(out_dir.join("svd_reg_tokens.rs"))?;
     let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
-    device.generate_rest(
-      &mut reg_tokens,
-      &mut interrupts,
-      &CORE_REG.iter().map(|(block, _)| *block).collect::<Vec<_>>(),
-    )?;
-    for (block, regs) in CORE_REG.iter() {
-      writeln!(reg_tokens, "{} {{", block)?;
-      for reg in regs {
-        writeln!(reg_tokens, "{};", reg)?;
-      }
-      writeln!(reg_tokens, "}}")?;
-    }
-    writeln!(reg_tokens, "}}")?;
+    device.generate_rest(&mut reg_tokens, &mut interrupts, REG_EXCLUDE)?;
     Ok::<(), Error>(())
   };
   if let Err(error) = run() {
@@ -183,46 +160,30 @@ fn make_svd(feature: &str, svd: &mut File) -> Result<(), Error> {
   } else if feature == "stm32l4s9" {
     patch("STM32L4S9.svd", svd, patch_stm32l4plus())?;
   } else {
-    patch("blank.svd", svd, |o, e, path| match e {
-      ReaderEvent::StartElement { name, .. }
-        if name.local_name == "peripherals"
-          && check_path(path, &["device"]) =>
-      {
-        patch_pass(o, e)?;
-        patch_add(o, "patch/add_stk.xml")
-      }
+    patch("blank.svd", svd, |o, e, _| match e {
       _ => patch_pass(o, e),
     })?;
   }
   Ok(())
 }
 
-fn patch_stm32f1(
-) -> impl FnMut(&mut EventWriter<&mut File>, &ReaderEvent, &[OwnedName])
-  -> Result<(), Error> {
-  |o, e, path| match e {
-    ReaderEvent::StartElement { name, .. }
-      if name.local_name == "peripherals" && check_path(path, &["device"]) =>
-    {
-      patch_pass(o, e)?;
-      patch_add(o, "patch/add_stk.xml")
-    }
+fn patch_stm32f1() -> impl FnMut(
+  &mut EventWriter<&mut File>,
+  &ReaderEvent,
+  &[OwnedName],
+) -> Result<(), Error> {
+  |o, e, _| match e {
     _ => patch_pass(o, e),
   }
 }
 
-fn patch_stm32l4(
-) -> impl FnMut(&mut EventWriter<&mut File>, &ReaderEvent, &[OwnedName])
-  -> Result<(), Error> {
+fn patch_stm32l4() -> impl FnMut(
+  &mut EventWriter<&mut File>,
+  &ReaderEvent,
+  &[OwnedName],
+) -> Result<(), Error> {
   let mut register_name = String::new();
   move |o, e, path| match e {
-    ReaderEvent::StartElement { name, .. }
-      if name.local_name == "peripherals" && check_path(path, &["device"]) =>
-    {
-      patch_pass(o, e)?;
-      patch_add(o, "patch/add_fpu.xml")?;
-      patch_add(o, "patch/add_stk.xml")
-    }
     ReaderEvent::Characters(s)
       if check_path(
         path,
@@ -263,9 +224,11 @@ fn patch_stm32l4(
   }
 }
 
-fn patch_stm32l4plus(
-) -> impl FnMut(&mut EventWriter<&mut File>, &ReaderEvent, &[OwnedName])
-  -> Result<(), Error> {
+fn patch_stm32l4plus() -> impl FnMut(
+  &mut EventWriter<&mut File>,
+  &ReaderEvent,
+  &[OwnedName],
+) -> Result<(), Error> {
   let mut register_name = String::new();
   move |o, e, path| match e {
     ReaderEvent::StartElement { name, .. }
@@ -315,8 +278,11 @@ fn patch_stm32l4plus(
 }
 
 fn patch<
-  F: FnMut(&mut EventWriter<&mut File>, &ReaderEvent, &[OwnedName])
-    -> Result<(), Error>,
+  F: FnMut(
+    &mut EventWriter<&mut File>,
+    &ReaderEvent,
+    &[OwnedName],
+  ) -> Result<(), Error>,
 >(
   input: &str,
   output: &mut File,
