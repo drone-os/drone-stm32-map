@@ -80,18 +80,13 @@ macro_rules! svd_feature {
 }
 
 /// Generates code for register mappings.
-pub fn generate_reg_map(feature: &str, pool_number: usize, pool_size: usize) {
+pub fn generate_regs(feature: &str, pool_number: usize, pool_size: usize) {
   let run = || {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
     let device = svd_deserialize(feature, &out_dir)?;
-    let mut reg_map = File::create(out_dir.join("svd_reg_map.rs"))?;
-    device.generate_reg_map(
-      &mut reg_map,
-      REG_EXCLUDE,
-      pool_number,
-      pool_size,
-    )?;
+    let mut regs = File::create(out_dir.join("svd_regs.rs"))?;
+    device.generate_regs(&mut regs, REG_EXCLUDE, pool_number, pool_size)?;
     Ok::<(), Error>(())
   };
   if let Err(error) = run() {
@@ -106,7 +101,7 @@ pub fn generate_rest(feature: &str) {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
     let device = svd_deserialize(feature, &out_dir)?;
-    let mut reg_tokens = File::create(out_dir.join("svd_reg_tokens.rs"))?;
+    let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
     let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
     device.generate_rest(&mut reg_tokens, &mut interrupts, REG_EXCLUDE)?;
     Ok::<(), Error>(())

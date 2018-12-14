@@ -8,9 +8,9 @@ extern crate drone_cortex_m;
 
 pub mod reg {
   #[allow(unused_imports)]
-  use drone_core::reg::map;
+  use drone_core::reg;
   #[allow(unused_imports)]
   use drone_cortex_m::reg::prelude::*;
 
-  include!(concat!(env!("OUT_DIR"), "/svd_reg_map.rs"));
+  include!(concat!(env!("OUT_DIR"), "/svd_regs.rs"));
 }

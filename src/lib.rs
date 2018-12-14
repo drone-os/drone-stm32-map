@@ -1,23 +1,25 @@
 //! Drone for STM32. Mappings.
 
-#![feature(marker_trait_attr)]
 #![no_std]
-#![allow(clippy::precedence)]
+#![warn(missing_docs)]
 
-extern crate drone_core;
 extern crate drone_cortex_m;
-extern crate drone_stm32_map_piece_1;
-extern crate drone_stm32_map_piece_10;
-extern crate drone_stm32_map_piece_11;
-extern crate drone_stm32_map_piece_12;
-extern crate drone_stm32_map_piece_2;
-extern crate drone_stm32_map_piece_3;
-extern crate drone_stm32_map_piece_4;
-extern crate drone_stm32_map_piece_5;
-extern crate drone_stm32_map_piece_6;
-extern crate drone_stm32_map_piece_7;
-extern crate drone_stm32_map_piece_8;
-extern crate drone_stm32_map_piece_9;
+extern crate drone_stm32_map_pieces;
 
-pub mod reg;
-pub mod thr;
+pub use drone_stm32_map_pieces::stm32_reg_index;
+
+/// Memory-mapped register mappings.
+pub mod reg {
+  pub use drone_stm32_map_pieces::reg::*;
+}
+
+/// Interrupt mappings.
+pub mod thr {
+  pub use drone_stm32_map_pieces::thr::*;
+}
+
+/// Resource mappings.
+pub mod res {
+  pub use drone_cortex_m::map::res::*;
+  pub extern crate drone_stm32_map_res_gpio as gpio;
+}

@@ -1,13 +1,10 @@
 [package]
-name = "drone-stm32-map-piece-1"
+name = "drone-stm32-map-res-gpio"
 version = "0.9.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
-description = "Drone for STM32. Devide mappings."
+description = "Drone for STM32. Device mappings."
 license = "MIT/Apache-2.0"
 repository = "https://github.com/drone-os/drone-stm32-map"
-
-[lib]
-path = "lib.rs"
 
 [features]
 default = []
@@ -38,6 +35,6 @@ version = "0.9.0"
 git = "https://github.com/drone-os/drone-cortex-m"
 # path = "../../drone-cortex-m"
 
-[build-dependencies.drone-stm32-map-svd]
+[dependencies.drone-stm32-map-pieces]
 version = "=0.9.0"
-path = "../svd"
+path = "../pieces"

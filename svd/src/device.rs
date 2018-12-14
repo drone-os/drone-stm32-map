@@ -90,63 +90,66 @@ enum Access {
 }
 
 impl Device {
-  pub fn generate_reg_map(
+  pub fn generate_regs(
     self,
-    reg_map: &mut File,
+    regs: &mut File,
     except: &[&str],
     pool_number: usize,
     pool_size: usize,
   ) -> Result<(), Error> {
-    for (i, peripheral) in self.peripherals.peripheral.values().enumerate() {
+    let mut counter = 0;
+    for peripheral in self.peripherals.peripheral.values() {
       if except.iter().any(|&name| name == peripheral.name) {
         continue;
       }
-      if i % pool_size != pool_number - 1 {
-        continue;
-      }
-      peripheral.generate_reg_map(&self.peripherals, reg_map)?;
+      peripheral.generate_regs(
+        &self.peripherals,
+        regs,
+        pool_number,
+        pool_size,
+        &mut counter,
+      )?;
     }
     Ok(())
   }
 
   pub fn generate_rest(
     self,
-    reg_tokens: &mut File,
+    reg_index: &mut File,
     interrupts: &mut File,
     except: &[&str],
   ) -> Result<(), Error> {
     let mut int_names = HashSet::new();
-    writeln!(reg_tokens, "#[macro_export]")?;
-    writeln!(reg_tokens, "macro_rules! stm32_reg_tokens {{")?;
-    writeln!(reg_tokens, "  ($($body:tt)*) => {{")?;
-    writeln!(reg_tokens, "    cortex_m_reg_tokens! {{")?;
-    writeln!(reg_tokens, "      $($body)*")?;
+    writeln!(reg_index, "reg::index! {{")?;
+    writeln!(reg_index, "  pub macro stm32_reg_index;")?;
+    writeln!(reg_index, "  use macro cortex_m_reg_index;")?;
+    writeln!(reg_index, "  super::inner; reg;")?;
     for peripheral in self.peripherals.peripheral.values() {
       peripheral.generate_rest(
         &self.peripherals,
         &mut int_names,
-        reg_tokens,
+        reg_index,
         interrupts,
         except,
       )?;
     }
-    writeln!(reg_tokens, "    }}")?;
-    writeln!(reg_tokens, "  }};")?;
-    writeln!(reg_tokens, "}}")?;
+    writeln!(reg_index, "}}")?;
     Ok(())
   }
 }
 
 impl Peripheral {
-  fn generate_reg_map(
+  fn generate_regs(
     &self,
     peripherals: &Peripherals,
-    reg_map: &mut File,
+    regs: &mut File,
+    pool_number: usize,
+    pool_size: usize,
+    counter: &mut usize,
   ) -> Result<(), Error> {
     let &Peripheral {
       ref derived_from,
       ref name,
-      ref description,
       base_address,
       ref registers,
       ..
@@ -161,21 +164,18 @@ impl Peripheral {
     } else {
       None
     };
-    let description = description
-      .as_ref()
-      .or_else(|| parent.and_then(|x| x.description.as_ref()))
-      .ok_or_else(|| err_msg("Peripheral description not found"))?;
-    writeln!(reg_map, "map! {{")?;
-    for line in description.lines() {
-      writeln!(reg_map, "  /// {}", line.trim())?;
-    }
-    writeln!(reg_map, "  pub mod {};", name)?;
     registers
       .as_ref()
       .or_else(|| parent.and_then(|x| x.registers.as_ref()))
       .ok_or_else(|| err_msg("Peripheral registers not found"))?
-      .generate_reg_map(base_address, reg_map)?;
-    writeln!(reg_map, "}}")?;
+      .generate_regs(
+        name,
+        base_address,
+        regs,
+        pool_number,
+        pool_size,
+        counter,
+      )?;
     Ok(())
   }
 
@@ -183,13 +183,14 @@ impl Peripheral {
     &self,
     peripherals: &Peripherals,
     int_names: &mut HashSet<String>,
-    reg_tokens: &mut File,
+    reg_index: &mut File,
     interrupts: &mut File,
     except: &[&str],
   ) -> Result<(), Error> {
     let &Peripheral {
       ref derived_from,
       ref name,
+      ref description,
       ref interrupt,
       ref registers,
       ..
@@ -205,13 +206,20 @@ impl Peripheral {
       None
     };
     if except.iter().all(|&except| except != name) {
-      writeln!(reg_tokens, "      {} {{", name)?;
+      let description = description
+        .as_ref()
+        .or_else(|| parent.and_then(|x| x.description.as_ref()))
+        .ok_or_else(|| err_msg("Peripheral description not found"))?;
+      for line in description.lines() {
+        writeln!(reg_index, "  /// {}", line.trim())?;
+      }
+      writeln!(reg_index, "  pub mod {} {{", name)?;
       registers
         .as_ref()
         .or_else(|| parent.and_then(|x| x.registers.as_ref()))
         .ok_or_else(|| err_msg("Peripheral registers not found"))?
-        .generate_reg_tokens(reg_tokens)?;
-      writeln!(reg_tokens, "      }}")?;
+        .generate_reg_index(reg_index)?;
+      writeln!(reg_index, "  }}")?;
     }
     interrupt.generate(int_names, interrupts)?;
     Ok(())
@@ -252,12 +260,20 @@ impl Interrupts for Vec<Interrupt> {
 }
 
 impl Registers {
-  fn generate_reg_map(
+  fn generate_regs(
     &self,
+    peripheral_name: &str,
     base_address: u32,
-    reg_map: &mut File,
+    regs: &mut File,
+    pool_number: usize,
+    pool_size: usize,
+    counter: &mut usize,
   ) -> Result<(), Error> {
     for register in &self.register {
+      *counter += 1;
+      if *counter % pool_size != pool_number - 1 {
+        continue;
+      }
       let &Register {
         ref name,
         ref description,
@@ -268,50 +284,51 @@ impl Registers {
         ref fields,
       } = register;
       let address = base_address + address_offset;
+      writeln!(regs, "reg! {{")?;
       for line in description.lines() {
-        writeln!(reg_map, "  /// {}", line.trim())?;
+        writeln!(regs, "  /// {}", line.trim())?;
       }
-      writeln!(reg_map, "  {} {{", name)?;
+      writeln!(regs, "  pub mod {} {};", peripheral_name, name)?;
       writeln!(
-        reg_map,
-        "    0x{:04X}_{:04X} {} 0x{:04X}_{:04X}",
+        regs,
+        "  0x{:04X}_{:04X} {} 0x{:04X}_{:04X}",
         address >> 16,
         address & 0xFFFF,
         size,
         reset_value >> 16,
         reset_value & 0xFFFF,
       )?;
-      write!(reg_map, "   ")?;
+      write!(regs, " ")?;
       match access {
         Some(Access::WriteOnly) => {
-          write!(reg_map, " WReg")?;
-          write!(reg_map, " WoReg")?;
+          write!(regs, " WReg")?;
+          write!(regs, " WoReg")?;
         }
         Some(Access::ReadOnly) => {
-          write!(reg_map, " RReg")?;
-          write!(reg_map, " RoReg")?;
+          write!(regs, " RReg")?;
+          write!(regs, " RoReg")?;
         }
         Some(Access::ReadWrite) | None => {
-          write!(reg_map, " RReg")?;
-          write!(reg_map, " WReg")?;
+          write!(regs, " RReg")?;
+          write!(regs, " WReg")?;
         }
       }
       if BIT_BAND.contains(&address) {
-        write!(reg_map, " RegBitBand")?;
+        write!(regs, " RegBitBand")?;
       }
-      writeln!(reg_map, ";")?;
+      writeln!(regs, ";")?;
       if let Some(fields) = fields {
-        fields.generate(access, reg_map)?;
+        fields.generate(access, regs)?;
       }
-      writeln!(reg_map, "  }}")?;
+      writeln!(regs, "}}")?;
     }
     Ok(())
   }
 
-  fn generate_reg_tokens(&self, reg_tokens: &mut File) -> Result<(), Error> {
+  fn generate_reg_index(&self, reg_index: &mut File) -> Result<(), Error> {
     for register in &self.register {
       let Register { name, .. } = register;
-      writeln!(reg_tokens, "        {};", name)?;
+      writeln!(reg_index, "    {};", name)?;
     }
     Ok(())
   }
@@ -321,7 +338,7 @@ impl Fields {
   fn generate(
     &self,
     base_access: Option<Access>,
-    reg_map: &mut File,
+    regs: &mut File,
   ) -> Result<(), Error> {
     for field in &self.field {
       let &Field {
@@ -332,24 +349,24 @@ impl Fields {
         access,
       } = field;
       for line in description.lines() {
-        writeln!(reg_map, "    /// {}", line.trim())?;
+        writeln!(regs, "  /// {}", line.trim())?;
       }
-      write!(reg_map, "    {} {{ {} {}", name, bit_offset, bit_width)?;
+      write!(regs, "  {} {{ {} {}", name, bit_offset, bit_width)?;
       match access.as_ref().or_else(|| base_access.as_ref()) {
         Some(&Access::WriteOnly) => {
-          write!(reg_map, " WWRegField")?;
-          write!(reg_map, " WoWRegField")?;
+          write!(regs, " WWRegField")?;
+          write!(regs, " WoWRegField")?;
         }
         Some(&Access::ReadOnly) => {
-          write!(reg_map, " RRRegField")?;
-          write!(reg_map, " RoRRegField")?;
+          write!(regs, " RRRegField")?;
+          write!(regs, " RoRRegField")?;
         }
         Some(&Access::ReadWrite) | None => {
-          write!(reg_map, " RRRegField")?;
-          write!(reg_map, " WWRegField")?;
+          write!(regs, " RRRegField")?;
+          write!(regs, " WWRegField")?;
         }
       }
-      writeln!(reg_map, " }}")?;
+      writeln!(regs, " }}")?;
     }
     Ok(())
   }
