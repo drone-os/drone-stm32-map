@@ -7,7 +7,7 @@ res! {
   /// GPIO pin.
   pub trait GpioPin {
     /// GPIO port without pins.
-    type GpioPortPinless: super::pinless::GpioPortPinless;
+    type GpioPortHead: super::head::GpioPortHead;
   }
 
   GPIO {
@@ -188,7 +188,7 @@ macro_rules! map_gpio_pin {
       pub struct $pin_ty;
 
       impl GpioPin for $pin_ty {
-        type GpioPortPinless = super::pinless::$port_ty;
+        type GpioPortHead = super::head::$port_ty;
       }
 
       ::drone_stm32_map_pieces::reg; pin;
@@ -759,7 +759,7 @@ macro_rules! map_gpio_pins {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioAPinless,
+  GpioAHead,
   "GPIO port A pin 0.",
   GpioA0,
   "GPIO port A pin 1.",
@@ -816,7 +816,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioBPinless,
+  GpioBHead,
   "GPIO port B pin 0.",
   GpioB0,
   "GPIO port B pin 1.",
@@ -873,7 +873,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioCPinless,
+  GpioCHead,
   "GPIO port C pin 0.",
   GpioC0,
   "GPIO port C pin 1.",
@@ -930,7 +930,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioDPinless,
+  GpioDHead,
   "GPIO port D pin 0.",
   GpioD0,
   "GPIO port D pin 1.",
@@ -987,7 +987,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioEPinless,
+  GpioEHead,
   "GPIO port E pin 0.",
   GpioE0,
   "GPIO port E pin 1.",
@@ -1041,7 +1041,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioFPinless,
+  GpioFHead,
   "GPIO port F pin 0.",
   GpioF0,
   "GPIO port F pin 1.",
@@ -1095,7 +1095,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioGPinless,
+  GpioGHead,
   "GPIO port G pin 0.",
   GpioG0,
   "GPIO port G pin 1.",
@@ -1147,7 +1147,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioHPinless,
+  GpioHHead,
   "GPIO port H pin 0.",
   GpioH0,
   "GPIO port H pin 1.",
@@ -1195,7 +1195,7 @@ map_gpio_pins! {
   feature = "stm32l4s9"
 ))]
 map_gpio_pins! {
-  GpioIPinless,
+  GpioIHead,
   "GPIO port I pin 0.",
   GpioI0,
   "GPIO port I pin 1.",

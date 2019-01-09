@@ -1,11 +1,11 @@
-//! General-purpose I/O ports without pins.
+//! General-purpose I/O port heads.
 
 use drone_core::res;
 use drone_cortex_m::reg::marker::*;
 
 res! {
-  /// GPIO port without pins.
-  pub trait GpioPortPinless {}
+  /// GPIO port head.
+  pub trait GpioPortHead {}
 
   RCC {
     AHB2ENR {
@@ -31,7 +31,7 @@ res! {
 }
 
 #[allow(unused_macros)]
-macro_rules! map_gpio_port_pinless {
+macro_rules! map_gpio_port_head {
   (
     $port_doc:expr,
     $port_ty:ident,
@@ -44,9 +44,9 @@ macro_rules! map_gpio_port_pinless {
       #[doc = $port_doc]
       pub struct $port_ty;
 
-      impl GpioPortPinless for $port_ty {}
+      impl GpioPortHead for $port_ty {}
 
-      ::drone_stm32_map_pieces::reg; pinless;
+      ::drone_stm32_map_pieces::reg; head;
 
       RCC {
         AHB2ENR {
@@ -92,9 +92,9 @@ macro_rules! map_gpio_port_pinless {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port A without pins.",
-  GpioAPinless,
+map_gpio_port_head! {
+  "GPIO port A head.",
+  GpioAHead,
   GPIOA,
   GPIOAEN,
   GPIOARST,
@@ -119,9 +119,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port B without pins.",
-  GpioBPinless,
+map_gpio_port_head! {
+  "GPIO port B head.",
+  GpioBHead,
   GPIOB,
   GPIOBEN,
   GPIOBRST,
@@ -146,9 +146,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port C without pins.",
-  GpioCPinless,
+map_gpio_port_head! {
+  "GPIO port C head.",
+  GpioCHead,
   GPIOC,
   GPIOCEN,
   GPIOCRST,
@@ -173,9 +173,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port D without pins.",
-  GpioDPinless,
+map_gpio_port_head! {
+  "GPIO port D head.",
+  GpioDHead,
   GPIOD,
   GPIODEN,
   GPIODRST,
@@ -200,9 +200,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port E without pins.",
-  GpioEPinless,
+map_gpio_port_head! {
+  "GPIO port E head.",
+  GpioEHead,
   GPIOE,
   GPIOEEN,
   GPIOERST,
@@ -224,9 +224,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port F without pins.",
-  GpioFPinless,
+map_gpio_port_head! {
+  "GPIO port F head.",
+  GpioFHead,
   GPIOF,
   GPIOFEN,
   GPIOFRST,
@@ -248,9 +248,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port G without pins.",
-  GpioGPinless,
+map_gpio_port_head! {
+  "GPIO port G head.",
+  GpioGHead,
   GPIOG,
   GPIOGEN,
   GPIOGRST,
@@ -270,9 +270,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port H without pins.",
-  GpioHPinless,
+map_gpio_port_head! {
+  "GPIO port H head.",
+  GpioHHead,
   GPIOH,
   GPIOHEN,
   GPIOHRST,
@@ -288,9 +288,9 @@ map_gpio_port_pinless! {
   feature = "stm32l4s7",
   feature = "stm32l4s9"
 ))]
-map_gpio_port_pinless! {
-  "GPIO port I without pins.",
-  GpioIPinless,
+map_gpio_port_head! {
+  "GPIO port I head.",
+  GpioIHead,
   GPIOI,
   GPIOIEN,
   GPIOIRST,

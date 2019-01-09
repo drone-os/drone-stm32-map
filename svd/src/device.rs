@@ -1,17 +1,18 @@
-#![allow(clippy::const_static_lifetime)]
-
 use failure::{err_msg, Error};
-use serde::de::{self, Deserialize, Deserializer};
-use std::collections::{BTreeMap, HashSet};
-use std::fs::File;
-use std::io::Write;
-use std::ops::Range;
+use serde::{de, Deserialize, Deserializer};
+use std::{
+  collections::{BTreeMap, HashSet},
+  fs::File,
+  io::Write,
+  ops::Range,
+};
 
 const BIT_BAND: Range<u32> = 0x4000_0000..0x4010_0000;
 
 #[serde(rename_all = "camelCase")]
 #[derive(Deserialize)]
 pub struct Device {
+  name: String,
   peripherals: Peripherals,
 }
 
@@ -120,9 +121,24 @@ impl Device {
     except: &[&str],
   ) -> Result<(), Error> {
     let mut int_names = HashSet::new();
-    writeln!(reg_index, "reg::index! {{")?;
-    writeln!(reg_index, "  pub macro stm32_reg_index;")?;
-    writeln!(reg_index, "  use macro cortex_m_reg_index;")?;
+    writeln!(reg_index, "reg::unsafe_tokens! {{")?;
+    writeln!(
+      reg_index,
+      "  /// Defines an index of {} register tokens.",
+      self.name
+    )?;
+    writeln!(reg_index, "  ///")?;
+    writeln!(reg_index, "  /// # Safety")?;
+    writeln!(reg_index, "  ///")?;
+    writeln!(
+      reg_index,
+      "  /// See [`::drone_core::reg::unsafe_tokens!`]."
+    )?;
+    writeln!(reg_index, "  pub macro unsafe_stm32_reg_tokens;")?;
+    writeln!(
+      reg_index,
+      "  use macro ::drone_cortex_m::unsafe_cortex_m_reg_tokens;"
+    )?;
     writeln!(reg_index, "  super::inner; reg;")?;
     for peripheral in self.peripherals.peripheral.values() {
       peripheral.generate_rest(
@@ -147,7 +163,7 @@ impl Peripheral {
     pool_size: usize,
     counter: &mut usize,
   ) -> Result<(), Error> {
-    let &Peripheral {
+    let &Self {
       ref derived_from,
       ref name,
       base_address,
@@ -187,7 +203,7 @@ impl Peripheral {
     interrupts: &mut File,
     except: &[&str],
   ) -> Result<(), Error> {
-    let &Peripheral {
+    let &Self {
       ref derived_from,
       ref name,
       ref description,
@@ -390,7 +406,7 @@ where
   D: Deserializer<'de>,
 {
   let s = String::deserialize(deserializer)?;
-  let s = s.trim_left_matches("0x").trim_left_matches("0X");
+  let s = s.trim_start_matches("0x").trim_start_matches("0X");
   u32::from_str_radix(s, 16).map_err(de::Error::custom)
 }
 

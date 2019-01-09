@@ -1,10 +1,5 @@
 #![no_std]
-#![allow(clippy::precedence, clippy::doc_markdown)]
-
-#[allow(unused_imports)]
-#[macro_use]
-extern crate drone_core;
-extern crate drone_cortex_m;
+#![warn(clippy::pedantic)]
 
 pub mod reg {
   #[allow(unused_imports)]

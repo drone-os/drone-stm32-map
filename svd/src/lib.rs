@@ -2,29 +2,25 @@
 
 #![feature(range_contains)]
 #![feature(transpose_result)]
+#![feature(uniform_paths)]
 #![warn(missing_docs)]
-#![allow(clippy::precedence)]
-
-extern crate drone_mirror_failure as failure;
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
-extern crate serde_xml_rs;
-extern crate xml;
+#![warn(clippy::pedantic)]
 
 mod device;
 
-use device::Device;
+use crate::device::Device;
 use failure::Error;
-use std::fs::File;
-use std::io::prelude::*;
-use std::io::BufReader;
-use std::path::Path;
-use std::{env, process};
-use xml::name::OwnedName;
-use xml::reader::XmlEvent as ReaderEvent;
-use xml::writer::XmlEvent as WriterEvent;
-use xml::{EventReader, EventWriter};
+use std::{
+  env,
+  fs::File,
+  io::{prelude::*, BufReader},
+  path::Path,
+  process,
+};
+use xml::{
+  name::OwnedName, reader::XmlEvent as ReaderEvent,
+  writer::XmlEvent as WriterEvent, EventReader, EventWriter,
+};
 
 const REG_EXCLUDE: &[&str] = &[
   "FPU",
@@ -180,36 +176,30 @@ fn patch_stm32l4() -> impl FnMut(
   let mut register_name = String::new();
   move |o, e, path| match e {
     ReaderEvent::Characters(s)
-      if check_path(
-        path,
-        &[
-          "device",
-          "peripherals",
-          "peripheral",
-          "registers",
-          "register",
-          "name",
-        ],
-      ) =>
+      if check_path(path, &[
+        "device",
+        "peripherals",
+        "peripheral",
+        "registers",
+        "register",
+        "name",
+      ]) =>
     {
       register_name = s.clone();
       patch_pass(o, e)
     }
     ReaderEvent::Characters(s)
       if s == "SP3EN"
-        && check_path(
-          path,
-          &[
-            "device",
-            "peripherals",
-            "peripheral",
-            "registers",
-            "register",
-            "fields",
-            "field",
-            "name",
-          ],
-        )
+        && check_path(path, &[
+          "device",
+          "peripherals",
+          "peripheral",
+          "registers",
+          "register",
+          "fields",
+          "field",
+          "name",
+        ])
         && register_name == "APB1ENR1" =>
     {
       o.write(WriterEvent::Characters("SPI3EN"))?;
@@ -233,36 +223,30 @@ fn patch_stm32l4plus() -> impl FnMut(
       patch_add(o, "patch/add_dmamux.xml")
     }
     ReaderEvent::Characters(s)
-      if check_path(
-        path,
-        &[
-          "device",
-          "peripherals",
-          "peripheral",
-          "registers",
-          "register",
-          "name",
-        ],
-      ) =>
+      if check_path(path, &[
+        "device",
+        "peripherals",
+        "peripheral",
+        "registers",
+        "register",
+        "name",
+      ]) =>
     {
       register_name = s.clone();
       patch_pass(o, e)
     }
     ReaderEvent::Characters(s)
       if s == "SP3EN"
-        && check_path(
-          path,
-          &[
-            "device",
-            "peripherals",
-            "peripheral",
-            "registers",
-            "register",
-            "fields",
-            "field",
-            "name",
-          ],
-        )
+        && check_path(path, &[
+          "device",
+          "peripherals",
+          "peripheral",
+          "registers",
+          "register",
+          "fields",
+          "field",
+          "name",
+        ])
         && register_name == "APB1ENR1" =>
     {
       o.write(WriterEvent::Characters("SPI3EN"))?;

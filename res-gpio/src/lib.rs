@@ -1,16 +1,13 @@
 //! STM32 General Purpose I/Os.
 
 #![feature(proc_macro_hygiene)]
+#![feature(uniform_paths)]
 #![no_std]
 #![warn(missing_docs)]
-#![allow(clippy::precedence)]
+#![warn(clippy::pedantic)]
 
-extern crate drone_core;
-extern crate drone_cortex_m;
-extern crate drone_stm32_map_pieces;
-
+pub mod head;
 pub mod pin;
-pub mod pinless;
 
 use drone_core::res;
 use drone_cortex_m::reg::marker::*;

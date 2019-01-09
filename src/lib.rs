@@ -1,12 +1,11 @@
 //! Drone for STM32. Mappings.
 
+#![feature(uniform_paths)]
 #![no_std]
 #![warn(missing_docs)]
+#![warn(clippy::pedantic)]
 
-extern crate drone_cortex_m;
-extern crate drone_stm32_map_pieces;
-
-pub use drone_stm32_map_pieces::stm32_reg_index;
+pub use drone_stm32_map_pieces::unsafe_stm32_reg_tokens;
 
 /// Memory-mapped register mappings.
 pub mod reg {

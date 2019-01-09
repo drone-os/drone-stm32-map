@@ -6,5 +6,5 @@ set -x
 
 cargo doc \
   --package drone-stm32-map-svd
-xargo doc --target $BUILD_TARGET --all "$@" \
+cargo doc --target $BUILD_TARGET --all "$@" \
   --exclude drone-stm32-map-svd
