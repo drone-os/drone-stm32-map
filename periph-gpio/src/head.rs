@@ -1,11 +1,11 @@
 //! General-purpose I/O port heads.
 
-use drone_core::res;
+use drone_core::periph;
 use drone_cortex_m::reg::marker::*;
 
-res! {
+periph! {
   /// GPIO port head.
-  pub trait GpioPortHead {}
+  pub trait GpioHeadMap {}
 
   RCC {
     AHB2ENR {
@@ -33,18 +33,23 @@ res! {
 #[allow(unused_macros)]
 macro_rules! map_gpio_port_head {
   (
-    $port_doc:expr,
+    $port_macro_doc:expr,
+    $port_macro:ident,
+    $port_ty_doc:expr,
     $port_ty:ident,
     $gpio:ident,
     $gpioen:ident,
     $gpiorst:ident,
     $gpiosmen:ident,
   ) => {
-    res::map! {
-      #[doc = $port_doc]
+    periph::map! {
+      #[doc = $port_macro_doc]
+      pub macro $port_macro;
+
+      #[doc = $port_ty_doc]
       pub struct $port_ty;
 
-      impl GpioPortHead for $port_ty {}
+      impl GpioHeadMap for $port_ty {}
 
       ::drone_stm32_map_pieces::reg; head;
 
@@ -93,6 +98,8 @@ macro_rules! map_gpio_port_head {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port A head.",
+  periph_gpio_a_head,
   "GPIO port A head.",
   GpioAHead,
   GPIOA,
@@ -120,6 +127,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port B head.",
+  periph_gpio_b_head,
   "GPIO port B head.",
   GpioBHead,
   GPIOB,
@@ -147,6 +156,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port C head.",
+  periph_gpio_c_head,
   "GPIO port C head.",
   GpioCHead,
   GPIOC,
@@ -174,6 +185,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port D head.",
+  periph_gpio_d_head,
   "GPIO port D head.",
   GpioDHead,
   GPIOD,
@@ -201,6 +214,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port E head.",
+  periph_gpio_e_head,
   "GPIO port E head.",
   GpioEHead,
   GPIOE,
@@ -225,6 +240,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port F head.",
+  periph_gpio_f_head,
   "GPIO port F head.",
   GpioFHead,
   GPIOF,
@@ -249,6 +266,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port G head.",
+  periph_gpio_g_head,
   "GPIO port G head.",
   GpioGHead,
   GPIOG,
@@ -271,6 +290,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port H head.",
+  periph_gpio_h_head,
   "GPIO port H head.",
   GpioHHead,
   GPIOH,
@@ -289,6 +310,8 @@ map_gpio_port_head! {
   feature = "stm32l4s9"
 ))]
 map_gpio_port_head! {
+  "Acquires GPIO port I head.",
+  periph_gpio_i_head,
   "GPIO port I head.",
   GpioIHead,
   GPIOI,

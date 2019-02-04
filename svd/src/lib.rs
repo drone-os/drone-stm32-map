@@ -1,8 +1,8 @@
 //! Drone STM32 SVD bindings generator.
 
 #![feature(range_contains)]
-#![feature(transpose_result)]
-#![feature(uniform_paths)]
+#![deny(bare_trait_objects)]
+#![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 
@@ -16,10 +16,6 @@ use std::{
   io::{prelude::*, BufReader},
   path::Path,
   process,
-};
-use xml::{
-  name::OwnedName, reader::XmlEvent as ReaderEvent,
-  writer::XmlEvent as WriterEvent, EventReader, EventWriter,
 };
 
 const REG_EXCLUDE: &[&str] = &[
@@ -80,7 +76,7 @@ pub fn generate_regs(feature: &str, pool_number: usize, pool_size: usize) {
   let run = || {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
-    let device = svd_deserialize(feature, &out_dir)?;
+    let device = svd_deserialize(feature)?;
     let mut regs = File::create(out_dir.join("svd_regs.rs"))?;
     device.generate_regs(&mut regs, REG_EXCLUDE, pool_number, pool_size)?;
     Ok::<(), Error>(())
@@ -96,7 +92,7 @@ pub fn generate_rest(feature: &str) {
   let run = || {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
-    let device = svd_deserialize(feature, &out_dir)?;
+    let device = svd_deserialize(feature)?;
     let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
     let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
     device.generate_rest(&mut reg_tokens, &mut interrupts, REG_EXCLUDE)?;
@@ -108,216 +104,97 @@ pub fn generate_rest(feature: &str) {
   }
 }
 
-fn svd_deserialize(feature: &str, out_dir: &Path) -> Result<Device, Error> {
-  let mut svd = File::create(out_dir.join("svd.xml"))?;
-  make_svd(feature, &mut svd)?;
-  let mut svd = File::open(out_dir.join("svd.xml"))?;
+fn svd_deserialize(feature: &str) -> Result<Device, Error> {
+  match feature {
+    "stm32f100" => parse_svd("STM32F100.svd"),
+    "stm32f101" => parse_svd("STM32F101.svd"),
+    "stm32f102" => parse_svd("STM32F102.svd"),
+    "stm32f103" => parse_svd("STM32F103.svd"),
+    "stm32f107" => parse_svd("STM32F107.svd"),
+    "stm32l4x1" => patch_stm32l4(parse_svd("STM32L4x1.svd")?),
+    "stm32l4x2" => patch_stm32l4(parse_svd("STM32L4x2.svd")?),
+    "stm32l4x3" => patch_stm32l4(parse_svd("STM32L4x3.svd")?),
+    "stm32l4x5" => patch_stm32l4(parse_svd("STM32L4x5.svd")?),
+    "stm32l4x6" => patch_stm32l4(parse_svd("STM32L4x6.svd")?),
+    "stm32l4r5" => patch_stm32l4plus(parse_svd("STM32L4R5.svd")?),
+    "stm32l4r7" => patch_stm32l4plus(parse_svd("STM32L4R7.svd")?),
+    "stm32l4r9" => patch_stm32l4plus(parse_svd("STM32L4R9.svd")?),
+    "stm32l4s5" => patch_stm32l4plus(parse_svd("STM32L4S5.svd")?),
+    "stm32l4s7" => patch_stm32l4plus(parse_svd("STM32L4S7.svd")?),
+    "stm32l4s9" => patch_stm32l4plus(parse_svd("STM32L4S9.svd")?),
+    _ => Ok(Device::new("Generic STM32".to_string())),
+  }
+}
+
+fn patch_stm32l4(mut device: Device) -> Result<Device, Error> {
+  fix_spi3(&mut device)?;
+  fix_adc(&mut device)?;
+  Ok(device)
+}
+
+fn patch_stm32l4plus(mut device: Device) -> Result<Device, Error> {
+  add_dmamux(&mut device)?;
+  fix_spi3(&mut device)?;
+  fix_adc(&mut device)?;
+  Ok(device)
+}
+
+fn add_dmamux(device: &mut Device) -> Result<(), Error> {
+  device.set_peripheral(serde_xml_rs::deserialize(
+    read_svd("patch/add_dmamux.xml")?.as_bytes(),
+  )?);
+  Ok(())
+}
+
+fn fix_spi3(device: &mut Device) -> Result<(), Error> {
+  device
+    .peripheral_mut("RCC")
+    .unwrap()
+    .registers_mut()
+    .find(|register| register.name == "APB1ENR1")
+    .unwrap()
+    .fields_mut()
+    .find(|field| field.name == "SP3EN")
+    .unwrap()
+    .name = "SPI3EN".to_string();
+  device
+    .peripheral_mut("RCC")
+    .unwrap()
+    .registers_mut()
+    .find(|register| register.name == "APB1SMENR1")
+    .unwrap()
+    .fields_mut()
+    .find(|field| field.name == "SP3SMEN")
+    .unwrap()
+    .name = "SPI3SMEN".to_string();
+  Ok(())
+}
+
+fn fix_adc(device: &mut Device) -> Result<(), Error> {
+  device
+    .peripheral_mut("RCC")
+    .unwrap()
+    .registers_mut()
+    .find(|register| register.name == "AHB2SMENR")
+    .unwrap()
+    .fields_mut()
+    .find(|field| field.name == "ADCFSSMEN")
+    .unwrap()
+    .name = "ADCSMEN".to_string();
+  Ok(())
+}
+
+fn parse_svd(input: &str) -> Result<Device, Error> {
+  Ok(serde_xml_rs::deserialize(read_svd(input)?.as_bytes())?)
+}
+
+fn read_svd(path: &str) -> Result<String, Error> {
+  let mut input = BufReader::new(File::open(format!(
+    "{}/../svd_files/{}",
+    env!("CARGO_MANIFEST_DIR"),
+    path
+  ))?);
   let mut xml = String::new();
-  svd.read_to_string(&mut xml)?;
-  serde_xml_rs::deserialize(xml.as_bytes()).map_err(Into::into)
-}
-
-fn make_svd(feature: &str, svd: &mut File) -> Result<(), Error> {
-  if feature == "stm32f100" {
-    patch("STM32F100.svd", svd, patch_stm32f1())?;
-  } else if feature == "stm32f101" {
-    patch("STM32F101.svd", svd, patch_stm32f1())?;
-  } else if feature == "stm32f102" {
-    patch("STM32F102.svd", svd, patch_stm32f1())?;
-  } else if feature == "stm32f103" {
-    patch("STM32F103.svd", svd, patch_stm32f1())?;
-  } else if feature == "stm32f107" {
-    patch("STM32F107.svd", svd, patch_stm32f1())?;
-  } else if feature == "stm32l4x1" {
-    patch("STM32L4x1.svd", svd, patch_stm32l4())?;
-  } else if feature == "stm32l4x2" {
-    patch("STM32L4x2.svd", svd, patch_stm32l4())?;
-  } else if feature == "stm32l4x3" {
-    patch("STM32L4x3.svd", svd, patch_stm32l4())?;
-  } else if feature == "stm32l4x5" {
-    patch("STM32L4x5.svd", svd, patch_stm32l4())?;
-  } else if feature == "stm32l4x6" {
-    patch("STM32L4x6.svd", svd, patch_stm32l4())?;
-  } else if feature == "stm32l4r5" {
-    patch("STM32L4R5.svd", svd, patch_stm32l4plus())?;
-  } else if feature == "stm32l4r7" {
-    patch("STM32L4R7.svd", svd, patch_stm32l4plus())?;
-  } else if feature == "stm32l4r9" {
-    patch("STM32L4R9.svd", svd, patch_stm32l4plus())?;
-  } else if feature == "stm32l4s5" {
-    patch("STM32L4S5.svd", svd, patch_stm32l4plus())?;
-  } else if feature == "stm32l4s7" {
-    patch("STM32L4S7.svd", svd, patch_stm32l4plus())?;
-  } else if feature == "stm32l4s9" {
-    patch("STM32L4S9.svd", svd, patch_stm32l4plus())?;
-  } else {
-    patch("blank.svd", svd, |o, e, _| match e {
-      _ => patch_pass(o, e),
-    })?;
-  }
-  Ok(())
-}
-
-fn patch_stm32f1() -> impl FnMut(
-  &mut EventWriter<&mut File>,
-  &ReaderEvent,
-  &[OwnedName],
-) -> Result<(), Error> {
-  |o, e, _| match e {
-    _ => patch_pass(o, e),
-  }
-}
-
-fn patch_stm32l4() -> impl FnMut(
-  &mut EventWriter<&mut File>,
-  &ReaderEvent,
-  &[OwnedName],
-) -> Result<(), Error> {
-  let mut register_name = String::new();
-  move |o, e, path| match e {
-    ReaderEvent::Characters(s)
-      if check_path(path, &[
-        "device",
-        "peripherals",
-        "peripheral",
-        "registers",
-        "register",
-        "name",
-      ]) =>
-    {
-      register_name = s.clone();
-      patch_pass(o, e)
-    }
-    ReaderEvent::Characters(s)
-      if s == "SP3EN"
-        && check_path(path, &[
-          "device",
-          "peripherals",
-          "peripheral",
-          "registers",
-          "register",
-          "fields",
-          "field",
-          "name",
-        ])
-        && register_name == "APB1ENR1" =>
-    {
-      o.write(WriterEvent::Characters("SPI3EN"))?;
-      Ok(())
-    }
-    _ => patch_pass(o, e),
-  }
-}
-
-fn patch_stm32l4plus() -> impl FnMut(
-  &mut EventWriter<&mut File>,
-  &ReaderEvent,
-  &[OwnedName],
-) -> Result<(), Error> {
-  let mut register_name = String::new();
-  move |o, e, path| match e {
-    ReaderEvent::StartElement { name, .. }
-      if name.local_name == "peripherals" && check_path(path, &["device"]) =>
-    {
-      patch_pass(o, e)?;
-      patch_add(o, "patch/add_dmamux.xml")
-    }
-    ReaderEvent::Characters(s)
-      if check_path(path, &[
-        "device",
-        "peripherals",
-        "peripheral",
-        "registers",
-        "register",
-        "name",
-      ]) =>
-    {
-      register_name = s.clone();
-      patch_pass(o, e)
-    }
-    ReaderEvent::Characters(s)
-      if s == "SP3EN"
-        && check_path(path, &[
-          "device",
-          "peripherals",
-          "peripheral",
-          "registers",
-          "register",
-          "fields",
-          "field",
-          "name",
-        ])
-        && register_name == "APB1ENR1" =>
-    {
-      o.write(WriterEvent::Characters("SPI3EN"))?;
-      Ok(())
-    }
-    _ => patch_pass(o, e),
-  }
-}
-
-fn patch<
-  F: FnMut(
-    &mut EventWriter<&mut File>,
-    &ReaderEvent,
-    &[OwnedName],
-  ) -> Result<(), Error>,
->(
-  input: &str,
-  output: &mut File,
-  mut f: F,
-) -> Result<(), Error> {
-  let input = format!("{}/../svd_files/{}", env!("CARGO_MANIFEST_DIR"), input);
-  let input = EventReader::new(BufReader::new(File::open(input)?));
-  let mut output = EventWriter::new(output);
-  let mut path = Vec::new();
-  for event in input {
-    let event = event?;
-    f(&mut output, &event, &path)?;
-    match &event {
-      ReaderEvent::StartElement { name, .. } => {
-        path.push(name.clone());
-      }
-      ReaderEvent::EndElement { name, .. } => {
-        let tail = path.pop();
-        assert_eq!(tail.as_ref(), Some(name));
-      }
-      _ => {}
-    }
-  }
-  Ok(())
-}
-
-fn patch_pass(
-  output: &mut EventWriter<&mut File>,
-  event: &ReaderEvent,
-) -> Result<(), Error> {
-  event
-    .as_writer_event()
-    .map(|x| output.write(x))
-    .transpose()?;
-  Ok(())
-}
-
-fn patch_add(
-  output: &mut EventWriter<&mut File>,
-  patch: &str,
-) -> Result<(), Error> {
-  let patch = format!("{}/../svd_files/{}", env!("CARGO_MANIFEST_DIR"), patch);
-  for e in EventReader::new(BufReader::new(File::open(patch)?)) {
-    match e? {
-      ReaderEvent::StartDocument { .. } | ReaderEvent::EndDocument => {}
-      e => patch_pass(output, &e)?,
-    }
-  }
-  Ok(())
-}
-
-fn check_path(a: &[OwnedName], b: &[&str]) -> bool {
-  a.len() == b.len()
-    && a
-      .iter()
-      .zip(b.iter())
-      .try_for_each(|(a, &b)| if a.local_name == b { Some(()) } else { None })
-      .is_some()
+  input.read_to_string(&mut xml)?;
+  Ok(xml)
 }

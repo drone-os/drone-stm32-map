@@ -1,5 +1,5 @@
 [package]
-name = "drone-stm32-map-res-gpio"
+name = "drone-stm32-map-periph-uart"
 version = "0.9.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"

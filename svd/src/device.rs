@@ -10,87 +10,105 @@ use std::{
 const BIT_BAND: Range<u32> = 0x4000_0000..0x4010_0000;
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Device {
   name: String,
   peripherals: Peripherals,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
+#[derive(Debug, Default, Deserialize)]
 struct Peripherals {
   #[serde(deserialize_with = "deserialize_peripheral", default)]
   peripheral: BTreeMap<String, Peripheral>,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
-struct Peripheral {
-  derived_from: Option<String>,
-  name: String,
-  description: Option<String>,
+#[derive(Debug, Deserialize)]
+pub struct Peripheral {
+  pub derived_from: Option<String>,
+  pub name: String,
+  pub description: Option<String>,
   #[serde(deserialize_with = "deserialize_hex")]
-  base_address: u32,
+  pub base_address: u32,
   #[serde(default)]
-  interrupt: Vec<Interrupt>,
+  pub interrupt: Vec<Interrupt>,
   registers: Option<Registers>,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
-struct Interrupt {
-  name: String,
-  description: String,
+#[derive(Debug, Deserialize)]
+pub struct Interrupt {
+  pub name: String,
+  pub description: String,
   #[serde(deserialize_with = "deserialize_dec")]
-  value: u32,
+  pub value: u32,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 struct Registers {
   register: Vec<Register>,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
-struct Register {
-  name: String,
-  description: String,
+#[derive(Debug, Deserialize)]
+pub struct Register {
+  pub name: String,
+  pub description: String,
   #[serde(deserialize_with = "deserialize_hex")]
-  address_offset: u32,
+  pub address_offset: u32,
   #[serde(deserialize_with = "deserialize_hex")]
-  size: u32,
-  access: Option<Access>,
+  pub size: u32,
+  pub access: Option<Access>,
   #[serde(deserialize_with = "deserialize_hex")]
-  reset_value: u32,
+  pub reset_value: u32,
   fields: Option<Fields>,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 struct Fields {
   field: Vec<Field>,
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Deserialize)]
-struct Field {
-  name: String,
-  description: String,
-  bit_offset: usize,
-  bit_width: usize,
-  access: Option<Access>,
+#[derive(Debug, Deserialize)]
+pub struct Field {
+  pub name: String,
+  pub description: String,
+  pub bit_offset: usize,
+  pub bit_width: usize,
+  pub access: Option<Access>,
 }
 
 #[serde(rename_all = "kebab-case")]
-#[derive(Deserialize, Clone, Copy)]
-enum Access {
+#[derive(Debug, Deserialize, Clone, Copy)]
+pub enum Access {
   WriteOnly,
   ReadOnly,
   ReadWrite,
 }
 
 impl Device {
+  pub fn new(name: String) -> Self {
+    Self {
+      name,
+      peripherals: Peripherals::default(),
+    }
+  }
+
+  pub fn peripheral_mut(&mut self, name: &str) -> Option<&mut Peripheral> {
+    self.peripherals.peripheral.get_mut(name)
+  }
+
+  pub fn set_peripheral(&mut self, peripheral: Peripheral) {
+    self
+      .peripherals
+      .peripheral
+      .insert(peripheral.name.clone(), peripheral);
+  }
+
   pub fn generate_regs(
     self,
     regs: &mut File,
@@ -155,6 +173,13 @@ impl Device {
 }
 
 impl Peripheral {
+  pub fn registers_mut(&mut self) -> impl Iterator<Item = &mut Register> + '_ {
+    self
+      .registers
+      .iter_mut()
+      .flat_map(|registers| &mut registers.register)
+  }
+
   fn generate_regs(
     &self,
     peripherals: &Peripherals,
@@ -272,6 +297,12 @@ impl Interrupts for Vec<Interrupt> {
       }
     }
     Ok(())
+  }
+}
+
+impl Register {
+  pub fn fields_mut(&mut self) -> impl Iterator<Item = &mut Field> + '_ {
+    self.fields.iter_mut().flat_map(|fields| &mut fields.field)
   }
 }
 

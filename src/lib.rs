@@ -1,7 +1,8 @@
 //! Drone for STM32. Mappings.
 
-#![feature(uniform_paths)]
 #![no_std]
+#![deny(bare_trait_objects)]
+#![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 
@@ -17,8 +18,14 @@ pub mod thr {
   pub use drone_stm32_map_pieces::thr::*;
 }
 
-/// Resource mappings.
-pub mod res {
-  pub use drone_cortex_m::map::res::*;
-  pub extern crate drone_stm32_map_res_gpio as gpio;
+/// Peripheral mappings.
+pub mod periph {
+  pub use drone_cortex_m::map::periph::*;
+  pub extern crate drone_stm32_map_periph_adc as adc;
+  pub extern crate drone_stm32_map_periph_dma as dma;
+  pub extern crate drone_stm32_map_periph_gpio as gpio;
+  pub extern crate drone_stm32_map_periph_i2c as i2c;
+  pub extern crate drone_stm32_map_periph_rtc as rtc;
+  pub extern crate drone_stm32_map_periph_spi as spi;
+  pub extern crate drone_stm32_map_periph_uart as uart;
 }
