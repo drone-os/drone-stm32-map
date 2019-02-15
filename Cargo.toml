@@ -20,6 +20,7 @@ members = [
   "periph-i2c",
   "periph-rtc",
   "periph-spi",
+  "periph-tim",
   "periph-uart",
 ]
 
@@ -43,6 +44,7 @@ stm32f100 = [
   "drone-stm32-map-periph-i2c/stm32f100",
   "drone-stm32-map-periph-rtc/stm32f100",
   "drone-stm32-map-periph-spi/stm32f100",
+  "drone-stm32-map-periph-tim/stm32f100",
   "drone-stm32-map-periph-uart/stm32f100",
 ]
 stm32f101 = [
@@ -53,6 +55,7 @@ stm32f101 = [
   "drone-stm32-map-periph-i2c/stm32f101",
   "drone-stm32-map-periph-rtc/stm32f101",
   "drone-stm32-map-periph-spi/stm32f101",
+  "drone-stm32-map-periph-tim/stm32f101",
   "drone-stm32-map-periph-uart/stm32f101",
 ]
 stm32f102 = [
@@ -63,6 +66,7 @@ stm32f102 = [
   "drone-stm32-map-periph-i2c/stm32f102",
   "drone-stm32-map-periph-rtc/stm32f102",
   "drone-stm32-map-periph-spi/stm32f102",
+  "drone-stm32-map-periph-tim/stm32f102",
   "drone-stm32-map-periph-uart/stm32f102",
 ]
 stm32f103 = [
@@ -73,6 +77,7 @@ stm32f103 = [
   "drone-stm32-map-periph-i2c/stm32f103",
   "drone-stm32-map-periph-rtc/stm32f103",
   "drone-stm32-map-periph-spi/stm32f103",
+  "drone-stm32-map-periph-tim/stm32f103",
   "drone-stm32-map-periph-uart/stm32f103",
 ]
 stm32f107 = [
@@ -83,6 +88,7 @@ stm32f107 = [
   "drone-stm32-map-periph-i2c/stm32f107",
   "drone-stm32-map-periph-rtc/stm32f107",
   "drone-stm32-map-periph-spi/stm32f107",
+  "drone-stm32-map-periph-tim/stm32f107",
   "drone-stm32-map-periph-uart/stm32f107",
 ]
 stm32l4x1 = [
@@ -93,6 +99,7 @@ stm32l4x1 = [
   "drone-stm32-map-periph-i2c/stm32l4x1",
   "drone-stm32-map-periph-rtc/stm32l4x1",
   "drone-stm32-map-periph-spi/stm32l4x1",
+  "drone-stm32-map-periph-tim/stm32l4x1",
   "drone-stm32-map-periph-uart/stm32l4x1",
 ]
 stm32l4x2 = [
@@ -103,6 +110,7 @@ stm32l4x2 = [
   "drone-stm32-map-periph-i2c/stm32l4x2",
   "drone-stm32-map-periph-rtc/stm32l4x2",
   "drone-stm32-map-periph-spi/stm32l4x2",
+  "drone-stm32-map-periph-tim/stm32l4x2",
   "drone-stm32-map-periph-uart/stm32l4x2",
 ]
 stm32l4x3 = [
@@ -113,6 +121,7 @@ stm32l4x3 = [
   "drone-stm32-map-periph-i2c/stm32l4x3",
   "drone-stm32-map-periph-rtc/stm32l4x3",
   "drone-stm32-map-periph-spi/stm32l4x3",
+  "drone-stm32-map-periph-tim/stm32l4x3",
   "drone-stm32-map-periph-uart/stm32l4x3",
 ]
 stm32l4x5 = [
@@ -123,6 +132,7 @@ stm32l4x5 = [
   "drone-stm32-map-periph-i2c/stm32l4x5",
   "drone-stm32-map-periph-rtc/stm32l4x5",
   "drone-stm32-map-periph-spi/stm32l4x5",
+  "drone-stm32-map-periph-tim/stm32l4x5",
   "drone-stm32-map-periph-uart/stm32l4x5",
 ]
 stm32l4x6 = [
@@ -133,6 +143,7 @@ stm32l4x6 = [
   "drone-stm32-map-periph-i2c/stm32l4x6",
   "drone-stm32-map-periph-rtc/stm32l4x6",
   "drone-stm32-map-periph-spi/stm32l4x6",
+  "drone-stm32-map-periph-tim/stm32l4x6",
   "drone-stm32-map-periph-uart/stm32l4x6",
 ]
 stm32l4r5 = [
@@ -143,6 +154,7 @@ stm32l4r5 = [
   "drone-stm32-map-periph-i2c/stm32l4r5",
   "drone-stm32-map-periph-rtc/stm32l4r5",
   "drone-stm32-map-periph-spi/stm32l4r5",
+  "drone-stm32-map-periph-tim/stm32l4r5",
   "drone-stm32-map-periph-uart/stm32l4r5",
 ]
 stm32l4r7 = [
@@ -153,6 +165,7 @@ stm32l4r7 = [
   "drone-stm32-map-periph-i2c/stm32l4r7",
   "drone-stm32-map-periph-rtc/stm32l4r7",
   "drone-stm32-map-periph-spi/stm32l4r7",
+  "drone-stm32-map-periph-tim/stm32l4r7",
   "drone-stm32-map-periph-uart/stm32l4r7",
 ]
 stm32l4r9 = [
@@ -163,6 +176,7 @@ stm32l4r9 = [
   "drone-stm32-map-periph-i2c/stm32l4r9",
   "drone-stm32-map-periph-rtc/stm32l4r9",
   "drone-stm32-map-periph-spi/stm32l4r9",
+  "drone-stm32-map-periph-tim/stm32l4r9",
   "drone-stm32-map-periph-uart/stm32l4r9",
 ]
 stm32l4s5 = [
@@ -173,6 +187,7 @@ stm32l4s5 = [
   "drone-stm32-map-periph-i2c/stm32l4s5",
   "drone-stm32-map-periph-rtc/stm32l4s5",
   "drone-stm32-map-periph-spi/stm32l4s5",
+  "drone-stm32-map-periph-tim/stm32l4s5",
   "drone-stm32-map-periph-uart/stm32l4s5",
 ]
 stm32l4s7 = [
@@ -183,6 +198,7 @@ stm32l4s7 = [
   "drone-stm32-map-periph-i2c/stm32l4s7",
   "drone-stm32-map-periph-rtc/stm32l4s7",
   "drone-stm32-map-periph-spi/stm32l4s7",
+  "drone-stm32-map-periph-tim/stm32l4s7",
   "drone-stm32-map-periph-uart/stm32l4s7",
 ]
 stm32l4s9 = [
@@ -193,6 +209,7 @@ stm32l4s9 = [
   "drone-stm32-map-periph-i2c/stm32l4s9",
   "drone-stm32-map-periph-rtc/stm32l4s9",
   "drone-stm32-map-periph-spi/stm32l4s9",
+  "drone-stm32-map-periph-tim/stm32l4s9",
   "drone-stm32-map-periph-uart/stm32l4s9",
 ]
 
@@ -228,6 +245,10 @@ path = "periph-rtc"
 [dependencies.drone-stm32-map-periph-spi]
 version = "=0.9.0"
 path = "periph-spi"
+
+[dependencies.drone-stm32-map-periph-tim]
+version = "=0.9.0"
+path = "periph-tim"
 
 [dependencies.drone-stm32-map-periph-uart]
 version = "=0.9.0"

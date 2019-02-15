@@ -27,5 +27,6 @@ pub mod periph {
   pub extern crate drone_stm32_map_periph_i2c as i2c;
   pub extern crate drone_stm32_map_periph_rtc as rtc;
   pub extern crate drone_stm32_map_periph_spi as spi;
+  pub extern crate drone_stm32_map_periph_tim as tim;
   pub extern crate drone_stm32_map_periph_uart as uart;
 }
