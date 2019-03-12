@@ -132,6 +132,8 @@ fn patch_stm32l4(mut dev: Device) -> Result<Device, Error> {
   fix_spi3(&mut dev)?;
   fix_adc(&mut dev)?;
   fix_tim(&mut dev)?;
+  fix_rcc(&mut dev)?;
+  fix_exti(&mut dev)?;
   Ok(dev)
 }
 
@@ -140,6 +142,7 @@ fn patch_stm32l4plus(mut dev: Device) -> Result<Device, Error> {
   fix_spi3(&mut dev)?;
   fix_adc(&mut dev)?;
   fix_tim(&mut dev)?;
+  fix_exti(&mut dev)?;
   Ok(dev)
 }
 
@@ -329,6 +332,37 @@ fn fix_tim(dev: &mut Device) -> Result<(), Error> {
       access: None,
     });
     dev.add_register(name, reg);
+  }
+  Ok(())
+}
+
+fn fix_rcc(dev: &mut Device) -> Result<(), Error> {
+  let mut reg = Register::default();
+  reg.name = "CCIPR2".to_string();
+  reg.description =
+    "Peripherals independent clock configuration register".to_string();
+  reg.address_offset = 0x9C;
+  reg.size = 0x20;
+  reg.access = Some(Access::ReadWrite);
+  reg.reset_value = 0x0000;
+  reg.add_field(Field {
+    name: "I2C4SEL".to_string(),
+    description: "I2C4 clock source selection".to_string(),
+    bit_offset: 0,
+    bit_width: 2,
+    access: None,
+  });
+  dev.add_register("RCC", reg);
+  Ok(())
+}
+
+fn fix_exti(dev: &mut Device) -> Result<(), Error> {
+  for (reg_name, field_name) in &[("IMR2", "MR39"), ("EMR2", "MR39")] {
+    let mut field = dev.field("EXTI", reg_name, field_name).clone();
+    field.name = field.name.replace("39", "40");
+    field.description = field.description.replace("39", "40");
+    field.bit_offset += 1;
+    dev.add_field("EXTI", reg_name, field);
   }
   Ok(())
 }

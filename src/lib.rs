@@ -23,6 +23,7 @@ pub mod periph {
   pub use drone_cortex_m::map::periph::*;
   pub extern crate drone_stm32_map_periph_adc as adc;
   pub extern crate drone_stm32_map_periph_dma as dma;
+  pub extern crate drone_stm32_map_periph_exti as exti;
   pub extern crate drone_stm32_map_periph_gpio as gpio;
   pub extern crate drone_stm32_map_periph_i2c as i2c;
   pub extern crate drone_stm32_map_periph_rtc as rtc;
