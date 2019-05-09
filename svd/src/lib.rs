@@ -2,7 +2,6 @@
 
 #![feature(generators)]
 #![feature(generator_trait)]
-#![feature(range_contains)]
 #![deny(bare_trait_objects)]
 #![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
