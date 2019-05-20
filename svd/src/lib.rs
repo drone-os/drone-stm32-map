@@ -142,6 +142,7 @@ fn patch_stm32l4plus(mut dev: Device) -> Result<Device, Error> {
   fix_adc(&mut dev)?;
   fix_tim(&mut dev)?;
   fix_exti(&mut dev)?;
+  fix_pwr(&mut dev)?;
   Ok(dev)
 }
 
@@ -363,6 +364,17 @@ fn fix_exti(dev: &mut Device) -> Result<(), Error> {
     field.bit_offset += 1;
     dev.add_field("EXTI", reg_name, field);
   }
+  Ok(())
+}
+
+fn fix_pwr(dev: &mut Device) -> Result<(), Error> {
+  dev.add_field("PWR", "CR1", Field {
+    name: "RRSTP".to_string(),
+    description: "SRAM3 retention in Stop 2 mode".to_string(),
+    bit_offset: 4,
+    bit_width: 1,
+    access: None,
+  });
   Ok(())
 }
 

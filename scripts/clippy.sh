@@ -1,10 +1,9 @@
 #!/bin/bash
 
 source $(dirname $0)/_env.sh
-export RUSTC_WRAPPER=$(dirname $0)/_clippy_wrapper.sh
 set -x
 
-cargo check \
+cargo clippy \
   --package drone-stm32-map-svd
-cargo check --target $BUILD_TARGET --all "$@" \
-  --exclude drone-stm32-map-svd
+cargo clippy --target $BUILD_TARGET --features "$SELECTED_FEATURE" \
+  --all --exclude drone-stm32-map-svd
