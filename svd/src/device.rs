@@ -25,7 +25,7 @@ struct Peripherals {
 }
 
 #[serde(rename_all = "camelCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Default, Deserialize)]
 pub struct Peripheral {
     pub derived_from: Option<String>,
     pub name: String,
@@ -116,12 +116,24 @@ impl Device {
             .insert(peripheral.name.clone(), peripheral);
     }
 
+    pub fn new_peripheral(&mut self, f: impl FnOnce(&mut Peripheral)) {
+        let mut peripheral = Peripheral::default();
+        f(&mut peripheral);
+        self.add_peripheral(peripheral);
+    }
+
     pub fn register(&self, peripheral_name: &str, register_name: &str) -> &Register {
         self.peripheral(peripheral_name).register(register_name)
     }
 
     pub fn add_register(&mut self, peripheral_name: &str, register: Register) {
         self.peripheral_mut(peripheral_name).add_register(register)
+    }
+
+    pub fn new_register(&mut self, peripheral_name: &str, f: impl FnOnce(&mut Register)) {
+        let mut reg = Register::default();
+        f(&mut reg);
+        self.add_register(peripheral_name, reg);
     }
 
     pub fn remove_register(&mut self, peripheral_name: &str, register_name: &str) -> Register {
@@ -146,6 +158,12 @@ impl Device {
             .field_mut(field_name)
     }
 
+    pub fn add_field(&mut self, peripheral_name: &str, register_name: &str, field: Field) {
+        self.peripheral_mut(peripheral_name)
+            .register_mut(register_name)
+            .add_field(field)
+    }
+
     pub fn remove_field(
         &mut self,
         peripheral_name: &str,
@@ -155,12 +173,6 @@ impl Device {
         self.peripheral_mut(peripheral_name)
             .register_mut(register_name)
             .remove_field(field_name)
-    }
-
-    pub fn add_field(&mut self, peripheral_name: &str, register_name: &str, field: Field) {
-        self.peripheral_mut(peripheral_name)
-            .register_mut(register_name)
-            .add_field(field)
     }
 
     pub fn generate_regs(
@@ -193,25 +205,19 @@ impl Device {
         except: &[&str],
     ) -> Result<(), Error> {
         let mut int_names = HashSet::new();
-        writeln!(reg_index, "reg::unsafe_tokens! {{")?;
+        writeln!(reg_index, "reg::tokens! {{")?;
         writeln!(
             reg_index,
             "  /// Defines an index of {} register tokens.",
             self.name
         )?;
-        writeln!(reg_index, "  ///")?;
-        writeln!(reg_index, "  /// # Safety")?;
-        writeln!(reg_index, "  ///")?;
+        writeln!(reg_index, "  pub macro stm32_reg_tokens;")?;
         writeln!(
             reg_index,
-            "  /// See [`::drone_core::reg::unsafe_tokens!`]."
+            "  use macro ::drone_cortex_m::map::cortex_m_reg_tokens;"
         )?;
-        writeln!(reg_index, "  pub macro unsafe_stm32_reg_tokens;")?;
-        writeln!(
-            reg_index,
-            "  use macro ::drone_cortex_m::unsafe_cortex_m_reg_tokens;"
-        )?;
-        writeln!(reg_index, "  super::inner; reg;")?;
+        writeln!(reg_index, "  super::inner;")?;
+        writeln!(reg_index, "  crate::reg;")?;
         for peripheral in self.peripherals.peripheral.values() {
             peripheral.generate_rest(
                 &self.peripherals,
@@ -363,7 +369,7 @@ impl Peripheral {
                     ref description,
                     value,
                 } = interrupt;
-                writeln!(interrupts, "int! {{")?;
+                writeln!(interrupts, "thr::int! {{")?;
                 for line in description.lines() {
                     writeln!(interrupts, "  /// {}", line.trim())?;
                 }

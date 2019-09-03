@@ -1,33 +1,55 @@
-//! Drone for STM32. Mappings.
+//! STM32 peripheral mappings for Drone, an Embedded Operating System.
+//!
+//! Supported devices:
+//!
+//! |                                                     Device name / Cargo feature | Core name | Reference manual |
+//! |-------------|-----------------------|--------------------------------------------------------------------------|
+//! | `stm32f100` | ARM® Cortex®-M3 r1p1  | [RM0041](https://www.st.com/resource/en/reference_manual/cd00246267.pdf) |
+//! | `stm32f101` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
+//! | `stm32f102` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
+//! | `stm32f103` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
+//! | `stm32f107` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
+//! | `stm32l4x1` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) |
+//! | `stm32l4x2` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) |
+//! | `stm32l4x3` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) |
+//! | `stm32l4x5` | ARM® Cortex®-M4F r0p1 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf) |
+//! | `stm32l4x6` | ARM® Cortex®-M4F r0p1 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf) |
+//! | `stm32l4r5` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
+//! | `stm32l4s5` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
+//! | `stm32l4r7` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
+//! | `stm32l4s7` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
+//! | `stm32l4r9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
+//! | `stm32l4s9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
+//!
+//! **NOTE** Exactly one cargo feature should be selected based on the device
+//! model.
+//!
+//! This crate uses
+//! [CMSIS-SVD](https://arm-software.github.io/CMSIS_5/SVD/html/index.html)
+//! files provided by [STMicroelectronics](https://www.st.com/) to automatically
+//! generate Drone register and interrupt bindings. However only the
+//! corresponding Reference Manual is the single source of truth. A difference
+//! between this crate bindings and the Reference Manual is considered a
+//! bug. Fixing such a bug is *not a breaking change*.
+//!
+//! [API documentation](https://docs.rs/crate/drone-stm32-map) for this crate
+//! intentionally skips auto-generated [`reg`] and [`thr`] bindings. Otherwise
+//! it would use several gigabytes of space and would be very slow to render in
+//! a browser. One should refer to the Reference Manual instead. And to get an
+//! idea of what the API looks like on the Drone side, look to the
+//! [`drone_cortex_m::map`] module documentation.
+//!
+//! This crate re-exports contents of [`drone_cortex_m::map`] module and is a
+//! drop-in replacement for it.
 
-#![no_std]
-#![deny(bare_trait_objects)]
 #![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
+#![allow(clippy::doc_markdown)]
+#![no_std]
 
-pub use drone_stm32_map_pieces::unsafe_stm32_reg_tokens;
+pub mod periph;
+pub mod reg;
+pub mod thr;
 
-/// Memory-mapped register mappings.
-pub mod reg {
-    pub use drone_stm32_map_pieces::reg::*;
-}
-
-/// Interrupt mappings.
-pub mod thr {
-    pub use drone_stm32_map_pieces::thr::*;
-}
-
-/// Peripheral mappings.
-pub mod periph {
-    pub use drone_cortex_m::map::periph::*;
-    pub extern crate drone_stm32_map_periph_adc as adc;
-    pub extern crate drone_stm32_map_periph_dma as dma;
-    pub extern crate drone_stm32_map_periph_exti as exti;
-    pub extern crate drone_stm32_map_periph_gpio as gpio;
-    pub extern crate drone_stm32_map_periph_i2c as i2c;
-    pub extern crate drone_stm32_map_periph_rtc as rtc;
-    pub extern crate drone_stm32_map_periph_spi as spi;
-    pub extern crate drone_stm32_map_periph_tim as tim;
-    pub extern crate drone_stm32_map_periph_uart as uart;
-}
+pub use drone_stm32_map_pieces::stm32_reg_tokens;
