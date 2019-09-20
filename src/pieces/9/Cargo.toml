@@ -1,9 +1,10 @@
 [package]
 name = "drone-stm32-map-pieces-9"
-version = "0.9.0"
+version = "0.10.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/drone-os/drone-stm32-map"
+homepage = "https://www.drone-os.com/"
 license = "MIT OR Apache-2.0"
 description = """
 STM32 peripheral mappings for Drone, an Embedded Operating System.
@@ -32,13 +33,17 @@ stm32l4s7 = ["drone-cortex-m/cortex_m4f_r0p1"]
 stm32l4s9 = ["drone-cortex-m/cortex_m4f_r0p1"]
 
 [dependencies.drone-core]
-version = "0.9.0"
+version = "0.10.0"
 path = "../../../../drone-core"
 
 [dependencies.drone-cortex-m]
-version = "0.9.0"
+version = "0.10.0"
 path = "../../../../drone-cortex-m"
 
 [build-dependencies.drone-stm32-map-svd]
-version = "=0.9.0"
+version = "=0.10.0"
 path = "../../../svd"
+
+[package.metadata.docs.rs]
+default-target = "thumbv7em-none-eabihf"
+features = ["stm32l4s9"]

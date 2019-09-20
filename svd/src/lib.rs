@@ -1,4 +1,4 @@
-//! Drone STM32 SVD bindings generator.
+//! STM32 SVD to Drone bindings converter.
 
 #![feature(generators)]
 #![feature(generator_trait)]

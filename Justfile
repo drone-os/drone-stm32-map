@@ -1,5 +1,5 @@
 build_target := 'thumbv7em-none-eabihf'
-features := 'stm32l4s7'
+features := 'stm32l4s9'
 
 # Install dependencies
 deps:
@@ -20,6 +20,8 @@ lint:
 
 # Check each feature
 check-all:
+	rustup target add thumbv7m-none-eabi
+	rustup target add thumbv7em-none-eabihf
 	cargo check --package drone-stm32-map --features stm32f100 --target thumbv7m-none-eabi
 	cargo check --package drone-stm32-map --features stm32f101 --target thumbv7m-none-eabi
 	cargo check --package drone-stm32-map --features stm32f102 --target thumbv7m-none-eabi
@@ -50,29 +52,67 @@ doc-open: doc
 readme:
 	cargo readme -o README.md
 
+# Bump crate versions
+version-bump version drone-core-version drone-cortex-m-version:
+	sed -i 's/\(docs\.rs\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1{{version}}/' \
+		Cargo.toml src/lib.rs
+	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[package\]/version = "{{version}}"/;t;x}' \
+		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml
+	sed -i '/\[.*\]/h;/version = "=.*"/{x;s/\[.*drone-stm32-map-.*\]/version = "={{version}}"/;t;x}' \
+		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
+	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-core\]/version = "{{drone-core-version}}"/;t;x}' \
+		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
+	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-cortex-m\]/version = "{{drone-cortex-m-version}}"/;t;x}' \
+		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
+	sed -i 's/\(drone-stm32-map.*\)version = "[^"]\+"/\1version = "{{version}}"/' \
+		src/lib.rs
+
 # Publish to crates.io
 publish:
 	cd svd && cargo publish
+	sleep 5
 	cd src/pieces/1 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/2 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/3 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/4 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/5 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/6 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/7 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/8 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/9 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/10 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/11 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces/12 && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/pieces && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/adc && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/dma && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/exti && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/gpio && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/i2c && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/rtc && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/spi && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/tim && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cd src/periph/uart && cargo publish --target {{build_target}} --features "{{features}}"
+	sleep 5
 	cargo publish --target {{build_target}} --features "{{features}}"
