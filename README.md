@@ -1,5 +1,4 @@
 [![crates.io](https://img.shields.io/crates/v/drone-stm32-map.svg)](https://crates.io/crates/drone-stm32-map)
-[![docs.rs](https://docs.rs/drone-stm32-map/badge.svg)](https://docs.rs/drone-stm32-map)
 ![maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 
 # drone-stm32-map
@@ -44,7 +43,7 @@ model.
 ## Documentation
 
 - [Drone Book](https://book.drone-os.com/)
-- [API documentation](https://docs.rs/drone-stm32-map/0.10.0)
+- [API documentation](https://api.drone-os.com/drone-stm32-map/0.10)
 
 The API documentation intentionally skips auto-generated [`reg`] and [`thr`]
 bindings. Otherwise it would use several gigabytes of space and would be
@@ -58,7 +57,7 @@ Place the following to the Cargo.toml:
 
 ```toml
 [dependencies]
-drone-stm32-map = { version = "0.10.0", features = [...] }
+drone-stm32-map = { version = "0.10.1", features = [...] }
 ```
 
 ## License

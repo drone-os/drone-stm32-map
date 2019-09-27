@@ -1,6 +1,6 @@
 [package]
 name = "drone-stm32-map-pieces"
-version = "0.10.0"
+version = "0.10.1"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/drone-os/drone-stm32-map"
@@ -265,57 +265,53 @@ version = "0.10.0"
 path = "../../../drone-cortex-m"
 
 [dependencies.drone-stm32-map-pieces-1]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "1"
 
 [dependencies.drone-stm32-map-pieces-2]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "2"
 
 [dependencies.drone-stm32-map-pieces-3]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "3"
 
 [dependencies.drone-stm32-map-pieces-4]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "4"
 
 [dependencies.drone-stm32-map-pieces-5]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "5"
 
 [dependencies.drone-stm32-map-pieces-6]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "6"
 
 [dependencies.drone-stm32-map-pieces-7]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "7"
 
 [dependencies.drone-stm32-map-pieces-8]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "8"
 
 [dependencies.drone-stm32-map-pieces-9]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "9"
 
 [dependencies.drone-stm32-map-pieces-10]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "10"
 
 [dependencies.drone-stm32-map-pieces-11]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "11"
 
 [dependencies.drone-stm32-map-pieces-12]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "12"
 
 [build-dependencies.drone-stm32-map-svd]
-version = "=0.10.0"
+version = "=0.10.1"
 path = "../../svd"
-
-[package.metadata.docs.rs]
-default-target = "thumbv7em-none-eabihf"
-features = ["stm32l4s9"]

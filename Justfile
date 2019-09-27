@@ -54,7 +54,7 @@ readme:
 
 # Bump crate versions
 version-bump version drone-core-version drone-cortex-m-version:
-	sed -i 's/\(docs\.rs\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1{{version}}/' \
+	sed -i "s/\(api\.drone-os\.com\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1$(echo {{version}} | sed 's/\(.*\)\.[0-9]\+/\1/')/" \
 		Cargo.toml src/lib.rs
 	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[package\]/version = "{{version}}"/;t;x}' \
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml
@@ -116,3 +116,12 @@ publish:
 	cd src/periph/uart && cargo publish --target {{build_target}} --features "{{features}}"
 	sleep 5
 	cargo publish --target {{build_target}} --features "{{features}}"
+
+# Publish the docs to api.drone-os.com
+publish-doc: doc
+	dir=$(sed -n 's/.*api\.drone-os\.com\/\(.*\)"/\1/;T;p' Cargo.toml) \
+		&& rm -rf ../drone-api/$dir \
+		&& cp -rT target/doc ../drone-api/$dir \
+		&& cp -rT target/{{build_target}}/doc ../drone-api/$dir \
+		&& echo '<!DOCTYPE html><meta http-equiv="refresh" content="0; URL=./drone_stm32_map">' > ../drone-api/$dir/index.html \
+		&& cd ../drone-api && git add $dir && git commit -m "Docs for $dir"
