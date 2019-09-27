@@ -55,7 +55,7 @@ readme:
 # Bump crate versions
 version-bump version drone-core-version drone-cortex-m-version:
 	sed -i "s/\(api\.drone-os\.com\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1$(echo {{version}} | sed 's/\(.*\)\.[0-9]\+/\1/')/" \
-		Cargo.toml src/lib.rs
+		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml src/lib.rs
 	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[package\]/version = "{{version}}"/;t;x}' \
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml
 	sed -i '/\[.*\]/h;/version = "=.*"/{x;s/\[.*drone-stm32-map-.*\]/version = "={{version}}"/;t;x}' \

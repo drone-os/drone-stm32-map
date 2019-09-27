@@ -43,7 +43,7 @@ model.
 ## Documentation
 
 - [Drone Book](https://book.drone-os.com/)
-- [API documentation](https://api.drone-os.com/drone-stm32-map/0.10)
+- [API documentation](https://api.drone-os.com/drone-stm32-map/0.10/)
 
 The API documentation intentionally skips auto-generated [`reg`] and [`thr`]
 bindings. Otherwise it would use several gigabytes of space and would be
