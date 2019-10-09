@@ -8,10 +8,12 @@ homepage = "https://www.drone-os.com/"
 documentation = "https://api.drone-os.com/drone-stm32-map/0.10/drone_stm32_map_svd/"
 license = "MIT OR Apache-2.0"
 description = """
-STM32 SVD to Drone bindings converter.
+STM32 SVD to bindings for Drone, an Embedded Operating System.
 """
+
+[dependencies.drone-svd]
+version = "0.10.0"
+path = "../../drone-svd"
 
 [dependencies]
 failure = "0.1"
-serde = {version = "1", features = ["derive"]}
-serde-xml-rs = "0.2"

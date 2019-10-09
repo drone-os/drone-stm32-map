@@ -53,7 +53,7 @@ readme:
 	cargo readme -o README.md
 
 # Bump crate versions
-version-bump version drone-core-version drone-cortex-m-version:
+version-bump version drone-core-version drone-cortex-m-version drone-cortex-m-svd-version:
 	sed -i "s/\(api\.drone-os\.com\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1$(echo {{version}} | sed 's/\(.*\)\.[0-9]\+/\1/')/" \
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml src/lib.rs
 	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[package\]/version = "{{version}}"/;t;x}' \
@@ -64,6 +64,8 @@ version-bump version drone-core-version drone-cortex-m-version:
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
 	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-cortex-m\]/version = "{{drone-cortex-m-version}}"/;t;x}' \
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
+	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-cortex-m-svd\]/version = "{{drone-cortex-m-svd-version}}"/;t;x}' \
+		svd/Cargo.toml
 	sed -i 's/\(drone-stm32-map.*\)version = "[^"]\+"/\1version = "{{version}}"/' \
 		src/lib.rs
 
