@@ -1,6 +1,6 @@
 [package]
 name = "drone-stm32-map-periph-rtc"
-version = "0.10.1"
+version = "0.10.2"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/drone-os/drone-stm32-map"
@@ -42,5 +42,5 @@ version = "0.10.0"
 path = "../../../../drone-cortex-m"
 
 [dependencies.drone-stm32-map-pieces]
-version = "=0.10.1"
+version = "=0.10.2"
 path = "../../pieces"

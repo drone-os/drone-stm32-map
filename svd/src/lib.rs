@@ -87,7 +87,12 @@ pub fn generate_rest(feature: &str) {
         let dev = svd_deserialize(feature)?;
         let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
         let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
-        dev.generate_rest(&mut reg_tokens, &mut interrupts, REG_EXCLUDE)?;
+        dev.generate_rest(
+            &mut reg_tokens,
+            &mut interrupts,
+            REG_EXCLUDE,
+            "stm32_reg_tokens",
+        )?;
         Ok::<(), Error>(())
     };
     if let Err(error) = run() {
@@ -255,7 +260,7 @@ fn fix_exti(dev: &mut Device) -> Result<(), Error> {
         let mut field = dev.periph("EXTI").reg(reg_name).field(field_name).clone();
         field.name = field.name.replace("39", "40");
         field.description = field.description.replace("39", "40");
-        field.bit_offset += 1;
+        field.bit_offset = Some(field.bit_offset.unwrap() + 1);
         dev.periph("EXTI").reg(reg_name).add_field(field);
     }
     Ok(())
@@ -265,8 +270,8 @@ fn fix_i2c(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1SMENR2").new_field(|field| {
         field.name = "I2C4SMEN".to_string();
         field.description = "I2C4 clocks enable during Sleep and Stop modes".to_string();
-        field.bit_offset = 1;
-        field.bit_width = 1;
+        field.bit_offset = Some(1);
+        field.bit_width = Some(1);
     });
     Ok(())
 }
@@ -276,20 +281,20 @@ fn fix_lptim1(dev: &mut Device) -> Result<(), Error> {
         reg.name = "OR".to_string();
         reg.description = "LPTIM1 option register".to_string();
         reg.address_offset = 0x20;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "OR_0".to_string();
             field.description = "Option register bit 0".to_string();
-            field.bit_offset = 0;
-            field.bit_width = 1;
+            field.bit_offset = Some(0);
+            field.bit_width = Some(1);
         });
         reg.new_field(|field| {
             field.name = "OR_1".to_string();
             field.description = "Option register bit 1".to_string();
-            field.bit_offset = 1;
-            field.bit_width = 1;
+            field.bit_offset = Some(1);
+            field.bit_width = Some(1);
         });
     });
     Ok(())
@@ -300,20 +305,20 @@ fn fix_lptim2(dev: &mut Device) -> Result<(), Error> {
         reg.name = "OR".to_string();
         reg.description = "LPTIM2 option register".to_string();
         reg.address_offset = 0x20;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "OR_0".to_string();
             field.description = "Option register bit 0".to_string();
-            field.bit_offset = 0;
-            field.bit_width = 1;
+            field.bit_offset = Some(0);
+            field.bit_width = Some(1);
         });
         reg.new_field(|field| {
             field.name = "OR_1".to_string();
             field.description = "Option register bit 1".to_string();
-            field.bit_offset = 1;
-            field.bit_width = 1;
+            field.bit_offset = Some(1);
+            field.bit_width = Some(1);
         });
     });
     Ok(())
@@ -328,8 +333,8 @@ fn fix_pwr(dev: &mut Device) -> Result<(), Error> {
     dev.periph("PWR").reg("CR1").new_field(|field| {
         field.name = "RRSTP".to_string();
         field.description = "SRAM3 retention in Stop 2 mode".to_string();
-        field.bit_offset = 4;
-        field.bit_width = 1;
+        field.bit_offset = Some(4);
+        field.bit_width = Some(1);
     });
     Ok(())
 }
@@ -339,14 +344,14 @@ fn fix_rcc(dev: &mut Device) -> Result<(), Error> {
         reg.name = "CCIPR2".to_string();
         reg.description = "Peripherals independent clock configuration register".to_string();
         reg.address_offset = 0x9C;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "I2C4SEL".to_string();
             field.description = "I2C4 clock source selection".to_string();
-            field.bit_offset = 0;
-            field.bit_width = 2;
+            field.bit_offset = Some(0);
+            field.bit_width = Some(2);
         });
     });
     Ok(())
@@ -356,14 +361,14 @@ fn fix_rtc(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1ENR1").new_field(|field| {
         field.name = "RTCAPBEN".to_string();
         field.description = "RTC APB clock enable".to_string();
-        field.bit_offset = 10;
-        field.bit_width = 1;
+        field.bit_offset = Some(10);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("APB1SMENR1").new_field(|field| {
         field.name = "RTCAPBSMEN".to_string();
         field.description = "RTC APB clock enable during Sleep and Stop modes".to_string();
-        field.bit_offset = 10;
-        field.bit_width = 1;
+        field.bit_offset = Some(10);
+        field.bit_width = Some(1);
     });
     Ok(())
 }
@@ -372,14 +377,14 @@ fn fix_spi2_1(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1ENR").new_field(|field| {
         field.name = "SPI2EN".to_string();
         field.description = "SPI 2 clock enable".to_string();
-        field.bit_offset = 14;
-        field.bit_width = 1;
+        field.bit_offset = Some(14);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("APB1RSTR").new_field(|field| {
         field.name = "SPI2RST".to_string();
         field.description = "SPI2 reset".to_string();
-        field.bit_offset = 14;
-        field.bit_width = 1;
+        field.bit_offset = Some(14);
+        field.bit_width = Some(1);
     });
     copy_field(dev, "SPI1", "SPI2", "SR", "UDR");
     copy_field(dev, "SPI1", "SPI2", "SR", "CHSIDE");
@@ -390,8 +395,8 @@ fn fix_spi2_2(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1ENR1").new_field(|field| {
         field.name = "SPI2EN".to_string();
         field.description = "SPI2 clock enable".to_string();
-        field.bit_offset = 14;
-        field.bit_width = 1;
+        field.bit_offset = Some(14);
+        field.bit_width = Some(1);
     });
     Ok(())
 }
@@ -420,14 +425,14 @@ fn fix_tim2(dev: &mut Device) -> Result<(), Error> {
         periph_name: &str,
         reg_name: &str,
         field_name: &str,
-        bit_offset: usize,
+        bit_offset: u32,
     ) {
         let field = dev.periph(periph_name).reg(reg_name).field(field_name);
         field.name = format!("{}0_2", field_name);
         let mut field = field.clone();
         field.name = format!("{}3", field_name);
-        field.bit_offset = bit_offset;
-        field.bit_width = 1;
+        field.bit_offset = Some(bit_offset);
+        field.bit_width = Some(1);
         dev.periph(periph_name).reg(reg_name).add_field(field);
     }
     add_third_bit(dev, "TIM2", "SMCR", "SMS", 16);
@@ -435,7 +440,7 @@ fn fix_tim2(dev: &mut Device) -> Result<(), Error> {
     add_third_bit(dev, "TIM2", "CCMR1_Output", "OC2M", 24);
     copy_field(dev, "TIM15", "TIM2", "CR1", "UIFREMAP");
     copy_field(dev, "TIM15", "TIM2", "CNT", "UIFCPY");
-    dev.periph("TIM2").reg("CNT").field("CNT_H").bit_width = 15;
+    dev.periph("TIM2").reg("CNT").field("CNT_H").bit_width = Some(15);
     dev.periph("TIM2").reg("CNT").field("UIFCPY").access = Some(Access::ReadWrite);
     dev.periph("TIM2").reg("CNT").field("UIFCPY").name = "UIFCPY_CNT31".to_string();
     dev.periph("TIM2").reg("DIER").remove_field("COMDE");
@@ -444,40 +449,40 @@ fn fix_tim2(dev: &mut Device) -> Result<(), Error> {
         reg.name = "OR1".to_string();
         reg.description = "TIM2 option register 1".to_string();
         reg.address_offset = 0x50;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "ETR1_RMP".to_string();
             field.description = "External trigger remap".to_string();
-            field.bit_offset = 1;
-            field.bit_width = 1;
+            field.bit_offset = Some(1);
+            field.bit_width = Some(1);
         });
         reg.new_field(|field| {
             field.name = "ITR1_RMP".to_string();
             field.description = "Internal trigger 1 remap".to_string();
-            field.bit_offset = 0;
-            field.bit_width = 1;
+            field.bit_offset = Some(0);
+            field.bit_width = Some(1);
         });
         reg.new_field(|field| {
             field.name = "TI4_RMP".to_string();
             field.description = "Input Capture 4 remap".to_string();
-            field.bit_offset = 2;
-            field.bit_width = 2;
+            field.bit_offset = Some(2);
+            field.bit_width = Some(2);
         });
     });
     dev.periph("TIM2").new_reg(|reg| {
         reg.name = "OR2".to_string();
         reg.description = "TIM2 option register 2".to_string();
         reg.address_offset = 0x60;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "ETRSEL".to_string();
             field.description = "ETR source selection".to_string();
-            field.bit_offset = 14;
-            field.bit_width = 3;
+            field.bit_offset = Some(14);
+            field.bit_width = Some(3);
         });
     });
     Ok(())
@@ -517,20 +522,20 @@ fn fix_tim2_and_tim15(dev: &mut Device) -> Result<(), Error> {
         reg.name = "OR1".to_string();
         reg.description = "TIM15 option register 1".to_string();
         reg.address_offset = 0x50;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "ENCODER_MODE".to_string();
             field.description = "Encoder mode".to_string();
-            field.bit_offset = 1;
-            field.bit_width = 2;
+            field.bit_offset = Some(1);
+            field.bit_width = Some(2);
         });
         reg.new_field(|field| {
             field.name = "TI1_RMP".to_string();
             field.description = "Input Capture 1 remap".to_string();
-            field.bit_offset = 0;
-            field.bit_width = 1;
+            field.bit_offset = Some(0);
+            field.bit_width = Some(1);
         });
     });
     Ok(())
@@ -541,28 +546,28 @@ fn fix_tim3_1(dev: &mut Device) -> Result<(), Error> {
         reg.name = "OR2".to_string();
         reg.description = "TIM3 option register 2".to_string();
         reg.address_offset = 0x60;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "ETRSEL".to_string();
             field.description = "ETR source selection".to_string();
-            field.bit_offset = 14;
-            field.bit_width = 3;
+            field.bit_offset = Some(14);
+            field.bit_width = Some(3);
         });
     });
     dev.periph("TIM3").new_reg(|reg| {
         reg.name = "OR1".to_string();
         reg.description = "TIM3 option register 1".to_string();
         reg.address_offset = 0x50;
-        reg.size = 0x20;
+        reg.size = Some(0x20);
         reg.access = Some(Access::ReadWrite);
-        reg.reset_value = 0x0000;
+        reg.reset_value = Some(0x0000);
         reg.new_field(|field| {
             field.name = "TI1_RMP".to_string();
             field.description = "Input Capture 1 remap".to_string();
-            field.bit_offset = 0;
-            field.bit_width = 2;
+            field.bit_offset = Some(0);
+            field.bit_width = Some(2);
         });
     });
     Ok(())
@@ -572,14 +577,14 @@ fn fix_tim3_2(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1RSTR1").new_field(|field| {
         field.name = "TIM3RST".to_string();
         field.description = "TIM3 timer reset".to_string();
-        field.bit_offset = 1;
-        field.bit_width = 1;
+        field.bit_offset = Some(1);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("APB1SMENR1").new_field(|field| {
         field.name = "TIM3SMEN".to_string();
         field.description = "TIM3 timer clocks enable during Sleep and Stop modes".to_string();
-        field.bit_offset = 1;
-        field.bit_width = 1;
+        field.bit_offset = Some(1);
+        field.bit_width = Some(1);
     });
     Ok(())
 }
@@ -607,14 +612,14 @@ fn fix_uart4(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1RSTR1").new_field(|field| {
         field.name = "UART4RST".to_string();
         field.description = "UART4 reset".to_string();
-        field.bit_offset = 19;
-        field.bit_width = 1;
+        field.bit_offset = Some(19);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("APB1SMENR1").new_field(|field| {
         field.name = "UART4SMEN".to_string();
         field.description = "UART4 clocks enable during Sleep and Stop modes".to_string();
-        field.bit_offset = 19;
-        field.bit_width = 1;
+        field.bit_offset = Some(19);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("CCIPR").field("USART4SEL").name = "UART4SEL".to_string();
     Ok(())
@@ -629,33 +634,33 @@ fn fix_usart3(dev: &mut Device) -> Result<(), Error> {
     dev.periph("RCC").reg("APB1ENR1").new_field(|field| {
         field.name = "USART3EN".to_string();
         field.description = "USART3 clock enable".to_string();
-        field.bit_offset = 18;
-        field.bit_width = 1;
+        field.bit_offset = Some(18);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("APB1RSTR1").new_field(|field| {
         field.name = "USART3RST".to_string();
         field.description = "USART3 reset".to_string();
-        field.bit_offset = 18;
-        field.bit_width = 1;
+        field.bit_offset = Some(18);
+        field.bit_width = Some(1);
     });
     dev.periph("RCC").reg("APB1SMENR1").new_field(|field| {
         field.name = "USART3SMEN".to_string();
         field.description = "USART3 clocks enable during Sleep and Stop modes".to_string();
-        field.bit_offset = 18;
-        field.bit_width = 1;
+        field.bit_offset = Some(18);
+        field.bit_width = Some(1);
     });
     dev.periph("USART3").reg("BRR").remove_field("BRR");
     dev.periph("USART3").reg("BRR").new_field(|field| {
         field.name = "DIV_Mantissa".to_string();
         field.description = "DIV_Mantissa".to_string();
-        field.bit_offset = 4;
-        field.bit_width = 12;
+        field.bit_offset = Some(4);
+        field.bit_width = Some(12);
     });
     dev.periph("USART3").reg("BRR").new_field(|field| {
         field.name = "DIV_Fraction".to_string();
         field.description = "DIV_Fraction".to_string();
-        field.bit_offset = 0;
-        field.bit_width = 4;
+        field.bit_offset = Some(0);
+        field.bit_width = Some(4);
     });
     Ok(())
 }

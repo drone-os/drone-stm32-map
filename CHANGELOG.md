@@ -13,6 +13,8 @@ Possible log types:
 
 ### Unreleased
 
+- [changed] Extracted `drone-svd` crate
+
 ### v0.10.1 (2019-09-27)
 
 - [fixed] Fix API documentation by moving to self-hosted https://api.drone-os.com
