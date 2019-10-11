@@ -99,6 +99,50 @@ stm32f107 = [
     "drone-stm32-map-periph-spi/stm32f107",
     "drone-stm32-map-periph-tim/stm32f107",
 ]
+stm32f401 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f401",
+]
+stm32f405 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f405",
+]
+stm32f407 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f407",
+]
+stm32f410 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f410",
+]
+stm32f411 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f411",
+]
+stm32f412 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f412",
+]
+stm32f413 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f413",
+]
+stm32f427 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f427",
+]
+stm32f429 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f429",
+]
+stm32f446 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f446",
+]
+stm32f469 = [
+    "drone-cortex-m/cortex_m4f_r0p1",
+    "drone-stm32-map-pieces/stm32f469",
+]
 stm32l4x1 = [
     "drone-cortex-m/cortex_m4f_r0p1",
     "drone-stm32-map-pieces/stm32l4x1",

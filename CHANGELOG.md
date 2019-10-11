@@ -13,6 +13,7 @@ Possible log types:
 
 ### Unreleased
 
+- [added] Add STM32F4 family support
 - [changed] Extracted `drone-svd` crate
 
 ### v0.10.1 (2019-09-27)

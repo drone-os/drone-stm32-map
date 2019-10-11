@@ -35,6 +35,28 @@ macro_rules! svd_feature {
             "stm32f103"
         } else if cfg!(feature = "stm32f107") {
             "stm32f107"
+        } else if cfg!(feature = "stm32f401") {
+            "stm32f401"
+        } else if cfg!(feature = "stm32f405") {
+            "stm32f405"
+        } else if cfg!(feature = "stm32f407") {
+            "stm32f407"
+        } else if cfg!(feature = "stm32f410") {
+            "stm32f410"
+        } else if cfg!(feature = "stm32f411") {
+            "stm32f411"
+        } else if cfg!(feature = "stm32f412") {
+            "stm32f412"
+        } else if cfg!(feature = "stm32f413") {
+            "stm32f413"
+        } else if cfg!(feature = "stm32f427") {
+            "stm32f427"
+        } else if cfg!(feature = "stm32f429") {
+            "stm32f429"
+        } else if cfg!(feature = "stm32f446") {
+            "stm32f446"
+        } else if cfg!(feature = "stm32f469") {
+            "stm32f469"
         } else if cfg!(feature = "stm32l4x1") {
             "stm32l4x1"
         } else if cfg!(feature = "stm32l4x2") {
@@ -108,6 +130,17 @@ fn svd_deserialize(feature: &str) -> Result<Device, Error> {
         "stm32f102" => patch_stm32f102(parse_svd("STM32F102.svd")?),
         "stm32f103" => parse_svd("STM32F103.svd"),
         "stm32f107" => parse_svd("STM32F107.svd"),
+        "stm32f401" => parse_svd("STM32F401.svd"),
+        "stm32f405" => parse_svd("STM32F405.svd"),
+        "stm32f407" => parse_svd("STM32F407.svd"),
+        "stm32f410" => parse_svd("STM32F410.svd"),
+        "stm32f411" => parse_svd("STM32F411.svd"),
+        "stm32f412" => parse_svd("STM32F412.svd"),
+        "stm32f413" => parse_svd("STM32F413.svd"),
+        "stm32f427" => parse_svd("STM32F427.svd"),
+        "stm32f429" => parse_svd("STM32F429.svd"),
+        "stm32f446" => parse_svd("STM32F446.svd"),
+        "stm32f469" => parse_svd("STM32F469.svd"),
         "stm32l4x1" => patch_stm32l4x1(parse_svd("STM32L4x1.svd")?),
         "stm32l4x2" => patch_stm32l4x2(parse_svd("STM32L4x2.svd")?),
         "stm32l4x3" => patch_stm32l4x3(parse_svd("STM32L4x3.svd")?),

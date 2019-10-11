@@ -20,6 +20,17 @@
 //! | `stm32f102` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
 //! | `stm32f103` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
 //! | `stm32f107` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
+//! | `stm32f401` | ARM® Cortex®-M4F r0p1 | [RM0368](https://www.st.com/resource/en/reference_manual/dm00096844.pdf) |
+//! | `stm32f405` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) |
+//! | `stm32f407` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) |
+//! | `stm32f410` | ARM® Cortex®-M4F r0p1 | [RM0401](https://www.st.com/resource/en/reference_manual/dm00180366.pdf) |
+//! | `stm32f411` | ARM® Cortex®-M4F r0p1 | [RM0383](https://www.st.com/resource/en/reference_manual/dm00119316.pdf) |
+//! | `stm32f412` | ARM® Cortex®-M4F r0p1 | [RM0402](https://www.st.com/resource/en/reference_manual/dm00180369.pdf) |
+//! | `stm32f413` | ARM® Cortex®-M4F r0p1 | [RM0430](https://www.st.com/resource/en/reference_manual/dm00305666.pdf) |
+//! | `stm32f427` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) |
+//! | `stm32f429` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) |
+//! | `stm32f446` | ARM® Cortex®-M4F r0p1 | [RM0390](https://www.st.com/resource/en/reference_manual/dm00135183.pdf) |
+//! | `stm32f469` | ARM® Cortex®-M4F r0p1 | [RM0386](https://www.st.com/resource/en/reference_manual/dm00127514.pdf) |
 //! | `stm32l4x1` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) |
 //! | `stm32l4x2` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) |
 //! | `stm32l4x3` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) |

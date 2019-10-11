@@ -27,6 +27,17 @@ check-all:
 	cargo check --package drone-stm32-map --features stm32f102 --target thumbv7m-none-eabi
 	cargo check --package drone-stm32-map --features stm32f103 --target thumbv7m-none-eabi
 	cargo check --package drone-stm32-map --features stm32f107 --target thumbv7m-none-eabi
+	cargo check --package drone-stm32-map --features stm32f401 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f405 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f407 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f410 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f411 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f412 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f413 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f427 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f429 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f446 --target thumbv7em-none-eabihf
+	cargo check --package drone-stm32-map --features stm32f469 --target thumbv7em-none-eabihf
 	cargo check --package drone-stm32-map --features stm32l4x1 --target thumbv7em-none-eabihf
 	cargo check --package drone-stm32-map --features stm32l4x2 --target thumbv7em-none-eabihf
 	cargo check --package drone-stm32-map --features stm32l4x3 --target thumbv7em-none-eabihf
