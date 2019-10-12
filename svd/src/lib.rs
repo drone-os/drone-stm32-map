@@ -130,7 +130,7 @@ fn svd_deserialize(feature: &str) -> Result<Device, Error> {
         "stm32f102" => patch_stm32f102(parse_svd("STM32F102.svd")?),
         "stm32f103" => parse_svd("STM32F103.svd"),
         "stm32f107" => parse_svd("STM32F107.svd"),
-        "stm32f401" => parse_svd("STM32F401.svd"),
+        "stm32f401" => patch_stm32f401(parse_svd("STM32F401.svd")?),
         "stm32f405" => parse_svd("STM32F405.svd"),
         "stm32f407" => parse_svd("STM32F407.svd"),
         "stm32f410" => parse_svd("STM32F410.svd"),
@@ -158,6 +158,11 @@ fn svd_deserialize(feature: &str) -> Result<Device, Error> {
 
 fn patch_stm32f102(mut dev: Device) -> Result<Device, Error> {
     fix_spi2_1(&mut dev)?;
+    Ok(dev)
+}
+
+fn patch_stm32f401(mut dev: Device) -> Result<Device, Error> {
+    fix_rcc_splits(&mut dev)?;
     Ok(dev)
 }
 
@@ -387,6 +392,41 @@ fn fix_rcc(dev: &mut Device) -> Result<(), Error> {
             field.bit_width = Some(2);
         });
     });
+    Ok(())
+}
+
+fn fix_rcc_splits(dev: &mut Device) -> Result<(), Error> {
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLQ3");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLQ2");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLQ1");
+    dev.periph("RCC").reg("PLLCFGR").field("PLLQ0").bit_width = Some(4);
+    dev.periph("RCC").reg("PLLCFGR").field("PLLQ0").name = "PLLQ".to_string();
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLP1");
+    dev.periph("RCC").reg("PLLCFGR").field("PLLP0").bit_width = Some(2);
+    dev.periph("RCC").reg("PLLCFGR").field("PLLP0").name = "PLLP".to_string();
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN8");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN7");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN6");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN5");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN4");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN3");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN2");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLN1");
+    dev.periph("RCC").reg("PLLCFGR").field("PLLN0").bit_width = Some(9);
+    dev.periph("RCC").reg("PLLCFGR").field("PLLN0").name = "PLLN".to_string();
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLM5");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLM4");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLM3");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLM2");
+    dev.periph("RCC").reg("PLLCFGR").remove_field("PLLM1");
+    dev.periph("RCC").reg("PLLCFGR").field("PLLM0").bit_width = Some(6);
+    dev.periph("RCC").reg("PLLCFGR").field("PLLM0").name = "PLLM".to_string();
+    dev.periph("RCC").reg("CFGR").remove_field("SWS1");
+    dev.periph("RCC").reg("CFGR").field("SWS0").bit_width = Some(2);
+    dev.periph("RCC").reg("CFGR").field("SWS0").name = "SWS".to_string();
+    dev.periph("RCC").reg("CFGR").remove_field("SW1");
+    dev.periph("RCC").reg("CFGR").field("SW0").bit_width = Some(2);
+    dev.periph("RCC").reg("CFGR").field("SW0").name = "SW".to_string();
     Ok(())
 }
 
