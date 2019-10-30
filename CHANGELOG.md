@@ -13,6 +13,7 @@ Possible log types:
 
 ### Unreleased
 
+- [changed] Using `stm2_mcu` config flag to specify the MCU model
 - [added] Add STM32F4 family support
 - [changed] Extracted `drone-svd` crate
 

@@ -122,17 +122,17 @@ macro_rules! map_exti {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 0 register tokens.",
@@ -156,17 +156,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 1 register tokens.",
@@ -190,17 +190,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 2 register tokens.",
@@ -224,17 +224,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 3 register tokens.",
@@ -258,17 +258,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 4 register tokens.",
@@ -292,17 +292,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 5 register tokens.",
@@ -326,17 +326,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 6 register tokens.",
@@ -360,17 +360,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 7 register tokens.",
@@ -394,17 +394,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 8 register tokens.",
@@ -428,17 +428,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 9 register tokens.",
@@ -462,17 +462,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 10 register tokens.",
@@ -496,17 +496,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 11 register tokens.",
@@ -530,17 +530,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line peripheral variant 12 register tokens.",
@@ -564,17 +564,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 13 register tokens.",
@@ -598,17 +598,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 14 register tokens.",
@@ -632,17 +632,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 15 register tokens.",
@@ -666,17 +666,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 16 register tokens.",
@@ -700,17 +700,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 17 register tokens.",
@@ -734,17 +734,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 18 register tokens.",
@@ -768,17 +768,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 19 register tokens.",
@@ -802,17 +802,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 20 register tokens.",
@@ -836,17 +836,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 21 register tokens.",
@@ -870,17 +870,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 22 register tokens.",
@@ -904,17 +904,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 23 register tokens.",
@@ -938,17 +938,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 24 register tokens.",
@@ -972,17 +972,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 25 register tokens.",
@@ -1006,17 +1006,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 26 register tokens.",
@@ -1040,17 +1040,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 27 register tokens.",
@@ -1074,17 +1074,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 28 register tokens.",
@@ -1108,17 +1108,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 29 register tokens.",
@@ -1142,17 +1142,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 30 register tokens.",
@@ -1176,17 +1176,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 31 register tokens.",
@@ -1210,17 +1210,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 32 register tokens.",
@@ -1244,17 +1244,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 33 register tokens.",
@@ -1278,17 +1278,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 34 register tokens.",
@@ -1312,17 +1312,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 35 register tokens.",
@@ -1346,17 +1346,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 36 register tokens.",
@@ -1380,17 +1380,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 37 register tokens.",
@@ -1414,17 +1414,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 38 register tokens.",
@@ -1448,17 +1448,17 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 39 register tokens.",
@@ -1482,14 +1482,14 @@ map_exti! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_exti! {
     "Extracts EXTI Line 40 register tokens.",

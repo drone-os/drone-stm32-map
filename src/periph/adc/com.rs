@@ -4,12 +4,12 @@
 use drone_core::periph;
 
 #[cfg(any(
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 periph::singular! {
     /// Extracts ADC Common register tokens.

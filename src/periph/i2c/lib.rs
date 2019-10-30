@@ -312,17 +312,17 @@ macro_rules! map_i2c {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_i2c! {
     "Extracts I2C1 register tokens.",
@@ -341,17 +341,17 @@ map_i2c! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_i2c! {
     "Extracts I2C2 register tokens.",
@@ -370,17 +370,17 @@ map_i2c! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_i2c! {
     "Extracts I2C3 register tokens.",
@@ -399,14 +399,14 @@ map_i2c! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x2",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_i2c! {
     "Extracts I2C4 register tokens.",

@@ -20,17 +20,17 @@ periph! {
             GPIORST { RwRwRegFieldBitBand }
         }
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
@@ -83,17 +83,17 @@ macro_rules! map_gpio_port_head {
                     GPIORST { $gpiorst }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 BUSSMENR {
                     $bussmenr Shared;
@@ -113,11 +113,11 @@ macro_rules! map_gpio_port_head {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port A head register tokens.",
@@ -134,11 +134,11 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port B head register tokens.",
@@ -155,11 +155,11 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port C head register tokens.",
@@ -176,11 +176,11 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port D head register tokens.",
@@ -197,10 +197,10 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port E head register tokens.",
@@ -216,7 +216,11 @@ map_gpio_port_head! {
     IOPESMEN,
 }
 
-#[cfg(any(feature = "stm32f100", feature = "stm32f101", feature = "stm32f103"))]
+#[cfg(any(
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103"
+))]
 map_gpio_port_head! {
     "Extracts GPIO port F head register tokens.",
     periph_gpio_f_head,
@@ -231,7 +235,11 @@ map_gpio_port_head! {
     IOPFSMEN,
 }
 
-#[cfg(any(feature = "stm32f100", feature = "stm32f101", feature = "stm32f103"))]
+#[cfg(any(
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103"
+))]
 map_gpio_port_head! {
     "Extracts GPIO port G head register tokens.",
     periph_gpio_g_head,
@@ -247,17 +255,17 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port A head register tokens.",
@@ -274,17 +282,17 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port B head register tokens.",
@@ -301,17 +309,17 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port C head register tokens.",
@@ -328,17 +336,17 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port D head register tokens.",
@@ -355,17 +363,17 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port E head register tokens.",
@@ -382,14 +390,14 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port F head register tokens.",
@@ -406,14 +414,14 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port G head register tokens.",
@@ -430,17 +438,17 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port H head register tokens.",
@@ -457,13 +465,13 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port I head register tokens.",

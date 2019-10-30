@@ -1,11 +1,11 @@
 [package]
 name = "drone-stm32-map-pieces-12"
-version = "0.10.2"
+version = "0.11.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
-documentation = "https://api.drone-os.com/drone-stm32-map/0.10/drone_stm32_map_pieces_12/"
+documentation = "https://api.drone-os.com/drone-stm32-map/0.11/drone_stm32_map_pieces_12/"
 license = "MIT OR Apache-2.0"
 description = """
 STM32 peripheral mappings for Drone, an Embedded Operating System.
@@ -14,44 +14,14 @@ STM32 peripheral mappings for Drone, an Embedded Operating System.
 [lib]
 path = "lib.rs"
 
-[features]
-default = []
-stm32f100 = ["drone-cortex-m/cortex_m3_r1p1"]
-stm32f101 = ["drone-cortex-m/cortex_m3_r1p1"]
-stm32f102 = ["drone-cortex-m/cortex_m3_r1p1"]
-stm32f103 = ["drone-cortex-m/cortex_m3_r1p1"]
-stm32f107 = ["drone-cortex-m/cortex_m3_r1p1"]
-stm32f401 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f405 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f407 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f410 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f411 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f412 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f413 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f427 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f429 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f446 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32f469 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4x1 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4x2 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4x3 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4x5 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4x6 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4r5 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4r7 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4r9 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4s5 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4s7 = ["drone-cortex-m/cortex_m4f_r0p1"]
-stm32l4s9 = ["drone-cortex-m/cortex_m4f_r0p1"]
-
 [dependencies.drone-core]
-version = "0.10.0"
+version = "0.11.0"
 path = "../../../../drone-core"
 
 [dependencies.drone-cortex-m]
-version = "0.10.0"
+version = "0.11.0"
 path = "../../../../drone-cortex-m"
 
 [build-dependencies.drone-stm32-map-svd]
-version = "=0.10.2"
+version = "=0.11.0"
 path = "../../../svd"

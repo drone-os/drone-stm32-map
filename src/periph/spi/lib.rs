@@ -27,17 +27,17 @@ periph! {
             SPIRST { RwRwRegFieldBitBand }
         }
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
@@ -65,88 +65,88 @@ periph! {
         CR2 {
             0x20 RwRegBitBand;
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             DS { RwRwRegFieldBits }
             ERRIE { RwRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             FRF { RwRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             FRXTH { RwRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             LDMA_RX { RwRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             LDMA_TX { RwRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             NSSP { RwRwRegFieldBitBand }
             RXDMAEN { RwRwRegFieldBitBand }
@@ -159,64 +159,64 @@ periph! {
             0x20 RwRegBitBand;
             BSY { RoRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32f101",
-                feature = "stm32f102",
-                feature = "stm32f103",
-                feature = "stm32f107",
+                stm32_mcu = "stm32f101",
+                stm32_mcu = "stm32f102",
+                stm32_mcu = "stm32f103",
+                stm32_mcu = "stm32f107",
             ))]
             CHSIDE { RoRwRegFieldBitBand }
             CRCERR { RwRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             FRLVL { RoRwRegFieldBits }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             FTLVL { RoRwRegFieldBits }
             MODF { RoRwRegFieldBitBand }
             OVR { RoRwRegFieldBitBand }
             RXNE { RoRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32l4x1",
-                feature = "stm32l4x2",
-                feature = "stm32l4x3",
-                feature = "stm32l4x5",
-                feature = "stm32l4x6",
-                feature = "stm32l4r5",
-                feature = "stm32l4r7",
-                feature = "stm32l4r9",
-                feature = "stm32l4s5",
-                feature = "stm32l4s7",
-                feature = "stm32l4s9"
+                stm32_mcu = "stm32l4x1",
+                stm32_mcu = "stm32l4x2",
+                stm32_mcu = "stm32l4x3",
+                stm32_mcu = "stm32l4x5",
+                stm32_mcu = "stm32l4x6",
+                stm32_mcu = "stm32l4r5",
+                stm32_mcu = "stm32l4r7",
+                stm32_mcu = "stm32l4r9",
+                stm32_mcu = "stm32l4s5",
+                stm32_mcu = "stm32l4s7",
+                stm32_mcu = "stm32l4s9"
             ))]
             TIFRFE { RoRwRegFieldBitBand }
             TXE { RoRwRegFieldBitBand }
             #[cfg(any(
-                feature = "stm32f101",
-                feature = "stm32f102",
-                feature = "stm32f103",
-                feature = "stm32f107",
+                stm32_mcu = "stm32f101",
+                stm32_mcu = "stm32f102",
+                stm32_mcu = "stm32f103",
+                stm32_mcu = "stm32f107",
             ))]
             UDR { RoRwRegFieldBitBand }
         }
@@ -276,17 +276,17 @@ macro_rules! map_spi {
                     SPIRST { $spirst }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 BUSSMENR {
                     $bussmenr Shared;
@@ -315,88 +315,88 @@ macro_rules! map_spi {
                 CR2 {
                     CR2;
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     DS { DS }
                     ERRIE { ERRIE }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     FRF { FRF }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     FRXTH { FRXTH }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     LDMA_RX { LDMA_RX }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     LDMA_TX { LDMA_TX }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     NSSP { NSSP }
                     RXDMAEN { RXDMAEN }
@@ -409,64 +409,64 @@ macro_rules! map_spi {
                     SR;
                     BSY { BSY }
                     #[cfg(any(
-                        feature = "stm32f101",
-                        feature = "stm32f102",
-                        feature = "stm32f103",
-                        feature = "stm32f107",
+                        stm32_mcu = "stm32f101",
+                        stm32_mcu = "stm32f102",
+                        stm32_mcu = "stm32f103",
+                        stm32_mcu = "stm32f107",
                     ))]
                     CHSIDE { CHSIDE }
                     CRCERR { CRCERR }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     FRLVL { FRLVL }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     FTLVL { FTLVL }
                     MODF { MODF }
                     OVR { OVR }
                     RXNE { RXNE }
                     #[cfg(any(
-                        feature = "stm32l4x1",
-                        feature = "stm32l4x2",
-                        feature = "stm32l4x3",
-                        feature = "stm32l4x5",
-                        feature = "stm32l4x6",
-                        feature = "stm32l4r5",
-                        feature = "stm32l4r7",
-                        feature = "stm32l4r9",
-                        feature = "stm32l4s5",
-                        feature = "stm32l4s7",
-                        feature = "stm32l4s9"
+                        stm32_mcu = "stm32l4x1",
+                        stm32_mcu = "stm32l4x2",
+                        stm32_mcu = "stm32l4x3",
+                        stm32_mcu = "stm32l4x5",
+                        stm32_mcu = "stm32l4x6",
+                        stm32_mcu = "stm32l4r5",
+                        stm32_mcu = "stm32l4r7",
+                        stm32_mcu = "stm32l4r9",
+                        stm32_mcu = "stm32l4s5",
+                        stm32_mcu = "stm32l4s7",
+                        stm32_mcu = "stm32l4s9"
                     ))]
                     TIFRFE { TIFRFE }
                     TXE { TXE }
                     #[cfg(any(
-                        feature = "stm32f101",
-                        feature = "stm32f102",
-                        feature = "stm32f103",
-                        feature = "stm32f107",
+                        stm32_mcu = "stm32f101",
+                        stm32_mcu = "stm32f102",
+                        stm32_mcu = "stm32f103",
+                        stm32_mcu = "stm32f107",
                     ))]
                     UDR { UDR }
                 }
@@ -492,22 +492,22 @@ macro_rules! map_spi {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_spi! {
     "Extracts SPI1 register tokens.",
@@ -524,11 +524,11 @@ map_spi! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_spi! {
     "Extracts SPI2 register tokens.",
@@ -545,10 +545,10 @@ map_spi! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f103",
-    feature = "stm32f107",
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
 ))]
 map_spi! {
     "Extracts SPI3 register tokens.",
@@ -565,17 +565,17 @@ map_spi! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_spi! {
     "Extracts SPI2 register tokens.",
@@ -592,17 +592,17 @@ map_spi! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_spi! {
     "Extracts SPI3 register tokens.",

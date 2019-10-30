@@ -6,9 +6,10 @@
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 
+pub use anyhow::Result;
+
 use drone_svd::{Access, Device, Interrupt};
-use failure::Error;
-use std::{env, fs::File, path::Path, process};
+use std::{env, fs::File, path::Path};
 
 const REG_EXCLUDE: &[&str] = &[
     "FPU",
@@ -21,110 +22,32 @@ const REG_EXCLUDE: &[&str] = &[
     "TPIU",
 ];
 
-/// Returns the selected device feature.
-#[macro_export]
-macro_rules! svd_feature {
-    () => {
-        if cfg!(feature = "stm32f100") {
-            "stm32f100"
-        } else if cfg!(feature = "stm32f101") {
-            "stm32f101"
-        } else if cfg!(feature = "stm32f102") {
-            "stm32f102"
-        } else if cfg!(feature = "stm32f103") {
-            "stm32f103"
-        } else if cfg!(feature = "stm32f107") {
-            "stm32f107"
-        } else if cfg!(feature = "stm32f401") {
-            "stm32f401"
-        } else if cfg!(feature = "stm32f405") {
-            "stm32f405"
-        } else if cfg!(feature = "stm32f407") {
-            "stm32f407"
-        } else if cfg!(feature = "stm32f410") {
-            "stm32f410"
-        } else if cfg!(feature = "stm32f411") {
-            "stm32f411"
-        } else if cfg!(feature = "stm32f412") {
-            "stm32f412"
-        } else if cfg!(feature = "stm32f413") {
-            "stm32f413"
-        } else if cfg!(feature = "stm32f427") {
-            "stm32f427"
-        } else if cfg!(feature = "stm32f429") {
-            "stm32f429"
-        } else if cfg!(feature = "stm32f446") {
-            "stm32f446"
-        } else if cfg!(feature = "stm32f469") {
-            "stm32f469"
-        } else if cfg!(feature = "stm32l4x1") {
-            "stm32l4x1"
-        } else if cfg!(feature = "stm32l4x2") {
-            "stm32l4x2"
-        } else if cfg!(feature = "stm32l4x3") {
-            "stm32l4x3"
-        } else if cfg!(feature = "stm32l4x5") {
-            "stm32l4x5"
-        } else if cfg!(feature = "stm32l4x6") {
-            "stm32l4x6"
-        } else if cfg!(feature = "stm32l4r5") {
-            "stm32l4r5"
-        } else if cfg!(feature = "stm32l4r7") {
-            "stm32l4r7"
-        } else if cfg!(feature = "stm32l4r9") {
-            "stm32l4r9"
-        } else if cfg!(feature = "stm32l4s5") {
-            "stm32l4s5"
-        } else if cfg!(feature = "stm32l4s7") {
-            "stm32l4s7"
-        } else if cfg!(feature = "stm32l4s9") {
-            "stm32l4s9"
-        } else {
-            ""
-        }
-    };
-}
-
 /// Generates code for register mappings.
-pub fn generate_regs(feature: &str, pool_number: usize, pool_size: usize) {
-    let run = || {
-        let out_dir = env::var("OUT_DIR")?;
-        let out_dir = Path::new(&out_dir);
-        let dev = svd_deserialize(feature)?;
-        let mut regs = File::create(out_dir.join("svd_regs.rs"))?;
-        dev.generate_regs(&mut regs, REG_EXCLUDE, pool_number, pool_size)?;
-        Ok::<(), Error>(())
-    };
-    if let Err(error) = run() {
-        eprintln!("{}", error);
-        process::exit(1);
-    }
+pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
+    let out_dir = env::var("OUT_DIR")?;
+    let out_dir = Path::new(&out_dir);
+    let dev = svd_deserialize()?;
+    let mut regs = File::create(out_dir.join("svd_regs.rs"))?;
+    dev.generate_regs(&mut regs, REG_EXCLUDE, pool_number, pool_size)
 }
 
 /// Generates code for interrupts and register tokens struct.
-pub fn generate_rest(feature: &str) {
-    let run = || {
-        let out_dir = env::var("OUT_DIR")?;
-        let out_dir = Path::new(&out_dir);
-        let dev = svd_deserialize(feature)?;
-        let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
-        let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
-        dev.generate_rest(
-            &mut reg_tokens,
-            &mut interrupts,
-            REG_EXCLUDE,
-            "stm32_reg_tokens",
-        )?;
-        Ok::<(), Error>(())
-    };
-    if let Err(error) = run() {
-        eprintln!("{}", error);
-        process::exit(1);
-    }
+pub fn generate_rest() -> Result<()> {
+    let out_dir = env::var("OUT_DIR")?;
+    let out_dir = Path::new(&out_dir);
+    let dev = svd_deserialize()?;
+    let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
+    let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
+    dev.generate_rest(
+        &mut reg_tokens,
+        &mut interrupts,
+        REG_EXCLUDE,
+        "stm32_reg_tokens",
+    )
 }
 
-fn svd_deserialize(feature: &str) -> Result<Device, Error> {
-    match feature {
+fn svd_deserialize() -> Result<Device> {
+    match env::var("CARGO_CFG_STM32_MCU")?.as_ref() {
         "stm32f100" => parse_svd("STM32F100.svd"),
         "stm32f101" => parse_svd("STM32F101.svd"),
         "stm32f102" => patch_stm32f102(parse_svd("STM32F102.svd")?),
@@ -156,17 +79,17 @@ fn svd_deserialize(feature: &str) -> Result<Device, Error> {
     }
 }
 
-fn patch_stm32f102(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32f102(mut dev: Device) -> Result<Device> {
     fix_spi2_1(&mut dev)?;
     Ok(dev)
 }
 
-fn patch_stm32f401(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     fix_rcc_splits(&mut dev)?;
     Ok(dev)
 }
 
-fn patch_stm32l4x1(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32l4x1(mut dev: Device) -> Result<Device> {
     fix_adc(&mut dev)?;
     fix_lptim1(&mut dev)?;
     fix_lptim2(&mut dev)?;
@@ -185,7 +108,7 @@ fn patch_stm32l4x1(mut dev: Device) -> Result<Device, Error> {
     Ok(dev)
 }
 
-fn patch_stm32l4x2(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32l4x2(mut dev: Device) -> Result<Device> {
     fix_adc(&mut dev)?;
     fix_i2c(&mut dev)?;
     fix_lptim1(&mut dev)?;
@@ -205,7 +128,7 @@ fn patch_stm32l4x2(mut dev: Device) -> Result<Device, Error> {
     Ok(dev)
 }
 
-fn patch_stm32l4x3(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32l4x3(mut dev: Device) -> Result<Device> {
     add_tim3(&mut dev)?;
     fix_adc(&mut dev)?;
     fix_lptim1(&mut dev)?;
@@ -220,7 +143,7 @@ fn patch_stm32l4x3(mut dev: Device) -> Result<Device, Error> {
     Ok(dev)
 }
 
-fn patch_stm32l4x5(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32l4x5(mut dev: Device) -> Result<Device> {
     fix_adc(&mut dev)?;
     fix_exti(&mut dev)?;
     fix_lptim1(&mut dev)?;
@@ -236,7 +159,7 @@ fn patch_stm32l4x5(mut dev: Device) -> Result<Device, Error> {
     Ok(dev)
 }
 
-fn patch_stm32l4x6(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32l4x6(mut dev: Device) -> Result<Device> {
     fix_adc(&mut dev)?;
     fix_exti(&mut dev)?;
     fix_lptim1(&mut dev)?;
@@ -251,7 +174,7 @@ fn patch_stm32l4x6(mut dev: Device) -> Result<Device, Error> {
     Ok(dev)
 }
 
-fn patch_stm32l4plus(mut dev: Device) -> Result<Device, Error> {
+fn patch_stm32l4plus(mut dev: Device) -> Result<Device> {
     add_dmamux(&mut dev)?;
     fix_adc(&mut dev)?;
     fix_exti(&mut dev)?;
@@ -267,12 +190,12 @@ fn patch_stm32l4plus(mut dev: Device) -> Result<Device, Error> {
     Ok(dev)
 }
 
-fn add_dmamux(dev: &mut Device) -> Result<(), Error> {
+fn add_dmamux(dev: &mut Device) -> Result<()> {
     dev.add_periph(parse_svd("patch/add_dmamux.xml")?.periph("DMAMUX1").clone());
     Ok(())
 }
 
-fn add_tim3(dev: &mut Device) -> Result<(), Error> {
+fn add_tim3(dev: &mut Device) -> Result<()> {
     dev.new_periph(|peripheral| {
         peripheral.derived_from = Some("TIM2".to_string());
         peripheral.name = "TIM3".to_string();
@@ -288,12 +211,12 @@ fn add_tim3(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_adc(dev: &mut Device) -> Result<(), Error> {
+fn fix_adc(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("AHB2SMENR").field("ADCFSSMEN").name = "ADCSMEN".to_string();
     Ok(())
 }
 
-fn fix_exti(dev: &mut Device) -> Result<(), Error> {
+fn fix_exti(dev: &mut Device) -> Result<()> {
     for (reg_name, field_name) in &[("IMR2", "MR39"), ("EMR2", "MR39")] {
         let mut field = dev.periph("EXTI").reg(reg_name).field(field_name).clone();
         field.name = field.name.replace("39", "40");
@@ -304,7 +227,7 @@ fn fix_exti(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_i2c(dev: &mut Device) -> Result<(), Error> {
+fn fix_i2c(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1SMENR2").new_field(|field| {
         field.name = "I2C4SMEN".to_string();
         field.description = "I2C4 clocks enable during Sleep and Stop modes".to_string();
@@ -314,7 +237,7 @@ fn fix_i2c(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_lptim1(dev: &mut Device) -> Result<(), Error> {
+fn fix_lptim1(dev: &mut Device) -> Result<()> {
     dev.periph("LPTIM1").new_reg(|reg| {
         reg.name = "OR".to_string();
         reg.description = "LPTIM1 option register".to_string();
@@ -338,7 +261,7 @@ fn fix_lptim1(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_lptim2(dev: &mut Device) -> Result<(), Error> {
+fn fix_lptim2(dev: &mut Device) -> Result<()> {
     dev.periph("LPTIM2").new_reg(|reg| {
         reg.name = "OR".to_string();
         reg.description = "LPTIM2 option register".to_string();
@@ -362,12 +285,12 @@ fn fix_lptim2(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_lpuart1(dev: &mut Device) -> Result<(), Error> {
+fn fix_lpuart1(dev: &mut Device) -> Result<()> {
     copy_field(dev, "USART3", "LPUART1", "CR3", "UCESM");
     Ok(())
 }
 
-fn fix_pwr(dev: &mut Device) -> Result<(), Error> {
+fn fix_pwr(dev: &mut Device) -> Result<()> {
     dev.periph("PWR").reg("CR1").new_field(|field| {
         field.name = "RRSTP".to_string();
         field.description = "SRAM3 retention in Stop 2 mode".to_string();
@@ -377,7 +300,7 @@ fn fix_pwr(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_rcc(dev: &mut Device) -> Result<(), Error> {
+fn fix_rcc(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").new_reg(|reg| {
         reg.name = "CCIPR2".to_string();
         reg.description = "Peripherals independent clock configuration register".to_string();
@@ -395,7 +318,7 @@ fn fix_rcc(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_rcc_splits(dev: &mut Device) -> Result<(), Error> {
+fn fix_rcc_splits(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("PLLCFGR").remove_field("PLLQ3");
     dev.periph("RCC").reg("PLLCFGR").remove_field("PLLQ2");
     dev.periph("RCC").reg("PLLCFGR").remove_field("PLLQ1");
@@ -430,7 +353,7 @@ fn fix_rcc_splits(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_rtc(dev: &mut Device) -> Result<(), Error> {
+fn fix_rtc(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1ENR1").new_field(|field| {
         field.name = "RTCAPBEN".to_string();
         field.description = "RTC APB clock enable".to_string();
@@ -446,7 +369,7 @@ fn fix_rtc(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_spi2_1(dev: &mut Device) -> Result<(), Error> {
+fn fix_spi2_1(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1ENR").new_field(|field| {
         field.name = "SPI2EN".to_string();
         field.description = "SPI 2 clock enable".to_string();
@@ -464,7 +387,7 @@ fn fix_spi2_1(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_spi2_2(dev: &mut Device) -> Result<(), Error> {
+fn fix_spi2_2(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1ENR1").new_field(|field| {
         field.name = "SPI2EN".to_string();
         field.description = "SPI2 clock enable".to_string();
@@ -474,25 +397,25 @@ fn fix_spi2_2(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_spi3_1(dev: &mut Device) -> Result<(), Error> {
+fn fix_spi3_1(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1SMENR1").field("SP3SMEN").name = "SPI3SMEN".to_string();
     Ok(())
 }
 
-fn fix_spi3_2(dev: &mut Device) -> Result<(), Error> {
+fn fix_spi3_2(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1ENR1").field("SP3EN").name = "SPI3EN".to_string();
     dev.periph("RCC").reg("APB1SMENR1").field("SP3SMEN").name = "SPI3SMEN".to_string();
     Ok(())
 }
 
-fn fix_tim1(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM1").reg("CCMR1_Input").field("IC2PCS").name = "IC2PSC".to_string();
     dev.periph("TIM1").reg("CCMR1_Input").field("ICPCS").name = "IC1PSC".to_string();
     dev.periph("TIM1").reg("OR1").remove_field("ETR_ADC3_RMP");
     Ok(())
 }
 
-fn fix_tim2(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim2(dev: &mut Device) -> Result<()> {
     fn add_third_bit(
         dev: &mut Device,
         periph_name: &str,
@@ -561,7 +484,7 @@ fn fix_tim2(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_tim2_and_tim15(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim2_and_tim15(dev: &mut Device) -> Result<()> {
     fix_tim2(dev)?;
     dev.periph("TIM15").reg("CCMR1_Output").field("OC1M").name = "OC1M0_2".to_string();
     dev.periph("TIM15").reg("CCMR1_Output").field("OC1M_2").name = "OC1M3".to_string();
@@ -614,7 +537,7 @@ fn fix_tim2_and_tim15(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_tim3_1(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim3_1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM3").new_reg(|reg| {
         reg.name = "OR2".to_string();
         reg.description = "TIM3 option register 2".to_string();
@@ -646,7 +569,7 @@ fn fix_tim3_1(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_tim3_2(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim3_2(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1RSTR1").new_field(|field| {
         field.name = "TIM3RST".to_string();
         field.description = "TIM3 timer reset".to_string();
@@ -662,7 +585,7 @@ fn fix_tim3_2(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_tim8(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim8(dev: &mut Device) -> Result<()> {
     dev.periph("TIM8").reg("CCMR1_Input").field("IC2PCS").name = "IC2PSC".to_string();
     dev.periph("TIM8").reg("CCMR1_Input").field("ICPCS").name = "IC1PSC".to_string();
     dev.periph("TIM8").reg("OR1").remove_field("ETR_ADC3_RMP");
@@ -670,7 +593,7 @@ fn fix_tim8(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_tim16(dev: &mut Device) -> Result<(), Error> {
+fn fix_tim16(dev: &mut Device) -> Result<()> {
     dev.periph("TIM16").reg("CCMR1_Output").field("OC1M").name = "OC1M0_2".to_string();
     dev.periph("TIM16").reg("CCMR1_Output").field("OC1M_2").name = "OC1M3".to_string();
     dev.periph("TIM16").reg("BDTR").remove_field("BKF");
@@ -681,7 +604,7 @@ fn fix_tim16(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_uart4(dev: &mut Device) -> Result<(), Error> {
+fn fix_uart4(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1RSTR1").new_field(|field| {
         field.name = "UART4RST".to_string();
         field.description = "UART4 reset".to_string();
@@ -698,12 +621,12 @@ fn fix_uart4(dev: &mut Device) -> Result<(), Error> {
     Ok(())
 }
 
-fn fix_usart1(dev: &mut Device) -> Result<(), Error> {
+fn fix_usart1(dev: &mut Device) -> Result<()> {
     copy_field(dev, "USART3", "USART1", "CR3", "UCESM");
     Ok(())
 }
 
-fn fix_usart3(dev: &mut Device) -> Result<(), Error> {
+fn fix_usart3(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1ENR1").new_field(|field| {
         field.name = "USART3EN".to_string();
         field.description = "USART3 clock enable".to_string();
@@ -758,6 +681,6 @@ fn copy_field(
     dev.periph(periph_to).reg(reg_name).add_field(field);
 }
 
-fn parse_svd(path: &str) -> Result<Device, Error> {
+fn parse_svd(path: &str) -> Result<Device> {
     drone_svd::parse(format!("{}/files/{}", env!("CARGO_MANIFEST_DIR"), path))
 }

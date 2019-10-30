@@ -1,12 +1,15 @@
+features := 'adc dma exti gpio i2c rtc spi tim uart'
 build_target := 'thumbv7em-none-eabihf'
-features := 'stm32l4s9'
+cortex_m_core := 'cortex_m4f_r0p1'
+stm32_mcu := 'stm32l4s9'
+
+export CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS := '--cfg cortex_m_core="' + cortex_m_core + '" ' + '--cfg stm32_mcu="' + stm32_mcu + '"'
 
 # Install dependencies
 deps:
 	rustup target add {{build_target}}
 	rustup component add clippy
 	rustup component add rustfmt
-	rustup component add rls rust-analysis rust-src
 	type cargo-readme >/dev/null || cargo +stable install cargo-readme
 
 # Reformat the source code
@@ -18,37 +21,37 @@ lint:
 	cargo clippy --package drone-stm32-map-svd
 	cargo clippy --target {{build_target}} --features "{{features}}" --all --exclude drone-stm32-map-svd
 
-# Check each feature
+# Check each MCU
 check-all:
 	rustup target add thumbv7m-none-eabi
 	rustup target add thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f100 --target thumbv7m-none-eabi
-	cargo check --package drone-stm32-map --features stm32f101 --target thumbv7m-none-eabi
-	cargo check --package drone-stm32-map --features stm32f102 --target thumbv7m-none-eabi
-	cargo check --package drone-stm32-map --features stm32f103 --target thumbv7m-none-eabi
-	cargo check --package drone-stm32-map --features stm32f107 --target thumbv7m-none-eabi
-	cargo check --package drone-stm32-map --features stm32f401 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f405 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f407 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f410 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f411 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f412 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f413 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f427 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f429 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f446 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32f469 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4x1 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4x2 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4x3 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4x5 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4x6 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4r5 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4s5 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4r7 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4s7 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4r9 --target thumbv7em-none-eabihf
-	cargo check --package drone-stm32-map --features stm32l4s9 --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7M_NONE_EABI_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f100"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7m-none-eabi
+	CARGO_TARGET_THUMBV7M_NONE_EABI_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f101"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7m-none-eabi
+	CARGO_TARGET_THUMBV7M_NONE_EABI_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f102"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7m-none-eabi
+	CARGO_TARGET_THUMBV7M_NONE_EABI_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f103"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7m-none-eabi
+	CARGO_TARGET_THUMBV7M_NONE_EABI_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f107"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7m-none-eabi
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f401"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f405"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f407"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f410"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f411"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f412"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f413"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f427"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f429"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f446"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f469"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x1"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x2"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x3"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x5"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x6"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r5"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s5"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r7"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s7"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r9"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
+	CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s9"' cargo check --package drone-stm32-map --features "{{features}}" --target thumbv7em-none-eabihf
 
 # Generate the docs
 doc:
@@ -64,7 +67,7 @@ readme:
 	cargo readme -o README.md
 
 # Bump crate versions
-version-bump version drone-core-version drone-cortex-m-version drone-cortex-m-svd-version:
+version-bump version drone-core-version drone-cortex-m-version drone-svd-version:
 	sed -i "s/\(api\.drone-os\.com\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1$(echo {{version}} | sed 's/\(.*\)\.[0-9]\+/\1/')/" \
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml src/lib.rs
 	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[package\]/version = "{{version}}"/;t;x}' \
@@ -75,7 +78,7 @@ version-bump version drone-core-version drone-cortex-m-version drone-cortex-m-sv
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
 	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-cortex-m\]/version = "{{drone-cortex-m-version}}"/;t;x}' \
 		Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
-	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-cortex-m-svd\]/version = "{{drone-cortex-m-svd-version}}"/;t;x}' \
+	sed -i '/\[.*\]/h;/version = ".*"/{x;s/\[.*drone-svd\]/version = "{{drone-svd-version}}"/;t;x}' \
 		svd/Cargo.toml
 	sed -i 's/\(drone-stm32-map.*\)version = "[^"]\+"/\1version = "{{version}}"/' \
 		src/lib.rs

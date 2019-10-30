@@ -13,7 +13,7 @@
 //!
 //! # Supported Devices
 //!
-//! |                                                     Device name / Cargo feature | Core name | Reference manual |
+//! |                                           Device name / `stm32_mcu` config flag | Core name | Reference manual |
 //! |-------------|-----------------------|--------------------------------------------------------------------------|
 //! | `stm32f100` | ARM® Cortex®-M3 r1p1  | [RM0041](https://www.st.com/resource/en/reference_manual/cd00246267.pdf) |
 //! | `stm32f101` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) |
@@ -43,13 +43,13 @@
 //! | `stm32l4r9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
 //! | `stm32l4s9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) |
 //!
-//! **NOTE** Exactly one cargo feature should be selected based on the device
-//! model.
+//! `stm32_mcu` config flag should be set at the application level according to
+//! this table.
 //!
 //! # Documentation
 //!
 //! - [Drone Book](https://book.drone-os.com/)
-//! - [API documentation](https://api.drone-os.com/drone-stm32-map/0.10/)
+//! - [API documentation](https://api.drone-os.com/drone-stm32-map/0.11/)
 //!
 //! The API documentation intentionally skips auto-generated [`reg`] and [`thr`]
 //! bindings. Otherwise it would use several gigabytes of space and would be
@@ -63,7 +63,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! drone-stm32-map = { version = "0.10.2", features = [...] }
+//! drone-stm32-map = { version = "0.11.0", features = [...] }
 //! ```
 
 #![deny(elided_lifetimes_in_paths)]

@@ -15,48 +15,48 @@ periph! {
 
     GPIO {
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         AFR {
             0x20 RwReg Shared;
             AFR { RwRwRegFieldBits }
         }
         #[cfg(any(
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         ASCR {
             0x20 RwReg Shared;
             ASC { RwRwRegFieldBit Option }
         }
         #[cfg(any(
-            feature = "stm32f100",
-            feature = "stm32f101",
-            feature = "stm32f102",
-            feature = "stm32f103",
-            feature = "stm32f107",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         BRR {
             0x20 WoReg Shared;
@@ -68,11 +68,11 @@ periph! {
             BS { WoWoRegFieldBit }
         }
         #[cfg(any(
-            feature = "stm32f100",
-            feature = "stm32f101",
-            feature = "stm32f102",
-            feature = "stm32f103",
-            feature = "stm32f107"
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107"
         ))]
         CR {
             0x20 RwReg Shared;
@@ -88,17 +88,17 @@ periph! {
             LCK { RwRwRegFieldBit }
         }
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         MODER {
             0x20 RwReg Shared;
@@ -109,51 +109,51 @@ periph! {
             ODR { RwRwRegFieldBit }
         }
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         OSPEEDR {
             0x20 RwReg Shared;
             OSPEEDR { RwRwRegFieldBits }
         }
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         OTYPER {
             0x20 RwReg Shared;
             OT { RwRwRegFieldBit }
         }
         #[cfg(any(
-            feature = "stm32l4x1",
-            feature = "stm32l4x2",
-            feature = "stm32l4x3",
-            feature = "stm32l4x5",
-            feature = "stm32l4x6",
-            feature = "stm32l4r5",
-            feature = "stm32l4r7",
-            feature = "stm32l4r9",
-            feature = "stm32l4s5",
-            feature = "stm32l4s7",
-            feature = "stm32l4s9"
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9"
         ))]
         PUPDR {
             0x20 RwReg Shared;
@@ -205,48 +205,48 @@ macro_rules! map_gpio_pin {
             GPIO {
                 $gpio;
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 AFR {
                     $afr_path Shared;
                     AFR { $afr_ty }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 ASCR {
                     ASCR Shared;
                     ASC { $($asc_ty $ascr_option)* }
                 }
                 #[cfg(any(
-                    feature = "stm32f100",
-                    feature = "stm32f101",
-                    feature = "stm32f102",
-                    feature = "stm32f103",
-                    feature = "stm32f107",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32f100",
+                    stm32_mcu = "stm32f101",
+                    stm32_mcu = "stm32f102",
+                    stm32_mcu = "stm32f103",
+                    stm32_mcu = "stm32f107",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 BRR {
                     BRR Shared;
@@ -258,11 +258,11 @@ macro_rules! map_gpio_pin {
                     BS { $bs_ty }
                 }
                 #[cfg(any(
-                    feature = "stm32f100",
-                    feature = "stm32f101",
-                    feature = "stm32f102",
-                    feature = "stm32f103",
-                    feature = "stm32f107"
+                    stm32_mcu = "stm32f100",
+                    stm32_mcu = "stm32f101",
+                    stm32_mcu = "stm32f102",
+                    stm32_mcu = "stm32f103",
+                    stm32_mcu = "stm32f107"
                 ))]
                 CR {
                     $cr_path Shared;
@@ -278,17 +278,17 @@ macro_rules! map_gpio_pin {
                     LCK { $lck_ty }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 MODER {
                     MODER Shared;
@@ -299,51 +299,51 @@ macro_rules! map_gpio_pin {
                     ODR { $odr_ty }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 OSPEEDR {
                     OSPEEDR Shared;
                     OSPEEDR { $ospeedr_ty }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 OTYPER {
                     OTYPER Shared;
                     OT { $ot_ty }
                 }
                 #[cfg(any(
-                    feature = "stm32l4x1",
-                    feature = "stm32l4x2",
-                    feature = "stm32l4x3",
-                    feature = "stm32l4x5",
-                    feature = "stm32l4x6",
-                    feature = "stm32l4r5",
-                    feature = "stm32l4r7",
-                    feature = "stm32l4r9",
-                    feature = "stm32l4s5",
-                    feature = "stm32l4s7",
-                    feature = "stm32l4s9"
+                    stm32_mcu = "stm32l4x1",
+                    stm32_mcu = "stm32l4x2",
+                    stm32_mcu = "stm32l4x3",
+                    stm32_mcu = "stm32l4x5",
+                    stm32_mcu = "stm32l4x6",
+                    stm32_mcu = "stm32l4r5",
+                    stm32_mcu = "stm32l4r7",
+                    stm32_mcu = "stm32l4r9",
+                    stm32_mcu = "stm32l4s5",
+                    stm32_mcu = "stm32l4s7",
+                    stm32_mcu = "stm32l4s9"
                 ))]
                 PUPDR {
                     PUPDR Shared;
@@ -814,22 +814,22 @@ macro_rules! map_gpio_pins {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioAHead,
@@ -903,22 +903,22 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioBHead,
@@ -992,22 +992,22 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioCHead,
@@ -1081,22 +1081,22 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f102",
-    feature = "stm32f103",
-    feature = "stm32f107",
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f102",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioDHead,
@@ -1170,21 +1170,21 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f103",
-    feature = "stm32f107",
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioEHead,
@@ -1258,17 +1258,17 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f103",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioFHead,
@@ -1342,17 +1342,17 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32f100",
-    feature = "stm32f101",
-    feature = "stm32f103",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32f100",
+    stm32_mcu = "stm32f101",
+    stm32_mcu = "stm32f103",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioGHead,
@@ -1426,17 +1426,17 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x1",
-    feature = "stm32l4x2",
-    feature = "stm32l4x3",
-    feature = "stm32l4x5",
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioHHead,
@@ -1510,13 +1510,13 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    feature = "stm32l4x6",
-    feature = "stm32l4r5",
-    feature = "stm32l4r7",
-    feature = "stm32l4r9",
-    feature = "stm32l4s5",
-    feature = "stm32l4s7",
-    feature = "stm32l4s9"
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioIHead,
