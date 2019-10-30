@@ -54,7 +54,7 @@ fn svd_deserialize() -> Result<Device> {
         "stm32f103" => parse_svd("STM32F103.svd"),
         "stm32f107" => parse_svd("STM32F107.svd"),
         "stm32f401" => patch_stm32f401(parse_svd("STM32F401.svd")?),
-        "stm32f405" => parse_svd("STM32F405.svd"),
+        "stm32f405" => patch_stm32f405(parse_svd("STM32F405.svd")?),
         "stm32f407" => parse_svd("STM32F407.svd"),
         "stm32f410" => parse_svd("STM32F410.svd"),
         "stm32f411" => parse_svd("STM32F411.svd"),
@@ -86,6 +86,11 @@ fn patch_stm32f102(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     fix_rcc_splits(&mut dev)?;
+    Ok(dev)
+}
+
+fn patch_stm32f405(mut dev: Device) -> Result<Device> {
+    fix_rcc_gpio(&mut dev)?;
     Ok(dev)
 }
 
@@ -350,6 +355,46 @@ fn fix_rcc_splits(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("CFGR").remove_field("SW1");
     dev.periph("RCC").reg("CFGR").field("SW0").bit_width = Some(2);
     dev.periph("RCC").reg("CFGR").field("SW0").name = "SW".to_string();
+    Ok(())
+}
+
+fn fix_rcc_gpio(dev: &mut Device) -> Result<()> {
+    dev.periph("RCC").reg("AHB1ENR").new_field(|field| {
+        field.name = "GPIOJEN".to_string();
+        field.description = "IO port J clock enable".to_string();
+        field.bit_offset = Some(9);
+        field.bit_width = Some(1);
+    });
+    dev.periph("RCC").reg("AHB1ENR").new_field(|field| {
+        field.name = "GPIOKEN".to_string();
+        field.description = "IO port K clock enable".to_string();
+        field.bit_offset = Some(10);
+        field.bit_width = Some(1);
+    });
+    dev.periph("RCC").reg("AHB1RSTR").new_field(|field| {
+        field.name = "GPIOJRST".to_string();
+        field.description = "IO port J reset".to_string();
+        field.bit_offset = Some(9);
+        field.bit_width = Some(1);
+    });
+    dev.periph("RCC").reg("AHB1RSTR").new_field(|field| {
+        field.name = "GPIOKRST".to_string();
+        field.description = "IO port K reset".to_string();
+        field.bit_offset = Some(10);
+        field.bit_width = Some(1);
+    });
+    dev.periph("RCC").reg("AHB1LPENR").new_field(|field| {
+        field.name = "GPIOJLPEN".to_string();
+        field.description = "IO port J clock enable during Sleep mode".to_string();
+        field.bit_offset = Some(9);
+        field.bit_width = Some(1);
+    });
+    dev.periph("RCC").reg("AHB1LPENR").new_field(|field| {
+        field.name = "GPIOKLPEN".to_string();
+        field.description = "IO port K clock enable during Sleep mode".to_string();
+        field.bit_offset = Some(10);
+        field.bit_width = Some(1);
+    });
     Ok(())
 }
 
