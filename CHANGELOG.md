@@ -13,6 +13,7 @@ Possible log types:
 
 ### Unreleased
 
+- [added] Add `exti` peripheral mapping for STM32F4 family
 - [added] Add `gpio` peripheral mapping for STM32F4 family
 - [changed] Using `stm2_mcu` config flag to specify the MCU model
 - [added] Add STM32F4 family support

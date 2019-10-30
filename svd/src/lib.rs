@@ -47,6 +47,7 @@ pub fn generate_rest() -> Result<()> {
 }
 
 fn svd_deserialize() -> Result<Device> {
+    println!("cargo:rerun-if-env-changed=CARGO_CFG_STM32_MCU");
     match env::var("CARGO_CFG_STM32_MCU")?.as_ref() {
         "stm32f100" => parse_svd("STM32F100.svd"),
         "stm32f101" => parse_svd("STM32F101.svd"),
@@ -59,7 +60,7 @@ fn svd_deserialize() -> Result<Device> {
         "stm32f410" => parse_svd("STM32F410.svd"),
         "stm32f411" => parse_svd("STM32F411.svd"),
         "stm32f412" => parse_svd("STM32F412.svd"),
-        "stm32f413" => parse_svd("STM32F413.svd"),
+        "stm32f413" => patch_stm32f413(parse_svd("STM32F413.svd")?),
         "stm32f427" => parse_svd("STM32F427.svd"),
         "stm32f429" => parse_svd("STM32F429.svd"),
         "stm32f446" => parse_svd("STM32F446.svd"),
@@ -91,6 +92,11 @@ fn patch_stm32f401(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32f405(mut dev: Device) -> Result<Device> {
     fix_rcc_gpio(&mut dev)?;
+    Ok(dev)
+}
+
+fn patch_stm32f413(mut dev: Device) -> Result<Device> {
+    fix_exti_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -150,7 +156,7 @@ fn patch_stm32l4x3(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32l4x5(mut dev: Device) -> Result<Device> {
     fix_adc(&mut dev)?;
-    fix_exti(&mut dev)?;
+    fix_exti_1(&mut dev)?;
     fix_lptim1(&mut dev)?;
     fix_lptim2(&mut dev)?;
     fix_rcc(&mut dev)?;
@@ -166,7 +172,7 @@ fn patch_stm32l4x5(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32l4x6(mut dev: Device) -> Result<Device> {
     fix_adc(&mut dev)?;
-    fix_exti(&mut dev)?;
+    fix_exti_1(&mut dev)?;
     fix_lptim1(&mut dev)?;
     fix_lptim2(&mut dev)?;
     fix_rcc(&mut dev)?;
@@ -182,7 +188,7 @@ fn patch_stm32l4x6(mut dev: Device) -> Result<Device> {
 fn patch_stm32l4plus(mut dev: Device) -> Result<Device> {
     add_dmamux(&mut dev)?;
     fix_adc(&mut dev)?;
-    fix_exti(&mut dev)?;
+    fix_exti_1(&mut dev)?;
     fix_lptim1(&mut dev)?;
     fix_lptim2(&mut dev)?;
     fix_pwr(&mut dev)?;
@@ -221,11 +227,29 @@ fn fix_adc(dev: &mut Device) -> Result<()> {
     Ok(())
 }
 
-fn fix_exti(dev: &mut Device) -> Result<()> {
+fn fix_exti_1(dev: &mut Device) -> Result<()> {
     for (reg_name, field_name) in &[("IMR2", "MR39"), ("EMR2", "MR39")] {
         let mut field = dev.periph("EXTI").reg(reg_name).field(field_name).clone();
         field.name = field.name.replace("39", "40");
         field.description = field.description.replace("39", "40");
+        field.bit_offset = Some(field.bit_offset.unwrap() + 1);
+        dev.periph("EXTI").reg(reg_name).add_field(field);
+    }
+    Ok(())
+}
+
+fn fix_exti_2(dev: &mut Device) -> Result<()> {
+    for (reg_name, field_name) in &[
+        ("IMR", "MR22"),
+        ("EMR", "MR22"),
+        ("RTSR", "TR22"),
+        ("FTSR", "TR22"),
+        ("SWIER", "SWIER22"),
+        ("PR", "PR22"),
+    ] {
+        let mut field = dev.periph("EXTI").reg(reg_name).field(field_name).clone();
+        field.name = field.name.replace("22", "23");
+        field.description = field.description.replace("22", "23");
         field.bit_offset = Some(field.bit_offset.unwrap() + 1);
         dev.periph("EXTI").reg(reg_name).add_field(field);
     }
@@ -359,42 +383,19 @@ fn fix_rcc_splits(dev: &mut Device) -> Result<()> {
 }
 
 fn fix_rcc_gpio(dev: &mut Device) -> Result<()> {
-    dev.periph("RCC").reg("AHB1ENR").new_field(|field| {
-        field.name = "GPIOJEN".to_string();
-        field.description = "IO port J clock enable".to_string();
-        field.bit_offset = Some(9);
-        field.bit_width = Some(1);
-    });
-    dev.periph("RCC").reg("AHB1ENR").new_field(|field| {
-        field.name = "GPIOKEN".to_string();
-        field.description = "IO port K clock enable".to_string();
-        field.bit_offset = Some(10);
-        field.bit_width = Some(1);
-    });
-    dev.periph("RCC").reg("AHB1RSTR").new_field(|field| {
-        field.name = "GPIOJRST".to_string();
-        field.description = "IO port J reset".to_string();
-        field.bit_offset = Some(9);
-        field.bit_width = Some(1);
-    });
-    dev.periph("RCC").reg("AHB1RSTR").new_field(|field| {
-        field.name = "GPIOKRST".to_string();
-        field.description = "IO port K reset".to_string();
-        field.bit_offset = Some(10);
-        field.bit_width = Some(1);
-    });
-    dev.periph("RCC").reg("AHB1LPENR").new_field(|field| {
-        field.name = "GPIOJLPEN".to_string();
-        field.description = "IO port J clock enable during Sleep mode".to_string();
-        field.bit_offset = Some(9);
-        field.bit_width = Some(1);
-    });
-    dev.periph("RCC").reg("AHB1LPENR").new_field(|field| {
-        field.name = "GPIOKLPEN".to_string();
-        field.description = "IO port K clock enable during Sleep mode".to_string();
-        field.bit_offset = Some(10);
-        field.bit_width = Some(1);
-    });
+    for (reg_name, field_name) in &[
+        ("AHB1ENR", "GPIOIEN"),
+        ("AHB1RSTR", "GPIOIRST"),
+        ("AHB1LPENR", "GPIOILPEN"),
+    ] {
+        for (name, description, offset) in &[("GPIOJ", "port J", 1), ("GPIOK", "port K", 2)] {
+            let mut field = dev.periph("RCC").reg(reg_name).field(field_name).clone();
+            field.name = field.name.replace("GPIOI", name);
+            field.description = field.description.replace("port I", description);
+            field.bit_offset = Some(field.bit_offset.unwrap() + offset);
+            dev.periph("RCC").reg(reg_name).add_field(field);
+        }
+    }
     Ok(())
 }
 
