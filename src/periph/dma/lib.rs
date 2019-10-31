@@ -34,6 +34,17 @@ periph! {
             DMAEN { RwRwRegFieldBitBand }
         }
         #[cfg(any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
             stm32_mcu = "stm32l4x1",
             stm32_mcu = "stm32l4x2",
             stm32_mcu = "stm32l4x3",
@@ -51,6 +62,17 @@ periph! {
             DMARST { RwRwRegFieldBitBand }
         }
         #[cfg(any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
             stm32_mcu = "stm32l4x1",
             stm32_mcu = "stm32l4x2",
             stm32_mcu = "stm32l4x3",
@@ -102,6 +124,17 @@ macro_rules! map_dma {
                     DMAEN { $dmaen }
                 }
                 #[cfg(any(
+                    stm32_mcu = "stm32f401",
+                    stm32_mcu = "stm32f405",
+                    stm32_mcu = "stm32f407",
+                    stm32_mcu = "stm32f410",
+                    stm32_mcu = "stm32f411",
+                    stm32_mcu = "stm32f412",
+                    stm32_mcu = "stm32f413",
+                    stm32_mcu = "stm32f427",
+                    stm32_mcu = "stm32f429",
+                    stm32_mcu = "stm32f446",
+                    stm32_mcu = "stm32f469",
                     stm32_mcu = "stm32l4x1",
                     stm32_mcu = "stm32l4x2",
                     stm32_mcu = "stm32l4x3",
@@ -119,6 +152,17 @@ macro_rules! map_dma {
                     DMARST { $dmarst }
                 }
                 #[cfg(any(
+                    stm32_mcu = "stm32f401",
+                    stm32_mcu = "stm32f405",
+                    stm32_mcu = "stm32f407",
+                    stm32_mcu = "stm32f410",
+                    stm32_mcu = "stm32f411",
+                    stm32_mcu = "stm32f412",
+                    stm32_mcu = "stm32f413",
+                    stm32_mcu = "stm32f427",
+                    stm32_mcu = "stm32f429",
+                    stm32_mcu = "stm32f446",
+                    stm32_mcu = "stm32f469",
                     stm32_mcu = "stm32l4x1",
                     stm32_mcu = "stm32l4x2",
                     stm32_mcu = "stm32l4x3",
@@ -230,4 +274,56 @@ map_dma! {
     DMA2EN,
     DMA2RST,
     DMA2SMEN,
+}
+
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
+))]
+map_dma! {
+    "Extracts DMA1 head register tokens.",
+    periph_dma1,
+    "DMA1 head peripheral variant.",
+    Dma1,
+    AHB1ENR,
+    AHB1RSTR,
+    AHB1LPENR,
+    DMA1EN,
+    DMA1RST,
+    DMA1LPEN,
+}
+
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
+))]
+map_dma! {
+    "Extracts DMA2 head register tokens.",
+    periph_dma2,
+    "DMA2 head peripheral variant.",
+    Dma2,
+    AHB1ENR,
+    AHB1RSTR,
+    AHB1LPENR,
+    DMA2EN,
+    DMA2RST,
+    DMA2LPEN,
 }

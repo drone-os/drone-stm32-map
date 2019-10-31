@@ -15,20 +15,20 @@ periph! {
 
     DMAMUX {
         RGCR {
-            0x20 RwReg;
+            0x20 RwRegBitBand;
             GNBREQ { RwRwRegFieldBits }
             GPOL { RwRwRegFieldBits }
-            GE { RwRwRegFieldBit }
-            OIE { RwRwRegFieldBit }
+            GE { RwRwRegFieldBitBand }
+            OIE { RwRwRegFieldBitBand }
             SIG_ID { RwRwRegFieldBits }
         }
         RGSR {
-            0x20 RoReg Shared;
-            OF { RoRoRegFieldBit }
+            0x20 RoRegBitBand Shared;
+            OF { RoRoRegFieldBitBand }
         }
         RGCFR {
-            0x20 WoReg Shared;
-            COF { WoWoRegFieldBit }
+            0x20 WoRegBitBand Shared;
+            COF { WoWoRegFieldBitBand }
         }
     }
 }

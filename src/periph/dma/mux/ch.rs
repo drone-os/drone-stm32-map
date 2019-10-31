@@ -15,22 +15,22 @@ periph! {
 
     DMAMUX {
         CCR {
-            0x20 RwReg;
+            0x20 RwRegBitBand;
             SYNC_ID { RwRwRegFieldBits }
             NBREQ { RwRwRegFieldBits }
             SPOL { RwRwRegFieldBits }
-            SE { RwRwRegFieldBit }
-            EGE { RwRwRegFieldBit }
-            SOIE { RwRwRegFieldBit }
+            SE { RwRwRegFieldBitBand }
+            EGE { RwRwRegFieldBitBand }
+            SOIE { RwRwRegFieldBitBand }
             DMAREQ_ID { RwRwRegFieldBits }
         }
         CSR {
-            0x20 RoReg Shared;
-            SOF { RoRoRegFieldBit }
+            0x20 RoRegBitBand Shared;
+            SOF { RoRoRegFieldBitBand }
         }
         CFR {
-            0x20 WoReg Shared;
-            CSOF { WoWoRegFieldBit }
+            0x20 WoRegBitBand Shared;
+            CSOF { WoWoRegFieldBitBand }
         }
     }
 }

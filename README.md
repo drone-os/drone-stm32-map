@@ -25,17 +25,17 @@ a drop-in replacement for it.
 | `stm32f102` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
 | `stm32f103` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
 | `stm32f107` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
-| `stm32f401` | ARM® Cortex®-M4F r0p1 | [RM0368](https://www.st.com/resource/en/reference_manual/dm00096844.pdf) | `exti`, `gpio`                                           |
-| `stm32f405` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `exti`, `gpio`                                           |
-| `stm32f407` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `exti`, `gpio`                                           |
-| `stm32f410` | ARM® Cortex®-M4F r0p1 | [RM0401](https://www.st.com/resource/en/reference_manual/dm00180366.pdf) | `exti`, `gpio`                                           |
-| `stm32f411` | ARM® Cortex®-M4F r0p1 | [RM0383](https://www.st.com/resource/en/reference_manual/dm00119316.pdf) | `exti`, `gpio`                                           |
-| `stm32f412` | ARM® Cortex®-M4F r0p1 | [RM0402](https://www.st.com/resource/en/reference_manual/dm00180369.pdf) | `exti`, `gpio`                                           |
-| `stm32f413` | ARM® Cortex®-M4F r0p1 | [RM0430](https://www.st.com/resource/en/reference_manual/dm00305666.pdf) | `exti`, `gpio`                                           |
-| `stm32f427` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `exti`, `gpio`                                           |
-| `stm32f429` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `exti`, `gpio`                                           |
-| `stm32f446` | ARM® Cortex®-M4F r0p1 | [RM0390](https://www.st.com/resource/en/reference_manual/dm00135183.pdf) | `exti`, `gpio`                                           |
-| `stm32f469` | ARM® Cortex®-M4F r0p1 | [RM0386](https://www.st.com/resource/en/reference_manual/dm00127514.pdf) | `exti`, `gpio`                                           |
+| `stm32f401` | ARM® Cortex®-M4F r0p1 | [RM0368](https://www.st.com/resource/en/reference_manual/dm00096844.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f405` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f407` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f410` | ARM® Cortex®-M4F r0p1 | [RM0401](https://www.st.com/resource/en/reference_manual/dm00180366.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f411` | ARM® Cortex®-M4F r0p1 | [RM0383](https://www.st.com/resource/en/reference_manual/dm00119316.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f412` | ARM® Cortex®-M4F r0p1 | [RM0402](https://www.st.com/resource/en/reference_manual/dm00180369.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f413` | ARM® Cortex®-M4F r0p1 | [RM0430](https://www.st.com/resource/en/reference_manual/dm00305666.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f427` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f429` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f446` | ARM® Cortex®-M4F r0p1 | [RM0390](https://www.st.com/resource/en/reference_manual/dm00135183.pdf) | `dma` `exti` `gpio`                                      |
+| `stm32f469` | ARM® Cortex®-M4F r0p1 | [RM0386](https://www.st.com/resource/en/reference_manual/dm00127514.pdf) | `dma` `exti` `gpio`                                      |
 | `stm32l4x1` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
 | `stm32l4x2` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
 | `stm32l4x3` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
