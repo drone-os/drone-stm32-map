@@ -13,12 +13,9 @@ Possible log types:
 
 ### Unreleased
 
-- [added] Add `tim` peripheral mapping for STM32F4 family
-- [added] Add `dma` peripheral mapping for STM32F4 family
-- [added] Add `exti` peripheral mapping for STM32F4 family
-- [added] Add `gpio` peripheral mapping for STM32F4 family
+- [added] Add STM32F4 family support with `adc`, `dma`, `exti`, `gpio`, `tim`
+  peripheral mappings
 - [changed] Using `stm2_mcu` config flag to specify the MCU model
-- [added] Add STM32F4 family support
 - [changed] Extracted `drone-svd` crate
 
 ### v0.10.1 (2019-09-27)
