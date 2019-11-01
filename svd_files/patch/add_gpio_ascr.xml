@@ -1,0 +1,119 @@
+<device>
+  <name>Add GPIO ASCR</name>
+  <peripherals>
+    <peripheral>
+      <name>GPIO</name>
+      <baseAddress>0x00000000</baseAddress>
+      <registers>
+        <register>
+          <name>ASCR</name>
+          <displayName>ASCR</displayName>
+          <description>GPIO port analog switch control
+          register</description>
+          <addressOffset>0x2C</addressOffset>
+          <size>0x20</size>
+          <access>read-write</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>ASC0</name>
+              <description>Port analog switch control</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC1</name>
+              <description>Port analog switch control</description>
+              <bitOffset>1</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC2</name>
+              <description>Port analog switch control</description>
+              <bitOffset>2</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC3</name>
+              <description>Port analog switch control</description>
+              <bitOffset>3</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC4</name>
+              <description>Port analog switch control</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC5</name>
+              <description>Port analog switch control</description>
+              <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC6</name>
+              <description>Port analog switch control</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC7</name>
+              <description>Port analog switch control</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC8</name>
+              <description>Port analog switch control</description>
+              <bitOffset>8</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC9</name>
+              <description>Port analog switch control</description>
+              <bitOffset>9</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC10</name>
+              <description>Port analog switch control</description>
+              <bitOffset>10</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC11</name>
+              <description>Port analog switch control</description>
+              <bitOffset>11</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC12</name>
+              <description>Port analog switch control</description>
+              <bitOffset>12</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC13</name>
+              <description>Port analog switch control</description>
+              <bitOffset>13</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC14</name>
+              <description>Port analog switch control</description>
+              <bitOffset>14</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>ASC15</name>
+              <description>Port analog switch control</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+          </fields>
+        </register>
+      </registers>
+    </peripheral>
+  </peripherals>
+</device>

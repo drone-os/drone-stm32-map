@@ -8,6 +8,7 @@
 pub mod dma;
 pub mod dmamux;
 pub mod exti;
+pub mod gpio;
 pub mod i2c;
 pub mod pwr;
 pub mod rcc;
@@ -16,7 +17,7 @@ pub mod spi;
 pub mod tim;
 pub mod uart;
 
-pub use anyhow::Result;
+pub use anyhow::{bail, Result};
 
 use drone_svd::Device;
 use std::{env, fs::File, path::Path};
@@ -88,7 +89,7 @@ fn svd_deserialize() -> Result<Device> {
         "stm32l4s5" => patch_stm32l4plus(parse_svd("STM32L4S5.svd")?),
         "stm32l4s7" => patch_stm32l4plus(parse_svd("STM32L4S7.svd")?),
         "stm32l4s9" => patch_stm32l4plus(parse_svd("STM32L4S9.svd")?),
-        _ => Ok(Device::new("Generic STM32".to_string())),
+        _ => bail!("invalid `stm32_mcu` cfg flag"),
     }
 }
 
@@ -100,6 +101,16 @@ fn patch_stm32f102(mut dev: Device) -> Result<Device> {
 fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     rcc::fix_2(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim10_2(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
+    tim::fix_tim11_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -107,6 +118,16 @@ fn patch_stm32f405(mut dev: Device) -> Result<Device> {
     rcc::fix_3(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
     dma::fix_dma2_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim10_2(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
+    tim::fix_tim11_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -114,27 +135,70 @@ fn patch_stm32f407(mut dev: Device) -> Result<Device> {
     rcc::fix_3(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
     dma::fix_dma2_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim10_2(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
+    tim::fix_tim11_2(&mut dev)?;
     Ok(dev)
 }
 
 fn patch_stm32f410(mut dev: Device) -> Result<Device> {
     dma::fix_dma2_1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim5_2(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
     Ok(dev)
 }
 
 fn patch_stm32f411(mut dev: Device) -> Result<Device> {
     dma::fix_dma2_1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim10_2(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
+    tim::fix_tim11_2(&mut dev)?;
     Ok(dev)
 }
 
 fn patch_stm32f412(mut dev: Device) -> Result<Device> {
     dma::fix_dma2_1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim6(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
     Ok(dev)
 }
 
 fn patch_stm32f413(mut dev: Device) -> Result<Device> {
     dma::fix_dma1(&mut dev)?;
     exti::fix_exti_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim7(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
     Ok(dev)
 }
 
@@ -142,6 +206,16 @@ fn patch_stm32f427(mut dev: Device) -> Result<Device> {
     rcc::fix_3(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
     dma::fix_dma2_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim10_2(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
+    tim::fix_tim11_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -149,18 +223,44 @@ fn patch_stm32f429(mut dev: Device) -> Result<Device> {
     rcc::fix_3(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
     dma::fix_dma2_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim10_2(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
+    tim::fix_tim11_2(&mut dev)?;
     Ok(dev)
 }
 
 fn patch_stm32f446(mut dev: Device) -> Result<Device> {
     dma::fix_dma2_1(&mut dev)?;
     dma::fix_dma2_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
     Ok(dev)
 }
 
 fn patch_stm32f469(mut dev: Device) -> Result<Device> {
     dma::fix_dma2_1(&mut dev)?;
     dma::fix_dma2_2(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim2_2(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim3_3(&mut dev)?;
+    tim::fix_tim5_1(&mut dev)?;
+    tim::fix_tim9_1(&mut dev)?;
+    tim::fix_tim10_1(&mut dev)?;
+    tim::fix_tim11_1(&mut dev)?;
     Ok(dev)
 }
 
@@ -172,9 +272,12 @@ fn patch_stm32l4x1(mut dev: Device) -> Result<Device> {
     rcc::fix_1(&mut dev)?;
     spi::fix_spi2_2(&mut dev)?;
     spi::fix_spi3_1(&mut dev)?;
-    tim::fix_tim1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim1_2(&mut dev)?;
     tim::fix_tim16(&mut dev)?;
-    tim::fix_tim2_and_tim15(&mut dev)?;
+    tim::fix_tim2_1(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim3_2(&mut dev)?;
     uart::fix_uart4(&mut dev)?;
@@ -192,9 +295,12 @@ fn patch_stm32l4x2(mut dev: Device) -> Result<Device> {
     rcc::fix_1(&mut dev)?;
     spi::fix_spi2_2(&mut dev)?;
     spi::fix_spi3_1(&mut dev)?;
-    tim::fix_tim1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim1_2(&mut dev)?;
     tim::fix_tim16(&mut dev)?;
-    tim::fix_tim2_and_tim15(&mut dev)?;
+    tim::fix_tim2_1(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim3_2(&mut dev)?;
     uart::fix_uart4(&mut dev)?;
@@ -210,9 +316,12 @@ fn patch_stm32l4x3(mut dev: Device) -> Result<Device> {
     tim::fix_lptim2(&mut dev)?;
     rcc::fix_1(&mut dev)?;
     spi::fix_spi3_2(&mut dev)?;
-    tim::fix_tim1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim1_2(&mut dev)?;
     tim::fix_tim16(&mut dev)?;
-    tim::fix_tim2_and_tim15(&mut dev)?;
+    tim::fix_tim2_1(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim3_2(&mut dev)?;
     Ok(dev)
@@ -226,11 +335,15 @@ fn patch_stm32l4x5(mut dev: Device) -> Result<Device> {
     rcc::fix_1(&mut dev)?;
     rtc::fix(&mut dev)?;
     spi::fix_spi3_2(&mut dev)?;
-    tim::fix_tim1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim1_2(&mut dev)?;
     tim::fix_tim16(&mut dev)?;
-    tim::fix_tim2_and_tim15(&mut dev)?;
+    tim::fix_tim2_1(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim8(&mut dev)?;
+    gpio::add_ascr(&mut dev)?;
     Ok(dev)
 }
 
@@ -241,9 +354,12 @@ fn patch_stm32l4x6(mut dev: Device) -> Result<Device> {
     tim::fix_lptim2(&mut dev)?;
     rcc::fix_1(&mut dev)?;
     spi::fix_spi3_2(&mut dev)?;
-    tim::fix_tim1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim1_2(&mut dev)?;
     tim::fix_tim16(&mut dev)?;
-    tim::fix_tim2_and_tim15(&mut dev)?;
+    tim::fix_tim2_1(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim8(&mut dev)?;
     Ok(dev)
@@ -257,9 +373,12 @@ fn patch_stm32l4plus(mut dev: Device) -> Result<Device> {
     tim::fix_lptim2(&mut dev)?;
     pwr::fix(&mut dev)?;
     spi::fix_spi3_2(&mut dev)?;
-    tim::fix_tim1(&mut dev)?;
+    tim::fix_tim1_1(&mut dev)?;
+    tim::fix_tim1_2(&mut dev)?;
     tim::fix_tim16(&mut dev)?;
-    tim::fix_tim2_and_tim15(&mut dev)?;
+    tim::fix_tim2_1(&mut dev)?;
+    tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim8(&mut dev)?;
     Ok(dev)

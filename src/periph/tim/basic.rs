@@ -20,6 +20,15 @@ periph! {
             TIMRST { RwRwRegFieldBitBand }
         }
         #[cfg(any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
             stm32_mcu = "stm32l4x1",
             stm32_mcu = "stm32l4x2",
             stm32_mcu = "stm32l4x3",
@@ -115,6 +124,15 @@ macro_rules! map_basic_tim {
                     TIMRST { $timrst }
                 }
                 #[cfg(any(
+                    stm32_mcu = "stm32f405",
+                    stm32_mcu = "stm32f407",
+                    stm32_mcu = "stm32f410",
+                    stm32_mcu = "stm32f412",
+                    stm32_mcu = "stm32f413",
+                    stm32_mcu = "stm32f427",
+                    stm32_mcu = "stm32f429",
+                    stm32_mcu = "stm32f446",
+                    stm32_mcu = "stm32f469",
                     stm32_mcu = "stm32l4x1",
                     stm32_mcu = "stm32l4x2",
                     stm32_mcu = "stm32l4x3",
@@ -267,5 +285,54 @@ map_basic_tim! {
     TIM7EN,
     TIM7RST,
     TIM7SMEN,
+    TIM7,
+}
+
+#[cfg(any(
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
+))]
+map_basic_tim! {
+    "Extracts TIM6 register tokens.",
+    periph_tim6,
+    "TIM6 peripheral variant.",
+    Tim6,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    TIM6EN,
+    TIM6RST,
+    TIM6LPEN,
+    TIM6,
+}
+
+#[cfg(any(
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
+))]
+map_basic_tim! {
+    "Extracts TIM7 register tokens.",
+    periph_tim7,
+    "TIM7 peripheral variant.",
+    Tim7,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    TIM7EN,
+    TIM7RST,
+    TIM7LPEN,
     TIM7,
 }
