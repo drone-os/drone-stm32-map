@@ -59,9 +59,7 @@ pub fn generate_rest() -> Result<()> {
 }
 
 fn svd_deserialize() -> Result<Device> {
-    println!("cargo:rerun-if-env-changed=CARGO_TARGET_THUMBV7M_NONE_EABI_RUSTFLAGS");
-    println!("cargo:rerun-if-env-changed=CARGO_TARGET_THUMBV7EM_NONE_EABI_RUSTFLAGS");
-    println!("cargo:rerun-if-env-changed=CARGO_TARGET_THUMBV7EM_NONE_EABIHF_RUSTFLAGS");
+    drone_svd::rerun_if_env_changed();
     match env::var("CARGO_CFG_STM32_MCU")?.as_ref() {
         "stm32f100" => parse_svd("STM32F100.svd"),
         "stm32f101" => parse_svd("STM32F101.svd"),

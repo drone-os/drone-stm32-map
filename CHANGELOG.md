@@ -13,6 +13,8 @@ Possible log types:
 
 ### Unreleased
 
+### v0.11.0 (2019-11-06)
+
 - [added] Add STM32F4 family support with `adc`, `dma`, `exti`, `gpio`, `tim`
   peripheral mappings
 - [changed] Using `stm2_mcu` config flag to specify the MCU model
