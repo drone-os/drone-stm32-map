@@ -4,8 +4,20 @@ use crate::copy_field;
 use anyhow::Result;
 use drone_svd::Device;
 
-pub fn fix_usart1(dev: &mut Device) -> Result<()> {
+pub fn fix_usart1_1(dev: &mut Device) -> Result<()> {
     copy_field(dev, "USART3", "USART1", "CR3", "UCESM");
+    Ok(())
+}
+
+pub fn fix_usart1_2(dev: &mut Device) -> Result<()> {
+    dev.periph("USART1").reg("BRR").remove_field("DIV_Mantissa");
+    dev.periph("USART1").reg("BRR").remove_field("DIV_Fraction");
+    dev.periph("USART1").reg("BRR").new_field(|field| {
+        field.name = "BRR".to_string();
+        field.description = "BRR".to_string();
+        field.bit_offset = Some(0);
+        field.bit_width = Some(16);
+    });
     Ok(())
 }
 

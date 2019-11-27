@@ -63,7 +63,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! drone-stm32-map = { version = "0.11.0", features = [...] }
+//! drone-stm32-map = { version = "0.11.1", features = [...] }
 //! ```
 
 #![deny(elided_lifetimes_in_paths)]

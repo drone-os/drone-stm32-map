@@ -27,7 +27,7 @@ members = [
 
 [package]
 name = "drone-stm32-map"
-version = "0.11.0"
+version = "0.11.1"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 exclude = ["/svd_files"]
@@ -70,54 +70,54 @@ tim = ["drone-stm32-map-periph-tim"]
 uart = ["drone-stm32-map-periph-uart"]
 
 [dependencies.drone-cortex-m]
-version = "0.11.0"
+version = "0.11.1"
 path = "../drone-cortex-m"
 
 [dependencies.drone-stm32-map-pieces]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/pieces"
 
 [dependencies.drone-stm32-map-periph-adc]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/adc"
 optional = true
 
 [dependencies.drone-stm32-map-periph-dma]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/dma"
 optional = true
 
 [dependencies.drone-stm32-map-periph-exti]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/exti"
 optional = true
 
 [dependencies.drone-stm32-map-periph-gpio]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/gpio"
 optional = true
 
 [dependencies.drone-stm32-map-periph-i2c]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/i2c"
 optional = true
 
 [dependencies.drone-stm32-map-periph-rtc]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/rtc"
 optional = true
 
 [dependencies.drone-stm32-map-periph-spi]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/spi"
 optional = true
 
 [dependencies.drone-stm32-map-periph-tim]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/tim"
 optional = true
 
 [dependencies.drone-stm32-map-periph-uart]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "src/periph/uart"
 optional = true

@@ -13,6 +13,11 @@ Possible log types:
 
 ### Unreleased
 
+### v0.11.1 (2019-11-27)
+
+- [fixed] Fix `uart` peripheral mappings for STM32L4/STM32L4+
+- [fixed] Fix `dma`, `tim` peripheral mappings for STM32F4
+
 ### v0.11.0 (2019-11-06)
 
 - [added] Add STM32F4 family support with `adc`, `dma`, `exti`, `gpio`, `tim`

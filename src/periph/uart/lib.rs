@@ -125,9 +125,7 @@ periph! {
         }
         BRR {
             0x20 RwRegBitBand;
-            BRR { RwRwRegFieldBits Option }
-            DIV_Fraction { RwRwRegFieldBits Option }
-            DIV_Mantissa { RwRwRegFieldBits Option }
+            BRR { RwRwRegFieldBits }
         }
         GTPR {
             0x20 RwRegBitBand Option;
@@ -238,9 +236,6 @@ macro_rules! map_uart {
         ($($scarcnt:ident)?),
         ($($scen:ident)?),
         ($($tcbgtie:ident)?),
-        ($($brr:ident)?),
-        ($($div_fraction:ident)?),
-        ($($div_mantissa:ident)?),
         ($($gtpr:ident)?),
         ($($rtor:ident)?),
         ($($abrrq:ident)?),
@@ -376,9 +371,7 @@ macro_rules! map_uart {
                 }
                 BRR {
                     BRR;
-                    BRR { $($brr Option)* }
-                    DIV_Fraction { $($div_fraction Option)* }
-                    DIV_Mantissa { $($div_mantissa Option)* }
+                    BRR { BRR }
                 }
                 GTPR {
                     $(
@@ -506,9 +499,6 @@ map_uart! {
     (SCARCNT),
     (SCEN),
     (),
-    (),
-    (DIV_Fraction),
-    (DIV_Mantissa),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -570,9 +560,6 @@ map_uart! {
     (SCARCNT),
     (SCEN),
     (),
-    (),
-    (DIV_Fraction),
-    (DIV_Mantissa),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -634,9 +621,6 @@ map_uart! {
     (SCARCNT),
     (SCEN),
     (TCBGTIE),
-    (),
-    (DIV_Fraction),
-    (DIV_Mantissa),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -697,9 +681,6 @@ map_uart! {
     (SCARCNT),
     (SCEN),
     (),
-    (),
-    (DIV_Fraction),
-    (DIV_Mantissa),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -758,9 +739,6 @@ map_uart! {
     (SCARCNT),
     (SCEN),
     (),
-    (),
-    (DIV_Fraction),
-    (DIV_Mantissa),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -820,9 +798,6 @@ map_uart! {
     (),
     (),
     (),
-    (),
-    (),
-    (BRR),
     (),
     (),
     (),

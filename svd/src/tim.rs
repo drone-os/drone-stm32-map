@@ -86,6 +86,17 @@ pub fn fix_tim2_3(dev: &mut Device) -> Result<()> {
     Ok(())
 }
 
+pub fn fix_tim2_4(dev: &mut Device) -> Result<()> {
+    dev.periph("TIM5").interrupt.push({
+        let mut interrupt = Interrupt::default();
+        interrupt.name = "TIM5".to_string();
+        interrupt.description = "TIM5 global interrupt".to_string();
+        interrupt.value = 50;
+        interrupt
+    });
+    Ok(())
+}
+
 pub fn add_tim3(dev: &mut Device) -> Result<()> {
     dev.new_periph(|peripheral| {
         peripheral.derived_from = Some("TIM2".to_string());

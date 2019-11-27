@@ -1,6 +1,6 @@
 [package]
 name = "drone-stm32-map-pieces-1"
-version = "0.11.0"
+version = "0.11.1"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/drone-os/drone-stm32-map"
@@ -15,13 +15,13 @@ STM32 peripheral mappings for Drone, an Embedded Operating System.
 path = "lib.rs"
 
 [dependencies.drone-core]
-version = "0.11.0"
+version = "0.11.1"
 path = "../../../../drone-core"
 
 [dependencies.drone-cortex-m]
-version = "0.11.0"
+version = "0.11.1"
 path = "../../../../drone-cortex-m"
 
 [build-dependencies.drone-stm32-map-svd]
-version = "=0.11.0"
+version = "=0.11.1"
 path = "../../../svd"

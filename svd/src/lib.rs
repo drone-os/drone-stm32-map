@@ -99,10 +99,13 @@ fn patch_stm32f102(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     rcc::fix_2(&mut dev)?;
+    dma::fix_dma1_2(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
+    dma::fix_dma2_3(&mut dev)?;
     tim::fix_tim1_1(&mut dev)?;
     tim::fix_tim2_2(&mut dev)?;
     tim::fix_tim2_3(&mut dev)?;
+    tim::fix_tim2_4(&mut dev)?;
     tim::fix_tim3_3(&mut dev)?;
     tim::fix_tim5_1(&mut dev)?;
     tim::fix_tim9_1(&mut dev)?;
@@ -195,7 +198,7 @@ fn patch_stm32f412(mut dev: Device) -> Result<Device> {
 }
 
 fn patch_stm32f413(mut dev: Device) -> Result<Device> {
-    dma::fix_dma1(&mut dev)?;
+    dma::fix_dma1_1(&mut dev)?;
     exti::fix_exti_2(&mut dev)?;
     tim::fix_tim1_1(&mut dev)?;
     tim::fix_tim2_2(&mut dev)?;
@@ -297,7 +300,8 @@ fn patch_stm32l4x1(mut dev: Device) -> Result<Device> {
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim3_2(&mut dev)?;
     uart::fix_uart4(&mut dev)?;
-    uart::fix_usart1(&mut dev)?;
+    uart::fix_usart1_1(&mut dev)?;
+    uart::fix_usart1_2(&mut dev)?;
     uart::fix_usart3(&mut dev)?;
     Ok(dev)
 }
@@ -320,7 +324,8 @@ fn patch_stm32l4x2(mut dev: Device) -> Result<Device> {
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim3_2(&mut dev)?;
     uart::fix_uart4(&mut dev)?;
-    uart::fix_usart1(&mut dev)?;
+    uart::fix_usart1_1(&mut dev)?;
+    uart::fix_usart1_2(&mut dev)?;
     uart::fix_usart3(&mut dev)?;
     Ok(dev)
 }
@@ -340,6 +345,7 @@ fn patch_stm32l4x3(mut dev: Device) -> Result<Device> {
     tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim3_2(&mut dev)?;
+    uart::fix_usart1_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -360,6 +366,7 @@ fn patch_stm32l4x5(mut dev: Device) -> Result<Device> {
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim8(&mut dev)?;
     gpio::add_ascr(&mut dev)?;
+    uart::fix_usart1_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -378,6 +385,7 @@ fn patch_stm32l4x6(mut dev: Device) -> Result<Device> {
     tim::fix_tim15(&mut dev)?;
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim8(&mut dev)?;
+    uart::fix_usart1_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -398,6 +406,7 @@ fn patch_stm32l4plus(mut dev: Device) -> Result<Device> {
     tim::fix_tim3_1(&mut dev)?;
     tim::fix_tim8(&mut dev)?;
     adc::fix_adc_1(&mut dev)?;
+    uart::fix_usart1_2(&mut dev)?;
     Ok(dev)
 }
 
