@@ -40,19 +40,6 @@ pub fn fix_usart3(dev: &mut Device) -> Result<()> {
         field.bit_offset = Some(18);
         field.bit_width = Some(1);
     });
-    dev.periph("USART3").reg("BRR").remove_field("BRR");
-    dev.periph("USART3").reg("BRR").new_field(|field| {
-        field.name = "DIV_Mantissa".to_string();
-        field.description = "DIV_Mantissa".to_string();
-        field.bit_offset = Some(4);
-        field.bit_width = Some(12);
-    });
-    dev.periph("USART3").reg("BRR").new_field(|field| {
-        field.name = "DIV_Fraction".to_string();
-        field.description = "DIV_Fraction".to_string();
-        field.bit_offset = Some(0);
-        field.bit_width = Some(4);
-    });
     Ok(())
 }
 
