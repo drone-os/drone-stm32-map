@@ -28,10 +28,8 @@ pub fn fix_adc1_1(dev: &mut Device) -> Result<()> {
 pub fn fix_adc_1(dev: &mut Device) -> Result<()> {
     dev.periph("ADC").reg("SMPR1").remove_field("SMPPLUS");
     for i in 1..=4 {
-        dev.periph("ADC")
-            .reg(&format!("JDR{}", i))
-            .field(&format!("JDATA{}", i))
-            .name = "JDATA".to_string();
+        dev.periph("ADC").reg(&format!("JDR{}", i)).field(&format!("JDATA{}", i)).name =
+            "JDATA".to_string();
     }
     Ok(())
 }

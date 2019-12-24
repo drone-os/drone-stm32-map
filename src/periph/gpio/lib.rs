@@ -1134,11 +1134,7 @@ map_gpio_port! {
     (),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103"
-))]
+#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
 map_gpio_port! {
     "Extracts GPIO port F register tokens.",
     periph_gpio_f,
@@ -1154,11 +1150,7 @@ map_gpio_port! {
     (),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103"
-))]
+#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
 map_gpio_port! {
     "Extracts GPIO port G register tokens.",
     periph_gpio_g,

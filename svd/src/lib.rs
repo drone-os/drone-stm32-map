@@ -23,16 +23,7 @@ pub use anyhow::{bail, Result};
 use drone_svd::Device;
 use std::{env, fs::File, path::Path};
 
-const REG_EXCLUDE: &[&str] = &[
-    "FPU",
-    "FPU_CPACR",
-    "ITM",
-    "MPU",
-    "NVIC",
-    "SCB",
-    "STK",
-    "TPIU",
-];
+const REG_EXCLUDE: &[&str] = &["FPU", "FPU_CPACR", "ITM", "MPU", "NVIC", "SCB", "STK", "TPIU"];
 
 /// Generates code for register mappings.
 pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
@@ -50,12 +41,7 @@ pub fn generate_rest() -> Result<()> {
     let dev = svd_deserialize()?;
     let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
     let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
-    dev.generate_rest(
-        &mut reg_tokens,
-        &mut interrupts,
-        REG_EXCLUDE,
-        "stm32_reg_tokens",
-    )
+    dev.generate_rest(&mut reg_tokens, &mut interrupts, REG_EXCLUDE, "stm32_reg_tokens")
 }
 
 fn svd_deserialize() -> Result<Device> {
@@ -422,11 +408,7 @@ fn copy_field(
     reg_name: &str,
     field_name: &str,
 ) {
-    let field = dev
-        .periph(periph_from)
-        .reg(reg_name)
-        .field(field_name)
-        .clone();
+    let field = dev.periph(periph_from).reg(reg_name).field(field_name).clone();
     dev.periph(periph_to).reg(reg_name).add_field(field);
 }
 

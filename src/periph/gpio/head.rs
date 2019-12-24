@@ -238,11 +238,7 @@ map_gpio_port_head! {
     IOPESMEN,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103"
-))]
+#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
 map_gpio_port_head! {
     "Extracts GPIO port F head register tokens.",
     periph_gpio_f_head,
@@ -257,11 +253,7 @@ map_gpio_port_head! {
     IOPFSMEN,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103"
-))]
+#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
 map_gpio_port_head! {
     "Extracts GPIO port G head register tokens.",
     periph_gpio_g_head,

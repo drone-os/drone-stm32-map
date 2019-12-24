@@ -57,11 +57,9 @@ pub fn fix_2(dev: &mut Device) -> Result<()> {
 }
 
 pub fn fix_3(dev: &mut Device) -> Result<()> {
-    for (reg_name, field_name) in &[
-        ("AHB1ENR", "GPIOIEN"),
-        ("AHB1RSTR", "GPIOIRST"),
-        ("AHB1LPENR", "GPIOILPEN"),
-    ] {
+    for (reg_name, field_name) in
+        &[("AHB1ENR", "GPIOIEN"), ("AHB1RSTR", "GPIOIRST"), ("AHB1LPENR", "GPIOILPEN")]
+    {
         for (name, description, offset) in &[("GPIOJ", "port J", 1), ("GPIOK", "port K", 2)] {
             let mut field = dev.periph("RCC").reg(reg_name).field(field_name).clone();
             field.name = field.name.replace("GPIOI", name);
