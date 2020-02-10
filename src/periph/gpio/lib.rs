@@ -51,7 +51,8 @@ periph! {
             stm32_mcu = "stm32l4r9",
             stm32_mcu = "stm32l4s5",
             stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32wbx5"
         ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
@@ -82,7 +83,8 @@ periph! {
             stm32_mcu = "stm32l4r9",
             stm32_mcu = "stm32l4s5",
             stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32wbx5"
         ))]
         AFRL {
             0x20 RwReg;
@@ -117,7 +119,8 @@ periph! {
             stm32_mcu = "stm32l4r9",
             stm32_mcu = "stm32l4s5",
             stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32wbx5"
         ))]
         AFRH {
             0x20 RwReg;
@@ -132,7 +135,8 @@ periph! {
         }
         #[cfg(any(
             stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6"
+            stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wbx5"
         ))]
         ASCR {
             0x20 RwReg Option;

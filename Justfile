@@ -51,6 +51,7 @@ check-all:
 	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s7"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
 	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r9"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
 	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s9"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32wbx5"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
 
 # Generate the docs
 doc:

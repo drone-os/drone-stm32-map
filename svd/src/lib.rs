@@ -74,8 +74,14 @@ fn svd_deserialize() -> Result<Device> {
         "stm32l4s5" => patch_stm32l4plus(parse_svd("STM32L4S5.svd")?),
         "stm32l4s7" => patch_stm32l4plus(parse_svd("STM32L4S7.svd")?),
         "stm32l4s9" => patch_stm32l4plus(parse_svd("STM32L4S9.svd")?),
+        "stm32wbx5" => patch_stm32wbx5(parse_svd("STM32WBxx_CM4.svd")?),
         _ => bail!("invalid `stm32_mcu` cfg flag"),
     }
+}
+
+fn patch_stm32wbx5(mut dev: Device) -> Result<Device> {
+    fix_802154(&mut dev)?;
+    Ok(dev)
 }
 
 fn patch_stm32f102(mut dev: Device) -> Result<Device> {
@@ -197,6 +203,12 @@ fn patch_stm32f413(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_1(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
     Ok(dev)
+}
+
+fn fix_802154(dev: &mut Device) -> Result<()> {
+    dev.periph("PWR").reg("SR1").field("802WUF").name = "IEEE802WUF".to_string();
+    dev.periph("PWR").reg("C2CR1").field("802EWKUP").name = "IEEE802EWKUP".to_string();
+    Ok(())
 }
 
 fn patch_stm32f427(mut dev: Device) -> Result<Device> {
