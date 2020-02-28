@@ -49,7 +49,7 @@
 //! # Documentation
 //!
 //! - [Drone Book](https://book.drone-os.com/)
-//! - [API documentation](https://api.drone-os.com/drone-stm32-map/0.11/)
+//! - [API documentation](https://api.drone-os.com/drone-stm32-map/0.12/)
 //!
 //! The API documentation intentionally skips auto-generated [`reg`] and [`thr`]
 //! bindings. Otherwise it would use several gigabytes of space and would be
@@ -63,7 +63,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! drone-stm32-map = { version = "0.11.2", features = [...] }
+//! drone-stm32-map = { version = "0.12.0", features = [...] }
 //! ```
 
 #![deny(elided_lifetimes_in_paths)]

@@ -1,9 +1,8 @@
 //! STM32 SVD to bindings for Drone, an Embedded Operating System.
 
-#![feature(generators)]
-#![feature(generator_trait)]
 #![deny(elided_lifetimes_in_paths)]
 #![warn(clippy::pedantic)]
+#![allow(clippy::missing_errors_doc)]
 
 pub mod adc;
 pub mod dma;
@@ -30,8 +29,8 @@ pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
     let dev = svd_deserialize()?;
-    let mut regs = File::create(out_dir.join("svd_regs.rs"))?;
-    dev.generate_regs(&mut regs, REG_EXCLUDE, pool_number, pool_size)
+    let mut output = File::create(out_dir.join("svd_regs.rs"))?;
+    drone_svd::generate_registers(&mut output, dev, pool_number, pool_size, REG_EXCLUDE)
 }
 
 /// Generates code for interrupts and register tokens struct.
@@ -39,9 +38,9 @@ pub fn generate_rest() -> Result<()> {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
     let dev = svd_deserialize()?;
-    let mut reg_tokens = File::create(out_dir.join("svd_reg_index.rs"))?;
-    let mut interrupts = File::create(out_dir.join("svd_interrupts.rs"))?;
-    dev.generate_rest(&mut reg_tokens, &mut interrupts, REG_EXCLUDE, "stm32_reg_tokens")
+    let mut reg_output = File::create(out_dir.join("svd_reg_index.rs"))?;
+    let mut int_output = File::create(out_dir.join("svd_interrupts.rs"))?;
+    drone_svd::generate_rest(&mut reg_output, &mut int_output, dev, "stm32_reg_tokens", REG_EXCLUDE)
 }
 
 fn svd_deserialize() -> Result<Device> {
