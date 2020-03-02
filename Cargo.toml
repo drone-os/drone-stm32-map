@@ -72,6 +72,7 @@ uart = ["drone-stm32-map-periph-uart"]
 [dependencies.drone-cortex-m]
 version = "0.12.0"
 path = "../drone-cortex-m"
+features = ["bit-band"]
 
 [dependencies.drone-stm32-map-pieces]
 version = "=0.12.0"
