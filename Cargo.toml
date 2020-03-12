@@ -59,6 +59,7 @@ maintenance = { status = "actively-developed" }
 
 [features]
 default = []
+std = ["drone-core/std", "drone-cortex-m/std"]
 adc = ["drone-stm32-map-periph-adc"]
 dma = ["drone-stm32-map-periph-dma"]
 exti = ["drone-stm32-map-periph-exti"]
@@ -68,6 +69,10 @@ rtc = ["drone-stm32-map-periph-rtc"]
 spi = ["drone-stm32-map-periph-spi"]
 tim = ["drone-stm32-map-periph-tim"]
 uart = ["drone-stm32-map-periph-uart"]
+
+[dependencies.drone-core]
+version = "0.12.0"
+path = "../drone-core"
 
 [dependencies.drone-cortex-m]
 version = "0.12.0"

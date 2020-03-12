@@ -105,8 +105,8 @@ periph! {
             TG { WoWoRegFieldBitBand }
             UG { WoWoRegFieldBitBand }
         }
-        CCMR1_Output {
-            0x20 RwRegBitBand;
+        CCMR1 {
+            @Output 0x20 RwRegBitBand;
             CC1S { RwRwRegFieldBits }
             CC2S { RwRwRegFieldBits }
             OC1CE { RwRwRegFieldBitBand }
@@ -117,9 +117,7 @@ periph! {
             OC2FE { RwRwRegFieldBitBand }
             OC2M { RwRwRegFieldBits }
             OC2PE { RwRwRegFieldBitBand }
-        }
-        CCMR1_Input {
-            0x20 RwRegBitBand;
+            @Input 0x20 RwRegBitBand;
             CC1S { RwRwRegFieldBits }
             CC2S { RwRwRegFieldBits }
             IC1F { RwRwRegFieldBits }
@@ -127,8 +125,8 @@ periph! {
             IC2F { RwRwRegFieldBits }
             IC2PSC { RwRwRegFieldBits }
         }
-        CCMR2_Output {
-            0x20 RwRegBitBand;
+        CCMR2 {
+            @Output 0x20 RwRegBitBand;
             CC3S { RwRwRegFieldBits }
             CC4S { RwRwRegFieldBits }
             OC3CE { RwRwRegFieldBitBand }
@@ -139,9 +137,7 @@ periph! {
             OC4FE { RwRwRegFieldBitBand }
             OC4M { RwRwRegFieldBits }
             OC4PE { RwRwRegFieldBitBand }
-        }
-        CCMR2_Input {
-            0x20 RwRegBitBand;
+            @Input 0x20 RwRegBitBand;
             CC3S { RwRwRegFieldBits }
             CC4S { RwRwRegFieldBits }
             IC3F { RwRwRegFieldBits }
@@ -475,8 +471,8 @@ macro_rules! map_advanced_tim {
                     TG { TG }
                     UG { UG }
                 }
-                CCMR1_Output {
-                    CCMR1_Output;
+                CCMR1 {
+                    @Output CCMR1_Output;
                     CC1S { CC1S }
                     CC2S { CC2S }
                     OC1CE { OC1CE }
@@ -487,9 +483,7 @@ macro_rules! map_advanced_tim {
                     OC2FE { OC2FE }
                     OC2M { OC2M }
                     OC2PE { OC2PE }
-                }
-                CCMR1_Input {
-                    CCMR1_Input;
+                    @Input CCMR1_Input;
                     CC1S { CC1S }
                     CC2S { CC2S }
                     IC1F { IC1F }
@@ -497,8 +491,8 @@ macro_rules! map_advanced_tim {
                     IC2F { IC2F }
                     IC2PSC { IC2PSC }
                 }
-                CCMR2_Output {
-                    CCMR2_Output;
+                CCMR2 {
+                    @Output CCMR2_Output;
                     CC3S { CC3S }
                     CC4S { CC4S }
                     OC3CE { OC3CE }
@@ -509,9 +503,7 @@ macro_rules! map_advanced_tim {
                     OC4FE { OC4FE }
                     OC4M { OC4M }
                     OC4PE { OC4PE }
-                }
-                CCMR2_Input {
-                    CCMR2_Input;
+                    @Input CCMR2_Input;
                     CC3S { CC3S }
                     CC4S { CC4S }
                     IC3F { IC3F }

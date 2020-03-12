@@ -20,38 +20,6 @@ lint:
 	cargo clippy --package drone-stm32-map-svd
 	drone env {{target}} -- cargo clippy --features "{{features}}" --all --exclude drone-stm32-map-svd
 
-# Check each MCU
-check-all:
-	rustup target add thumbv7m-none-eabi
-	rustup target add thumbv7em-none-eabihf
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f100"' drone env thumbv7m-none-eabi -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f101"' drone env thumbv7m-none-eabi -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f102"' drone env thumbv7m-none-eabi -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f103"' drone env thumbv7m-none-eabi -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f107"' drone env thumbv7m-none-eabi -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f401"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f405"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f407"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f410"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f411"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f412"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f413"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f427"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f429"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f446"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f469"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x1"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x2"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x3"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x5"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x6"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r5"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s5"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r7"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s7"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r9"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s9"' drone env thumbv7em-none-eabihf -- cargo check --package drone-stm32-map --features "{{features}}"
-
 # Generate the docs
 doc:
 	cargo doc --package drone-stm32-map-svd
@@ -60,6 +28,40 @@ doc:
 # Open the docs in a browser
 doc-open: doc
 	drone env {{target}} -- cargo doc --features "{{features}}" --package drone-stm32-map --open
+
+# Run the tests
+test:
+	drone env -- cargo test --features "{{features}} std" --package drone-stm32-map
+
+# Test all MCUs
+test-all:
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f100"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f101"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f102"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f103"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m3_r1p1" --cfg stm32_mcu="stm32f107"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f401"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f405"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f407"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f410"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f411"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f412"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f413"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f427"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f429"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f446"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32f469"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x1"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x2"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x3"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x5"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4x6"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r5"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s5"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r7"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s7"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4r9"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	DRONE_RUSTFLAGS='--cfg cortex_m_core="cortex_m4f_r0p1" --cfg stm32_mcu="stm32l4s9"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
 
 # Update README.md
 readme:
