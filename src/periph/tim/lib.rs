@@ -1,10 +1,9 @@
 //! Timers.
 
 #![feature(proc_macro_hygiene)]
-#![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
-#![allow(clippy::type_repetition_in_bounds)]
+#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
 #![no_std]
 
 #[cfg(any(

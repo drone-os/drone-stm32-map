@@ -1,7 +1,7 @@
 //! General-purpose I/O port heads.
 
 use drone_core::periph;
-use drone_cortex_m::reg::marker::*;
+use drone_cortexm::reg::marker::*;
 
 periph! {
     /// Generic GPIO port head peripheral variant.

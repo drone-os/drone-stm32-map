@@ -1,7 +1,7 @@
 //! Advanced-control timers.
 
 use drone_core::periph;
-use drone_cortex_m::reg::marker::*;
+use drone_cortexm::reg::marker::*;
 
 periph! {
     /// Generic advanced-control timer peripheral variant.

@@ -1,7 +1,7 @@
 //! DMAMUX request generators.
 
 use drone_core::periph;
-use drone_cortex_m::reg::marker::*;
+use drone_cortexm::reg::marker::*;
 
 periph! {
     /// Generic DMAMUX request generator peripheral variant.

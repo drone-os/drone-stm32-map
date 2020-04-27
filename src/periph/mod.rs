@@ -1,7 +1,7 @@
 //! STM32 peripheral mappings.
 
 #[doc(no_inline)]
-pub use drone_cortex_m::map::periph::*;
+pub use drone_cortexm::map::periph::*;
 
 #[cfg(feature = "adc")]
 pub extern crate drone_stm32_map_periph_adc as adc;

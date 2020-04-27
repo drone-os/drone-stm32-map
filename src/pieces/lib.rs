@@ -2,7 +2,6 @@
 
 #![feature(marker_trait_attr)]
 #![feature(proc_macro_hygiene)]
-#![deny(elided_lifetimes_in_paths)]
 #![warn(clippy::pedantic)]
 #![allow(intra_doc_link_resolution_failure)]
 #![no_std]
@@ -34,9 +33,9 @@ pub mod reg {
 pub mod thr {
     mod map {
         #[allow(unused_imports)]
-        use drone_cortex_m::thr;
+        use drone_cortexm::thr;
         #[allow(unused_imports)]
-        use drone_cortex_m::thr::prelude::*;
+        use drone_cortexm::thr::prelude::*;
 
         include!(concat!(env!("OUT_DIR"), "/svd_interrupts.rs"));
     }

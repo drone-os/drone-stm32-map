@@ -8,8 +8,8 @@
 //! between this crate bindings and the Reference Manual is considered a
 //! bug. Fixing such a bug is *not a breaking change*.
 //!
-//! This crate re-exports the contents of [`drone_cortex_m::map`] module and is
-//! a drop-in replacement for it.
+//! This crate re-exports the contents of [`drone_cortexm::map`] module and is a
+//! drop-in replacement for it.
 //!
 //! # Supported Devices
 //!
@@ -55,18 +55,24 @@
 //! bindings. Otherwise it would use several gigabytes of space and would be
 //! very slow to render in a browser. One should refer to the Reference Manual
 //! instead. And to get an idea of what the API looks like on the Drone side,
-//! look at the [`drone_cortex_m::map`] module documentation.
+//! look at the [`drone_cortexm::map`] module documentation.
 //!
 //! # Usage
 //!
-//! Place the following to the Cargo.toml:
+//! Add the crate to your `Cargo.toml` dependencies:
 //!
 //! ```toml
 //! [dependencies]
 //! drone-stm32-map = { version = "0.12.0", features = [...] }
 //! ```
+//!
+//! Add or extend `std` feature as follows:
+//!
+//! ```toml
+//! [features]
+//! std = ["drone-stm32-map/std"]
+//! ```
 
-#![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 #![allow(clippy::doc_markdown)]

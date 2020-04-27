@@ -18,9 +18,9 @@ path = "lib.rs"
 version = "0.12.0"
 path = "../../../../drone-core"
 
-[dependencies.drone-cortex-m]
+[dependencies.drone-cortexm]
 version = "0.12.0"
-path = "../../../../drone-cortex-m"
+path = "../../../../drone-cortexm"
 
 [dependencies.drone-stm32-map-pieces]
 version = "=0.12.0"

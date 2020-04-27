@@ -1,10 +1,9 @@
 //! Direct Memory Access.
 
 #![feature(proc_macro_hygiene)]
-#![deny(elided_lifetimes_in_paths)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
-#![allow(clippy::type_repetition_in_bounds)]
+#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
 #![no_std]
 
 pub mod ch;
@@ -19,7 +18,7 @@ pub mod ch;
 pub mod mux;
 
 use drone_core::periph;
-use drone_cortex_m::reg::marker::*;
+use drone_cortexm::reg::marker::*;
 
 periph! {
     /// Generic DMA head peripheral variant.

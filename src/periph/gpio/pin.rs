@@ -1,7 +1,7 @@
 //! General-purpose I/O pins.
 
 use drone_core::periph;
-use drone_cortex_m::reg::marker::*;
+use drone_cortexm::reg::marker::*;
 
 periph! {
     /// Generic GPIO pin peripheral variant.

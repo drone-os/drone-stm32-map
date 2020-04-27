@@ -4,7 +4,7 @@ pub mod ch;
 pub mod rg;
 
 use drone_core::periph;
-use drone_cortex_m::reg::marker::*;
+use drone_cortexm::reg::marker::*;
 
 periph! {
     /// Generic DMAMUX head peripheral variant.

@@ -1,6 +1,5 @@
 //! STM32 SVD to bindings for Drone, an Embedded Operating System.
 
-#![deny(elided_lifetimes_in_paths)]
 #![warn(clippy::pedantic)]
 #![allow(clippy::missing_errors_doc)]
 
