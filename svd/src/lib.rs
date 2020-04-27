@@ -103,6 +103,7 @@ fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_1(&mut dev)?;
     tim::fix_tim11_2(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    i2c::fix_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -122,6 +123,7 @@ fn patch_stm32f405(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_2(&mut dev)?;
     adc::fix_adc_com(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    i2c::fix_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -141,6 +143,7 @@ fn patch_stm32f407(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_2(&mut dev)?;
     adc::fix_adc_com(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    i2c::fix_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -152,6 +155,8 @@ fn patch_stm32f410(mut dev: Device) -> Result<Device> {
     tim::fix_tim9_1(&mut dev)?;
     tim::fix_tim11_1(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    i2c::fix_3(&mut dev)?;
+    i2c::fix_6(&mut dev)?;
     Ok(dev)
 }
 
@@ -168,6 +173,7 @@ fn patch_stm32f411(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_1(&mut dev)?;
     tim::fix_tim11_2(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    i2c::fix_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -183,6 +189,11 @@ fn patch_stm32f412(mut dev: Device) -> Result<Device> {
     tim::fix_tim10_1(&mut dev)?;
     tim::fix_tim11_1(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    rcc::fix_5(&mut dev)?;
+    rcc::fix_6(&mut dev)?;
+    i2c::fix_2(&mut dev)?;
+    i2c::fix_6(&mut dev)?;
+    i2c::fix_4(&mut dev)?;
     Ok(dev)
 }
 
@@ -199,6 +210,9 @@ fn patch_stm32f413(mut dev: Device) -> Result<Device> {
     tim::fix_tim10_1(&mut dev)?;
     tim::fix_tim11_1(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
+    rcc::fix_5(&mut dev)?;
+    rcc::fix_7(&mut dev)?;
+    i2c::fix_5(&mut dev)?;
     Ok(dev)
 }
 
@@ -297,7 +311,7 @@ fn patch_stm32l4x1(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32l4x2(mut dev: Device) -> Result<Device> {
     rcc::fix_4(&mut dev)?;
-    i2c::fix(&mut dev)?;
+    i2c::fix_1(&mut dev)?;
     tim::fix_lptim1(&mut dev)?;
     tim::fix_lptim2(&mut dev)?;
     uart::fix_lpuart1(&mut dev)?;

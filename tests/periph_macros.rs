@@ -9,140 +9,158 @@ stm32_reg_tokens! {
 #[allow(unused_variables)]
 fn periph_macros1() {
     let reg = unsafe { Regs::take() };
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
+    #[cfg(all(
+        feature = "adc",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+        )
     ))]
     {
         let adc_com = drone_stm32_map::periph::adc::periph_adc_com!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
+    #[cfg(all(
+        feature = "adc",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+        )
     ))]
     {
         let adc1 = drone_stm32_map::periph::adc::periph_adc1!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "adc",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let adc2 = drone_stm32_map::periph::adc::periph_adc2!(reg);
         let adc3 = drone_stm32_map::periph::adc::periph_adc3!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "dma",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let dma1 = drone_stm32_map::periph::dma::periph_dma1!(reg);
         let dma2 = drone_stm32_map::periph::dma::periph_dma2!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "dma",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let dma1_ch0 = drone_stm32_map::periph::dma::periph_dma1_ch0!(reg);
         let dma2_ch0 = drone_stm32_map::periph::dma::periph_dma2_ch0!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "dma",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let dma1_ch1 = drone_stm32_map::periph::dma::periph_dma1_ch1!(reg);
@@ -158,41 +176,47 @@ fn periph_macros1() {
         let dma2_ch4 = drone_stm32_map::periph::dma::periph_dma2_ch4!(reg);
         let dma2_ch5 = drone_stm32_map::periph::dma::periph_dma2_ch5!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "dma",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let dma2_ch6 = drone_stm32_map::periph::dma::periph_dma2_ch6!(reg);
         let dma2_ch7 = drone_stm32_map::periph::dma::periph_dma2_ch7!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
+    #[cfg(all(
+        feature = "dma",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+        )
     ))]
     {
         let dmamux1 = drone_stm32_map::periph::dma::periph_dmamux1!(reg);
@@ -215,29 +239,32 @@ fn periph_macros1() {
         let dmamux1_rg2 = drone_stm32_map::periph::dma::periph_dmamux1_rg2!(reg);
         let dmamux1_rg3 = drone_stm32_map::periph::dma::periph_dmamux1_rg3!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "exti",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let exti0 = drone_stm32_map::periph::exti::periph_exti0!(reg);
@@ -260,24 +287,27 @@ fn periph_macros1() {
         let exti17 = drone_stm32_map::periph::exti::periph_exti17!(reg);
         let exti18 = drone_stm32_map::periph::exti::periph_exti18!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "exti",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let exti19 = drone_stm32_map::periph::exti::periph_exti19!(reg);
@@ -285,35 +315,41 @@ fn periph_macros1() {
         let exti21 = drone_stm32_map::periph::exti::periph_exti21!(reg);
         let exti22 = drone_stm32_map::periph::exti::periph_exti22!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "exti",
+        any(
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let exti23 = drone_stm32_map::periph::exti::periph_exti23!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "exti",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let exti24 = drone_stm32_map::periph::exti::periph_exti24!(reg);
@@ -333,630 +369,762 @@ fn periph_macros1() {
         let exti38 = drone_stm32_map::periph::exti::periph_exti38!(reg);
         let exti39 = drone_stm32_map::periph::exti::periph_exti39!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "exti",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let exti40 = drone_stm32_map::periph::exti::periph_exti40!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_a = drone_stm32_map::periph::gpio::periph_gpio_a!(reg);
         let gpio_b = drone_stm32_map::periph::gpio::periph_gpio_b!(reg);
         let gpio_c = drone_stm32_map::periph::gpio::periph_gpio_c!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_d = drone_stm32_map::periph::gpio::periph_gpio_d!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_e = drone_stm32_map::periph::gpio::periph_gpio_e!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_f = drone_stm32_map::periph::gpio::periph_gpio_f!(reg);
         let gpio_g = drone_stm32_map::periph::gpio::periph_gpio_g!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_h = drone_stm32_map::periph::gpio::periph_gpio_h!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_i = drone_stm32_map::periph::gpio::periph_gpio_i!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let gpio_j = drone_stm32_map::periph::gpio::periph_gpio_j!(reg);
         let gpio_k = drone_stm32_map::periph::gpio::periph_gpio_k!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "i2c",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let i2c1 = drone_stm32_map::periph::i2c::periph_i2c1!(reg);
         let i2c2 = drone_stm32_map::periph::i2c::periph_i2c2!(reg);
+    }
+    #[cfg(all(
+        feature = "i2c",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
+    ))]
+    {
         let i2c3 = drone_stm32_map::periph::i2c::periph_i2c3!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "i2c",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let i2c4 = drone_stm32_map::periph::i2c::periph_i2c4!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "rtc",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let rtc = drone_stm32_map::periph::rtc::periph_rtc!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "spi",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let spi1 = drone_stm32_map::periph::spi::periph_spi1!(reg);
         let spi2 = drone_stm32_map::periph::spi::periph_spi2!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "spi",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let spi3 = drone_stm32_map::periph::spi::periph_spi3!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim1 = drone_stm32_map::periph::tim::periph_tim1!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim2 = drone_stm32_map::periph::tim::periph_tim2!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim3 = drone_stm32_map::periph::tim::periph_tim3!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim4 = drone_stm32_map::periph::tim::periph_tim4!(reg);
         let tim5 = drone_stm32_map::periph::tim::periph_tim5!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim6 = drone_stm32_map::periph::tim::periph_tim6!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim7 = drone_stm32_map::periph::tim::periph_tim7!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim8 = drone_stm32_map::periph::tim::periph_tim8!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let tim9 = drone_stm32_map::periph::tim::periph_tim9!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let tim10 = drone_stm32_map::periph::tim::periph_tim10!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let tim11 = drone_stm32_map::periph::tim::periph_tim11!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let tim12 = drone_stm32_map::periph::tim::periph_tim12!(reg);
         let tim13 = drone_stm32_map::periph::tim::periph_tim13!(reg);
         let tim14 = drone_stm32_map::periph::tim::periph_tim14!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim15 = drone_stm32_map::periph::tim::periph_tim15!(reg);
         let tim16 = drone_stm32_map::periph::tim::periph_tim16!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let tim17 = drone_stm32_map::periph::tim::periph_tim17!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let lptim1 = drone_stm32_map::periph::tim::periph_lptim1!(reg);
         let lptim2 = drone_stm32_map::periph::tim::periph_lptim2!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let usart1 = drone_stm32_map::periph::uart::periph_usart1!(reg);
         let usart2 = drone_stm32_map::periph::uart::periph_usart2!(reg);
         let usart3 = drone_stm32_map::periph::uart::periph_usart3!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let uart4 = drone_stm32_map::periph::uart::periph_uart4!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let uart5 = drone_stm32_map::periph::uart::periph_uart5!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let lpuart1 = drone_stm32_map::periph::uart::periph_lpuart1!(reg);
@@ -967,34 +1135,37 @@ fn periph_macros1() {
 #[allow(unused_variables)]
 fn periph_macros2() {
     let reg = unsafe { Regs::take() };
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_a_head = drone_stm32_map::periph::gpio::periph_gpio_a_head!(reg);
@@ -1049,33 +1220,36 @@ fn periph_macros2() {
         let gpio_c14 = drone_stm32_map::periph::gpio::periph_gpio_c14!(reg);
         let gpio_c15 = drone_stm32_map::periph::gpio::periph_gpio_c15!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f102",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f102",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_d_head = drone_stm32_map::periph::gpio::periph_gpio_d_head!(reg);
@@ -1096,32 +1270,35 @@ fn periph_macros2() {
         let gpio_d14 = drone_stm32_map::periph::gpio::periph_gpio_d14!(reg);
         let gpio_d15 = drone_stm32_map::periph::gpio::periph_gpio_d15!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f107",
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_e_head = drone_stm32_map::periph::gpio::periph_gpio_e_head!(reg);
@@ -1142,26 +1319,29 @@ fn periph_macros2() {
         let gpio_e14 = drone_stm32_map::periph::gpio::periph_gpio_e14!(reg);
         let gpio_e15 = drone_stm32_map::periph::gpio::periph_gpio_e15!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f100",
-        stm32_mcu = "stm32f101",
-        stm32_mcu = "stm32f103",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_f_head = drone_stm32_map::periph::gpio::periph_gpio_f_head!(reg);
@@ -1199,29 +1379,32 @@ fn periph_macros2() {
         let gpio_g14 = drone_stm32_map::periph::gpio::periph_gpio_g14!(reg);
         let gpio_g15 = drone_stm32_map::periph::gpio::periph_gpio_g15!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f401",
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f410",
-        stm32_mcu = "stm32f411",
-        stm32_mcu = "stm32f412",
-        stm32_mcu = "stm32f413",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f446",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x1",
-        stm32_mcu = "stm32l4x2",
-        stm32_mcu = "stm32l4x3",
-        stm32_mcu = "stm32l4x5",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x1",
+            stm32_mcu = "stm32l4x2",
+            stm32_mcu = "stm32l4x3",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_h_head = drone_stm32_map::periph::gpio::periph_gpio_h_head!(reg);
@@ -1242,19 +1425,22 @@ fn periph_macros2() {
         let gpio_h14 = drone_stm32_map::periph::gpio::periph_gpio_h14!(reg);
         let gpio_h15 = drone_stm32_map::periph::gpio::periph_gpio_h15!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f469",
-        stm32_mcu = "stm32l4r5",
-        stm32_mcu = "stm32l4r7",
-        stm32_mcu = "stm32l4r9",
-        stm32_mcu = "stm32l4s5",
-        stm32_mcu = "stm32l4s7",
-        stm32_mcu = "stm32l4s9",
-        stm32_mcu = "stm32l4x6",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x6",
+        )
     ))]
     {
         let gpio_i_head = drone_stm32_map::periph::gpio::periph_gpio_i_head!(reg);
@@ -1275,12 +1461,15 @@ fn periph_macros2() {
         let gpio_i14 = drone_stm32_map::periph::gpio::periph_gpio_i14!(reg);
         let gpio_i15 = drone_stm32_map::periph::gpio::periph_gpio_i15!(reg);
     }
-    #[cfg(any(
-        stm32_mcu = "stm32f405",
-        stm32_mcu = "stm32f407",
-        stm32_mcu = "stm32f427",
-        stm32_mcu = "stm32f429",
-        stm32_mcu = "stm32f469",
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f469",
+        )
     ))]
     {
         let gpio_j_head = drone_stm32_map::periph::gpio::periph_gpio_j_head!(reg);

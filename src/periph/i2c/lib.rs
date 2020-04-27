@@ -6,9 +6,57 @@
 #![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
 #![no_std]
 
+#[cfg(any(
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
+))]
+mod fmp;
+
+#[cfg(any(stm32_mcu = "stm32f410", stm32_mcu = "stm32f412", stm32_mcu = "stm32f413"))]
+pub mod fmp;
+
+#[cfg(any(
+    stm32_mcu = "stm32l4x1",
+    stm32_mcu = "stm32l4x2",
+    stm32_mcu = "stm32l4x3",
+    stm32_mcu = "stm32l4x5",
+    stm32_mcu = "stm32l4x6",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
+))]
+pub use self::fmp::*;
+
+#[allow(unused_imports)]
 use drone_core::periph;
+#[allow(unused_imports)]
 use drone_cortexm::reg::marker::*;
 
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
+))]
 periph! {
     /// Generic I2C peripheral variant.
     pub trait I2CMap {}
@@ -29,124 +77,109 @@ periph! {
             0x20 RwRegBitBand Shared;
             I2CSMEN { RwRwRegFieldBitBand }
         }
-        CCIPR {
-            0x20 RwRegBitBand Shared;
-            I2CSEL { RwRwRegFieldBits }
-        }
     }
     I2C {
         CR1 {
             0x20 RwRegBitBand;
-            ADDRIE { RwRwRegFieldBitBand }
-            ALERTEN { RwRwRegFieldBitBand }
-            ANFOFF { RwRwRegFieldBitBand }
-            DNF { RwRwRegFieldBits }
-            ERRIE { RwRwRegFieldBitBand }
-            GCEN { RwRwRegFieldBitBand }
-            NACKIE { RwRwRegFieldBitBand }
-            NOSTRETCH { RwRwRegFieldBitBand }
-            PECEN { RwRwRegFieldBitBand }
             PE { RwRwRegFieldBitBand }
-            RXDMAEN { RwRwRegFieldBitBand }
-            RXIE { RwRwRegFieldBitBand }
-            SBC { RwRwRegFieldBitBand }
-            SMBDEN { RwRwRegFieldBitBand }
-            SMBHEN { RwRwRegFieldBitBand }
-            STOPIE { RwRwRegFieldBitBand }
-            TCIE { RwRwRegFieldBitBand }
-            TXDMAEN { RwRwRegFieldBitBand }
-            TXIE { RwRwRegFieldBitBand }
-            WUPEN { RwRwRegFieldBitBand }
+            SMBUS { RwRwRegFieldBitBand }
+            SMBTYPE { RwRwRegFieldBitBand }
+            ENARP { RwRwRegFieldBitBand }
+            ENPEC { RwRwRegFieldBitBand }
+            ENGC { RwRwRegFieldBitBand }
+            NOSTRETCH { RwRwRegFieldBitBand }
+            START { RwRwRegFieldBitBand }
+            STOP { RwRwRegFieldBitBand }
+            ACK { RwRwRegFieldBitBand }
+            POS { RwRwRegFieldBitBand }
+            PEC { RwRwRegFieldBitBand }
+            ALERT { RwRwRegFieldBitBand }
+            SWRST { RwRwRegFieldBitBand }
         }
         CR2 {
             0x20 RwRegBitBand;
-            ADD10 { RwRwRegFieldBitBand }
-            AUTOEND { RwRwRegFieldBitBand }
-            HEAD10R { RwRwRegFieldBitBand }
-            NACK { RwRwRegFieldBitBand }
-            NBYTES { RwRwRegFieldBits }
-            PECBYTE { RwRwRegFieldBitBand }
-            RD_WRN { RwRwRegFieldBitBand }
-            RELOAD { RwRwRegFieldBitBand }
-            SADD { RwRwRegFieldBits }
-            START { RwRwRegFieldBitBand }
-            STOP { RwRwRegFieldBitBand }
+            FREQ { RwRwRegFieldBits }
+            ITERREN { RwRwRegFieldBitBand }
+            ITEVTEN { RwRwRegFieldBitBand }
+            ITBUFEN { RwRwRegFieldBitBand }
+            DMAEN { RwRwRegFieldBitBand }
+            LAST { RwRwRegFieldBitBand }
         }
         OAR1 {
             0x20 RwRegBitBand;
-            OA1EN { RwRwRegFieldBitBand }
-            OA1MODE { RwRwRegFieldBitBand }
-            OA1 { RwRwRegFieldBits }
+            ADD0 { RwRwRegFieldBitBand }
+            ADD7 { RwRwRegFieldBits }
+            ADD10 { RwRwRegFieldBits }
+            ADDMODE { RwRwRegFieldBitBand }
         }
         OAR2 {
             0x20 RwRegBitBand;
-            OA2EN { RwRwRegFieldBitBand }
-            OA2MSK { RwRwRegFieldBits }
-            OA2 { RwRwRegFieldBits }
+            ENDUAL { RwRwRegFieldBitBand }
+            ADD2 { RwRwRegFieldBits }
         }
-        TIMINGR {
+        DR {
             0x20 RwRegBitBand;
-            PRESC { RwRwRegFieldBits }
-            SCLDEL { RwRwRegFieldBits }
-            SCLH { RwRwRegFieldBits }
-            SCLL { RwRwRegFieldBits }
-            SDADEL { RwRwRegFieldBits }
+            DR { RwRwRegFieldBits }
         }
-        TIMEOUTR {
+        SR1 {
             0x20 RwRegBitBand;
-            TEXTEN { RwRwRegFieldBitBand }
-            TIDLE { RwRwRegFieldBitBand }
-            TIMEOUTA { RwRwRegFieldBits }
-            TIMEOUTB { RwRwRegFieldBits }
-            TIMOUTEN { RwRwRegFieldBitBand }
-        }
-        ISR {
-            0x20 RwRegBitBand;
-            ADDCODE { RoRwRegFieldBits }
+            SB { RoRwRegFieldBitBand }
             ADDR { RoRwRegFieldBitBand }
-            ALERT { RoRwRegFieldBitBand }
-            ARLO { RoRwRegFieldBitBand }
-            BERR { RoRwRegFieldBitBand }
-            BUSY { RoRwRegFieldBitBand }
-            DIR { RoRwRegFieldBitBand }
-            NACKF { RoRwRegFieldBitBand }
-            OVR { RoRwRegFieldBitBand }
-            PECERR { RoRwRegFieldBitBand }
-            RXNE { RoRwRegFieldBitBand }
+            BTF { RoRwRegFieldBitBand }
+            ADD10 { RoRwRegFieldBitBand }
             STOPF { RoRwRegFieldBitBand }
-            TC { RoRwRegFieldBitBand }
-            TCR { RoRwRegFieldBitBand }
-            TIMEOUT { RoRwRegFieldBitBand }
-            TXE { RwRwRegFieldBitBand }
-            TXIS { RwRwRegFieldBitBand }
+            RxNE { RoRwRegFieldBitBand }
+            TxE { RoRwRegFieldBitBand }
+            BERR { RwRwRegFieldBitBand }
+            ARLO { RwRwRegFieldBitBand }
+            AF { RwRwRegFieldBitBand }
+            OVR { RwRwRegFieldBitBand }
+            PECERR { RwRwRegFieldBitBand }
+            TIMEOUT { RwRwRegFieldBitBand }
+            SMBALERT { RwRwRegFieldBitBand }
         }
-        ICR {
-            0x20 WoRegBitBand;
-            ADDRCF { WoWoRegFieldBitBand }
-            ALERTCF { WoWoRegFieldBitBand }
-            ARLOCF { WoWoRegFieldBitBand }
-            BERRCF { WoWoRegFieldBitBand }
-            NACKCF { WoWoRegFieldBitBand }
-            OVRCF { WoWoRegFieldBitBand }
-            PECCF { WoWoRegFieldBitBand }
-            STOPCF { WoWoRegFieldBitBand }
-            TIMOUTCF { WoWoRegFieldBitBand }
-        }
-        PECR {
+        SR2 {
             0x20 RoRegBitBand;
+            MSL { RoRoRegFieldBitBand }
+            BUSY { RoRoRegFieldBitBand }
+            TRA { RoRoRegFieldBitBand }
+            GENCALL { RoRoRegFieldBitBand }
+            SMBDEFAULT { RoRoRegFieldBitBand }
+            SMBHOST { RoRoRegFieldBitBand }
+            DUALF { RoRoRegFieldBitBand }
             PEC { RoRoRegFieldBits }
         }
-        RXDR {
-            0x20 RoRegBitBand;
-            RXDATA { RoRoRegFieldBits }
-        }
-        TXDR {
+        CCR {
             0x20 RwRegBitBand;
-            TXDATA { RwRwRegFieldBits }
+            CCR { RwRwRegFieldBits }
+            DUTY { RwRwRegFieldBitBand }
+            F_S { RwRwRegFieldBitBand }
+        }
+        TRISE {
+            0x20 RwRegBitBand;
+            TRISE { RwRwRegFieldBits }
+        }
+        FLTR {
+            0x20 RwRegBitBand;
+            DNF { RwRwRegFieldBits }
+            ANOFF { RwRwRegFieldBitBand }
         }
     }
 }
 
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
+))]
 #[allow(unused_macros)]
 macro_rules! map_i2c {
     (
@@ -157,12 +190,10 @@ macro_rules! map_i2c {
         $busenr:ident,
         $busrstr:ident,
         $bussmenr:ident,
-        $ccipr:ident,
+        $i2c:ident,
         $i2cen:ident,
         $i2crst:ident,
         $i2csmen:ident,
-        $i2csel:ident,
-        $i2c:ident,
     ) => {
         periph::map! {
             #[doc = $i2c_macro_doc]
@@ -189,121 +220,93 @@ macro_rules! map_i2c {
                     $bussmenr Shared;
                     I2CSMEN { $i2csmen }
                 }
-                CCIPR {
-                    $ccipr Shared;
-                    I2CSEL { $i2csel }
-                }
             }
             I2C {
                 $i2c;
                 CR1 {
                     CR1;
-                    ADDRIE { ADDRIE }
-                    ALERTEN { ALERTEN }
-                    ANFOFF { ANFOFF }
-                    DNF { DNF }
-                    ERRIE { ERRIE }
-                    GCEN { GCEN }
-                    NACKIE { NACKIE }
-                    NOSTRETCH { NOSTRETCH }
-                    PECEN { PECEN }
                     PE { PE }
-                    RXDMAEN { RXDMAEN }
-                    RXIE { RXIE }
-                    SBC { SBC }
-                    SMBDEN { SMBDEN }
-                    SMBHEN { SMBHEN }
-                    STOPIE { STOPIE }
-                    TCIE { TCIE }
-                    TXDMAEN { TXDMAEN }
-                    TXIE { TXIE }
-                    WUPEN { WUPEN }
+                    SMBUS { SMBUS }
+                    SMBTYPE { SMBTYPE }
+                    ENARP { ENARP }
+                    ENPEC { ENPEC }
+                    ENGC { ENGC }
+                    NOSTRETCH { NOSTRETCH }
+                    START { START }
+                    STOP { STOP }
+                    ACK { ACK }
+                    POS { POS }
+                    PEC { PEC }
+                    ALERT { ALERT }
+                    SWRST { SWRST }
                 }
                 CR2 {
                     CR2;
-                    ADD10 { ADD10 }
-                    AUTOEND { AUTOEND }
-                    HEAD10R { HEAD10R }
-                    NACK { NACK }
-                    NBYTES { NBYTES }
-                    PECBYTE { PECBYTE }
-                    RD_WRN { RD_WRN }
-                    RELOAD { RELOAD }
-                    SADD { SADD }
-                    START { START }
-                    STOP { STOP }
+                    FREQ { FREQ }
+                    ITERREN { ITERREN }
+                    ITEVTEN { ITEVTEN }
+                    ITBUFEN { ITBUFEN }
+                    DMAEN { DMAEN }
+                    LAST { LAST }
                 }
                 OAR1 {
                     OAR1;
-                    OA1EN { OA1EN }
-                    OA1MODE { OA1MODE }
-                    OA1 { OA1 }
+                    ADD0 { ADD0 }
+                    ADD7 { ADD7 }
+                    ADD10 { ADD10 }
+                    ADDMODE { ADDMODE }
                 }
                 OAR2 {
                     OAR2;
-                    OA2EN { OA2EN }
-                    OA2MSK { OA2MSK }
-                    OA2 { OA2 }
+                    ENDUAL { ENDUAL }
+                    ADD2 { ADD2 }
                 }
-                TIMINGR {
-                    TIMINGR;
-                    PRESC { PRESC }
-                    SCLDEL { SCLDEL }
-                    SCLH { SCLH }
-                    SCLL { SCLL }
-                    SDADEL { SDADEL }
+                DR {
+                    DR;
+                    DR { DR }
                 }
-                TIMEOUTR {
-                    TIMEOUTR;
-                    TEXTEN { TEXTEN }
-                    TIDLE { TIDLE }
-                    TIMEOUTA { TIMEOUTA }
-                    TIMEOUTB { TIMEOUTB }
-                    TIMOUTEN { TIMOUTEN }
-                }
-                ISR {
-                    ISR;
-                    ADDCODE { ADDCODE }
+                SR1 {
+                    SR1;
+                    SB { SB }
                     ADDR { ADDR }
-                    ALERT { ALERT }
-                    ARLO { ARLO }
+                    BTF { BTF }
+                    ADD10 { ADD10 }
+                    STOPF { STOPF }
+                    RxNE { RxNE }
+                    TxE { TxE }
                     BERR { BERR }
-                    BUSY { BUSY }
-                    DIR { DIR }
-                    NACKF { NACKF }
+                    ARLO { ARLO }
+                    AF { AF }
                     OVR { OVR }
                     PECERR { PECERR }
-                    RXNE { RXNE }
-                    STOPF { STOPF }
-                    TCR { TCR }
-                    TC { TC }
                     TIMEOUT { TIMEOUT }
-                    TXE { TXE }
-                    TXIS { TXIS }
+                    SMBALERT { SMBALERT }
                 }
-                ICR {
-                    ICR;
-                    ADDRCF { ADDRCF }
-                    ALERTCF { ALERTCF }
-                    ARLOCF { ARLOCF }
-                    BERRCF { BERRCF }
-                    NACKCF { NACKCF }
-                    OVRCF { OVRCF }
-                    PECCF { PECCF }
-                    STOPCF { STOPCF }
-                    TIMOUTCF { TIMOUTCF }
-                }
-                PECR {
-                    PECR;
+                SR2 {
+                    SR2;
+                    MSL { MSL }
+                    BUSY { BUSY }
+                    TRA { TRA }
+                    GENCALL { GENCALL }
+                    SMBDEFAULT { SMBDEFAULT }
+                    SMBHOST { SMBHOST }
+                    DUALF { DUALF }
                     PEC { PEC }
                 }
-                RXDR {
-                    RXDR;
-                    RXDATA { RXDATA }
+                CCR {
+                    CCR;
+                    CCR { CCR }
+                    DUTY { DUTY }
+                    F_S { F_S }
                 }
-                TXDR {
-                    TXDR;
-                    TXDATA { TXDATA }
+                TRISE {
+                    TRISE;
+                    TRISE { TRISE }
+                }
+                FLTR {
+                    FLTR;
+                    DNF { DNF }
+                    ANOFF { ANOFF }
                 }
             }
         }
@@ -311,114 +314,81 @@ macro_rules! map_i2c {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
 ))]
 map_i2c! {
     "Extracts I2C1 register tokens.",
     periph_i2c1,
     "I2C1 peripheral variant.",
     I2C1,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    CCIPR,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    I2C1,
     I2C1EN,
     I2C1RST,
-    I2C1SMEN,
-    I2C1SEL,
-    I2C1,
+    I2C1LPEN,
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
 ))]
 map_i2c! {
     "Extracts I2C2 register tokens.",
     periph_i2c2,
     "I2C2 peripheral variant.",
     I2C2,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    CCIPR,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    I2C2,
     I2C2EN,
     I2C2RST,
-    I2C2SMEN,
-    I2C2SEL,
-    I2C2,
+    I2C2LPEN,
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469"
 ))]
 map_i2c! {
     "Extracts I2C3 register tokens.",
     periph_i2c3,
     "I2C3 peripheral variant.",
     I2C3,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    CCIPR,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    I2C3,
     I2C3EN,
     I2C3RST,
-    I2C3SMEN,
-    I2C3SEL,
-    I2C3,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
-map_i2c! {
-    "Extracts I2C4 register tokens.",
-    periph_i2c4,
-    "I2C4 peripheral variant.",
-    I2C4,
-    APB1ENR2,
-    APB1RSTR2,
-    APB1SMENR2,
-    CCIPR2,
-    I2C4EN,
-    I2C4RST,
-    I2C4SMEN,
-    I2C4SEL,
-    I2C4,
+    I2C3LPEN,
 }

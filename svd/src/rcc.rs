@@ -75,3 +75,33 @@ pub fn fix_4(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("AHB2SMENR").field("ADCFSSMEN").name = "ADCSMEN".to_string();
     Ok(())
 }
+
+pub fn fix_5(dev: &mut Device) -> Result<()> {
+    dev.periph("RCC").reg("APB1ENR").field("I2C4EN").name = "I2CFMP1EN".to_string();
+    dev.periph("RCC").reg("APB1RSTR").field("I2C4RST").name = "I2CFMP1RST".to_string();
+    dev.periph("RCC").reg("APB1LPENR").field("I2C4LPEN").name = "I2CFMP1LPEN".to_string();
+    Ok(())
+}
+
+pub fn fix_6(dev: &mut Device) -> Result<()> {
+    dev.periph("RCC").new_reg(|reg| {
+        reg.name = "DCKCFGR2".to_string();
+        reg.description = "DCKCFGR2 register".to_string();
+        reg.address_offset = 0x94;
+        reg.size = Some(0x20);
+        reg.access = Some(Access::ReadWrite);
+        reg.reset_value = Some(0x0000_0000);
+        reg.new_field(|field| {
+            field.name = "I2CFMP1SEL".to_string();
+            field.description = "I2CFMP1SEL".to_string();
+            field.bit_offset = Some(22);
+            field.bit_width = Some(2);
+        });
+    });
+    Ok(())
+}
+
+pub fn fix_7(dev: &mut Device) -> Result<()> {
+    dev.periph("RCC").reg("DCKCFGR2").field("I2CFMP1SEL").bit_width = Some(2);
+    Ok(())
+}
