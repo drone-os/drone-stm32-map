@@ -1,3 +1,5 @@
+cargo-features = ["resolver"]
+
 [workspace]
 members = [
     "svd",
@@ -30,6 +32,7 @@ name = "drone-stm32-map"
 version = "0.12.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
+resolver = "2"
 exclude = ["/svd_files"]
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
@@ -77,7 +80,6 @@ path = "../drone-core"
 [dependencies.drone-cortexm]
 version = "0.12.0"
 path = "../drone-cortexm"
-features = ["bit-band"]
 
 [dependencies.drone-stm32-map-pieces]
 version = "=0.12.0"

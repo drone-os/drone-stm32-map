@@ -11,20 +11,24 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
-### Unreleased
+### v0.12.0 (2020-05-01)
+
+- [added] Wrote tests for peripheral macros
+- [added] Added `i2c` peripheral mappings for STM32F4 family
 
 ### v0.11.1 (2019-11-27)
 
-- [fixed] Fix `uart` peripheral mappings for STM32L4/STM32L4+
-- [fixed] Fix `dma`, `tim` peripheral mappings for STM32F4
+- [fixed] Fixed `uart` peripheral mappings for STM32L4/STM32L4+
+- [fixed] Fixed `dma`, `tim` peripheral mappings for STM32F4
 
 ### v0.11.0 (2019-11-06)
 
-- [added] Add STM32F4 family support with `adc`, `dma`, `exti`, `gpio`, `tim`
+- [added] Added STM32F4 family support with `adc`, `dma`, `exti`, `gpio`, `tim`
   peripheral mappings
 - [changed] Using `stm2_mcu` config flag to specify the MCU model
 - [changed] Extracted `drone-svd` crate
 
 ### v0.10.1 (2019-09-27)
 
-- [fixed] Fix API documentation by moving to self-hosted https://api.drone-os.com
+- [fixed] Fixed API documentation by moving to self-hosted
+  https://api.drone-os.com
