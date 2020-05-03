@@ -11,6 +11,9 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
+### v0.12.1 (2020-05-03)
+- [fixed] Fixed `RCC_PLLCFGR` and `RCC_CFGR` mappings for STM32F4
+
 ### v0.12.0 (2020-05-01)
 
 - [added] Wrote tests for peripheral macros
