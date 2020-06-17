@@ -1,12 +1,4 @@
-//! Analog-to-digital converters.
-
-#![feature(proc_macro_hygiene)]
-#![warn(missing_docs)]
-#![warn(clippy::pedantic)]
-#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
-#![no_std]
-
-pub mod com;
+//! Analog-to-digital converters common registers.
 
 #[cfg(any(
     stm32_mcu = "stm32f401",
