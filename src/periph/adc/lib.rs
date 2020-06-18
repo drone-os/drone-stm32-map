@@ -7,7 +7,10 @@
 #![no_std]
 
 pub mod com;
+pub mod dual;
 
+#[cfg(any(stm32_mcu = "stm32f303",))]
+mod f3;
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",

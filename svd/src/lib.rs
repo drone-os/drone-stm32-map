@@ -55,6 +55,7 @@ fn svd_deserialize() -> Result<Device> {
         "stm32f102" => patch_stm32f102(parse_svd("STM32F102.svd")?),
         "stm32f103" => parse_svd("STM32F103.svd"),
         "stm32f107" => parse_svd("STM32F107.svd"),
+        "stm32f303" => parse_svd("STM32F303.svd"),
         "stm32f401" => patch_stm32f401(parse_svd("STM32F401.svd")?),
         "stm32f405" => patch_stm32f405(parse_svd("STM32F405.svd")?),
         "stm32f407" => patch_stm32f407(parse_svd("STM32F407.svd")?),
