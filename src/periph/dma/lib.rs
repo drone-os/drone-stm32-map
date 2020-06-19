@@ -1,4 +1,4 @@
-//! Analog-to-digital converters.
+//! Direct Memory Access.
 
 #![feature(proc_macro_hygiene)]
 #![warn(missing_docs)]
