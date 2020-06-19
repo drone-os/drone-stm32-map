@@ -9,7 +9,9 @@
 pub mod com;
 pub mod dual;
 
-#[cfg(any(stm32_mcu = "stm32f303",))]
+#[cfg(any(
+    stm32_mcu = "stm32f303",
+))]
 mod f3;
 #[cfg(any(
     stm32_mcu = "stm32f401",
@@ -35,6 +37,10 @@ mod f4;
 ))]
 mod l4_plus;
 
+#[cfg(any(
+    stm32_mcu = "stm32f303",
+))]
+pub use self::f3::*;
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
