@@ -1,4 +1,5 @@
 //! General-purpose I/O pins.
+//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -7,7 +8,7 @@ periph! {
     /// Generic GPIO pin peripheral variant.
     pub trait GpioPinMap {
         /// GPIO port head peripheral variant.
-        type GpioHeadMap: super::head::GpioHeadMap;
+        type GpioHeadMap: super::super::head::GpioHeadMap;
     }
 
     /// Generic GPIO pin peripheral.
@@ -26,64 +27,15 @@ periph! {
             stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
         ))]
         AFR {
             0x20 RwReg Shared;
             AFR { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6"
-        ))]
-        ASCR {
-            0x20 RwReg Shared;
-            ASC { RwRwRegFieldBit Option }
-        }
-        #[cfg(any(
-            stm32_mcu = "stm32f100",
-            stm32_mcu = "stm32f101",
-            stm32_mcu = "stm32f102",
-            stm32_mcu = "stm32f103",
-            stm32_mcu = "stm32f107",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
-        BRR {
-            0x20 WoReg Shared;
-            BR { WoWoRegFieldBit }
-        }
         BSRR {
             0x20 WoReg Shared;
             BR { WoWoRegFieldBit }
             BS { WoWoRegFieldBit }
-        }
-        #[cfg(any(
-            stm32_mcu = "stm32f100",
-            stm32_mcu = "stm32f101",
-            stm32_mcu = "stm32f102",
-            stm32_mcu = "stm32f103",
-            stm32_mcu = "stm32f107"
-        ))]
-        CR {
-            0x20 RwReg Shared;
-            CNF { RwRwRegFieldBits }
-            MODE { RwRwRegFieldBits }
         }
         IDR {
             0x20 RoReg Shared;
@@ -105,17 +57,6 @@ periph! {
             stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
         ))]
         MODER {
             0x20 RwReg Shared;
@@ -137,17 +78,6 @@ periph! {
             stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
         ))]
         OSPEEDR {
             0x20 RwReg Shared;
@@ -165,17 +95,6 @@ periph! {
             stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
         ))]
         OTYPER {
             0x20 RwReg Shared;
@@ -193,17 +112,6 @@ periph! {
             stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
         ))]
         PUPDR {
             0x20 RwReg Shared;
@@ -235,8 +143,7 @@ macro_rules! map_gpio_pin {
         $ot_ty:ident,
         $pupdr_ty:ident,
         $afr_path:ident,
-        $cr_path:ident,
-        ($($ascr_option:ident)*),
+        $cr_path:ident,($($ascr_option:ident)*),
     ) => {
         periph::map! {
             #[doc = $pin_macro_doc]
@@ -246,7 +153,7 @@ macro_rules! map_gpio_pin {
             pub struct $pin_ty;
 
             impl GpioPinMap for $pin_ty {
-                type GpioHeadMap = super::head::$port_ty;
+                type GpioHeadMap = super::super::head::$port_ty;
             }
 
             drone_stm32_map_pieces::reg;
@@ -266,64 +173,15 @@ macro_rules! map_gpio_pin {
                     stm32_mcu = "stm32f429",
                     stm32_mcu = "stm32f446",
                     stm32_mcu = "stm32f469",
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
                 ))]
                 AFR {
                     $afr_path Shared;
                     AFR { $afr_ty }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6"
-                ))]
-                ASCR {
-                    ASCR Shared;
-                    ASC { $($asc_ty $ascr_option)* }
-                }
-                #[cfg(any(
-                    stm32_mcu = "stm32f100",
-                    stm32_mcu = "stm32f101",
-                    stm32_mcu = "stm32f102",
-                    stm32_mcu = "stm32f103",
-                    stm32_mcu = "stm32f107",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
-                BRR {
-                    BRR Shared;
-                    BR { $br_ty }
-                }
                 BSRR {
                     BSRR Shared;
                     BR { $br_ty }
                     BS { $bs_ty }
-                }
-                #[cfg(any(
-                    stm32_mcu = "stm32f100",
-                    stm32_mcu = "stm32f101",
-                    stm32_mcu = "stm32f102",
-                    stm32_mcu = "stm32f103",
-                    stm32_mcu = "stm32f107"
-                ))]
-                CR {
-                    $cr_path Shared;
-                    CNF { $cnf_ty }
-                    MODE { $mode_ty }
                 }
                 IDR {
                     IDR Shared;
@@ -345,17 +203,6 @@ macro_rules! map_gpio_pin {
                     stm32_mcu = "stm32f429",
                     stm32_mcu = "stm32f446",
                     stm32_mcu = "stm32f469",
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
                 ))]
                 MODER {
                     MODER Shared;
@@ -377,17 +224,6 @@ macro_rules! map_gpio_pin {
                     stm32_mcu = "stm32f429",
                     stm32_mcu = "stm32f446",
                     stm32_mcu = "stm32f469",
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
                 ))]
                 OSPEEDR {
                     OSPEEDR Shared;
@@ -405,17 +241,6 @@ macro_rules! map_gpio_pin {
                     stm32_mcu = "stm32f429",
                     stm32_mcu = "stm32f446",
                     stm32_mcu = "stm32f469",
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
                 ))]
                 OTYPER {
                     OTYPER Shared;
@@ -433,17 +258,6 @@ macro_rules! map_gpio_pin {
                     stm32_mcu = "stm32f429",
                     stm32_mcu = "stm32f446",
                     stm32_mcu = "stm32f469",
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
                 ))]
                 PUPDR {
                     PUPDR Shared;
@@ -913,11 +727,6 @@ macro_rules! map_gpio_pins {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -929,17 +738,6 @@ macro_rules! map_gpio_pins {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioAHead,
@@ -1012,11 +810,6 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -1028,17 +821,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioBHead,
@@ -1111,11 +893,6 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -1127,17 +904,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioCHead,
@@ -1210,11 +976,6 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -1225,17 +986,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioDHead,
@@ -1308,10 +1058,6 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -1322,17 +1068,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioEHead,
@@ -1405,9 +1140,6 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f412",
@@ -1416,14 +1148,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioFHead,
@@ -1496,9 +1220,6 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f412",
@@ -1507,14 +1228,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioGHead,
@@ -1598,17 +1311,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioHHead,
@@ -1686,13 +1388,6 @@ map_gpio_pins! {
     stm32_mcu = "stm32f427",
     stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f469",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
 ))]
 map_gpio_pins! {
     GpioIHead,

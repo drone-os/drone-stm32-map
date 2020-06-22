@@ -7,6 +7,8 @@
 #![no_std]
 
 pub mod ch;
+pub use self::ch::*;
+
 #[cfg(any(
     stm32_mcu = "stm32l4r5",
     stm32_mcu = "stm32l4r7",
@@ -23,6 +25,9 @@ pub mod mux;
     stm32_mcu = "stm32f102",
     stm32_mcu = "stm32f103",
     stm32_mcu = "stm32f107",
+))]
+mod f1;
+#[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -60,6 +65,9 @@ mod l4_plus;
     stm32_mcu = "stm32f102",
     stm32_mcu = "stm32f103",
     stm32_mcu = "stm32f107",
+))]
+pub use self::f1::*;
+#[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",

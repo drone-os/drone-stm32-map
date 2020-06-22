@@ -1,5 +1,5 @@
 //! Direct Memory Access.
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//! for STM32F1 Series of mainstream MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -15,14 +15,6 @@ periph! {
         BUSENR {
             0x20 RwRegBitBand Shared;
             DMAEN { RwRwRegFieldBitBand }
-        }
-        BUSRSTR {
-            0x20 RwRegBitBand Shared;
-            DMARST { RwRwRegFieldBitBand }
-        }
-        BUSSMENR {
-            0x20 RwRegBitBand Shared;
-            DMASMEN { RwRwRegFieldBitBand }
         }
     }
 }
@@ -58,14 +50,6 @@ macro_rules! map_dma {
                     $busenr Shared;
                     DMAEN { $dmaen }
                 }
-                BUSRSTR {
-                    $busrstr Shared;
-                    DMARST { $dmarst }
-                }
-                BUSSMENR {
-                    $bussmenr Shared;
-                    DMASMEN { $dmasmen }
-                }
             }
         }
     };
@@ -76,12 +60,12 @@ map_dma! {
     periph_dma1,
     "DMA1 head peripheral variant.",
     Dma1,
-    AHB1ENR,
-    AHB1RSTR,
-    AHB1LPENR,
+    AHBENR,
+    AHBRSTR,
+    AHBSMENR,
     DMA1EN,
     DMA1RST,
-    DMA1LPEN,
+    DMA1SMEN,
 }
 
 map_dma! {
@@ -89,10 +73,10 @@ map_dma! {
     periph_dma2,
     "DMA2 head peripheral variant.",
     Dma2,
-    AHB1ENR,
-    AHB1RSTR,
-    AHB1LPENR,
+    AHBENR,
+    AHBRSTR,
+    AHBSMENR,
     DMA2EN,
     DMA2RST,
-    DMA2LPEN,
+    DMA2SMEN,
 }

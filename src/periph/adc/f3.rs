@@ -1,3 +1,6 @@
+//! Analog-to-digital converters.
+//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
 
@@ -208,19 +211,13 @@ periph! {
             0x20 RwReg;
             CALFACT_D { RwRwRegFieldBits }
             CALFACT_S { RwRwRegFieldBits }
-        } 
+        }
     }
 }
 
 #[allow(unused_macros)]
 macro_rules! map_adc {
-    (
-        $adc_macro_doc:expr, 
-        $adc_macro:ident, 
-        $adc_ty_doc:expr, 
-        $adc_ty:ident, 
-        $adc:ident,
-    ) => {
+    ($adc_macro_doc:expr, $adc_macro:ident, $adc_ty_doc:expr, $adc_ty:ident, $adc:ident,) => {
         periph::map! {
             #[doc = $adc_macro_doc]
             pub macro $adc_macro;

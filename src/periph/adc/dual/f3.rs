@@ -1,3 +1,6 @@
+//! Analog-to-digital converters dual mode common registers
+//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+
 #[allow(unused_imports)]
 use drone_core::periph;
 

@@ -1,3 +1,6 @@
+//! Direct Memory Access.
+//! for STM32L4 series of ultra-low-power MCUs.
+
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
 
@@ -66,46 +69,6 @@ macro_rules! map_dma {
             }
         }
     };
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
-map_dma! {
-    "Extracts DMA1 head register tokens.",
-    periph_dma1,
-    "DMA1 head peripheral variant.",
-    Dma1,
-    AHBENR,
-    AHBRSTR,
-    AHBSMENR,
-    DMA1EN,
-    DMA1RST,
-    DMA1SMEN,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
-map_dma! {
-    "Extracts DMA2 head register tokens.",
-    periph_dma2,
-    "DMA2 head peripheral variant.",
-    Dma2,
-    AHBENR,
-    AHBRSTR,
-    AHBSMENR,
-    DMA2EN,
-    DMA2RST,
-    DMA2SMEN,
 }
 
 #[cfg(any(

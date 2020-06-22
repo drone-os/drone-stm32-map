@@ -1,4 +1,5 @@
-//! Basic timers.
+//! Basic timers
+//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -29,17 +30,6 @@ periph! {
             stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
         ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
@@ -133,17 +123,6 @@ macro_rules! map_basic_tim {
                     stm32_mcu = "stm32f429",
                     stm32_mcu = "stm32f446",
                     stm32_mcu = "stm32f469",
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
                 ))]
                 BUSSMENR {
                     $bussmenr Shared;
@@ -192,100 +171,6 @@ macro_rules! map_basic_tim {
             }
         }
     };
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
-map_basic_tim! {
-    "Extracts TIM6 register tokens.",
-    periph_tim6,
-    "TIM6 peripheral variant.",
-    Tim6,
-    APB1ENR,
-    APB1RSTR,
-    APB1SMENR,
-    TIM6EN,
-    TIM6RST,
-    TIM6SMEN,
-    TIM6,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
-map_basic_tim! {
-    "Extracts TIM7 register tokens.",
-    periph_tim7,
-    "TIM7 peripheral variant.",
-    Tim7,
-    APB1ENR,
-    APB1RSTR,
-    APB1SMENR,
-    TIM7EN,
-    TIM7RST,
-    TIM7SMEN,
-    TIM7,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
-map_basic_tim! {
-    "Extracts TIM6 register tokens.",
-    periph_tim6,
-    "TIM6 peripheral variant.",
-    Tim6,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    TIM6EN,
-    TIM6RST,
-    TIM6SMEN,
-    TIM6,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
-map_basic_tim! {
-    "Extracts TIM7 register tokens.",
-    periph_tim7,
-    "TIM7 peripheral variant.",
-    Tim7,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    TIM7EN,
-    TIM7RST,
-    TIM7SMEN,
-    TIM7,
 }
 
 #[cfg(any(

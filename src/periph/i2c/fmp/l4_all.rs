@@ -1,4 +1,6 @@
-//! Fast-mode Plus Inter-integrated circuit.
+//! Fast-mode Plus Inter-integrated circuit
+//! for STM32L4 series of ultra-low-power MCUs
+//! and STM32L4+ technology with extended an additional features.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -328,40 +330,6 @@ macro_rules! map_i2c {
             }
         }
     };
-}
-
-#[cfg(any(stm32_mcu = "stm32f410"))]
-map_i2c! {
-    "Extracts I2C4 register tokens.",
-    periph_i2c4,
-    "I2C4 peripheral variant.",
-    I2C4,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    DCKCFGR2,
-    I2C4,
-    I2C4EN,
-    I2C4RST,
-    I2C4LPEN,
-    I2C4SEL,
-}
-
-#[cfg(any(stm32_mcu = "stm32f412", stm32_mcu = "stm32f413"))]
-map_i2c! {
-    "Extracts I2CFMP1 register tokens.",
-    periph_i2cfmp1,
-    "I2CFMP1 peripheral variant.",
-    I2Cfmp1,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    DCKCFGR2,
-    I2CFMP1,
-    I2CFMP1EN,
-    I2CFMP1RST,
-    I2CFMP1LPEN,
-    I2CFMP1SEL,
 }
 
 #[cfg(any(

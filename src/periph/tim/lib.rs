@@ -1,11 +1,5 @@
 //! Timers.
 
-#![feature(proc_macro_hygiene)]
-#![warn(missing_docs)]
-#![warn(clippy::pedantic)]
-#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
-#![no_std]
-
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",

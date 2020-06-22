@@ -1,3 +1,6 @@
+//! Analog-to-digital converters common registers.
+//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+
 #[allow(unused_imports)]
 use drone_core::periph;
 

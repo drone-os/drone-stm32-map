@@ -1,13 +1,4 @@
-//! Real-time clock.
-
-#![feature(proc_macro_hygiene)]
-#![warn(missing_docs)]
-#![warn(clippy::pedantic)]
-#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
-#![no_std]
-
-#[allow(unused_imports)]
-use drone_core::periph;
+//! Low-power timers.
 
 #[cfg(any(
     stm32_mcu = "stm32l4x1",
