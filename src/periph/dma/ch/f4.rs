@@ -9,7 +9,6 @@ periph! {
     pub trait DmaChMap {
         /// DMA head peripheral variant.
         type DmaMap: super::super::DmaMap;
-
     }
 
     /// Generic DMA channel peripheral.
