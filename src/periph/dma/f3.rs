@@ -66,5 +66,5 @@ map_dma! {
     "DMA2 head peripheral variant.",
     Dma2,
     AHBENR,
-    DMAEN,
+    DMA2EN,
 }
