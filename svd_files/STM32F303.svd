@@ -35406,10 +35406,10 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
       <baseAddress>0x50000700</baseAddress>
     </peripheral>
     <peripheral>
-      <name>SYSCFG_COMP_OPAMP</name>
+      <name>SYSCFG</name>
       <description>System configuration controller _Comparator and
       Operational amplifier</description>
-      <groupName>SYSCFG_COMP_OPAMP</groupName>
+      <groupName>SYSCFG</groupName>
       <baseAddress>0x40010000</baseAddress>
       <addressBlock>
         <offset>0x0</offset>
