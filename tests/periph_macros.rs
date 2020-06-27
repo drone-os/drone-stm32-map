@@ -643,6 +643,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "i2c",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -674,6 +675,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "i2c",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
