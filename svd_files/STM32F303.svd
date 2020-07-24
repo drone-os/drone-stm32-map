@@ -4884,6 +4884,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>18</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
+              <name>TIM20RST</name>
+              <description>TIM20 timer reset</description>
+              <bitOffset>20</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
           </fields>
         </register>
         <register>
@@ -5184,6 +5190,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>TIM17EN</name>
               <description>TIM17 timer clock enable</description>
               <bitOffset>18</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>TIM20EN</name>
+              <description>TIM20 timer clock enable</description>
+              <bitOffset>20</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -7765,7 +7777,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>3</bitWidth>
             </field>
             <field>
-              <name>O24CE</name>
+              <name>OC4CE</name>
               <description>Output compare 4 clear
               enable</description>
               <bitOffset>15</bitOffset>
@@ -7938,7 +7950,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <description>counter</description>
           <addressOffset>0x24</addressOffset>
           <size>0x20</size>
-          <access>read-write</access>
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
@@ -7954,12 +7965,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>15</bitWidth>
             </field>
             <field>
-              <name>CNT_or_UIFCPY</name>
+              <name>UIFCPY</name>
               <description>if IUFREMAP=0 than CNT with read write
               access else UIFCPY with read only
               access</description>
               <bitOffset>31</bitOffset>
               <bitWidth>1</bitWidth>
+              <access>read-only</access>
             </field>
           </fields>
         </register>
@@ -31681,14 +31693,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>C5IF</name>
+              <name>CC5IF</name>
               <description>Capture/Compare 5 interrupt
               flag</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>C6IF</name>
+              <name>CC6IF</name>
               <description>Capture/Compare 6 interrupt
               flag</description>
               <bitOffset>17</bitOffset>
@@ -31878,7 +31890,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>4</bitWidth>
             </field>
             <field>
-              <name>IC2PCS</name>
+              <name>IC2PSC</name>
               <description>Input capture 2 prescaler</description>
               <bitOffset>10</bitOffset>
               <bitWidth>2</bitWidth>
@@ -31897,7 +31909,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>4</bitWidth>
             </field>
             <field>
-              <name>IC1PCS</name>
+              <name>IC1PSC</name>
               <description>Input capture 1 prescaler</description>
               <bitOffset>2</bitOffset>
               <bitWidth>2</bitWidth>
@@ -33134,14 +33146,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>C5IF</name>
+              <name>CC5IF</name>
               <description>Capture/Compare 5 interrupt
               flag</description>
               <bitOffset>16</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>C6IF</name>
+              <name>CC6IF</name>
               <description>Capture/Compare 6 interrupt
               flag</description>
               <bitOffset>17</bitOffset>
@@ -33331,7 +33343,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>4</bitWidth>
             </field>
             <field>
-              <name>IC2PCS</name>
+              <name>IC2PSC</name>
               <description>Input capture 2 prescaler</description>
               <bitOffset>10</bitOffset>
               <bitWidth>2</bitWidth>
@@ -33350,7 +33362,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>4</bitWidth>
             </field>
             <field>
-              <name>IC1PCS</name>
+              <name>IC1PSC</name>
               <description>Input capture 1 prescaler</description>
               <bitOffset>2</bitOffset>
               <bitWidth>2</bitWidth>

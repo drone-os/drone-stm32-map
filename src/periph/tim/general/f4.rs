@@ -1,3 +1,6 @@
+//! General-purpose timers.
+//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
 

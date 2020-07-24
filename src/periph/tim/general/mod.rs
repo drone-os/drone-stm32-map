@@ -1,5 +1,7 @@
 //! General-purpose timers.
 
+#[cfg(any(stm32_mcu = "stm32f303",))]
+mod f3;
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
@@ -29,6 +31,8 @@ mod f4;
 ))]
 mod l4_all;
 
+#[cfg(any(stm32_mcu = "stm32f303",))]
+pub use self::f3::*;
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",

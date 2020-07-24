@@ -1,6 +1,7 @@
 //! Timers.
 
 #[cfg(any(
+    stm32_mcu = "stm32f303",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -30,6 +31,7 @@ pub mod advanced;
     stm32_mcu = "stm32f101",
     stm32_mcu = "stm32f103",
     stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32f303",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f410",
@@ -53,6 +55,7 @@ pub mod advanced;
 ))]
 pub mod basic;
 #[cfg(any(
+    stm32_mcu = "stm32f303",
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",

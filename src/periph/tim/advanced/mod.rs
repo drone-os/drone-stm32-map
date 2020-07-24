@@ -1,13 +1,6 @@
 //! Advanced-control timers.
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
-mod f1;
-#[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
@@ -21,6 +14,10 @@ mod f1;
     stm32_mcu = "stm32f469",
 ))]
 mod f4;
+#[cfg(any(
+    stm32_mcu = "stm32f303",
+))]
+mod f3;
 #[cfg(any(
     stm32_mcu = "stm32l4x1",
     stm32_mcu = "stm32l4x2",
@@ -37,12 +34,9 @@ mod f4;
 mod l4_all;
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    stm32_mcu = "stm32f303",
 ))]
-pub use self::f1::*;
+pub use self::f3::*;
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",

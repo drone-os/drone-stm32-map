@@ -1,4 +1,6 @@
 //! General-purpose timers.
+//! for STM32L4 series of ultra-low-power MCUs
+//! and STM32L4+ technology with extended an additional features.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;

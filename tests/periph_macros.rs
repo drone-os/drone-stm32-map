@@ -788,6 +788,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -818,6 +819,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -847,6 +849,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -871,6 +874,15 @@ fn periph_macros1() {
     ))]
     {
         let tim3 = drone_stm32_map::periph::tim::periph_tim3!(reg);
+    }
+    #[cfg(all(
+        feature = "tim",
+        any(
+            stm32_mcu = "stm32f303",
+        )
+    ))]
+    {
+        let tim4 = drone_stm32_map::periph::tim::periph_tim4!(reg);
     }
     #[cfg(all(
         feature = "tim",
@@ -906,6 +918,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f410",
@@ -938,6 +951,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f412",
@@ -1063,6 +1077,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32l4r5",
             stm32_mcu = "stm32l4r7",
             stm32_mcu = "stm32l4r9",
@@ -1083,6 +1098,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32l4r5",
             stm32_mcu = "stm32l4r7",
             stm32_mcu = "stm32l4r9",
