@@ -1,5 +1,11 @@
 //! Inter-Integrated Circuit.
 
+#![feature(proc_macro_hygiene)]
+#![warn(missing_docs)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
+#![no_std]
+
 #[cfg(any(
     stm32_mcu = "stm32l4x1",
     stm32_mcu = "stm32l4x2",

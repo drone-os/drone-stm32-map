@@ -3,6 +3,7 @@
 //! and STM32L4+ technology with extended an additional features.
 
 use drone_core::periph;
+#[allow(unused_imports)]
 use drone_cortexm::reg::marker::*;
 
 #[cfg(any(

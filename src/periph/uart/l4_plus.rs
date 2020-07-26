@@ -1,12 +1,6 @@
 //! Universal Asynchronous Receiver/Transmitter.
 //! for STM32L4 plus series of ultra-low-power MCUs.
 
-#![feature(proc_macro_hygiene)]
-#![warn(missing_docs)]
-#![warn(clippy::pedantic)]
-#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
-#![no_std]
-
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
 

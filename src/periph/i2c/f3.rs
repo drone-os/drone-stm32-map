@@ -1,6 +1,12 @@
 //! Inter-Integrated Circuit
 //! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
+#![feature(proc_macro_hygiene)]
+#![warn(missing_docs)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
+#![no_std]
+
 #[allow(unused_imports)]
 use drone_core::periph;
 #[allow(unused_imports)]
