@@ -15,26 +15,46 @@ periph! {
     pub struct GpioPinPeriph;
 
     GPIO {
-        BRR {
-            0x20 WoReg Shared;
-            BR { WoWoRegFieldBit }
+        MODER {
+            0x20 RwReg Shared;
+            MODER { RwRwRegFieldBits }
+        }
+        OTYPER {
+            0x20 RwReg Shared;
+            OT { RwRwRegFieldBit }
+        }
+        OSPEEDR {
+            0x20 RwReg Shared;
+            OSPEEDR { RwRwRegFieldBits }
+        }
+        PUPDR {
+            0x20 RwReg Shared;
+            PUPDR { RwRwRegFieldBits }
+        }
+        IDR {
+            0x20 RoReg Shared;
+            IDR { RoRoRegFieldBit }
+        }
+        ODR {
+            0x20 RwReg Shared;
+            ODR { RwRwRegFieldBit }
         }
         BSRR {
             0x20 WoReg Shared;
             BR { WoWoRegFieldBit }
             BS { WoWoRegFieldBit }
         }
-        IDR {
-            0x20 RoReg Shared;
-            IDR { RoRoRegFieldBit }
-        }
         LCKR {
             0x20 RwReg Shared;
             LCK { RwRwRegFieldBit }
         }
-        ODR {
+        AFR {
             0x20 RwReg Shared;
-            ODR { RwRwRegFieldBit }
+            AFR { RwRwRegFieldBits }
+        }
+        BRR {
+            0x20 WoReg Shared;
+            BR { WoWoRegFieldBit }
         }
     }
 }
@@ -48,21 +68,18 @@ macro_rules! map_gpio_pin {
         $pin_ty_doc:expr,
         $pin_ty:ident,
         $gpio:ident,
-        $afr_ty:ident,
-        $asc_ty:ident,
+        $moder_ty:ident,
+        $ot_ty:ident,
+        $ospeedr_ty:ident,
+        $pupdr_ty:ident,
+        $idr_ty:ident,
+        $odr_ty:ident,
         $br_ty:ident,
         $bs_ty:ident,
-        $cnf_ty:ident,
-        $mode_ty:ident,
-        $idr_ty:ident,
         $lck_ty:ident,
-        $moder_ty:ident,
-        $odr_ty:ident,
-        $ospeedr_ty:ident,
-        $ot_ty:ident,
-        $pupdr_ty:ident,
         $afr_path:ident,
-        $cr_path:ident,($($ascr_option:ident)*),
+        $afr:ident,
+        $brr_ty:ident,
     ) => {
         periph::map! {
             #[doc = $pin_macro_doc]
@@ -72,7 +89,6 @@ macro_rules! map_gpio_pin {
             pub struct $pin_ty;
 
             impl GpioPinMap for $pin_ty {
-                //type GpioHeadMap = super::head::$port_ty;
                 type GpioHeadMap = super::super::head::$port_ty;
             }
 
@@ -81,26 +97,46 @@ macro_rules! map_gpio_pin {
 
             GPIO {
                 $gpio;
-                BRR {
-                    BRR Shared;
-                    BR { $br_ty }
+                MODER {
+                    MODER Shared;
+                    MODER { $moder_ty }
+                }
+                OTYPER {
+                    OTYPER Shared;
+                    OT { $ot_ty }
+                }
+                OSPEEDR {
+                    OSPEEDR Shared;
+                    OSPEEDR { $ospeedr_ty }
+                }
+                PUPDR {
+                    PUPDR Shared;
+                    PUPDR { $pupdr_ty }
+                }
+                IDR {
+                    IDR Shared;
+                    IDR { $idr_ty }
+                }
+                ODR {
+                    ODR Shared;
+                    ODR { $odr_ty }
                 }
                 BSRR {
                     BSRR Shared;
                     BR { $br_ty }
                     BS { $bs_ty }
                 }
-                IDR {
-                    IDR Shared;
-                    IDR { $idr_ty }
-                }
                 LCKR {
                     LCKR Shared;
                     LCK { $lck_ty }
                 }
-                ODR {
-                    ODR Shared;
-                    ODR { $odr_ty }
+                AFR {
+                    $afr_path Shared;
+                    AFR { $afr }
+                }
+                BRR {
+                    BRR Shared;
+                    BR { $brr_ty }
                 }
             }
         }
@@ -185,22 +221,18 @@ macro_rules! map_gpio_pins {
             $pin0_ty_doc,
             $pin0_ty,
             $gpio,
-            AFRL0,
-            ASC0,
+            MODER0,
+            OT0,
+            OSPEEDR0,
+            PUPDR0,
+            IDR0,
+            ODR0,
             BR0,
             BS0,
-            CNF0,
-            MODE0,
-            IDR0,
             LCK0,
-            MODER0,
-            ODR0,
-            OSPEEDR0,
-            OT0,
-            PUPDR0,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL0,
+            BR0,
         }
         map_gpio_pin! {
             $port_ty,
@@ -209,22 +241,18 @@ macro_rules! map_gpio_pins {
             $pin1_ty_doc,
             $pin1_ty,
             $gpio,
-            AFRL1,
-            ASC1,
+            MODER1,
+            OT1,
+            OSPEEDR1,
+            PUPDR1,
+            IDR1,
+            ODR1,
             BR1,
             BS1,
-            CNF1,
-            MODE1,
-            IDR1,
             LCK1,
-            MODER1,
-            ODR1,
-            OSPEEDR1,
-            OT1,
-            PUPDR1,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL0,
+            BR1,
         }
         map_gpio_pin! {
             $port_ty,
@@ -233,22 +261,18 @@ macro_rules! map_gpio_pins {
             $pin2_ty_doc,
             $pin2_ty,
             $gpio,
-            AFRL2,
-            ASC2,
+            MODER2,
+            OT2,
+            OSPEEDR2,
+            PUPDR2,
+            IDR2,
+            ODR2,
             BR2,
             BS2,
-            CNF2,
-            MODE2,
-            IDR2,
             LCK2,
-            MODER2,
-            ODR2,
-            OSPEEDR2,
-            OT2,
-            PUPDR2,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL2,
+            BR2,
         }
         map_gpio_pin! {
             $port_ty,
@@ -257,22 +281,18 @@ macro_rules! map_gpio_pins {
             $pin3_ty_doc,
             $pin3_ty,
             $gpio,
-            AFRL3,
-            ASC3,
+            MODER3,
+            OT3,
+            OSPEEDR3,
+            PUPDR3,
+            IDR3,
+            ODR3,
             BR3,
             BS3,
-            CNF3,
-            MODE3,
-            IDR3,
             LCK3,
-            MODER3,
-            ODR3,
-            OSPEEDR3,
-            OT3,
-            PUPDR3,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL3,
+            BR3,
         }
         map_gpio_pin! {
             $port_ty,
@@ -281,22 +301,18 @@ macro_rules! map_gpio_pins {
             $pin4_ty_doc,
             $pin4_ty,
             $gpio,
-            AFRL4,
-            ASC4,
+            MODER4,
+            OT4,
+            OSPEEDR4,
+            PUPDR4,
+            IDR4,
+            ODR4,
             BR4,
             BS4,
-            CNF4,
-            MODE4,
-            IDR4,
             LCK4,
-            MODER4,
-            ODR4,
-            OSPEEDR4,
-            OT4,
-            PUPDR4,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL4,
+            BR4,
         }
         map_gpio_pin! {
             $port_ty,
@@ -305,22 +321,18 @@ macro_rules! map_gpio_pins {
             $pin5_ty_doc,
             $pin5_ty,
             $gpio,
-            AFRL5,
-            ASC5,
+            MODER5,
+            OT5,
+            OSPEEDR5,
+            PUPDR5,
+            IDR5,
+            ODR5,
             BR5,
             BS5,
-            CNF5,
-            MODE5,
-            IDR5,
             LCK5,
-            MODER5,
-            ODR5,
-            OSPEEDR5,
-            OT5,
-            PUPDR5,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL5,
+            BR5,
         }
         map_gpio_pin! {
             $port_ty,
@@ -329,22 +341,18 @@ macro_rules! map_gpio_pins {
             $pin6_ty_doc,
             $pin6_ty,
             $gpio,
-            AFRL6,
-            ASC6,
+            MODER6,
+            OT6,
+            OSPEEDR6,
+            PUPDR6,
+            IDR6,
+            ODR6,
             BR6,
             BS6,
-            CNF6,
-            MODE6,
-            IDR6,
             LCK6,
-            MODER6,
-            ODR6,
-            OSPEEDR6,
-            OT6,
-            PUPDR6,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL6,
+            BR6,
         }
         map_gpio_pin! {
             $port_ty,
@@ -353,22 +361,18 @@ macro_rules! map_gpio_pins {
             $pin7_ty_doc,
             $pin7_ty,
             $gpio,
-            AFRL7,
-            ASC7,
+            MODER7,
+            OT7,
+            OSPEEDR7,
+            PUPDR7,
+            IDR7,
+            ODR7,
             BR7,
             BS7,
-            CNF7,
-            MODE7,
-            IDR7,
             LCK7,
-            MODER7,
-            ODR7,
-            OSPEEDR7,
-            OT7,
-            PUPDR7,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
+            AFRL7,
+            BR7,
         }
         map_gpio_pin! {
             $port_ty,
@@ -377,22 +381,18 @@ macro_rules! map_gpio_pins {
             $pin8_ty_doc,
             $pin8_ty,
             $gpio,
-            AFRH8,
-            ASC8,
+            MODER8,
+            OT8,
+            OSPEEDR8,
+            PUPDR8,
+            IDR8,
+            ODR8,
             BR8,
             BS8,
-            CNF8,
-            MODE8,
-            IDR8,
             LCK8,
-            MODER8,
-            ODR8,
-            OSPEEDR8,
-            OT8,
-            PUPDR8,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH8,
+            BR8,
         }
         map_gpio_pin! {
             $port_ty,
@@ -401,22 +401,18 @@ macro_rules! map_gpio_pins {
             $pin9_ty_doc,
             $pin9_ty,
             $gpio,
-            AFRH9,
-            ASC9,
+            MODER9,
+            OT9,
+            OSPEEDR9,
+            PUPDR9,
+            IDR9,
+            ODR9,
             BR9,
             BS9,
-            CNF9,
-            MODE9,
-            IDR9,
             LCK9,
-            MODER9,
-            ODR9,
-            OSPEEDR9,
-            OT9,
-            PUPDR9,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH9,
+            BR9,
         }
         map_gpio_pin! {
             $port_ty,
@@ -425,22 +421,18 @@ macro_rules! map_gpio_pins {
             $pin10_ty_doc,
             $pin10_ty,
             $gpio,
-            AFRH10,
-            ASC10,
+            MODER10,
+            OT10,
+            OSPEEDR10,
+            PUPDR10,
+            IDR10,
+            ODR10,
             BR10,
             BS10,
-            CNF10,
-            MODE10,
-            IDR10,
             LCK10,
-            MODER10,
-            ODR10,
-            OSPEEDR10,
-            OT10,
-            PUPDR10,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH10,
+            BR10,
         }
         map_gpio_pin! {
             $port_ty,
@@ -449,22 +441,18 @@ macro_rules! map_gpio_pins {
             $pin11_ty_doc,
             $pin11_ty,
             $gpio,
-            AFRH11,
-            ASC11,
+            MODER11,
+            OT11,
+            OSPEEDR11,
+            PUPDR11,
+            IDR11,
+            ODR11,
             BR11,
             BS11,
-            CNF11,
-            MODE11,
-            IDR11,
             LCK11,
-            MODER11,
-            ODR11,
-            OSPEEDR11,
-            OT11,
-            PUPDR11,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH11,
+            BR11,
         }
         map_gpio_pin! {
             $port_ty,
@@ -473,22 +461,18 @@ macro_rules! map_gpio_pins {
             $pin12_ty_doc,
             $pin12_ty,
             $gpio,
-            AFRH12,
-            ASC12,
+            MODER12,
+            OT12,
+            OSPEEDR12,
+            PUPDR12,
+            IDR12,
+            ODR12,
             BR12,
             BS12,
-            CNF12,
-            MODE12,
-            IDR12,
             LCK12,
-            MODER12,
-            ODR12,
-            OSPEEDR12,
-            OT12,
-            PUPDR12,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH12,
+            BR12,
         }
         map_gpio_pin! {
             $port_ty,
@@ -497,22 +481,18 @@ macro_rules! map_gpio_pins {
             $pin13_ty_doc,
             $pin13_ty,
             $gpio,
-            AFRH13,
-            ASC13,
+            MODER13,
+            OT13,
+            OSPEEDR13,
+            PUPDR13,
+            IDR13,
+            ODR13,
             BR13,
             BS13,
-            CNF13,
-            MODE13,
-            IDR13,
             LCK13,
-            MODER13,
-            ODR13,
-            OSPEEDR13,
-            OT13,
-            PUPDR13,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH13,
+            BR13,
         }
         map_gpio_pin! {
             $port_ty,
@@ -521,22 +501,18 @@ macro_rules! map_gpio_pins {
             $pin14_ty_doc,
             $pin14_ty,
             $gpio,
-            AFRH14,
-            ASC14,
+            MODER14,
+            OT14,
+            OSPEEDR14,
+            PUPDR14,
+            IDR14,
+            ODR14,
             BR14,
             BS14,
-            CNF14,
-            MODE14,
-            IDR14,
             LCK14,
-            MODER14,
-            ODR14,
-            OSPEEDR14,
-            OT14,
-            PUPDR14,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH14,
+            BR14,
         }
         map_gpio_pin! {
             $port_ty,
@@ -545,22 +521,18 @@ macro_rules! map_gpio_pins {
             $pin15_ty_doc,
             $pin15_ty,
             $gpio,
-            AFRH15,
-            ASC15,
+            MODER15,
+            OT15,
+            OSPEEDR15,
+            PUPDR15,
+            IDR15,
+            ODR15,
             BR15,
             BS15,
-            CNF15,
-            MODE15,
-            IDR15,
             LCK15,
-            MODER15,
-            ODR15,
-            OSPEEDR15,
-            OT15,
-            PUPDR15,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
+            AFRH15,
+            BR15,
         }
     };
 }

@@ -96,8 +96,8 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOB,
-    IOPAEN,
-    IOPARST,
+    IOPBEN,
+    IOPBRST,
 }
 
 map_gpio_port_head! {
@@ -108,8 +108,8 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOC,
-    IOPAEN,
-    IOPARST,
+    IOPCEN,
+    IOPCRST,
 }
 
 map_gpio_port_head! {
@@ -120,8 +120,8 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOD,
-    IOPAEN,
-    IOPARST,
+    IOPDEN,
+    IOPDRST,
 }
 
 map_gpio_port_head! {
@@ -132,8 +132,8 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOE,
-    IOPAEN,
-    IOPARST,
+    IOPEEN,
+    IOPERST,
 }
 
 map_gpio_port_head! {
@@ -144,8 +144,8 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOF,
-    IOPAEN,
-    IOPARST,
+    IOPFEN,
+    IOPFRST,
 }
 
 map_gpio_port_head! {
@@ -156,8 +156,8 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOG,
-    IOPAEN,
-    IOPARST,
+    IOPGEN,
+    IOPGRST,
 }
 
 map_gpio_port_head! {
@@ -168,6 +168,6 @@ map_gpio_port_head! {
     AHBENR,
     AHBRSTR,
     GPIOH,
-    IOPAEN,
-    IOPARST,
+    IOPHEN,
+    IOPHRST,
 }
