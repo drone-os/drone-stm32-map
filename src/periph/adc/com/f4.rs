@@ -1,7 +1,7 @@
 //! Analog-to-digital converters common registers.
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
-#[allow(unused_imports)]
 use drone_core::periph;
 
 periph::singular! {
@@ -19,6 +19,7 @@ periph::singular! {
             ADCRST;
         }
     }
+
     ADC_Common {
         #[cfg(any(
             stm32_mcu = "stm32f405",

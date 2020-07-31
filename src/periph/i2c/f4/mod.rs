@@ -1,24 +1,13 @@
-//! Inter-Integrated Circuit
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//! Inter-Integrated Circuit.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
-#[allow(unused_imports)]
+#[cfg(any(stm32_mcu = "stm32f410", stm32_mcu = "stm32f412", stm32_mcu = "stm32f413"))]
+pub mod fmp;
+
 use drone_core::periph;
-#[allow(unused_imports)]
 use drone_cortexm::reg::marker::*;
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
-))]
 periph! {
     /// Generic I2C peripheral variant.
     pub trait I2CMap {}
@@ -40,6 +29,7 @@ periph! {
             I2CSMEN { RwRwRegFieldBitBand }
         }
     }
+
     I2C {
         CR1 {
             0x20 RwRegBitBand;
@@ -129,19 +119,6 @@ periph! {
     }
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
-))]
 #[allow(unused_macros)]
 macro_rules! map_i2c {
     (
@@ -183,6 +160,7 @@ macro_rules! map_i2c {
                     I2CSMEN { $i2csmen }
                 }
             }
+
             I2C {
                 $i2c;
                 CR1 {
@@ -275,19 +253,6 @@ macro_rules! map_i2c {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
-))]
 map_i2c! {
     "Extracts I2C1 register tokens.",
     periph_i2c1,
@@ -302,19 +267,6 @@ map_i2c! {
     I2C1LPEN,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
-))]
 map_i2c! {
     "Extracts I2C2 register tokens.",
     periph_i2c2,

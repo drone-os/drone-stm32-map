@@ -6,7 +6,7 @@
 #![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
 #![no_std]
 
-#[cfg(any(stm32_mcu = "stm32f303",))]
+#[cfg(any(stm32_mcu = "stm32f303"))]
 mod f3;
 #[cfg(any(
     stm32_mcu = "stm32f401",
@@ -40,7 +40,7 @@ mod l4_all;
 ))]
 mod l4_all;
 
-#[cfg(any(stm32_mcu = "stm32f303",))]
+#[cfg(any(stm32_mcu = "stm32f303"))]
 pub use self::f3::*;
 #[cfg(any(
     stm32_mcu = "stm32f401",

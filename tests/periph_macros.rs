@@ -76,12 +76,7 @@ fn periph_macros1() {
         let adc2 = drone_stm32_map::periph::adc::periph_adc2!(reg);
         let adc3 = drone_stm32_map::periph::adc::periph_adc3!(reg);
     }
-    #[cfg(all(
-        feature = "adc",
-        any(
-            stm32_mcu = "stm32f303",
-        )
-    ))]
+    #[cfg(all(feature = "adc", any(stm32_mcu = "stm32f303")))]
     {
         let adc4 = drone_stm32_map::periph::adc::periph_adc4!(reg);
     }
@@ -351,12 +346,7 @@ fn periph_macros1() {
     {
         let exti23 = drone_stm32_map::periph::exti::periph_exti23!(reg);
     }
-    #[cfg(all(
-        feature = "exti",
-        any(
-            stm32_mcu = "stm32f303",
-        )
-    ))]
+    #[cfg(all(feature = "exti", any(stm32_mcu = "stm32f303")))]
     {
         let exti29 = drone_stm32_map::periph::exti::periph_exti29!(reg);
         let exti30 = drone_stm32_map::periph::exti::periph_exti30!(reg);
@@ -875,12 +865,7 @@ fn periph_macros1() {
     {
         let tim3 = drone_stm32_map::periph::tim::periph_tim3!(reg);
     }
-    #[cfg(all(
-        feature = "tim",
-        any(
-            stm32_mcu = "stm32f303",
-        )
-    ))]
+    #[cfg(all(feature = "tim", any(stm32_mcu = "stm32f303")))]
     {
         let tim4 = drone_stm32_map::periph::tim::periph_tim4!(reg);
     }

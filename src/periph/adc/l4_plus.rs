@@ -22,6 +22,7 @@ periph! {
             ADCSEL { RwRwRegFieldBits }
         }
     }
+
     ADC {
         ISR {
             0x20 RwReg;
@@ -278,6 +279,7 @@ macro_rules! map_adc {
                     ADCSEL { ADCSEL }
                 }
             }
+
             ADC {
                 $adc;
                 ISR {

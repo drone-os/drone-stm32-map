@@ -1,5 +1,6 @@
 //! Extended interrupts and events controller
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -17,6 +18,7 @@ periph! {
             EXTI { RwRwRegFieldBits Option }
         }
     }
+
     EXTI {
         IMR {
             0x20 RwRegBitBand Shared;
@@ -85,6 +87,7 @@ macro_rules! map_exti {
                     EXTI { $($exti Option)* }
                 }
             }
+
             EXTI {
                 IMR {
                     $imr Shared;

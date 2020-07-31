@@ -1,6 +1,4 @@
-//! Fast-mode Plus Inter-integrated circuit
-//! for STM32L4 series of ultra-low-power MCUs
-//! and STM32L4+ technology with extended an additional features.
+//! Fast-mode Plus Inter-integrated circuit.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -30,6 +28,7 @@ periph! {
             I2CSEL { RwRwRegFieldBits }
         }
     }
+
     I2C {
         CR1 {
             0x20 RwRegBitBand;
@@ -52,20 +51,6 @@ periph! {
             TCIE { RwRwRegFieldBitBand }
             TXDMAEN { RwRwRegFieldBitBand }
             TXIE { RwRwRegFieldBitBand }
-            #[cfg(any(
-                stm32_mcu = "stm32l4x1",
-                stm32_mcu = "stm32l4x2",
-                stm32_mcu = "stm32l4x3",
-                stm32_mcu = "stm32l4x5",
-                stm32_mcu = "stm32l4x6",
-                stm32_mcu = "stm32l4r5",
-                stm32_mcu = "stm32l4r7",
-                stm32_mcu = "stm32l4r9",
-                stm32_mcu = "stm32l4s5",
-                stm32_mcu = "stm32l4s7",
-                stm32_mcu = "stm32l4s9"
-            ))]
-            WUPEN { RwRwRegFieldBitBand }
         }
         CR2 {
             0x20 RwRegBitBand;
@@ -203,6 +188,7 @@ macro_rules! map_i2c {
                     I2CSEL { $i2csel }
                 }
             }
+
             I2C {
                 $i2c;
                 CR1 {
@@ -226,20 +212,6 @@ macro_rules! map_i2c {
                     TCIE { TCIE }
                     TXDMAEN { TXDMAEN }
                     TXIE { TXIE }
-                    #[cfg(any(
-                        stm32_mcu = "stm32l4x1",
-                        stm32_mcu = "stm32l4x2",
-                        stm32_mcu = "stm32l4x3",
-                        stm32_mcu = "stm32l4x5",
-                        stm32_mcu = "stm32l4x6",
-                        stm32_mcu = "stm32l4r5",
-                        stm32_mcu = "stm32l4r7",
-                        stm32_mcu = "stm32l4r9",
-                        stm32_mcu = "stm32l4s5",
-                        stm32_mcu = "stm32l4s7",
-                        stm32_mcu = "stm32l4s9"
-                    ))]
-                    WUPEN { WUPEN }
                 }
                 CR2 {
                     CR2;
@@ -332,115 +304,36 @@ macro_rules! map_i2c {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
-map_i2c! {
-    "Extracts I2C1 register tokens.",
-    periph_i2c1,
-    "I2C1 peripheral variant.",
-    I2C1,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    CCIPR,
-    I2C1,
-    I2C1EN,
-    I2C1RST,
-    I2C1SMEN,
-    I2C1SEL,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
-map_i2c! {
-    "Extracts I2C2 register tokens.",
-    periph_i2c2,
-    "I2C2 peripheral variant.",
-    I2C2,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    CCIPR,
-    I2C2,
-    I2C2EN,
-    I2C2RST,
-    I2C2SMEN,
-    I2C2SEL,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
-map_i2c! {
-    "Extracts I2C3 register tokens.",
-    periph_i2c3,
-    "I2C3 peripheral variant.",
-    I2C3,
-    APB1ENR1,
-    APB1RSTR1,
-    APB1SMENR1,
-    CCIPR,
-    I2C3,
-    I2C3EN,
-    I2C3RST,
-    I2C3SMEN,
-    I2C3SEL,
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
+#[cfg(any(stm32_mcu = "stm32f410"))]
 map_i2c! {
     "Extracts I2C4 register tokens.",
     periph_i2c4,
     "I2C4 peripheral variant.",
     I2C4,
-    APB1ENR2,
-    APB1RSTR2,
-    APB1SMENR2,
-    CCIPR2,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    DCKCFGR2,
     I2C4,
     I2C4EN,
     I2C4RST,
-    I2C4SMEN,
+    I2C4LPEN,
     I2C4SEL,
+}
+
+#[cfg(any(stm32_mcu = "stm32f412", stm32_mcu = "stm32f413"))]
+map_i2c! {
+    "Extracts I2CFMP1 register tokens.",
+    periph_i2cfmp1,
+    "I2CFMP1 peripheral variant.",
+    I2Cfmp1,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    DCKCFGR2,
+    I2CFMP1,
+    I2CFMP1EN,
+    I2CFMP1RST,
+    I2CFMP1LPEN,
+    I2CFMP1SEL,
 }

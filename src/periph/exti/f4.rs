@@ -1,5 +1,6 @@
-//! Extended interrupts and events controller
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//! Extended interrupts and events controller.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -17,6 +18,7 @@ periph! {
             EXTI { RwRwRegFieldBits Option }
         }
     }
+
     EXTI {
         IMR {
             0x20 RwRegBitBand Shared;
@@ -85,6 +87,7 @@ macro_rules! map_exti {
                     EXTI { $($exti Option)* }
                 }
             }
+
             EXTI {
                 IMR {
                     $imr Shared;
@@ -541,7 +544,7 @@ map_exti! {
     (PR19),
 }
 
-#[cfg(any(stm32_mcu = "stm32f446", stm32_mcu = "stm32f469",))]
+#[cfg(any(stm32_mcu = "stm32f446", stm32_mcu = "stm32f469"))]
 map_exti! {
     "Extracts EXTI Line 19 register tokens.",
     periph_exti19,
@@ -634,7 +637,7 @@ map_exti! {
     (PR22),
 }
 
-#[cfg(any(stm32_mcu = "stm32f413",))]
+#[cfg(any(stm32_mcu = "stm32f413"))]
 map_exti! {
     "Extracts EXTI Line 23 register tokens.",
     periph_exti23,

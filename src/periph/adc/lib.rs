@@ -6,10 +6,30 @@
 #![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
 #![no_std]
 
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f410",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f413",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469",
+    stm32_mcu = "stm32l4r5",
+    stm32_mcu = "stm32l4r7",
+    stm32_mcu = "stm32l4r9",
+    stm32_mcu = "stm32l4s5",
+    stm32_mcu = "stm32l4s7",
+    stm32_mcu = "stm32l4s9"
+))]
 pub mod com;
+#[cfg(any(stm32_mcu = "stm32f303"))]
 pub mod dual;
 
-#[cfg(any(stm32_mcu = "stm32f303",))]
+#[cfg(any(stm32_mcu = "stm32f303"))]
 mod f3;
 #[cfg(any(
     stm32_mcu = "stm32f401",
@@ -35,7 +55,7 @@ mod f4;
 ))]
 mod l4_plus;
 
-#[cfg(any(stm32_mcu = "stm32f303",))]
+#[cfg(any(stm32_mcu = "stm32f303"))]
 pub use self::f3::*;
 #[cfg(any(
     stm32_mcu = "stm32f401",

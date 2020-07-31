@@ -1,5 +1,6 @@
 //! General-purpose I/O port pins.
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -212,7 +213,6 @@ macro_rules! map_gpio_pins {
         $pin15_ty_doc:expr,
         $pin15_ty:ident,
         $gpio:ident,
-        ($($ascr_option:ident)*),
     ) => {
         map_gpio_pin! {
             $port_ty,
@@ -604,7 +604,6 @@ map_gpio_pins! {
     "GPIO port A pin 15 peripheral variant.",
     GpioA15,
     GPIOA,
-    (Option),
 }
 
 map_gpio_pins! {
@@ -674,7 +673,6 @@ map_gpio_pins! {
     "GPIO port B pin 15 peripheral variant.",
     GpioB15,
     GPIOB,
-    (Option),
 }
 
 map_gpio_pins! {
@@ -744,7 +742,6 @@ map_gpio_pins! {
     "GPIO port C pin 15 peripheral variant.",
     GpioC15,
     GPIOC,
-    (Option),
 }
 
 map_gpio_pins! {
@@ -814,7 +811,6 @@ map_gpio_pins! {
     "GPIO port D pin 15 peripheral variant.",
     GpioD15,
     GPIOD,
-    (Option),
 }
 
 map_gpio_pins! {
@@ -884,7 +880,6 @@ map_gpio_pins! {
     "GPIO port E pin 15 peripheral variant.",
     GpioE15,
     GPIOE,
-    (Option),
 }
 
 map_gpio_pins! {
@@ -954,5 +949,4 @@ map_gpio_pins! {
     "GPIO port F pin 15 peripheral variant.",
     GpioF15,
     GPIOF,
-    (Option),
 }

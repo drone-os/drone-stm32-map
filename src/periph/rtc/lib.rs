@@ -6,9 +6,6 @@
 #![allow(clippy::type_repetition_in_bounds, clippy::wildcard_imports)]
 #![no_std]
 
-#[allow(unused_imports)]
-use drone_core::periph;
-
 #[cfg(any(
     stm32_mcu = "stm32l4x1",
     stm32_mcu = "stm32l4x2",

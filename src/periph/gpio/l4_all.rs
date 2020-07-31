@@ -1,6 +1,6 @@
 //! Mappings for General Purpose I/Os.
-//! for STM32L4 series of ultra-low-power MCUs.
-//! and STM32L4+ technology with extended an additional features.
+//!
+//! For STM32L4 and STM32L4+ series of ultra-low-power MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;

@@ -1,5 +1,5 @@
-cortexm_core := 'cortexm4f_f401'
-stm32_mcu := 'stm32l4x6'
+cortexm_core := 'cortexm4f_r0p1'
+stm32_mcu := 'stm32l4s9'
 export DRONE_RUSTFLAGS := '--cfg cortexm_core="' + cortexm_core + '" ' + '--cfg stm32_mcu="' + stm32_mcu + '"'
 target := 'thumbv7em-none-eabihf'
 features := 'adc dma exti gpio i2c rtc spi tim uart'

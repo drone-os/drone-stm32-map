@@ -666,7 +666,7 @@ map_uart! {
     (LBDCF),
 }
 
-#[cfg(any(stm32_mcu = "stm32l4x5", stm32_mcu = "stm32l4x6",))]
+#[cfg(any(stm32_mcu = "stm32l4x5", stm32_mcu = "stm32l4x6"))]
 map_uart! {
     "Extracts UART5 register tokens.",
     periph_uart5,

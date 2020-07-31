@@ -1,5 +1,6 @@
 //! Serial Peripheral Interface.
-//! for STM32F1 Series of mainstream MCUs.
+//!
+//! For STM32F1 Series of mainstream MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -21,6 +22,7 @@ periph! {
             SPIRST { RwRwRegFieldBitBand }
         }
     }
+
     SPI {
         CR1 {
             0x20 RwRegBitBand;
@@ -99,10 +101,8 @@ macro_rules! map_spi {
         $spi_ty:ident,
         $busenr:ident,
         $busrstr:ident,
-        $bussmenr:ident,
         $spien:ident,
         $spirst:ident,
-        $spismen:ident,
         $spi:ident,
     ) => {
         periph::map! {
@@ -199,13 +199,6 @@ macro_rules! map_spi {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
 map_spi! {
     "Extracts SPI1 register tokens.",
     periph_spi1,
@@ -213,20 +206,11 @@ map_spi! {
     Spi1,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     SPI1EN,
     SPI1RST,
-    SPI1SMEN,
     SPI1,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
-))]
 map_spi! {
     "Extracts SPI2 register tokens.",
     periph_spi2,
@@ -234,10 +218,8 @@ map_spi! {
     Spi2,
     APB1ENR,
     APB1RSTR,
-    APB1SMENR,
     SPI2EN,
     SPI2RST,
-    SPI2SMEN,
     SPI2,
 }
 
@@ -254,9 +236,7 @@ map_spi! {
     Spi3,
     APB1ENR,
     APB1RSTR,
-    APB1SMENR,
     SPI3EN,
     SPI3RST,
-    SPI3SMEN,
     SPI3,
 }

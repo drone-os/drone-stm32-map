@@ -1,5 +1,6 @@
 //! General-purpose I/O port heads.
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -76,6 +77,7 @@ macro_rules! map_gpio_port_head {
         }
     };
 }
+
 map_gpio_port_head! {
     "Extracts GPIO port A head register tokens.",
     periph_gpio_a_head,

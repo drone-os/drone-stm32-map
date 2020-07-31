@@ -1,5 +1,6 @@
 //! Direct Memory Access.
-//! for STM32L4+ series of ultra-low-power MCUs.
+//!
+//! For STM32L4+ series of ultra-low-power MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;

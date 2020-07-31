@@ -1,5 +1,6 @@
 //! Direct Memory Access.
-//! for STM32F1 Series of mainstream MCUs.
+//!
+//! For STM32F1 Series of mainstream MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -27,11 +28,7 @@ macro_rules! map_dma {
         $dma_ty_doc:expr,
         $dma_ty:ident,
         $busenr:ident,
-        $busrstr:ident,
-        $bussmenr:ident,
         $dmaen:ident,
-        $dmarst:ident,
-        $dmasmen:ident,
     ) => {
         periph::map! {
             #[doc = $dma_macro_doc]
@@ -61,11 +58,7 @@ map_dma! {
     "DMA1 head peripheral variant.",
     Dma1,
     AHBENR,
-    AHBRSTR,
-    AHBSMENR,
     DMA1EN,
-    DMA1RST,
-    DMA1SMEN,
 }
 
 map_dma! {
@@ -74,9 +67,5 @@ map_dma! {
     "DMA2 head peripheral variant.",
     Dma2,
     AHBENR,
-    AHBRSTR,
-    AHBSMENR,
     DMA2EN,
-    DMA2RST,
-    DMA2SMEN,
 }

@@ -24,6 +24,7 @@ periph! {
             TIMSMEN { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -214,37 +215,11 @@ periph! {
             0x20 RwRegBitBand;
             DMAB { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         OR1 {
             0x20 RwRegBitBand;
             ETR_ADC1_RMP { RwRwRegFieldBits Option }
             TI1_RMP { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         CCMR3_Output {
             0x20 RwRegBitBand;
             OC5CE { RwRwRegFieldBitBand }
@@ -258,19 +233,6 @@ periph! {
             OC6M { RwRwRegFieldBits }
             OC6PE { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         CCR5 {
             0x20 RwRegBitBand;
             CCR5 { RwRwRegFieldBits }
@@ -278,36 +240,10 @@ periph! {
             GC5C2 { RwRwRegFieldBitBand }
             GC5C3 { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         CCR6 {
             0x20 RwRegBitBand;
             CCR6 { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         OR2 {
             0x20 RwRegBitBand;
             BKCMP1E { RwRwRegFieldBitBand }
@@ -319,19 +255,6 @@ periph! {
             BKINP { RwRwRegFieldBitBand }
             ETRSEL { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         OR3 {
             0x20 RwRegBitBand;
             BK2CMP1E { RwRwRegFieldBitBand }
@@ -389,6 +312,7 @@ macro_rules! map_advanced_tim {
                     TIMSMEN { $timsmen }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -580,37 +504,11 @@ macro_rules! map_advanced_tim {
                     DMAR;
                     DMAB { DMAB }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 OR1 {
                     OR1;
                     ETR_ADC1_RMP { $($etr_adc1_rmp Option)* }
                     TI1_RMP { TI1_RMP }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 CCMR3_Output {
                     CCMR3_Output;
                     OC5CE { OC5CE }
@@ -624,19 +522,6 @@ macro_rules! map_advanced_tim {
                     OC6M { OC6M }
                     OC6PE { OC6PE }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 CCR5 {
                     CCR5;
                     CCR5 { CCR5 }
@@ -644,36 +529,10 @@ macro_rules! map_advanced_tim {
                     GC5C2 { GC5C2 }
                     GC5C3 { GC5C3 }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 CCR6 {
                     CCR6;
                     CCR6 { CCR6 }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 OR2 {
                     OR2;
                     BKCMP1E { BKCMP1E }
@@ -685,19 +544,6 @@ macro_rules! map_advanced_tim {
                     BKINP { BKINP }
                     ETRSEL { ETRSEL }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 OR3 {
                     OR3;
                     BK2CMP1E { BK2CMP1E }
@@ -713,19 +559,6 @@ macro_rules! map_advanced_tim {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
 map_advanced_tim! {
     "Extracts TIM1 register tokens.",
     periph_tim1,

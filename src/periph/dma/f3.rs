@@ -1,5 +1,6 @@
 //! Direct Memory Access
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;

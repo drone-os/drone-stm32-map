@@ -1,5 +1,6 @@
-//! Mappings for General Purpose I/Os
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//! Mappings for General Purpose I/Os.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -234,7 +235,7 @@ macro_rules! map_gpio_port {
         $gpio:ident,
         $gpioen:ident,
         $gpiorst:ident,
-        $gpiosmen:ident,($($ascr:ident)*),
+        $gpiosmen:ident,
     ) => {
         periph::map! {
             #[doc = $port_macro_doc]
@@ -473,7 +474,6 @@ map_gpio_port! {
     GPIOAEN,
     GPIOARST,
     GPIOALPEN,
-    (),
 }
 
 map_gpio_port! {
@@ -488,7 +488,6 @@ map_gpio_port! {
     GPIOBEN,
     GPIOBRST,
     GPIOBLPEN,
-    (),
 }
 
 map_gpio_port! {
@@ -503,7 +502,6 @@ map_gpio_port! {
     GPIOCEN,
     GPIOCRST,
     GPIOCLPEN,
-    (),
 }
 
 #[cfg(any(
@@ -530,7 +528,6 @@ map_gpio_port! {
     GPIODEN,
     GPIODRST,
     GPIODLPEN,
-    (),
 }
 
 #[cfg(any(
@@ -557,7 +554,6 @@ map_gpio_port! {
     GPIOEEN,
     GPIOERST,
     GPIOELPEN,
-    (),
 }
 
 #[cfg(any(
@@ -582,7 +578,6 @@ map_gpio_port! {
     GPIOFEN,
     GPIOFRST,
     GPIOFLPEN,
-    (),
 }
 
 #[cfg(any(
@@ -607,7 +602,6 @@ map_gpio_port! {
     GPIOGEN,
     GPIOGRST,
     GPIOGLPEN,
-    (),
 }
 
 map_gpio_port! {
@@ -622,7 +616,6 @@ map_gpio_port! {
     GPIOHEN,
     GPIOHRST,
     GPIOHLPEN,
-    (),
 }
 
 #[cfg(any(
@@ -644,7 +637,6 @@ map_gpio_port! {
     GPIOIEN,
     GPIOIRST,
     GPIOILPEN,
-    (),
 }
 
 #[cfg(any(
@@ -666,7 +658,6 @@ map_gpio_port! {
     GPIOJEN,
     GPIOJRST,
     GPIOJLPEN,
-    (),
 }
 
 #[cfg(any(
@@ -688,5 +679,4 @@ map_gpio_port! {
     GPIOKEN,
     GPIOKRST,
     GPIOKLPEN,
-    (),
 }

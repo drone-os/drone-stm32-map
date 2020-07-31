@@ -1,24 +1,9 @@
 //! Real-time clock.
-//! for STM32L4 series of ultra-low-power MCUs
-//! and STM32L4+ technology with extended an additional features.
+//!
+//! For STM32L4 and STM32L4+ series of ultra-low-power MCUs.
 
 use drone_core::periph;
-#[allow(unused_imports)]
-use drone_cortexm::reg::marker::*;
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
 periph::singular! {
     /// Extracts RTC register tokens.
     pub macro periph_rtc;
@@ -41,6 +26,7 @@ periph::singular! {
             RTCSEL;
         }
     }
+
     RTC {
         TR;
         DR;

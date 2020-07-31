@@ -1,9 +1,8 @@
-//! Inter-Integrated Circuit
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//! Inter-Integrated Circuit.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
-#[allow(unused_imports)]
 use drone_core::periph;
-#[allow(unused_imports)]
 use drone_cortexm::reg::marker::*;
 
 periph! {
@@ -23,6 +22,7 @@ periph! {
             I2CRST { RwRwRegFieldBitBand }
         }
     }
+
     I2C {
         CR1 {
             0x20 RwRegBitBand;
@@ -176,6 +176,7 @@ macro_rules! map_i2c {
                     I2CRST { $i2crst }
                 }
             }
+
             I2C {
                 $i2c;
                 CR1 {

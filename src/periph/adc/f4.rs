@@ -18,6 +18,7 @@ periph! {
             ADCSMEN { RwRwRegFieldBitBand }
         }
     }
+
     ADC {
         SR {
             0x20 RwReg;
@@ -201,6 +202,7 @@ macro_rules! map_adc {
                     ADCSMEN { $adcsmen }
                 }
             }
+
             ADC {
                 $adc;
                 SR {

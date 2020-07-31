@@ -1,5 +1,6 @@
 //! General-purpose I/O pins.
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -15,19 +16,6 @@ periph! {
     pub struct GpioPinPeriph;
 
     GPIO {
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         AFR {
             0x20 RwReg Shared;
             AFR { RwRwRegFieldBits }
@@ -45,19 +33,6 @@ periph! {
             0x20 RwReg Shared;
             LCK { RwRwRegFieldBit }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         MODER {
             0x20 RwReg Shared;
             MODER { RwRwRegFieldBits }
@@ -66,53 +41,14 @@ periph! {
             0x20 RwReg Shared;
             ODR { RwRwRegFieldBit }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         OSPEEDR {
             0x20 RwReg Shared;
             OSPEEDR { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         OTYPER {
             0x20 RwReg Shared;
             OT { RwRwRegFieldBit }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         PUPDR {
             0x20 RwReg Shared;
             PUPDR { RwRwRegFieldBits }
@@ -130,11 +66,8 @@ macro_rules! map_gpio_pin {
         $pin_ty:ident,
         $gpio:ident,
         $afr_ty:ident,
-        $asc_ty:ident,
         $br_ty:ident,
         $bs_ty:ident,
-        $cnf_ty:ident,
-        $mode_ty:ident,
         $idr_ty:ident,
         $lck_ty:ident,
         $moder_ty:ident,
@@ -143,7 +76,6 @@ macro_rules! map_gpio_pin {
         $ot_ty:ident,
         $pupdr_ty:ident,
         $afr_path:ident,
-        $cr_path:ident,($($ascr_option:ident)*),
     ) => {
         periph::map! {
             #[doc = $pin_macro_doc]
@@ -161,19 +93,6 @@ macro_rules! map_gpio_pin {
 
             GPIO {
                 $gpio;
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 AFR {
                     $afr_path Shared;
                     AFR { $afr_ty }
@@ -191,19 +110,6 @@ macro_rules! map_gpio_pin {
                     LCKR Shared;
                     LCK { $lck_ty }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 MODER {
                     MODER Shared;
                     MODER { $moder_ty }
@@ -212,53 +118,14 @@ macro_rules! map_gpio_pin {
                     ODR Shared;
                     ODR { $odr_ty }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 OSPEEDR {
                     OSPEEDR Shared;
                     OSPEEDR { $ospeedr_ty }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 OTYPER {
                     OTYPER Shared;
                     OT { $ot_ty }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 PUPDR {
                     PUPDR Shared;
                     PUPDR { $pupdr_ty }
@@ -337,7 +204,6 @@ macro_rules! map_gpio_pins {
         $pin15_ty_doc:expr,
         $pin15_ty:ident,
         $gpio:ident,
-        ($($ascr_option:ident)*),
     ) => {
         map_gpio_pin! {
             $port_ty,
@@ -347,11 +213,8 @@ macro_rules! map_gpio_pins {
             $pin0_ty,
             $gpio,
             AFRL0,
-            ASC0,
             BR0,
             BS0,
-            CNF0,
-            MODE0,
             IDR0,
             LCK0,
             MODER0,
@@ -360,8 +223,6 @@ macro_rules! map_gpio_pins {
             OT0,
             PUPDR0,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -371,11 +232,8 @@ macro_rules! map_gpio_pins {
             $pin1_ty,
             $gpio,
             AFRL1,
-            ASC1,
             BR1,
             BS1,
-            CNF1,
-            MODE1,
             IDR1,
             LCK1,
             MODER1,
@@ -384,8 +242,6 @@ macro_rules! map_gpio_pins {
             OT1,
             PUPDR1,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -395,11 +251,8 @@ macro_rules! map_gpio_pins {
             $pin2_ty,
             $gpio,
             AFRL2,
-            ASC2,
             BR2,
             BS2,
-            CNF2,
-            MODE2,
             IDR2,
             LCK2,
             MODER2,
@@ -408,8 +261,6 @@ macro_rules! map_gpio_pins {
             OT2,
             PUPDR2,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -419,11 +270,8 @@ macro_rules! map_gpio_pins {
             $pin3_ty,
             $gpio,
             AFRL3,
-            ASC3,
             BR3,
             BS3,
-            CNF3,
-            MODE3,
             IDR3,
             LCK3,
             MODER3,
@@ -432,8 +280,6 @@ macro_rules! map_gpio_pins {
             OT3,
             PUPDR3,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -443,11 +289,8 @@ macro_rules! map_gpio_pins {
             $pin4_ty,
             $gpio,
             AFRL4,
-            ASC4,
             BR4,
             BS4,
-            CNF4,
-            MODE4,
             IDR4,
             LCK4,
             MODER4,
@@ -456,8 +299,6 @@ macro_rules! map_gpio_pins {
             OT4,
             PUPDR4,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -467,11 +308,8 @@ macro_rules! map_gpio_pins {
             $pin5_ty,
             $gpio,
             AFRL5,
-            ASC5,
             BR5,
             BS5,
-            CNF5,
-            MODE5,
             IDR5,
             LCK5,
             MODER5,
@@ -480,8 +318,6 @@ macro_rules! map_gpio_pins {
             OT5,
             PUPDR5,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -491,11 +327,8 @@ macro_rules! map_gpio_pins {
             $pin6_ty,
             $gpio,
             AFRL6,
-            ASC6,
             BR6,
             BS6,
-            CNF6,
-            MODE6,
             IDR6,
             LCK6,
             MODER6,
@@ -504,8 +337,6 @@ macro_rules! map_gpio_pins {
             OT6,
             PUPDR6,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -515,11 +346,8 @@ macro_rules! map_gpio_pins {
             $pin7_ty,
             $gpio,
             AFRL7,
-            ASC7,
             BR7,
             BS7,
-            CNF7,
-            MODE7,
             IDR7,
             LCK7,
             MODER7,
@@ -528,8 +356,6 @@ macro_rules! map_gpio_pins {
             OT7,
             PUPDR7,
             AFRL,
-            CRL,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -539,11 +365,8 @@ macro_rules! map_gpio_pins {
             $pin8_ty,
             $gpio,
             AFRH8,
-            ASC8,
             BR8,
             BS8,
-            CNF8,
-            MODE8,
             IDR8,
             LCK8,
             MODER8,
@@ -552,8 +375,6 @@ macro_rules! map_gpio_pins {
             OT8,
             PUPDR8,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -563,11 +384,8 @@ macro_rules! map_gpio_pins {
             $pin9_ty,
             $gpio,
             AFRH9,
-            ASC9,
             BR9,
             BS9,
-            CNF9,
-            MODE9,
             IDR9,
             LCK9,
             MODER9,
@@ -576,8 +394,6 @@ macro_rules! map_gpio_pins {
             OT9,
             PUPDR9,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -587,11 +403,8 @@ macro_rules! map_gpio_pins {
             $pin10_ty,
             $gpio,
             AFRH10,
-            ASC10,
             BR10,
             BS10,
-            CNF10,
-            MODE10,
             IDR10,
             LCK10,
             MODER10,
@@ -600,8 +413,6 @@ macro_rules! map_gpio_pins {
             OT10,
             PUPDR10,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -611,11 +422,8 @@ macro_rules! map_gpio_pins {
             $pin11_ty,
             $gpio,
             AFRH11,
-            ASC11,
             BR11,
             BS11,
-            CNF11,
-            MODE11,
             IDR11,
             LCK11,
             MODER11,
@@ -624,8 +432,6 @@ macro_rules! map_gpio_pins {
             OT11,
             PUPDR11,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -635,11 +441,8 @@ macro_rules! map_gpio_pins {
             $pin12_ty,
             $gpio,
             AFRH12,
-            ASC12,
             BR12,
             BS12,
-            CNF12,
-            MODE12,
             IDR12,
             LCK12,
             MODER12,
@@ -648,8 +451,6 @@ macro_rules! map_gpio_pins {
             OT12,
             PUPDR12,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -659,11 +460,8 @@ macro_rules! map_gpio_pins {
             $pin13_ty,
             $gpio,
             AFRH13,
-            ASC13,
             BR13,
             BS13,
-            CNF13,
-            MODE13,
             IDR13,
             LCK13,
             MODER13,
@@ -672,8 +470,6 @@ macro_rules! map_gpio_pins {
             OT13,
             PUPDR13,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -683,11 +479,8 @@ macro_rules! map_gpio_pins {
             $pin14_ty,
             $gpio,
             AFRH14,
-            ASC14,
             BR14,
             BS14,
-            CNF14,
-            MODE14,
             IDR14,
             LCK14,
             MODER14,
@@ -696,8 +489,6 @@ macro_rules! map_gpio_pins {
             OT14,
             PUPDR14,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
         map_gpio_pin! {
             $port_ty,
@@ -707,11 +498,8 @@ macro_rules! map_gpio_pins {
             $pin15_ty,
             $gpio,
             AFRH15,
-            ASC15,
             BR15,
             BS15,
-            CNF15,
-            MODE15,
             IDR15,
             LCK15,
             MODER15,
@@ -720,25 +508,10 @@ macro_rules! map_gpio_pins {
             OT15,
             PUPDR15,
             AFRH,
-            CRH,
-            ($($ascr_option)*),
         }
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_pins! {
     GpioAHead,
     "Extracts GPIO port A pin 0 register tokens.",
@@ -806,22 +579,8 @@ map_gpio_pins! {
     "GPIO port A pin 15 peripheral variant.",
     GpioA15,
     GPIOA,
-    (Option),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_pins! {
     GpioBHead,
     "Extracts GPIO port B pin 0 register tokens.",
@@ -889,22 +648,8 @@ map_gpio_pins! {
     "GPIO port B pin 15 peripheral variant.",
     GpioB15,
     GPIOB,
-    (Option),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_pins! {
     GpioCHead,
     "Extracts GPIO port C pin 0 register tokens.",
@@ -972,7 +717,6 @@ map_gpio_pins! {
     "GPIO port C pin 15 peripheral variant.",
     GpioC15,
     GPIOC,
-    (Option),
 }
 
 #[cfg(any(
@@ -1054,7 +798,6 @@ map_gpio_pins! {
     "GPIO port D pin 15 peripheral variant.",
     GpioD15,
     GPIOD,
-    (Option),
 }
 
 #[cfg(any(
@@ -1136,7 +879,6 @@ map_gpio_pins! {
     "GPIO port E pin 15 peripheral variant.",
     GpioE15,
     GPIOE,
-    (Option),
 }
 
 #[cfg(any(
@@ -1216,7 +958,6 @@ map_gpio_pins! {
     "GPIO port F pin 15 peripheral variant.",
     GpioF15,
     GPIOF,
-    (Option),
 }
 
 #[cfg(any(
@@ -1296,22 +1037,8 @@ map_gpio_pins! {
     "GPIO port G pin 15 peripheral variant.",
     GpioG15,
     GPIOG,
-    (Option),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_pins! {
     GpioHHead,
     "Extracts GPIO port H pin 0 register tokens.",
@@ -1379,7 +1106,6 @@ map_gpio_pins! {
     "GPIO port H pin 15 peripheral variant.",
     GpioH15,
     GPIOH,
-    (Option),
 }
 
 #[cfg(any(
@@ -1456,7 +1182,6 @@ map_gpio_pins! {
     "GPIO port I pin 15 peripheral variant.",
     GpioI15,
     GPIOI,
-    (),
 }
 
 #[cfg(any(
@@ -1533,7 +1258,6 @@ map_gpio_pins! {
     "GPIO port J pin 15 peripheral variant.",
     GpioJ15,
     GPIOJ,
-    (),
 }
 
 #[cfg(any(
@@ -1610,5 +1334,4 @@ map_gpio_pins! {
     "GPIO port K pin 15 peripheral variant.",
     GpioK15,
     GPIOK,
-    (),
 }

@@ -1,5 +1,6 @@
 //! Advanced-control timers.
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -21,6 +22,7 @@ periph! {
             TIMRST { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -274,8 +276,6 @@ macro_rules! map_advanced_tim {
         $tim:ident,
         $busenr:ident,
         $busrstr:ident,
-        $bkdfbke:ident,
-        $bk2dfbke:ident,($($etr_adc1_rmp:ident)*),
     ) => {
         periph::map! {
             #[doc = $tim_macro_doc]
@@ -299,6 +299,7 @@ macro_rules! map_advanced_tim {
                     TIMRST { $timrst }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -553,9 +554,6 @@ map_advanced_tim! {
     TIM1,
     APB2ENR,
     APB2RSTR,
-    APB2LPENR,
-    BK2DFBK0E,
-    (),
 }
 
 map_advanced_tim! {
@@ -568,9 +566,6 @@ map_advanced_tim! {
     TIM8,
     APB2ENR,
     APB2RSTR,
-    APB2LPENR,
-    BK2DFBK0E,
-    (),
 }
 
 map_advanced_tim! {
@@ -583,8 +578,4 @@ map_advanced_tim! {
     TIM20,
     APB2ENR,
     APB2RSTR,
-    APB2LPENR,
-    BK2DFBK0E,
-    (),
 }
-

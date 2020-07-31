@@ -24,6 +24,7 @@ periph! {
             TIMSMEN { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -231,8 +232,6 @@ macro_rules! map_advanced_tim {
         $busenr:ident,
         $busrstr:ident,
         $bussmenr:ident,
-        $bkdfbke:ident,
-        $bk2dfbke:ident,($($etr_adc1_rmp:ident)*),
     ) => {
         periph::map! {
             #[doc = $tim_macro_doc]
@@ -456,19 +455,6 @@ macro_rules! map_advanced_tim {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
-))]
 map_advanced_tim! {
     "Extracts TIM1 register tokens.",
     periph_tim1,
@@ -481,9 +467,6 @@ map_advanced_tim! {
     APB2ENR,
     APB2RSTR,
     APB2LPENR,
-    BKDFBK0E,
-    BK2DFBK0E,
-    (),
 }
 
 #[cfg(any(
@@ -508,7 +491,4 @@ map_advanced_tim! {
     APB2ENR,
     APB2RSTR,
     APB2LPENR,
-    BKDFBK0E,
-    BK2DFBK0E,
-    (),
 }

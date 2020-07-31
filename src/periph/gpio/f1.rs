@@ -1,5 +1,6 @@
-//! Mappings for General Purpose I/Os
-//! for STM32F1 Series of mainstream MCUs.
+//! Mappings for General Purpose I/Os.
+//!
+//! For STM32F1 Series of mainstream MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -185,11 +186,9 @@ macro_rules! map_gpio_port {
         $port_ty:ident,
         $busenr:ident,
         $busrstr:ident,
-        $bussmenr:ident,
         $gpio:ident,
         $gpioen:ident,
         $gpiorst:ident,
-        $gpiosmen:ident,($($ascr:ident)*),
     ) => {
         periph::map! {
             #[doc = $port_macro_doc]
@@ -378,12 +377,9 @@ map_gpio_port! {
     GpioA,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOA,
     IOPAEN,
     IOPARST,
-    IOPASMEN,
-    (),
 }
 
 map_gpio_port! {
@@ -393,12 +389,9 @@ map_gpio_port! {
     GpioB,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOB,
     IOPBEN,
     IOPBRST,
-    IOPBSMEN,
-    (),
 }
 
 map_gpio_port! {
@@ -408,12 +401,9 @@ map_gpio_port! {
     GpioC,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOC,
     IOPCEN,
     IOPCRST,
-    IOPCSMEN,
-    (),
 }
 
 map_gpio_port! {
@@ -423,12 +413,9 @@ map_gpio_port! {
     GpioD,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOD,
     IOPDEN,
     IOPDRST,
-    IOPDSMEN,
-    (),
 }
 
 #[cfg(any(
@@ -444,12 +431,9 @@ map_gpio_port! {
     GpioE,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOE,
     IOPEEN,
     IOPERST,
-    IOPESMEN,
-    (),
 }
 
 #[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
@@ -460,12 +444,9 @@ map_gpio_port! {
     GpioF,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOF,
     IOPFEN,
     IOPFRST,
-    IOPFSMEN,
-    (),
 }
 
 #[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
@@ -476,10 +457,7 @@ map_gpio_port! {
     GpioG,
     APB2ENR,
     APB2RSTR,
-    APB2SMENR,
     GPIOG,
     IOPGEN,
     IOPGRST,
-    IOPGSMEN,
-    (),
 }

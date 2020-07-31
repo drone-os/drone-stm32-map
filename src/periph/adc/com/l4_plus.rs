@@ -1,7 +1,7 @@
 //! Analog-to-digital converters common registers.
-//! for STM32L4+ series of ultra-low-power MCUs.
+//!
+//! For STM32L4+ series of ultra-low-power MCUs.
 
-#[allow(unused_imports)]
 use drone_core::periph;
 
 periph::singular! {
@@ -19,6 +19,7 @@ periph::singular! {
             ADCRST;
         }
     }
+
     ADC_Common {
         CSR;
         CCR;

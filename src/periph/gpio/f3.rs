@@ -1,5 +1,6 @@
-//! Mappings for General Purpose I/Os
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//! Mappings for General Purpose I/Os.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -552,7 +553,7 @@ map_gpio_port! {
 map_gpio_port! {
     "Extracts GPIO port F register tokens.",
     periph_gpio_f,
-    "GPIO port f peripheral variant.",
+    "GPIO port F peripheral variant.",
     GpioF,
     AHBENR,
     AHBRSTR,
@@ -564,7 +565,7 @@ map_gpio_port! {
 map_gpio_port! {
     "Extracts GPIO port G register tokens.",
     periph_gpio_g,
-    "GPIO port g peripheral variant.",
+    "GPIO port G peripheral variant.",
     GpioG,
     AHBENR,
     AHBRSTR,
@@ -576,7 +577,7 @@ map_gpio_port! {
 map_gpio_port! {
     "Extracts GPIO port H register tokens.",
     periph_gpio_h,
-    "GPIO port h peripheral variant.",
+    "GPIO port H peripheral variant.",
     GpioH,
     AHBENR,
     AHBRSTR,

@@ -1,5 +1,6 @@
 //! General-purpose I/O port heads.
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -113,19 +114,6 @@ macro_rules! map_gpio_port_head {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_port_head! {
     "Extracts GPIO port A head register tokens.",
     periph_gpio_a_head,
@@ -140,19 +128,6 @@ map_gpio_port_head! {
     GPIOALPEN,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_port_head! {
     "Extracts GPIO port B head register tokens.",
     periph_gpio_b_head,
@@ -167,19 +142,6 @@ map_gpio_port_head! {
     GPIOBLPEN,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_port_head! {
     "Extracts GPIO port C head register tokens.",
     periph_gpio_c_head,
@@ -294,19 +256,6 @@ map_gpio_port_head! {
     GPIOGLPEN,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_gpio_port_head! {
     "Extracts GPIO port H head register tokens.",
     periph_gpio_h_head,
