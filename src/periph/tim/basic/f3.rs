@@ -1,5 +1,6 @@
-//! Basic timers
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//! Basic timers.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -21,6 +22,7 @@ periph! {
             TIMRST { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -64,7 +66,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_basic_tim {
     (
         $tim_macro_doc:expr,
@@ -73,10 +74,8 @@ macro_rules! map_basic_tim {
         $tim_ty:ident,
         $busenr:ident,
         $busrstr:ident,
-        $bussmenr:ident,
         $timen:ident,
         $timrst:ident,
-        $timsmen:ident,
         $tim:ident,
     ) => {
         periph::map! {
@@ -101,6 +100,7 @@ macro_rules! map_basic_tim {
                     TIMRST { $timrst }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -154,10 +154,8 @@ map_basic_tim! {
     Tim6,
     APB1ENR,
     APB1RSTR,
-    APB1SMENR,
     TIM6EN,
     TIM6RST,
-    TIM6SMEN,
     TIM6,
 }
 
@@ -168,9 +166,7 @@ map_basic_tim! {
     Tim7,
     APB1ENR,
     APB1RSTR,
-    APB1SMENR,
     TIM7EN,
     TIM7RST,
-    TIM7SMEN,
     TIM7,
 }

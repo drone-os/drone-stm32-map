@@ -1,5 +1,6 @@
 //! Universal Asynchronous Receiver/Transmitter.
-//! for STM32L4 plus series of ultra-low-power MCUs.
+//!
+//! For STM32L4 plus series of ultra-low-power MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -29,6 +30,7 @@ periph! {
             UARTSEL { RwRwRegFieldBits }
         }
     }
+
     UART {
         CR1 {
             0x20 RwRegBitBand;
@@ -180,7 +182,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_uart {
     (
         $uart_macro_doc:expr,
@@ -214,7 +215,6 @@ macro_rules! map_uart {
         ($($onebit:ident)?),
         ($($scarcnt:ident)?),
         ($($scen:ident)?),
-        ($($tcbgtie:ident)?),
         ($($gtpr:ident)?),
         ($($rtor:ident)?),
         ($($abrrq:ident)?),
@@ -224,7 +224,6 @@ macro_rules! map_uart {
         ($($eobf:ident)?),
         ($($rtof:ident)?),
         ($($lbdf:ident)?),
-        ($($tcbgt:ident)?),
         ($($eobcf:ident)?),
         ($($rtocf:ident)?),
         ($($lbdcf:ident)?),
@@ -259,6 +258,7 @@ macro_rules! map_uart {
                     UARTSEL { $uartsel }
                 }
             }
+
             UART {
                 $uart;
                 CR1 {
@@ -449,7 +449,6 @@ map_uart! {
     (ONEBIT),
     (SCARCNT),
     (SCEN),
-    (),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -459,7 +458,6 @@ map_uart! {
     (EOBF),
     (RTOF),
     (LBDF),
-    (),
     (EOBCF),
     (RTOCF),
     (LBDCF),
@@ -497,7 +495,6 @@ map_uart! {
     (ONEBIT),
     (SCARCNT),
     (SCEN),
-    (),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -507,7 +504,6 @@ map_uart! {
     (EOBF),
     (RTOF),
     (LBDF),
-    (),
     (EOBCF),
     (RTOCF),
     (LBDCF),
@@ -545,7 +541,6 @@ map_uart! {
     (ONEBIT),
     (SCARCNT),
     (SCEN),
-    (TCBGTIE),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -555,7 +550,6 @@ map_uart! {
     (EOBF),
     (RTOF),
     (LBDF),
-    (TCBGT),
     (EOBCF),
     (RTOCF),
     (LBDCF),
@@ -593,7 +587,6 @@ map_uart! {
     (ONEBIT),
     (SCARCNT),
     (SCEN),
-    (),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -603,7 +596,6 @@ map_uart! {
     (EOBF),
     (RTOF),
     (LBDF),
-    (),
     (EOBCF),
     (RTOCF),
     (LBDCF),
@@ -641,7 +633,6 @@ map_uart! {
     (ONEBIT),
     (SCARCNT),
     (SCEN),
-    (),
     (GTPR),
     (RTOR),
     (ABRRQ),
@@ -651,7 +642,6 @@ map_uart! {
     (EOBF),
     (RTOF),
     (LBDF),
-    (),
     (EOBCF),
     (RTOCF),
     (LBDCF),
@@ -670,8 +660,6 @@ map_uart! {
     LPUART1SMEN,
     LPUART1SEL,
     LPUART1,
-    (),
-    (),
     (),
     (),
     (),

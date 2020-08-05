@@ -217,7 +217,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_adc {
     ($adc_macro_doc:expr, $adc_macro:ident, $adc_ty_doc:expr, $adc_ty:ident, $adc:ident,) => {
         periph::map! {

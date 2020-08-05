@@ -1,5 +1,6 @@
-//! Basic timers
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//! Basic timers.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -20,22 +21,12 @@ periph! {
             0x20 RwRegBitBand Shared;
             TIMRST { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
             TIMSMEN { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -77,7 +68,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_basic_tim {
     (
         $tim_macro_doc:expr,
@@ -113,22 +103,12 @@ macro_rules! map_basic_tim {
                     $busrstr Shared;
                     TIMRST { $timrst }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 BUSSMENR {
                     $bussmenr Shared;
                     TIMSMEN { $timsmen }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -173,17 +153,6 @@ macro_rules! map_basic_tim {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
-))]
 map_basic_tim! {
     "Extracts TIM6 register tokens.",
     periph_tim6,

@@ -47,7 +47,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_exti {
     (
         $exti_macro_doc:expr,

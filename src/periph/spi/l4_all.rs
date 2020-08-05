@@ -104,7 +104,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_spi {
     (
         $spi_macro_doc:expr,

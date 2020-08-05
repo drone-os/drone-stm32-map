@@ -240,7 +240,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_adc {
     (
         $adc_macro_doc:expr,

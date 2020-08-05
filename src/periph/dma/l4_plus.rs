@@ -28,7 +28,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_dma {
     (
         $dma_macro_doc:expr,

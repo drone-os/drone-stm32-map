@@ -1,5 +1,6 @@
 //! Universal Asynchronous Receiver/Transmitter.
-//! for STM32L4 series of ultra-low-power MCUs.
+//!
+//! For STM32L4 series of ultra-low-power MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -29,6 +30,7 @@ periph! {
             UARTSEL { RwRwRegFieldBits }
         }
     }
+
     UART {
         CR1 {
             0x20 RwRegBitBand;
@@ -195,7 +197,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_uart {
     (
         $uart_macro_doc:expr,
@@ -274,6 +275,7 @@ macro_rules! map_uart {
                     UARTSEL { $uartsel }
                 }
             }
+
             UART {
                 $uart;
                 CR1 {
@@ -447,13 +449,6 @@ macro_rules! map_uart {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-))]
 map_uart! {
     "Extracts USART1 register tokens.",
     periph_usart1,
@@ -502,13 +497,6 @@ map_uart! {
     (LBDCF),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-))]
 map_uart! {
     "Extracts USART2 register tokens.",
     periph_usart2,
@@ -557,13 +545,6 @@ map_uart! {
     (LBDCF),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-))]
 map_uart! {
     "Extracts USART3 register tokens.",
     periph_usart3,
@@ -715,13 +696,6 @@ map_uart! {
     (LBDCF),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-))]
 map_uart! {
     "Extracts LPUART1 register tokens.",
     periph_lpuart1,

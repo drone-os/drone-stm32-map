@@ -1,5 +1,6 @@
 //! General-purpose timers.
-//! for STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
+//!
+//! For STM32F3 Series of mixed-signal MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -21,6 +22,7 @@ periph! {
             TIMRST { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -248,7 +250,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_general_tim {
     (
         $tim_macro_doc:expr,
@@ -326,7 +327,6 @@ macro_rules! map_general_tim {
             $($b2g:ident)?
         ),
         (
-            $($ccmr1_output:ident)?,
             $($oc2ce:ident)?,
             $($oc2m:ident)?,
             $($oc2pe:ident)?,
@@ -334,7 +334,6 @@ macro_rules! map_general_tim {
             $($cc2s:ident)?,
             $($oc1ce:ident)?,
             $($oc2m_3:ident)?,
-            $($ccmr1_input:ident)?,
             $($cc2si:ident)?,
             $($ic2f:ident)?,
             $($ic2psc:ident)?
@@ -413,6 +412,7 @@ macro_rules! map_general_tim {
                     TIMRST { $timrst }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -679,7 +679,7 @@ map_general_tim! {
     (,CC4DE,CC3DE,CC2DE,CC1DE,,TIE,,CC4IE,CC3IE,CC2IE,CC1IE),
     (CC2IF,CC3IF,CC4IF,,TIF,,,CC2OF,CC3OF,CC4OF,,),
     (CC2G,CC3G,CC4G,,,),
-    (CCMR1_Output,OC2CE,OC2M,OC2PE,OC2FE,CC2S,OC1CE,OC2M_3,CCMR1_Input,CC2S,IC2F,IC2PSC),
+    (OC2CE,OC2M,OC2PE,OC2FE,CC2S,OC1CE,OC2M_3,CC2S,IC2F,IC2PSC),
     (CCMR2_Input, CCMR2_Output),
     (,CC2E,CC2P,,CC2NP,CC3E,CC3P,CC3NP,CC4E,CC4P,CC4NP,,,,,),
     (,CNTL,CNTH),
@@ -710,7 +710,7 @@ map_general_tim! {
     (,CC4DE,CC3DE,CC2DE,CC1DE,,TIE,,CC4IE,CC3IE,CC2IE,CC1IE),
     (CC2IF,CC3IF,CC4IF,,TIF,,,CC2OF,CC3OF,CC4OF,,),
     (CC2G,CC3G,CC4G,,,),
-    (CCMR1_Output,OC2CE,OC2M,OC2PE,OC2FE,CC2S,OC1CE,OC2M_3,CCMR1_Input,CC2S,IC2F,IC2PSC),
+    (OC2CE,OC2M,OC2PE,OC2FE,CC2S,OC1CE,OC2M_3,CC2S,IC2F,IC2PSC),
     (CCMR2_Input, CCMR2_Output),
     (,CC2E,CC2P,,CC2NP,CC3E,CC3P,CC3NP,CC4E,CC4P,CC4NP,,,,,),
     (,CNTL,CNTH),
@@ -741,7 +741,7 @@ map_general_tim! {
     (,CC4DE,CC3DE,CC2DE,CC1DE,,TIE,,CC4IE,CC3IE,CC2IE,CC1IE),
     (CC2IF,CC3IF,CC4IF,,TIF,,,CC2OF,CC3OF,CC4OF,,),
     (CC2G,CC3G,CC4G,,,),
-    (CCMR1_Output,OC2CE,OC2M,OC2PE,OC2FE,CC2S,OC1CE,OC2M_3,CCMR1_Input,CC2S,IC2F,IC2PSC),
+    (OC2CE,OC2M,OC2PE,OC2FE,CC2S,OC1CE,OC2M_3,CC2S,IC2F,IC2PSC),
     (CCMR2_Input, CCMR2_Output),
     (,CC2E,CC2P,,CC2NP,CC3E,CC3P,CC3NP,CC4E,CC4P,CC4NP,,,,,),
     (,CNTL,CNTH),
@@ -772,7 +772,7 @@ map_general_tim! {
     (COMDE,,,CC2DE,CC1DE,,BIE,TIE,COMIE,,CC2IE,CC1IE),
     (CC2IF,,,COMIF,TIF,BIF,,CC2OF,,,,),
     (CC2G,,,COMG,BG,),
-    (CCMR1_Output,,OC2M,OC2PE,OC2FE,CC2S,,OC2M_3,CCMR1_Input,CC2S,IC2F,IC2PSC),
+    (,OC2M,OC2PE,OC2FE,CC2S,,OC2M_3,CC2S,IC2F,IC2PSC),
     (,),
     (CC1NE,CC2E,CC2P,,CC2NP,,,,,,,,,,,),
     (CNT,,),
@@ -803,7 +803,7 @@ map_general_tim! {
     (COMDE,,,,CC1DE,,BIE,TIE,COMIE,,,CC1IE),
     (,,,COMIF,TIF,BIF,,,,,,),
     (,,,COMG,BG,),
-    (CCMR1_Output,,,,,,,,CCMR1_Input,,,),
+    (,,,,,,,,,),
     (,),
     (CC1NE,,,,,,,,,,,,,,,),
     (CNT,,),
@@ -834,7 +834,7 @@ map_general_tim! {
     (COMDE,,,,CC1DE,,BIE,TIE,COMIE,,,CC1IE),
     (,,,COMIF,TIF,BIF,,,,,,),
     (,,,COMG,BG,),
-    (CCMR1_Output,,,,,,,,CCMR1_Input,,,),
+    (,,,,,,,,,),
     (,),
     (CC1NE,,,,,,,,,,,,,,,),
     (CNT,,),

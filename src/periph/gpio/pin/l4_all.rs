@@ -77,7 +77,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_gpio_pin {
     (
         $port_ty:ident,
@@ -179,7 +178,6 @@ macro_rules! map_gpio_pin {
     };
 }
 
-#[allow(unused_macros)]
 macro_rules! map_gpio_pins {
     (
         $port_ty:ident,

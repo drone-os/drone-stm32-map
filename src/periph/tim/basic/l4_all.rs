@@ -1,6 +1,6 @@
-//! Basic timers
-//! for STM32L4 series of ultra-low-power MCUs
-//! and STM32L4+ technology with extended an additional features.
+//! Basic timers.
+//!
+//! For STM32L4 and STM32L4+ series of ultra-low-power MCUs.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -21,24 +21,12 @@ periph! {
             0x20 RwRegBitBand Shared;
             TIMRST { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32l4x1",
-            stm32_mcu = "stm32l4x2",
-            stm32_mcu = "stm32l4x3",
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
-        ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
             TIMSMEN { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -80,7 +68,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_basic_tim {
     (
         $tim_macro_doc:expr,
@@ -116,24 +103,12 @@ macro_rules! map_basic_tim {
                     $busrstr Shared;
                     TIMRST { $timrst }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32l4x1",
-                    stm32_mcu = "stm32l4x2",
-                    stm32_mcu = "stm32l4x3",
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
-                ))]
                 BUSSMENR {
                     $bussmenr Shared;
                     TIMSMEN { $timsmen }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -178,19 +153,6 @@ macro_rules! map_basic_tim {
     };
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
 map_basic_tim! {
     "Extracts TIM6 register tokens.",
     periph_tim6,
@@ -205,19 +167,6 @@ map_basic_tim! {
     TIM6,
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
-))]
 map_basic_tim! {
     "Extracts TIM7 register tokens.",
     periph_tim7,

@@ -1,5 +1,6 @@
 //! General-purpose timers.
-//! for STM32F4 series of high-performance MCUs with DSP and FPU instructions.
+//!
+//! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
 use drone_core::periph;
 use drone_cortexm::reg::marker::*;
@@ -20,24 +21,12 @@ periph! {
             0x20 RwRegBitBand Shared;
             TIMRST { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469",
-        ))]
         BUSSMENR {
             0x20 RwRegBitBand Shared;
             TIMSMEN { RwRwRegFieldBitBand }
         }
     }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -66,19 +55,6 @@ periph! {
             UDIS { RwRwRegFieldBitBand }
             URS { RwRwRegFieldBitBand }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469"
-        ))]
         CR2 {
             0x20 RwRegBitBand Option;
             TI1S { RwRwRegFieldBitBand }
@@ -145,19 +121,6 @@ periph! {
         }
         DIER {
             0x20 RwRegBitBand;
-            #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f410",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469"
-            ))]
             CC1DE { RwRwRegFieldBitBand Option }
             CC1IE { RwRwRegFieldBitBand }
             CC2DE { RwRwRegFieldBitBand Option }
@@ -168,19 +131,6 @@ periph! {
             CC4IE { RwRwRegFieldBitBand Option }
             TDE { RwRwRegFieldBitBand Option }
             TIE { RwRwRegFieldBitBand Option }
-            #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f410",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469"
-            ))]
             UDE { RwRwRegFieldBitBand Option }
             UIE { RwRwRegFieldBitBand }
         }
@@ -240,7 +190,7 @@ periph! {
             ))]
             OC2CE { RwRwRegFieldBitBand Option }
             OC2FE { RwRwRegFieldBitBand Option }
-            OC2M0_2 { RwRwRegFieldBits Option }
+            OC2M { RwRwRegFieldBits Option }
             OC2PE { RwRwRegFieldBitBand Option }
             @Input 0x20 RwRegBitBand;
             CC1S { RwRwRegFieldBits }
@@ -337,37 +287,11 @@ periph! {
             0x20 RwRegBitBand Option;
             CCR4 { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469"
-        ))]
         DCR {
             0x20 RwRegBitBand Option;
             DBA { RwRwRegFieldBits }
             DBL { RwRwRegFieldBits }
         }
-        #[cfg(any(
-            stm32_mcu = "stm32f401",
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f411",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469"
-        ))]
         DMAR {
             0x20 RwRegBitBand Option;
             DMAB { RwRwRegFieldBits }
@@ -393,7 +317,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_general_tim {
     (
         $tim_macro_doc:expr,
@@ -412,16 +335,7 @@ macro_rules! map_general_tim {
             $($dir:ident)?,
             $($opm:ident)?
         ),
-        ($(
-            $cr2:ident,
-            $($ois2:ident)?,
-            $($ois1n:ident)?,
-            $($ois1:ident)?,
-            $($ti1s:ident)?,
-            $($mms:ident)?,
-            $($ccus:ident)?,
-            $($ccpc:ident)?
-        )?),
+        ($($cr2:ident)?),
         ($(
             $smcr:ident,
             $($etp:ident)?,
@@ -430,7 +344,6 @@ macro_rules! map_general_tim {
             $($etf:ident)?
         )?),
         (
-            $($bie:ident)?,
             $($cc1de:ident)?,
             $($cc2de:ident)?,
             $($cc2ie:ident)?,
@@ -438,29 +351,23 @@ macro_rules! map_general_tim {
             $($cc3ie:ident)?,
             $($cc4de:ident)?,
             $($cc4ie:ident)?,
-            $($comde:ident)?,
-            $($comie:ident)?,
             $($tde:ident)?,
             $($tie:ident)?,
             $($ude:ident)?
         ),
         (
-            $($bif:ident)?,
             $($cc2if:ident)?,
             $($cc2of:ident)?,
             $($cc3if:ident)?,
             $($cc3of:ident)?,
             $($cc4if:ident)?,
             $($cc4of:ident)?,
-            $($comif:ident)?,
             $($tif:ident)?
         ),
         (
-            $($bg:ident)?,
             $($cc2g:ident)?,
             $($cc3g:ident)?,
             $($cc4g:ident)?,
-            $($comg:ident)?,
             $($tg:ident)?
         ),
         (
@@ -468,15 +375,13 @@ macro_rules! map_general_tim {
             $($oc1ce:ident)?,
             $($oc2ce:ident)?,
             $($oc2fe:ident)?,
-            $($oc2m0_2:ident)?,
-            $($oc2m3:ident)?,
+            $($oc2m:ident)?,
             $($oc2pe:ident)?,
             $($ic2f:ident)?,
             $($ic2psc:ident)?
         ),
         ($($ccmr2_input:ident)?, $($ccmr2_output:ident)?),
         (
-            $($cc1ne:ident)?,
             $($cc2e:ident)?,
             $($cc2np:ident)?,
             $($cc2p:ident)?,
@@ -487,31 +392,14 @@ macro_rules! map_general_tim {
             $($cc4np:ident)?,
             $($cc4p:ident)?
         ),
-        ($($uifcpy_cnt31:ident)?, $($uifcpy:ident)?),
-        ($($rcr:ident)?),
         ($($ccr2:ident)?, $($ccr3:ident)?, $($ccr4:ident)?),
-        ($($bdtr:ident)?),
         ($($dcr:ident)?),
         ($($dmar:ident)?),
         ($(
             $or1:ident,
-            $($encoder_mode:ident)?,
-            $($etr1_rmp:ident)?,
             $($itr1_rmp:ident)?,
-            $($ti1_rmp_bit:ident)?,
             $($ti1_rmp:ident)?,
             $($ti4_rmp:ident)?
-        )?),
-        ($(
-            $or2:ident,
-            $($bkcmp1e:ident)?,
-            $($bkcmp1p:ident)?,
-            $($bkcmp2e:ident)?,
-            $($bkcmp2p:ident)?,
-            $($bkdfbke:ident)?,
-            $($bkine:ident)?,
-            $($bkinp:ident)?,
-            $($etrsel:ident)?
         )?),
     ) => {
         periph::map! {
@@ -535,24 +423,12 @@ macro_rules! map_general_tim {
                     $busrstr Shared;
                     TIMRST { $timrst }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469",
-                ))]
                 BUSSMENR {
                     $bussmenr Shared;
                     TIMSMEN { $timsmen }
                 }
             }
+
             TIM {
                 $tim;
                 CR1 {
@@ -582,19 +458,6 @@ macro_rules! map_general_tim {
                     UDIS { UDIS }
                     URS { URS }
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469"
-                ))]
                 CR2 {
                     $(
                         $cr2 Option;
@@ -660,37 +523,11 @@ macro_rules! map_general_tim {
                         ETF { $($etf Option)* }
                         MSM { MSM }
                         TS { TS }
-                        #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f410",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469"
-                        ))]
                         SMS0_2 { SMS }
                     )*
                 }
                 DIER {
                     DIER;
-                    #[cfg(any(
-                        stm32_mcu = "stm32f401",
-                        stm32_mcu = "stm32f405",
-                        stm32_mcu = "stm32f407",
-                        stm32_mcu = "stm32f410",
-                        stm32_mcu = "stm32f411",
-                        stm32_mcu = "stm32f412",
-                        stm32_mcu = "stm32f413",
-                        stm32_mcu = "stm32f427",
-                        stm32_mcu = "stm32f429",
-                        stm32_mcu = "stm32f446",
-                        stm32_mcu = "stm32f469"
-                    ))]
                     CC1DE { $($cc1de Option)* }
                     CC1IE { CC1IE }
                     CC2DE { $($cc2de Option)* }
@@ -701,19 +538,6 @@ macro_rules! map_general_tim {
                     CC4IE { $($cc4ie Option)* }
                     TDE { $($tde Option)* }
                     TIE { $($tie Option)* }
-                    #[cfg(any(
-                        stm32_mcu = "stm32f401",
-                        stm32_mcu = "stm32f405",
-                        stm32_mcu = "stm32f407",
-                        stm32_mcu = "stm32f410",
-                        stm32_mcu = "stm32f411",
-                        stm32_mcu = "stm32f412",
-                        stm32_mcu = "stm32f413",
-                        stm32_mcu = "stm32f427",
-                        stm32_mcu = "stm32f429",
-                        stm32_mcu = "stm32f446",
-                        stm32_mcu = "stm32f469"
-                    ))]
                     UDE { $($ude Option)* }
                     UIE { UIE }
                 }
@@ -757,19 +581,6 @@ macro_rules! map_general_tim {
                     ))]
                     OC1CE { $($oc1ce Option)* }
                     OC1FE { OC1FE }
-                    #[cfg(any(
-                        stm32_mcu = "stm32f401",
-                        stm32_mcu = "stm32f405",
-                        stm32_mcu = "stm32f407",
-                        stm32_mcu = "stm32f410",
-                        stm32_mcu = "stm32f411",
-                        stm32_mcu = "stm32f412",
-                        stm32_mcu = "stm32f413",
-                        stm32_mcu = "stm32f427",
-                        stm32_mcu = "stm32f429",
-                        stm32_mcu = "stm32f446",
-                        stm32_mcu = "stm32f469"
-                    ))]
                     OC1M0_2 { OC1M }
                     OC1PE { OC1PE }
                     #[cfg(any(
@@ -786,7 +597,7 @@ macro_rules! map_general_tim {
                     ))]
                     OC2CE { $($oc2ce Option)* }
                     OC2FE { $($oc2fe Option)* }
-                    OC2M0_2 { $($oc2m0_2 Option)* }
+                    OC2M { $($oc2m Option)* }
                     OC2PE { $($oc2pe Option)* }
                     @Input CCMR1_Input;
                     CC1S { CC1S }
@@ -893,19 +704,6 @@ macro_rules! map_general_tim {
                         CCR4 { CCR4 }
                     )*
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469"
-                ))]
                 DCR {
                     $(
                         $dcr Option;
@@ -913,19 +711,6 @@ macro_rules! map_general_tim {
                         DBL { DBL }
                     )*
                 }
-                #[cfg(any(
-                    stm32_mcu = "stm32f401",
-                    stm32_mcu = "stm32f405",
-                    stm32_mcu = "stm32f407",
-                    stm32_mcu = "stm32f410",
-                    stm32_mcu = "stm32f411",
-                    stm32_mcu = "stm32f412",
-                    stm32_mcu = "stm32f413",
-                    stm32_mcu = "stm32f427",
-                    stm32_mcu = "stm32f429",
-                    stm32_mcu = "stm32f446",
-                    stm32_mcu = "stm32f469"
-                ))]
                 DMAR {
                     $(
                         $dmar Option;
@@ -982,22 +767,18 @@ map_general_tim! {
     TIM2LPEN,
     TIM2,
     (CMS, DIR, OPM),
-    (CR2,,,,,,,),
+    (CR2),
     (SMCR, ETP, ECE, ETPS, ETF),
-    (, CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE,,, TDE, TIE, UDE),
-    (, CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF,, TIF),
-    (, CC2G, CC3G, CC4G,, TG),
-    (CC2S, OC1CE, OC2CE, OC2FE, OC2M,, OC2PE, IC2F, IC2PSC),
+    (CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE, TDE, TIE, UDE),
+    (CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF, TIF),
+    (CC2G, CC3G, CC4G, TG),
+    (CC2S, OC1CE, OC2CE, OC2FE, OC2M, OC2PE, IC2F, IC2PSC),
     (CCMR2_Input, CCMR2_Output),
-    (, CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
-    (,),
-    (),
+    (CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
     (CCR2, CCR3, CCR4),
-    (),
     (DCR),
     (DMAR),
-    (OR,,, ITR1_RMP,,,),
-    (),
+    (OR, ITR1_RMP,,),
 }
 
 #[cfg(any(
@@ -1025,21 +806,17 @@ map_general_tim! {
     TIM3LPEN,
     TIM3,
     (CMS, DIR, OPM),
-    (CR2,,,,,,,),
+    (CR2),
     (SMCR, ETP, ECE, ETPS, ETF),
-    (, CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE,,, TDE, TIE, UDE),
-    (, CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF,, TIF),
-    (, CC2G, CC3G, CC4G,, TG),
-    (CC2S, OC1CE, OC2CE, OC2FE, OC2M,, OC2PE, IC2F, IC2PSC),
+    (CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE, TDE, TIE, UDE),
+    (CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF, TIF),
+    (CC2G, CC3G, CC4G, TG),
+    (CC2S, OC1CE, OC2CE, OC2FE, OC2M, OC2PE, IC2F, IC2PSC),
     (CCMR2_Input, CCMR2_Output),
-    (, CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
-    (,),
-    (),
+    (CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
     (CCR2, CCR3, CCR4),
-    (),
     (DCR),
     (DMAR),
-    (),
     (),
 }
 
@@ -1068,37 +845,20 @@ map_general_tim! {
     TIM4LPEN,
     TIM4,
     (CMS, DIR, OPM),
-    (CR2,,,,,,,),
+    (CR2),
     (SMCR, ETP, ECE, ETPS, ETF),
-    (, CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE,,, TDE, TIE, UDE),
-    (, CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF,, TIF),
-    (, CC2G, CC3G, CC4G,, TG),
-    (CC2S, OC1CE, OC2CE, OC2FE, OC2M,, OC2PE, IC2F, IC2PSC),
+    (CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE, TDE, TIE, UDE),
+    (CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF, TIF),
+    (CC2G, CC3G, CC4G, TG),
+    (CC2S, OC1CE, OC2CE, OC2FE, OC2M, OC2PE, IC2F, IC2PSC),
     (CCMR2_Input, CCMR2_Output),
-    (, CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
-    (,),
-    (),
+    (CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
     (CCR2, CCR3, CCR4),
-    (),
     (DCR),
     (DMAR),
     (),
-    (),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_general_tim! {
     "Extracts TIM5 register tokens.",
     periph_tim5,
@@ -1112,37 +872,20 @@ map_general_tim! {
     TIM5LPEN,
     TIM5,
     (CMS, DIR, OPM),
-    (CR2,,,,,,,),
+    (CR2),
     (SMCR, ETP, ECE, ETPS, ETF),
-    (, CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE,,, TDE, TIE, UDE),
-    (, CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF,, TIF),
-    (, CC2G, CC3G, CC4G,, TG),
-    (CC2S, OC1CE, OC2CE, OC2FE, OC2M,, OC2PE, IC2F, IC2PSC),
+    (CC1DE, CC2DE, CC2IE, CC3DE, CC3IE, CC4DE, CC4IE, TDE, TIE, UDE),
+    (CC2IF, CC2OF, CC3IF, CC3OF, CC4IF, CC4OF, TIF),
+    (CC2G, CC3G, CC4G, TG),
+    (CC2S, OC1CE, OC2CE, OC2FE, OC2M, OC2PE, IC2F, IC2PSC),
     (CCMR2_Input, CCMR2_Output),
-    (, CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
-    (,),
-    (),
+    (CC2E, CC2NP, CC2P, CC3E, CC3NP, CC3P, CC4E, CC4NP, CC4P),
     (CCR2, CCR3, CCR4),
-    (),
     (DCR),
     (DMAR),
-    (OR,,,,,, TI4_RMP),
-    (),
+    (OR,,, TI4_RMP),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_general_tim! {
     "Extracts TIM9 register tokens.",
     periph_tim9,
@@ -1158,17 +901,13 @@ map_general_tim! {
     (,, OPM),
     (),
     (SMCR,,,,),
-    (,,, CC2IE,,,,,,,, TIE,),
-    (, CC2IF, CC2OF,,,,,, TIF),
-    (, CC2G,,,, TG),
-    (CC2S,,, OC2FE, OC2M,, OC2PE, IC2F, IC2PSC),
+    (,, CC2IE,,,,,, TIE,),
+    (CC2IF, CC2OF,,,,, TIF),
+    (CC2G,,, TG),
+    (CC2S,,, OC2FE, OC2M, OC2PE, IC2F, IC2PSC),
     (,),
-    (, CC2E, CC2NP, CC2P,,,,,,),
-    (,),
-    (),
+    (CC2E, CC2NP, CC2P,,,,,,),
     (CCR2,,),
-    (),
-    (),
     (),
     (),
     (),
@@ -1201,35 +940,18 @@ map_general_tim! {
     (,,),
     (),
     (),
-    (,,,,,,,,,,,,),
-    (,,,,,,,,),
-    (,,,,,),
-    (,,,,,,,,),
-    (,),
     (,,,,,,,,,),
+    (,,,,,,),
+    (,,,),
+    (,,,,,,,),
     (,),
-    (),
+    (,,,,,,,,),
     (,,),
-    (),
-    (),
     (),
     (),
     (),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
-))]
 map_general_tim! {
     "Extracts TIM11 register tokens.",
     periph_tim11,
@@ -1245,20 +967,16 @@ map_general_tim! {
     (,,),
     (),
     (),
-    (,,,,,,,,,,,,),
-    (,,,,,,,,),
-    (,,,,,),
-    (,,,,,,,,),
-    (,),
     (,,,,,,,,,),
+    (,,,,,,),
+    (,,,),
+    (,,,,,,,),
     (,),
-    (),
+    (,,,,,,,,),
     (,,),
     (),
     (),
-    (),
-    (OR,,,,, TI1_RMP,),
-    (),
+    (OR,, TI1_RMP,),
 }
 
 #[cfg(any(
@@ -1286,17 +1004,13 @@ map_general_tim! {
     (,, OPM),
     (),
     (SMCR,,,,),
-    (,,, CC2IE,,,,,,,, TIE,),
-    (, CC2IF, CC2OF,,,,,, TIF),
-    (, CC2G,,,, TG),
-    (CC2S,,, OC2FE, OC2M,, OC2PE, IC2F, IC2PSC),
+    (,, CC2IE,,,,,, TIE,),
+    (CC2IF, CC2OF,,,,, TIF),
+    (CC2G,,, TG),
+    (CC2S,,, OC2FE, OC2M, OC2PE, IC2F, IC2PSC),
     (,),
-    (, CC2E, CC2NP, CC2P,,,,,,),
-    (,),
-    (),
+    (CC2E, CC2NP, CC2P,,,,,,),
     (CCR2,,),
-    (),
-    (),
     (),
     (),
     (),
@@ -1327,17 +1041,13 @@ map_general_tim! {
     (,,),
     (),
     (),
-    (,,,,,,,,,,,,),
-    (,,,,,,,,),
-    (,,,,,),
-    (,,,,,,,,),
-    (,),
     (,,,,,,,,,),
+    (,,,,,,),
+    (,,,),
+    (,,,,,,,),
     (,),
-    (),
+    (,,,,,,,,),
     (,,),
-    (),
-    (),
     (),
     (),
     (),
@@ -1368,17 +1078,13 @@ map_general_tim! {
     (,,),
     (),
     (),
-    (,,,,,,,,,,,,),
-    (,,,,,,,,),
-    (,,,,,),
-    (,,,,,,,,),
-    (,),
     (,,,,,,,,,),
+    (,,,,,,),
+    (,,,),
+    (,,,,,,,),
     (,),
-    (),
+    (,,,,,,,,),
     (,,),
-    (),
-    (),
     (),
     (),
     (),

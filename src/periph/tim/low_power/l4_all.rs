@@ -28,6 +28,7 @@ periph! {
             LPTIMSEL { RwRwRegFieldBits }
         }
     }
+
     LPTIM {
         ISR {
             0x20 RoRegBitBand;
@@ -101,7 +102,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_low_power_tim {
     (
         $tim_macro_doc:expr,
@@ -147,6 +147,7 @@ macro_rules! map_low_power_tim {
                     LPTIMSEL { $lptimsel }
                 }
             }
+
             LPTIM {
                 $lptim;
                 ISR {

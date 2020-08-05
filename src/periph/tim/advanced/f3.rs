@@ -264,7 +264,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_advanced_tim {
     (
         $tim_macro_doc:expr,

@@ -237,7 +237,6 @@ periph! {
     }
 }
 
-#[allow(unused_macros)]
 macro_rules! map_gpio_port {
     (
         $port_macro_doc:expr,
