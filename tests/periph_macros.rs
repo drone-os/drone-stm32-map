@@ -37,6 +37,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "adc",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -62,6 +63,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "adc",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f427",
@@ -74,6 +76,10 @@ fn periph_macros1() {
         let adc2 = drone_stm32_map::periph::adc::periph_adc2!(reg);
         let adc3 = drone_stm32_map::periph::adc::periph_adc3!(reg);
     }
+    #[cfg(all(feature = "adc", any(stm32_mcu = "stm32f303")))]
+    {
+        let adc4 = drone_stm32_map::periph::adc::periph_adc4!(reg);
+    }
     #[cfg(all(
         feature = "dma",
         any(
@@ -82,6 +88,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f102",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -137,6 +144,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f102",
             stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f107",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
@@ -179,6 +187,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "dma",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -242,6 +251,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "exti",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -290,6 +300,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "exti",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f427",
@@ -334,6 +345,14 @@ fn periph_macros1() {
     ))]
     {
         let exti23 = drone_stm32_map::periph::exti::periph_exti23!(reg);
+    }
+    #[cfg(all(feature = "exti", any(stm32_mcu = "stm32f303")))]
+    {
+        let exti29 = drone_stm32_map::periph::exti::periph_exti29!(reg);
+        let exti30 = drone_stm32_map::periph::exti::periph_exti30!(reg);
+        let exti31 = drone_stm32_map::periph::exti::periph_exti31!(reg);
+        let exti32 = drone_stm32_map::periph::exti::periph_exti32!(reg);
+        let exti33 = drone_stm32_map::periph::exti::periph_exti33!(reg);
     }
     #[cfg(all(
         feature = "exti",
@@ -393,6 +412,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f102",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -430,6 +450,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f102",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -463,6 +484,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -495,6 +517,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f100",
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f412",
@@ -515,6 +538,32 @@ fn periph_macros1() {
     ))]
     {
         let gpio_f = drone_stm32_map::periph::gpio::periph_gpio_f!(reg);
+    }
+    #[cfg(all(
+        feature = "gpio",
+        any(
+            stm32_mcu = "stm32f100",
+            stm32_mcu = "stm32f101",
+            stm32_mcu = "stm32f103",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+            stm32_mcu = "stm32l4r5",
+            stm32_mcu = "stm32l4r7",
+            stm32_mcu = "stm32l4r9",
+            stm32_mcu = "stm32l4s5",
+            stm32_mcu = "stm32l4s7",
+            stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32l4x5",
+            stm32_mcu = "stm32l4x6",
+        )
+    ))]
+    {
         let gpio_g = drone_stm32_map::periph::gpio::periph_gpio_g!(reg);
     }
     #[cfg(all(
@@ -584,6 +633,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "i2c",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -615,6 +665,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "i2c",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -727,6 +778,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -757,6 +809,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -786,6 +839,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
@@ -810,6 +864,10 @@ fn periph_macros1() {
     ))]
     {
         let tim3 = drone_stm32_map::periph::tim::periph_tim3!(reg);
+    }
+    #[cfg(all(feature = "tim", any(stm32_mcu = "stm32f303")))]
+    {
+        let tim4 = drone_stm32_map::periph::tim::periph_tim4!(reg);
     }
     #[cfg(all(
         feature = "tim",
@@ -845,6 +903,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f410",
@@ -877,6 +936,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f101",
             stm32_mcu = "stm32f103",
             stm32_mcu = "stm32f107",
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32f405",
             stm32_mcu = "stm32f407",
             stm32_mcu = "stm32f412",
@@ -1002,6 +1062,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32l4r5",
             stm32_mcu = "stm32l4r7",
             stm32_mcu = "stm32l4r9",
@@ -1022,6 +1083,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "tim",
         any(
+            stm32_mcu = "stm32f303",
             stm32_mcu = "stm32l4r5",
             stm32_mcu = "stm32l4r7",
             stm32_mcu = "stm32l4r9",

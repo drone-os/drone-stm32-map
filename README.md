@@ -25,6 +25,7 @@ drop-in replacement for it.
 | `stm32f102` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
 | `stm32f103` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
 | `stm32f107` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
+| `stm32f303` | ARM® Cortex®-M4F r0p1 | [RM0316](https://www.st.com/resource/en/reference_manual/dm00043574.pdf) | `adc` `dma` `exti` `gpio` `i2c` `tim`                    |
 | `stm32f401` | ARM® Cortex®-M4F r0p1 | [RM0368](https://www.st.com/resource/en/reference_manual/dm00096844.pdf) | `adc` `dma` `exti` `gpio` `i2c` `tim`                    |
 | `stm32f405` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `adc` `dma` `exti` `gpio` `i2c` `tim`                    |
 | `stm32f407` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `adc` `dma` `exti` `gpio` `i2c` `tim`                    |
@@ -68,7 +69,7 @@ Add the crate to your `Cargo.toml` dependencies:
 
 ```toml
 [dependencies]
-drone-stm32-map = { version = "0.12.0", features = [...] }
+drone-stm32-map = { version = "0.12.2", features = [...] }
 ```
 
 Add or extend `std` feature as follows:
