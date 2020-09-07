@@ -64,7 +64,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! drone-stm32-map = { version = "0.12.2", features = [...] }
+//! drone-stm32-map = { version = "0.12.3", features = [...] }
 //! ```
 //!
 //! Add or extend `std` feature as follows:

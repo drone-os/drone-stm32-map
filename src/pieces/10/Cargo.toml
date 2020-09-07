@@ -2,7 +2,7 @@ cargo-features = ["resolver"]
 
 [package]
 name = "drone-stm32-map-pieces-10"
-version = "0.12.2"
+version = "0.12.3"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 resolver = "2"
@@ -27,5 +27,5 @@ path = "../../../../drone-cortexm"
 features = ["bit-band"]
 
 [build-dependencies.drone-stm32-map-svd]
-version = "=0.12.2"
+version = "=0.12.3"
 path = "../../../svd"
