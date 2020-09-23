@@ -38145,14 +38145,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>USART4RST</name>
-              <description>USART4 reset</description>
+              <name>UART4RST</name>
+              <description>UART4 reset</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>USART5RST</name>
-              <description>USART5 reset</description>
+              <name>UART5RST</name>
+              <description>UART5 reset</description>
               <bitOffset>20</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
@@ -38213,6 +38213,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>USART6RST</name>
               <description>USART6 reset</description>
               <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART9RST</name>
+              <description>UART 9 reset</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART10RST</name>
+              <description>UART 10 reset</description>
+              <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
@@ -38633,6 +38645,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
+              <name>UART9EN</name>
+              <description>UART9 clock enable</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART10EN</name>
+              <description>UART10 clock enable</description>
+              <bitOffset>7</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>ADC1EN</name>
               <description>ADC1 clock enable</description>
               <bitOffset>8</bitOffset>
@@ -39019,14 +39043,14 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>USART4LPEN</name>
+              <name>UART4LPEN</name>
               <description>USART4 clock enable during Sleep
               mode</description>
               <bitOffset>19</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>USART5LPEN</name>
+              <name>UART5LPEN</name>
               <description>USART5 clock enable during Sleep
               mode</description>
               <bitOffset>20</bitOffset>
@@ -39097,6 +39121,20 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>USART6 clock enable during Sleep
               mode</description>
               <bitOffset>5</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART9LPEN</name>
+              <description>UART9 clock enable during Sleep
+              mode</description>
+              <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART10LPEN</name>
+              <description>UART10 clock enable during Sleep
+              mode</description>
+              <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>

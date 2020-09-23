@@ -5733,6 +5733,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
+              <name>UART8RST</name>
+              <description>USART 8 reset</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART7RST</name>
+              <description>USART 7 reset</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
               <name>DACRST</name>
               <description>DAC reset</description>
               <bitOffset>29</bitOffset>
@@ -5787,7 +5799,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>UART3RST</name>
+              <name>USART3RST</name>
               <description>USART 3 reset</description>
               <bitOffset>18</bitOffset>
               <bitWidth>1</bitWidth>
@@ -6140,6 +6152,18 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <access>read-write</access>
           <resetValue>0x00000000</resetValue>
           <fields>
+            <field>
+              <name>UART8EN</name>
+              <description>UART8 clock enable</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART7EN</name>
+              <description>UART7 clock enable</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
             <field>
               <name>DACEN</name>
               <description>DAC interface clock enable</description>
@@ -6601,6 +6625,20 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <access>read-write</access>
           <resetValue>0x36FEC9FF</resetValue>
           <fields>
+            <field>
+              <name>UART8LPEN</name>
+              <description>UART8 clock enable during Sleep
+              mode</description>
+              <bitOffset>31</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>UART7LPEN</name>
+              <description>UART7 clock enable during Sleep
+              mode</description>
+              <bitOffset>30</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
             <field>
               <name>DACLPEN</name>
               <description>DAC interface clock enable during Sleep

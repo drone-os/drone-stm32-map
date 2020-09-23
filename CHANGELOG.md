@@ -11,6 +11,9 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
+### v0.12.4 (2020-09-22)
+- [added] Add support for 'uart' on STM32F4 series
+
 ### v0.12.3 (2020-09-07)
 - [added] Add support for STM32F303
 

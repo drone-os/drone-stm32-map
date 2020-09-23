@@ -9176,13 +9176,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>UART7ENR</name>
+              <name>UART7EN</name>
               <description>UART7 clock enable</description>
               <bitOffset>30</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
             <field>
-              <name>UART8ENR</name>
+              <name>UART8EN</name>
               <description>UART8 clock enable</description>
               <bitOffset>31</bitOffset>
               <bitWidth>1</bitWidth>

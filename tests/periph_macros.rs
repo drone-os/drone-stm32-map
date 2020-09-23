@@ -1120,6 +1120,71 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "uart",
         any(
+            stm32_mcu = "stm32f401",
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f410",
+            stm32_mcu = "stm32f411",
+            stm32_mcu = "stm32f412",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
+    ))]
+    {
+        let usart1 = drone_stm32_map::periph::uart::periph_usart1!(reg);
+        let usart2 = drone_stm32_map::periph::uart::periph_usart2!(reg);
+        let usart6 = drone_stm32_map::periph::uart::periph_usart6!(reg);
+    }
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f413",
+            stm32_mcu = "stm32f417",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f437",
+            stm32_mcu = "stm32f446",
+            stm32_mcu = "stm32f469",
+        )
+    ))]
+    {
+        let usart3 = drone_stm32_map::periph::uart::periph_usart3!(reg);
+        let uart4 = drone_stm32_map::periph::uart::periph_uart4!(reg);
+        let uart5 = drone_stm32_map::periph::uart::periph_uart5!(reg);
+    }
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f417",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f437",
+            stm32_mcu = "stm32f469",
+        )
+    ))]
+    {
+        let uart7 = drone_stm32_map::periph::uart::periph_uart7!(reg);
+        let uart8 = drone_stm32_map::periph::uart::periph_uart8!(reg);
+    }
+
+    #[cfg(all(
+        feature = "uart",
+        any(
+            stm32_mcu = "stm32f413",
+        )
+    ))]
+    {
+        let uart9 = drone_stm32_map::periph::uart::periph_uart9!(reg);
+        let uart10 = drone_stm32_map::periph::uart::periph_uart10!(reg);
+    }
+    #[cfg(all(
+        feature = "uart",
+        any(
             stm32_mcu = "stm32l4r5",
             stm32_mcu = "stm32l4r7",
             stm32_mcu = "stm32l4r9",
