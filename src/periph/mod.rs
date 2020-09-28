@@ -13,6 +13,8 @@ pub extern crate drone_stm32_map_periph_exti as exti;
 pub extern crate drone_stm32_map_periph_gpio as gpio;
 #[cfg(feature = "i2c")]
 pub extern crate drone_stm32_map_periph_i2c as i2c;
+#[cfg(feature = "otgfs")]
+pub extern crate drone_stm32_map_periph_otgfs as otgfs;
 #[cfg(feature = "rtc")]
 pub extern crate drone_stm32_map_periph_rtc as rtc;
 #[cfg(feature = "spi")]

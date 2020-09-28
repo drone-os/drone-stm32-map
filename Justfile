@@ -1,8 +1,8 @@
 cortexm_core := 'cortexm4f_r0p1'
-stm32_mcu := 'stm32l4s9'
+stm32_mcu := 'stm32f411'
 export DRONE_RUSTFLAGS := '--cfg cortexm_core="' + cortexm_core + '" ' + '--cfg stm32_mcu="' + stm32_mcu + '"'
 target := 'thumbv7em-none-eabihf'
-features := 'adc dma exti gpio i2c rtc spi tim uart'
+features := 'adc dma exti gpio i2c otgfs rtc spi tim uart'
 
 # Install dependencies
 deps:

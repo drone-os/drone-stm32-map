@@ -709,6 +709,18 @@ fn periph_macros1() {
         let i2c4 = drone_stm32_map::periph::i2c::periph_i2c4!(reg);
     }
     #[cfg(all(
+        feature = "otgfs",
+        any(
+            stm32_mcu = "stm32f411",
+        )
+    ))]
+    {
+        let otgfs_global = drone_stm32_map::periph::otgfs::periph_otgfs_global!(reg);
+        let otgfs_pwrclk = drone_stm32_map::periph::otgfs::periph_otgfs_pwrclk!(reg);
+        let otgfs_device = drone_stm32_map::periph::otgfs::periph_otgfs_device!(reg);
+        let otgfs_host = drone_stm32_map::periph::otgfs::periph_otgfs_host!(reg);
+    }
+    #[cfg(all(
         feature = "rtc",
         any(
             stm32_mcu = "stm32l4r5",

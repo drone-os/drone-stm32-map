@@ -2673,28 +2673,28 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>Set global IN NAK</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
-              <access>read-write</access>
+              <access>write-only</access>
             </field>
             <field>
               <name>CGINAK</name>
               <description>Clear global IN NAK</description>
               <bitOffset>8</bitOffset>
               <bitWidth>1</bitWidth>
-              <access>read-write</access>
+              <access>write-only</access>
             </field>
             <field>
               <name>SGONAK</name>
               <description>Set global OUT NAK</description>
               <bitOffset>9</bitOffset>
               <bitWidth>1</bitWidth>
-              <access>read-write</access>
+              <access>write-only</access>
             </field>
             <field>
               <name>CGONAK</name>
               <description>Clear global OUT NAK</description>
               <bitOffset>10</bitOffset>
               <bitWidth>1</bitWidth>
-              <access>read-write</access>
+              <access>write-only</access>
             </field>
             <field>
               <name>POPRGDNE</name>
@@ -2792,6 +2792,13 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>IN endpoint NAK effective
               mask</description>
               <bitOffset>6</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
+            <field>
+              <name>NAKM</name>
+              <description>NAK interrupt
+              mask</description>
+              <bitOffset>13</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
           </fields>
@@ -2941,8 +2948,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           </fields>
         </register>
         <register>
-          <name>FS_DIEPCTL0</name>
-          <displayName>FS_DIEPCTL0</displayName>
+          <name>DIEPCTL0</name>
+          <displayName>DIEPCTL0</displayName>
           <description>OTG_FS device control IN endpoint 0 control
           register (OTG_FS_DIEPCTL0)</description>
           <addressOffset>0x100</addressOffset>
@@ -3147,8 +3154,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>SODDFRM</name>
-              <description>SODDFRM</description>
+              <name>SODDFRM_SD1PID</name>
+              <description>SODDFRM/SD1PID</description>
               <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
               <access>write-only</access>
@@ -3249,8 +3256,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>SODDFRM</name>
-              <description>SODDFRM</description>
+              <name>SODDFRM_SD1PID</name>
+              <description>SODDFRM/SD1PID</description>
               <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
               <access>write-only</access>
@@ -3432,8 +3439,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>SODDFRM</name>
-              <description>SODDFRM</description>
+              <name>SODDFRM_SD1PID</name>
+              <description>SODDFRM/SD1PID</description>
               <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
               <access>write-only</access>
@@ -3534,8 +3541,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>SODDFRM</name>
-              <description>SODDFRM</description>
+              <name>SODDFRM_SD1PID</name>
+              <description>SODDFRM/SD1PID</description>
               <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
               <access>write-only</access>
@@ -3636,8 +3643,8 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-write</access>
             </field>
             <field>
-              <name>SODDFRM</name>
-              <description>SODDFRM</description>
+              <name>SODDFRM_SD1PID</name>
+              <description>SODDFRM/SD1PID</description>
               <bitOffset>29</bitOffset>
               <bitWidth>1</bitWidth>
               <access>write-only</access>
@@ -3938,7 +3945,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <fields>
             <field>
               <name>B2BSTUP</name>
-              <description>B2BSTUP</description>
+              <description>j</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
@@ -4562,7 +4569,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <resetValue>0x00000000</resetValue>
           <fields>
             <field>
-              <name>GINT</name>
+              <name>GINTMSK</name>
               <description>Global interrupt mask</description>
               <bitOffset>0</bitOffset>
               <bitWidth>1</bitWidth>
@@ -4604,7 +4611,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               select</description>
               <bitOffset>6</bitOffset>
               <bitWidth>1</bitWidth>
-              <access>write-only</access>
+              <access>read-only</access>
             </field>
             <field>
               <name>SRPCAP</name>
@@ -4770,7 +4777,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <access>read-only</access>
             </field>
             <field>
-              <name>GOUTNAKEFF</name>
+              <name>GONAKEFF</name>
               <description>Global OUT NAK effective</description>
               <bitOffset>7</bitOffset>
               <bitWidth>1</bitWidth>
@@ -5058,7 +5065,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <description>Host port interrupt mask</description>
               <bitOffset>24</bitOffset>
               <bitWidth>1</bitWidth>
-              <access>read-only</access>
+              <access>read-write</access>
             </field>
             <field>
               <name>HCIM</name>
@@ -5156,8 +5163,43 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>FS_GRXSTSR_Host</displayName>
           <description>OTG_FS Receive status debug read(Host
           mode)</description>
-          <alternateRegister>FS_GRXSTSR_Device</alternateRegister>
           <addressOffset>0x1C</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CHNUM</name>
+              <description>Channel number</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>BCNT</name>
+              <description>Byte count</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>11</bitWidth>
+            </field>
+            <field>
+              <name>DPID</name>
+              <description>Data PID</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>PKTSTS</name>
+              <description>Packet status</description>
+              <bitOffset>17</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FS_GRXSTSP_Device</name>
+          <displayName>FS_GRXSTSP_Device</displayName>
+          <description>OTG_FS Receive status debug pop(Device
+          mode)</description>
+          <addressOffset>0x20</addressOffset>
           <size>0x20</size>
           <access>read-only</access>
           <resetValue>0x00000000</resetValue>
@@ -5190,6 +5232,42 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <name>FRMNUM</name>
               <description>Frame number</description>
               <bitOffset>21</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>FS_GRXSTSP_Host</name>
+          <displayName>FS_GRXSTSP_Host</displayName>
+          <description>OTG_FS Receive status debug pop(Host
+          mode)</description>
+          <addressOffset>0x20</addressOffset>
+          <size>0x20</size>
+          <access>read-only</access>
+          <resetValue>0x00000000</resetValue>
+          <fields>
+            <field>
+              <name>CHNUM</name>
+              <description>Channel number</description>
+              <bitOffset>0</bitOffset>
+              <bitWidth>4</bitWidth>
+            </field>
+            <field>
+              <name>BCNT</name>
+              <description>Byte count</description>
+              <bitOffset>4</bitOffset>
+              <bitWidth>11</bitWidth>
+            </field>
+            <field>
+              <name>DPID</name>
+              <description>Data PID</description>
+              <bitOffset>15</bitOffset>
+              <bitWidth>2</bitWidth>
+            </field>
+            <field>
+              <name>PKTSTS</name>
+              <description>Packet status</description>
+              <bitOffset>17</bitOffset>
               <bitWidth>4</bitWidth>
             </field>
           </fields>
@@ -5242,7 +5320,6 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <displayName>FS_GNPTXFSIZ_Host</displayName>
           <description>OTG_FS non-periodic transmit FIFO size
           register (Host mode)</description>
-          <alternateRegister>FS_GNPTXFSIZ_Device</alternateRegister>
           <addressOffset>0x28</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
@@ -5332,6 +5409,12 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
               <bitOffset>20</bitOffset>
               <bitWidth>1</bitWidth>
             </field>
+            <field>
+              <name>NOVBUSSENS</name>
+              <description>VBUS sensing disable option</description>
+              <bitOffset>21</bitOffset>
+              <bitWidth>1</bitWidth>
+            </field>
           </fields>
         </register>
         <register>
@@ -5359,7 +5442,7 @@ xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
           <addressOffset>0x100</addressOffset>
           <size>0x20</size>
           <access>read-write</access>
-          <resetValue>0x02000600</resetValue>
+          <resetValue>0x02000400</resetValue>
           <fields>
             <field>
               <name>PTXSA</name>

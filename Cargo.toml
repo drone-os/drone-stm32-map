@@ -21,6 +21,7 @@ members = [
     "src/periph/exti",
     "src/periph/gpio",
     "src/periph/i2c",
+    "src/periph/otgfs",
     "src/periph/rtc",
     "src/periph/spi",
     "src/periph/tim",
@@ -68,6 +69,7 @@ dma = ["drone-stm32-map-periph-dma"]
 exti = ["drone-stm32-map-periph-exti"]
 gpio = ["drone-stm32-map-periph-gpio"]
 i2c = ["drone-stm32-map-periph-i2c"]
+otgfs = ["drone-stm32-map-periph-otgfs"]
 rtc = ["drone-stm32-map-periph-rtc"]
 spi = ["drone-stm32-map-periph-spi"]
 tim = ["drone-stm32-map-periph-tim"]
@@ -108,6 +110,11 @@ optional = true
 [dependencies.drone-stm32-map-periph-i2c]
 version = "=0.12.3"
 path = "src/periph/i2c"
+optional = true
+
+[dependencies.drone-stm32-map-periph-otgfs]
+version = "=0.12.3"
+path = "src/periph/otgfs"
 optional = true
 
 [dependencies.drone-stm32-map-periph-rtc]
