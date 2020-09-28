@@ -711,6 +711,7 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "otgfs",
         any(
+            stm32_mcu = "stm32f401",
             stm32_mcu = "stm32f411",
         )
     ))]

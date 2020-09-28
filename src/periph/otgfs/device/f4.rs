@@ -645,6 +645,7 @@ macro_rules! map_otgfs_device {
 }
 
 #[cfg(any(
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f411",
 ))]
 map_otgfs_device! {

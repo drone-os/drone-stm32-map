@@ -133,31 +133,14 @@ periph! {
             OTGINT { RwRwRegFieldBit }
             MMISM { RwRwRegFieldBit }
         }
-        FS_GRXSTSR_Device {
-            0x20 RoReg;
+        FS_GRXSTSR {
+            @Device 0x20 RoReg;
             FRMNUM { RoRoRegFieldBits }
             PKTSTS { RoRoRegFieldBits }
             DPID { RoRoRegFieldBits }
             BCNT { RoRoRegFieldBits }
             EPNUM { RoRoRegFieldBits }
-        }
-        FS_GRXSTSR_Host {
-            0x20 RoReg;
-            PKTSTS { RoRoRegFieldBits }
-            DPID { RoRoRegFieldBits }
-            BCNT { RoRoRegFieldBits }
-            CHNUM { RoRoRegFieldBits }
-        }
-        FS_GRXSTSP_Device {
-            0x20 RoReg;
-            FRMNUM { RoRoRegFieldBits }
-            PKTSTS { RoRoRegFieldBits }
-            DPID { RoRoRegFieldBits }
-            BCNT { RoRoRegFieldBits }
-            EPNUM { RoRoRegFieldBits }
-        }
-        FS_GRXSTSP_Host {
-            0x20 RoReg;
+            @Host 0x20 RoReg;
             PKTSTS { RoRoRegFieldBits }
             DPID { RoRoRegFieldBits }
             BCNT { RoRoRegFieldBits }
@@ -167,13 +150,11 @@ periph! {
             0x20 RwReg;
             RXFD { RwRwRegFieldBits }
         }
-        FS_GNPTXFSIZ_Device {
-            0x20 RwReg;
+        FS_GNPTXFSIZ {
+            @Device 0x20 RwReg;
             TX0FD { RwRwRegFieldBits }
             TX0FSA { RwRwRegFieldBits }
-        }
-        FS_GNPTXFSIZ_Host {
-            0x20 RwReg;
+            @Host 0x20 RwReg;
             NPTXFD { RwRwRegFieldBits }
             NPTXFSA { RwRwRegFieldBits }
         }
@@ -365,31 +346,14 @@ macro_rules! map_otgfs_global {
                     OTGINT { OTGINT }
                     MMISM { MMISM }
                 }
-                FS_GRXSTSR_Device {
-                    FS_GRXSTSR_Device;
+                FS_GRXSTSR {
+                    @Device FS_GRXSTSR_Device;
                     FRMNUM { FRMNUM }
                     PKTSTS { PKTSTS }
                     DPID { DPID }
                     BCNT { BCNT }
                     EPNUM { EPNUM }
-                }
-                FS_GRXSTSR_Host {
-                    FS_GRXSTSR_Host;
-                    PKTSTS { PKTSTS }
-                    DPID { DPID }
-                    BCNT { BCNT }
-                    CHNUM { CHNUM }
-                }
-                FS_GRXSTSP_Device {
-                    FS_GRXSTSP_Device;
-                    FRMNUM { FRMNUM }
-                    PKTSTS { PKTSTS }
-                    DPID { DPID }
-                    BCNT { BCNT }
-                    EPNUM { EPNUM }
-                }
-                FS_GRXSTSP_Host {
-                    FS_GRXSTSP_Host;
+                    @Host FS_GRXSTSR_Host;
                     PKTSTS { PKTSTS }
                     DPID { DPID }
                     BCNT { BCNT }
@@ -399,13 +363,11 @@ macro_rules! map_otgfs_global {
                     FS_GRXFSIZ;
                     RXFD { RXFD }
                 }
-                FS_GNPTXFSIZ_Device {
-                    FS_GNPTXFSIZ_Device;
+                FS_GNPTXFSIZ {
+                    @Device FS_GNPTXFSIZ_Device;
                     TX0FD { TX0FD }
                     TX0FSA { TX0FSA }
-                }
-                FS_GNPTXFSIZ_Host {
-                    FS_GNPTXFSIZ_Host;
+                    @Host FS_GNPTXFSIZ_Host;
                     NPTXFD { NPTXFD }
                     NPTXFSA { NPTXFSA }
                 }
@@ -453,6 +415,7 @@ macro_rules! map_otgfs_global {
 }
 
 #[cfg(any(
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f411",
 ))]
 map_otgfs_global! {

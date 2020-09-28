@@ -8,18 +8,22 @@
 #![no_std]
 
 #[cfg(any(
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f411",
 ))]
 pub mod global;
 #[cfg(any(
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f411",
 ))]
 pub mod device;
 #[cfg(any(
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f411",
 ))]
 pub mod host;
 #[cfg(any(
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f411",
 ))]
 pub mod pwrclk;
