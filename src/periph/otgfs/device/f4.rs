@@ -280,6 +280,24 @@ periph! {
             PKTCNT { RwRwRegFieldBit }
             XFRSIZ { RwRwRegFieldBits }
 	    }
+        DIEPTSIZ1 {
+	        0x20 RwReg;
+            MCNT { RwRwRegFieldBits }
+            PKTCNT { RwRwRegFieldBits }
+            XFRSIZ { RwRwRegFieldBits }
+        }
+        DIEPTSIZ2 {
+	        0x20 RwReg;
+            MCNT { RwRwRegFieldBits }
+            PKTCNT { RwRwRegFieldBits }
+            XFRSIZ { RwRwRegFieldBits }
+        }
+        DIEPTSIZ3 {
+	        0x20 RwReg;
+            MCNT { RwRwRegFieldBits }
+            PKTCNT { RwRwRegFieldBits }
+            XFRSIZ { RwRwRegFieldBits }
+        }
 	    DTXFSTS0 {
 	        0x20 RoReg;
             INEPTFSAV { RoRoRegFieldBits }
@@ -605,6 +623,24 @@ macro_rules! map_otgfs_device {
                     PKTCNT { PKTCNT }
                     XFRSIZ { XFRSIZ }
         	    }
+                DIEPTSIZ1 {
+                    DIEPTSIZ1;
+                    MCNT { MCNT }
+                    PKTCNT { PKTCNT }
+                    XFRSIZ { XFRSIZ }
+                }
+                DIEPTSIZ2 {
+                    DIEPTSIZ2;
+                    MCNT { MCNT }
+                    PKTCNT { PKTCNT }
+                    XFRSIZ { XFRSIZ }
+                }
+                DIEPTSIZ3 {
+                    DIEPTSIZ3;
+                    MCNT { MCNT }
+                    PKTCNT { PKTCNT }
+                    XFRSIZ { XFRSIZ }
+                }
         	    DTXFSTS0 {
         	        DTXFSTS0;
                     INEPTFSAV { INEPTFSAV }
