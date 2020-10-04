@@ -719,7 +719,19 @@ fn periph_macros1() {
         let otgfs_global = drone_stm32_map::periph::otgfs::periph_otgfs_global!(reg);
         let otgfs_pwrclk = drone_stm32_map::periph::otgfs::periph_otgfs_pwrclk!(reg);
         let otgfs_device = drone_stm32_map::periph::otgfs::periph_otgfs_device!(reg);
+        let otgfs_device_ep0 = drone_stm32_map::periph::otgfs::periph_otgfs_device_ep0!(reg);
+        let otgfs_device_ep1 = drone_stm32_map::periph::otgfs::periph_otgfs_device_ep1!(reg);
+        let otgfs_device_ep2 = drone_stm32_map::periph::otgfs::periph_otgfs_device_ep2!(reg);
+        let otgfs_device_ep3 = drone_stm32_map::periph::otgfs::periph_otgfs_device_ep3!(reg);
         let otgfs_host = drone_stm32_map::periph::otgfs::periph_otgfs_host!(reg);
+        let otgfs_host_ch0 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch0!(reg);
+        let otgfs_host_ch1 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch1!(reg);
+        let otgfs_host_ch2 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch2!(reg);
+        let otgfs_host_ch3 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch3!(reg);
+        let otgfs_host_ch4 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch4!(reg);
+        let otgfs_host_ch5 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch5!(reg);
+        let otgfs_host_ch6 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch6!(reg);
+        let otgfs_host_ch7 = drone_stm32_map::periph::otgfs::periph_otgfs_host_ch7!(reg);
     }
     #[cfg(all(
         feature = "rtc",
