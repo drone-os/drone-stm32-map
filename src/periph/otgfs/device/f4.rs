@@ -13,15 +13,15 @@ periph! {
     pub struct DeviceOtgfsPeriph;
 
     OTG_FS_DEVICE {
-	    FS_DCFG {
-	        0x20 RwReg Option;
+        FS_DCFG {
+            0x20 RwReg Option;
             PFIVL { RwRwRegFieldBits }
             DAD { RwRwRegFieldBits }
             NZLSOHSK { RwRwRegFieldBit }
             DSPD { RwRwRegFieldBits }
-	    }
-	    FS_DCTL {
-	        0x20 RwReg Option;
+        }
+        FS_DCTL {
+            0x20 RwReg Option;
             POPRGDNE { RwRwRegFieldBit }
             CGONAK { WoRwRegFieldBit }
             SGONAK { WoRwRegFieldBit }
@@ -32,16 +32,16 @@ periph! {
             GINSTS { RoRwRegFieldBit }
             SDIS { RwRwRegFieldBit }
             RWUSIG { RwRwRegFieldBit }
-	    }
-	    FS_DSTS {
+        }
+        FS_DSTS {
             0x20 RoReg Option;
             FNSOF { RoRoRegFieldBits }
             EERR { RoRoRegFieldBit }
             ENUMSPD { RoRoRegFieldBits }
             SUSPSTS { RoRoRegFieldBit }
-	    }
-	    FS_DIEPMSK {
-	        0x20 RwReg Option;
+        }
+        FS_DIEPMSK {
+            0x20 RwReg Option;
             NAKM { RwRwRegFieldBit }
             INEPNEM { RwRwRegFieldBit }
             INEPNMM { RwRwRegFieldBit }
@@ -49,287 +49,110 @@ periph! {
             TOM { RwRwRegFieldBit }
             EPDM { RwRwRegFieldBit }
             XFRCM { RwRwRegFieldBit }
-	    }
-	    FS_DOEPMSK {	
-	        0x20 RwReg Option;
+        }
+        FS_DOEPMSK {    
+            0x20 RwReg Option;
             OTEPDM { RwRwRegFieldBit }
             STUPM { RwRwRegFieldBit }
             EPDM { RwRwRegFieldBit }
             XFRCM { RwRwRegFieldBit }
-	    }
-	    FS_DAINT {
-	        0x20 RoReg Option;
+        }
+        FS_DAINT {
+            0x20 RoReg Option;
             OEPINT { RoRoRegFieldBits }
             IEPINT { RoRoRegFieldBits }
-	    }
-	    FS_DAINTMSK {
-	        0x20 RwReg Option;
+        }
+        FS_DAINTMSK {
+            0x20 RwReg Option;
             OEPINT { RwRwRegFieldBits }
             IEPM { RwRwRegFieldBits }
-	    }
-	    DVBUSDIS {
-	        0x20 RwReg Option;
+        }
+        DVBUSDIS {
+            0x20 RwReg Option;
             VBUSDT { RwRwRegFieldBits }
-	    }
-	    DVBUSPULSE {
-	        0x20 RwReg Option;
+        }
+        DVBUSPULSE {
+            0x20 RwReg Option;
             DVBUSP { RwRwRegFieldBits }
-	    }
-	    DIEPEMPMSK {
-	        0x20 RwReg Option;
+        }
+        DIEPEMPMSK {
+            0x20 RwReg Option;
             INEPTXFEM { RwRwRegFieldBits }
-	    }
-	    DIEPCTL0 {
-	        0x20 RwReg Option;
-            EPENA { RoRwRegFieldBit }
-            EPDIS { RoRwRegFieldBit }
+        }
+        DIEPCTL {
+            0x20 RwReg Option;
+            EPENA_RO { RoRwRegFieldBit Option }
+            EPENA { RwRwRegFieldBit Option }
+            EPDIS_RO { RoRwRegFieldBit Option }
+            EPDIS { RwRwRegFieldBit Option }
+            SODDFRM_SD1PID { WoRwRegFieldBit Option }
+            SD0PID_SEVNFRM { WoRwRegFieldBit Option }
             SNAK { WoRwRegFieldBit }
             CNAK { WoRwRegFieldBit }
             TXFNUM { RwRwRegFieldBits }
             STALL { RwRwRegFieldBit }
-            EPTYP { RoRwRegFieldBits }
+            EPTYP_RO { RoRwRegFieldBits Option }
+            EPTYP { RwRwRegFieldBits Option }
             NAKSTS { RoRwRegFieldBit }
-            USBAEP { RoRwRegFieldBit }
+            EONUM_DPID { RoRwRegFieldBit Option }
+            USBAEP_RO { RoRwRegFieldBit Option }
+            USBAEP { RwRwRegFieldBit Option }
             MPSIZ { RwRwRegFieldBits }
-	    }
-	    DIEPCTL1 {
-	        0x20 RwReg Option;
-            EPENA { RwRwRegFieldBit }
-            EPDIS { RwRwRegFieldBit }
-            SODDFRM_SD1PID { WoRwRegFieldBit }
-            SD0PID_SEVNFRM { WoRwRegFieldBit }
-            SNAK { WoRwRegFieldBit }
-            CNAK { WoRwRegFieldBit }
-            TXFNUM { RwRwRegFieldBits }
-            STALL { RwRwRegFieldBit }
-            EPTYP { RwRwRegFieldBits }
-            NAKSTS { RoRwRegFieldBit }
-            EONUM_DPID { RoRwRegFieldBit }
-            USBAEP { RwRwRegFieldBit }
-            MPSIZ { RwRwRegFieldBits }
-	    }
-	    DIEPCTL2 {
-	        0x20 RwReg Option;
-            EPENA { RwRwRegFieldBit }
-            EPDIS { RwRwRegFieldBit }
-            SODDFRM_SD1PID { WoRwRegFieldBit }
-            SD0PID_SEVNFRM { WoRwRegFieldBit }
-            SNAK { WoRwRegFieldBit }
-            CNAK { WoRwRegFieldBit }
-            TXFNUM { RwRwRegFieldBits }
-            STALL { RwRwRegFieldBit }
-            EPTYP { RwRwRegFieldBits }
-            NAKSTS { RoRwRegFieldBit }
-            EONUM_DPID { RoRwRegFieldBit }
-            USBAEP { RwRwRegFieldBit }
-            MPSIZ { RwRwRegFieldBits }
-	    }
-	    DIEPCTL3 {
-	        0x20 RwReg Option;
-            EPENA { RwRwRegFieldBit }
-            EPDIS { RwRwRegFieldBit }
-            SODDFRM_SD1PID { WoRwRegFieldBit }
-            SD0PID_SEVNFRM { WoRwRegFieldBit }
-            SNAK { WoRwRegFieldBit }
-            CNAK { WoRwRegFieldBit }
-            TXFNUM { RwRwRegFieldBits }
-            STALL { RwRwRegFieldBit }
-            EPTYP { RwRwRegFieldBits }
-            NAKSTS { RoRwRegFieldBit }
-            EONUM_DPID { RoRwRegFieldBit }
-            USBAEP { RwRwRegFieldBit }
-            MPSIZ { RwRwRegFieldBits }
-	    }
-	    DOEPCTL0 {
-	        0x20 RwReg Option;
-            EPENA { WoRwRegFieldBit }
-            EPDIS { RoRwRegFieldBit }
+        }
+        DOEPCTL {
+            0x20 RwReg Option;
+            EPENA_WO { WoRwRegFieldBit Option }
+            EPENA { RwRwRegFieldBit Option }
+            EPDIS_RO { RoRwRegFieldBit Option }
+            EPDIS { RwRwRegFieldBit Option }
+            SODDFRM_SD1PID { WoRwRegFieldBit Option }
+            SD0PID_SEVNFRM { WoRwRegFieldBit Option }
             SNAK { WoRwRegFieldBit }
             CNAK { WoRwRegFieldBit }
             STALL { RwRwRegFieldBit }
             SNPM { RwRwRegFieldBit }
-            EPTYP { RoRwRegFieldBits }
+            EPTYP_RO { RoRwRegFieldBits Option }
+            EPTYP { RwRwRegFieldBits Option }
             NAKSTS { RoRwRegFieldBit }
-            USBAEP { RoRwRegFieldBit }
-            MPSIZ { RoRwRegFieldBits }
-	    }
-	    DOEPCTL1 {
-	        0x20 RwReg Option;
-            EPENA { RwRwRegFieldBit }
-            EPDIS { RwRwRegFieldBit }
-            SODDFRM_SD1PID { WoRwRegFieldBit }
-            SD0PID_SEVNFRM { WoRwRegFieldBit }
-            SNAK { WoRwRegFieldBit }
-            CNAK { WoRwRegFieldBit }
-            STALL { RwRwRegFieldBit }
-            SNPM { RwRwRegFieldBit }
-            EPTYP { RwRwRegFieldBits }
-            NAKSTS { RoRwRegFieldBit }
-            EONUM_DPID { RoRwRegFieldBit }
-            USBAEP { RwRwRegFieldBit }
-            MPSIZ { RwRwRegFieldBits }
-	    }
-	    DOEPCTL2 {
-	        0x20 RwReg Option;
-            EPENA { RwRwRegFieldBit }
-            EPDIS { RwRwRegFieldBit }
-            SODDFRM_SD1PID { WoRwRegFieldBit }
-            SD0PID_SEVNFRM { WoRwRegFieldBit }
-            SNAK { WoRwRegFieldBit }
-            CNAK { WoRwRegFieldBit }
-            STALL { RwRwRegFieldBit }
-            SNPM { RwRwRegFieldBit }
-            EPTYP { RwRwRegFieldBits }
-            NAKSTS { RoRwRegFieldBit }
-            EONUM_DPID { RoRwRegFieldBit }
-            USBAEP { RwRwRegFieldBit }
-            MPSIZ { RwRwRegFieldBits }
-	    }
-	    DOEPCTL3 {
-	        0x20 RwReg Option;
-            EPENA { RwRwRegFieldBit }
-            EPDIS { RwRwRegFieldBit }
-            SODDFRM_SD1PID { WoRwRegFieldBit }
-            SD0PID_SEVNFRM { WoRwRegFieldBit }
-            SNAK { WoRwRegFieldBit }
-            CNAK { WoRwRegFieldBit }
-            STALL { RwRwRegFieldBit }
-            SNPM { RwRwRegFieldBit }
-            EPTYP { RwRwRegFieldBits }
-            NAKSTS { RoRwRegFieldBit }
-            EONUM_DPID { RoRwRegFieldBit }
-            USBAEP { RwRwRegFieldBit }
-            MPSIZ { RwRwRegFieldBits }
-	    }
-	    DIEPINT0 {
-	        0x20 RwReg Option;
+            EONUM_DPID { RoRwRegFieldBit Option }
+            USBAEP_RO { RoRwRegFieldBit Option }
+            USBAEP { RwRwRegFieldBit Option }
+            MPSIZ_RO { RoRwRegFieldBits Option }
+            MPSIZ { RwRwRegFieldBits Option }
+        }
+        DIEPINT {
+            0x20 RwReg Option;
             TXFE { RoRwRegFieldBit }
             INEPNE { RwRwRegFieldBit }
             ITTXFE { RwRwRegFieldBit }
             TOC { RwRwRegFieldBit }
             EPDISD { RwRwRegFieldBit }
             XFRC { RwRwRegFieldBit }
-	    }
-	    DIEPINT1 {
-	        0x20 RwReg Option;
-            TXFE { RoRwRegFieldBit }
-            INEPNE { RwRwRegFieldBit }
-            ITTXFE { RwRwRegFieldBit }
-            TOC { RwRwRegFieldBit }
-            EPDISD { RwRwRegFieldBit }
-            XFRC { RwRwRegFieldBit }
-	    }
-	    DIEPINT2 {
-	        0x20 RwReg Option;
-            TXFE { RoRwRegFieldBit }
-            INEPNE { RwRwRegFieldBit }
-            ITTXFE { RwRwRegFieldBit }
-            TOC { RwRwRegFieldBit }
-            EPDISD { RwRwRegFieldBit }
-            XFRC { RwRwRegFieldBit }
-	    }
-	    DIEPINT3 {
-	        0x20 RwReg Option;
-            TXFE { RoRwRegFieldBit }
-            INEPNE { RwRwRegFieldBit }
-            ITTXFE { RwRwRegFieldBit }
-            TOC { RwRwRegFieldBit }
-            EPDISD { RwRwRegFieldBit }
-            XFRC { RwRwRegFieldBit }
-	    }
-	    DOEPINT0 {
-	        0x20 RwReg Option;
+        }
+        DOEPINT {
+            0x20 RwReg Option;
             B2BSTUP { RwRwRegFieldBit }
             OTEPDIS { RwRwRegFieldBit }
             STUP { RwRwRegFieldBit }
             EPDISD { RwRwRegFieldBit }
             XFRC { RwRwRegFieldBit }
-	    }
-	    DOEPINT1 {
-	        0x20 RwReg Option;
-            B2BSTUP { RwRwRegFieldBit }
-            OTEPDIS { RwRwRegFieldBit }
-            STUP { RwRwRegFieldBit }
-            EPDISD { RwRwRegFieldBit }
-            XFRC { RwRwRegFieldBit }
-	    }
-	    DOEPINT2 {
-	        0x20 RwReg Option;
-            B2BSTUP { RwRwRegFieldBit }
-            OTEPDIS { RwRwRegFieldBit }
-            STUP { RwRwRegFieldBit }
-            EPDISD { RwRwRegFieldBit }
-            XFRC { RwRwRegFieldBit }
-	    }
-	    DOEPINT3 {
-	        0x20 RwReg Option;
-            B2BSTUP { RwRwRegFieldBit }
-            OTEPDIS { RwRwRegFieldBit }
-            STUP { RwRwRegFieldBit }
-            EPDISD { RwRwRegFieldBit }
-            XFRC { RwRwRegFieldBit }
-	    }
-	    DIEPTSIZ0 {
-	        0x20 RwReg Option;
-            PKTCNT { RwRwRegFieldBits }
-            XFRSIZ { RwRwRegFieldBits }
-	    }
-        DIEPTSIZ1 {
-	        0x20 RwReg Option;
-            MCNT { RwRwRegFieldBits }
+        }
+        DIEPTSIZ {
+            0x20 RwReg Option;
+            MCNT { RwRwRegFieldBits Option }
             PKTCNT { RwRwRegFieldBits }
             XFRSIZ { RwRwRegFieldBits }
         }
-        DIEPTSIZ2 {
-	        0x20 RwReg Option;
-            MCNT { RwRwRegFieldBits }
-            PKTCNT { RwRwRegFieldBits }
-            XFRSIZ { RwRwRegFieldBits }
-        }
-        DIEPTSIZ3 {
-	        0x20 RwReg Option;
-            MCNT { RwRwRegFieldBits }
-            PKTCNT { RwRwRegFieldBits }
-            XFRSIZ { RwRwRegFieldBits }
-        }
-	    DTXFSTS0 {
-	        0x20 RoReg Option;
+        DTXFSTS {
+            0x20 RoReg Option;
             INEPTFSAV { RoRoRegFieldBits }
-	    }
-	    DTXFSTS1 {
-	        0x20 RoReg Option;
-            INEPTFSAV { RoRoRegFieldBits }
-	    }
-	    DTXFSTS2 {
-	        0x20 RoReg Option;
-            INEPTFSAV { RoRoRegFieldBits }
-	    }
-	    DTXFSTS3 {
-	        0x20 RoReg Option;
-            INEPTFSAV { RoRoRegFieldBits }
-	    }
-	    DOEPTSIZ0 {
-	        0x20 RwReg Option;
-            STUPCNT { RwRwRegFieldBits }
-            PKTCNT { RwRwRegFieldBit }
-            XFRSIZ { RwRwRegFieldBits }
-	    }
-	    DOEPTSIZ1 {
-	        0x20 RwReg Option;
-            RXDPID_STUPCNT { RwRwRegFieldBits }
-            PKTCNT { RwRwRegFieldBits }
-            XFRSIZ { RwRwRegFieldBits }
         }
-	    DOEPTSIZ2 {
-	        0x20 RwReg Option;
-            RXDPID_STUPCNT { RwRwRegFieldBits }
-            PKTCNT { RwRwRegFieldBits }
-            XFRSIZ { RwRwRegFieldBits }
-        }
-	    DOEPTSIZ3 {
-	        0x20 RwReg Option;
-            RXDPID_STUPCNT { RwRwRegFieldBits }
-            PKTCNT { RwRwRegFieldBits }
+        DOEPTSIZ {
+            0x20 RwReg Option;
+            STUPCNT { RwRwRegFieldBits Option }
+            RXDPID_STUPCNT { RwRwRegFieldBits Option }
+            PKTCNT_BIT { RwRwRegFieldBit Option }
+            PKTCNT_BITS { RwRwRegFieldBits Option }
             XFRSIZ { RwRwRegFieldBits }
         }
     }
@@ -352,34 +175,50 @@ macro_rules! map_otgfs_device {
         ($($dvbusdis:ident)?),
         ($($dvbuspulse:ident)?),
         ($($diepempmsk:ident)?),
-        ($($diepctl0:ident)?),
-        ($($diepctl1:ident)?),
-        ($($diepctl2:ident)?),
-        ($($diepctl3:ident)?),
-        ($($doepctl0:ident)?),
-        ($($doepctl1:ident)?),
-        ($($doepctl2:ident)?),
-        ($($doepctl3:ident)?),
-        ($($diepint0:ident)?),
-        ($($diepint1:ident)?),
-        ($($diepint2:ident)?),
-        ($($diepint3:ident)?),
-        ($($doepint0:ident)?),
-        ($($doepint1:ident)?),
-        ($($doepint2:ident)?),
-        ($($doepint3:ident)?),
-        ($($dieptsiz0:ident)?),
-        ($($dieptsiz1:ident)?),
-        ($($dieptsiz2:ident)?),
-        ($($dieptsiz3:ident)?),
-        ($($dtxfsts0:ident)?),
-        ($($dtxfsts1:ident)?),
-        ($($dtxfsts2:ident)?),
-        ($($dtxfsts3:ident)?),
-        ($($doeptsiz0:ident)?),
-        ($($doeptsiz1:ident)?),
-        ($($doeptsiz2:ident)?),
-        ($($doeptsiz3:ident)?),
+        ($(
+            $diepctl:ident,
+            $($epena_ro:ident)?,
+            $($epena:ident)?,
+            $($epdis_ro:ident)?,
+            $($epdis:ident)?,
+            $($sodfrm_sd1pid:ident)?,
+            $($sd0pid_sevnfrm:ident)?,
+            $($eptyp_ro:ident)?,
+            $($eptyp:ident)?,
+            $($eonum_dpid:ident)?,
+            $($usbaep_ro:ident)?,
+            $($usbaep:ident)?,
+        )?),
+        ($(
+            $doepctl:ident,
+            $($do_epena_wo:ident)?,
+            $($do_epena:ident)?,
+            $($do_epdis_ro:ident)?,
+            $($do_epdis:ident)?,
+            $($do_sodfrm_sd1pid:ident)?,
+            $($do_sd0pid_sevnfrm:ident)?,
+            $($do_eptyp_ro:ident)?,
+            $($do_eptyp:ident)?,
+            $($do_eonum_dpid:ident)?,
+            $($do_usbaep_ro:ident)?,
+            $($do_usbaep:ident)?,
+            $($do_mpsiz_ro:ident)?,
+            $($do_mpsiz:ident)?,
+        )?),
+        ($($diepint:ident)?),
+        ($($doepint:ident)?),
+        ($(
+            $dieptsiz:ident,
+            $($mcnt:ident)?,
+        )?),
+        ($($dtxfsts:ident)?),
+        ($(
+            $doeptsiz:ident,
+            $($stupcnt:ident)?,
+            $($rxdpid_stupcnt:ident)?,
+            $($pktcnt_bit:ident)?,
+            $($pktcnt_bits:ident)?,
+        )?),
     ) => {
         periph::map! {
             #[doc = $otgfs_macro_doc]
@@ -402,8 +241,8 @@ macro_rules! map_otgfs_device {
                         NZLSOHSK { NZLSOHSK }
                         DSPD { DSPD }
                     )*
-        	    }
-        	    FS_DCTL {
+                }
+                FS_DCTL {
                     $(
                         $fs_dctl Option;
                         POPRGDNE { POPRGDNE }
@@ -417,8 +256,8 @@ macro_rules! map_otgfs_device {
                         SDIS { SDIS }
                         RWUSIG { RWUSIG }
                     )*
-        	    }
-        	    FS_DSTS {
+                }
+                FS_DSTS {
                     $(
                         $fs_dsts Option;
                         FNSOF { FNSOF }
@@ -426,8 +265,8 @@ macro_rules! map_otgfs_device {
                         ENUMSPD { ENUMSPD }
                         SUSPSTS { SUSPSTS }
                     )*
-        	    }
-        	    FS_DIEPMSK {
+                }
+                FS_DIEPMSK {
                     $(
                         $fs_diepmsk Option;
                         NAKM { NAKM }
@@ -438,8 +277,8 @@ macro_rules! map_otgfs_device {
                         EPDM { EPDM }
                         XFRCM { XFRCM }
                     )*
-        	    }
-        	    FS_DOEPMSK {	
+                }
+                FS_DOEPMSK {    
                     $(
                         $fs_doepmsk Option;
                         OTEPDM { OTEPDM }
@@ -447,180 +286,87 @@ macro_rules! map_otgfs_device {
                         EPDM { EPDM }
                         XFRCM { XFRCM }
                     )*
-        	    }
-        	    FS_DAINT {
+                }
+                FS_DAINT {
                     $(
                         $fs_daint Option;
                         OEPINT { OEPINT }
                         IEPINT { IEPINT }
                     )*
-        	    }
-        	    FS_DAINTMSK {
+                }
+                FS_DAINTMSK {
                     $(
                         $fs_daintmsk Option;
                         OEPINT { OEPINT }
                         IEPM { IEPM }
                     )*
-        	    }
-        	    DVBUSDIS {
+                }
+                DVBUSDIS {
                     $(
                         $dvbusdis Option;
                         VBUSDT { VBUSDT }
                     )*
-        	    }
-        	    DVBUSPULSE {
+                }
+                DVBUSPULSE {
                     $(
                         $dvbuspulse Option;
                         DVBUSP { DVBUSP }
                     )*
-        	    }
-        	    DIEPEMPMSK {
+                }
+                DIEPEMPMSK {
                     $(
                         $diepempmsk Option;
                         INEPTXFEM { INEPTXFEM }
                     )*
-        	    }
-        	    DIEPCTL0 {
+                }
+                DIEPCTL {
                     $(
-                        $diepctl0 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
+                        $diepctl Option;
+                        EPENA_RO { $($epena_ro Option)* } 
+                        EPENA { $($epena Option)* } 
+                        EPDIS_RO { $($epdis_ro Option)* }
+                        EPDIS { $($epdis Option)* }
+                        SODDFRM_SD1PID { $($sodfrm_sd1pid Option)* } 
+                        SD0PID_SEVNFRM { $($sd0pid_sevnfrm Option)* }
                         SNAK { SNAK }
                         CNAK { CNAK }
                         TXFNUM { TXFNUM }
                         STALL { STALL }
-                        EPTYP { EPTYP }
+                        EPTYP_RO { $($eptyp_ro Option)* }
+                        EPTYP { $($eptyp Option)* }
                         NAKSTS { NAKSTS }
-                        USBAEP { USBAEP }
+                        EONUM_DPID { $($eonum_dpid Option)* }
+                        USBAEP_RO { $($usbaep_ro Option)* }
+                        USBAEP { $($usbaep Option)* }
                         MPSIZ { MPSIZ }
                     )*
-        	    }
-        	    DIEPCTL1 {
+                }
+                DOEPCTL {
                     $(
-                        $diepctl1 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
-                        SODDFRM_SD1PID { SODDFRM_SD1PID }
-                        SD0PID_SEVNFRM { SD0PID_SEVNFRM }
-                        SNAK { SNAK }
-                        CNAK { CNAK }
-                        TXFNUM { TXFNUM }
-                        STALL { STALL }
-                        EPTYP { EPTYP }
-                        NAKSTS { NAKSTS }
-                        EONUM_DPID { EONUM_DPID }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
-                    )*
-        	    }
-        	    DIEPCTL2 {
-                    $(
-                        $diepctl2 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
-                        SODDFRM_SD1PID { SODDFRM_SD1PID }
-                        SD0PID_SEVNFRM { SD0PID_SEVNFRM }
-                        SNAK { SNAK }
-                        CNAK { CNAK }
-                        TXFNUM { TXFNUM }
-                        STALL { STALL }
-                        EPTYP { EPTYP }
-                        NAKSTS { NAKSTS }
-                        EONUM_DPID { EONUM_DPID }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
-                    )*
-        	    }
-        	    DIEPCTL3 {
-                    $(
-                        $diepctl3 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
-                        SODDFRM_SD1PID { SODDFRM_SD1PID }
-                        SD0PID_SEVNFRM { SD0PID_SEVNFRM }
-                        SNAK { SNAK }
-                        CNAK { CNAK }
-                        TXFNUM { TXFNUM }
-                        STALL { STALL }
-                        EPTYP { EPTYP }
-                        NAKSTS { NAKSTS }
-                        EONUM_DPID { EONUM_DPID }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
-                    )*
-        	    }
-        	    DOEPCTL0 {
-                    $(
-                        $doepctl0 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
+                        $doepctl Option;
+                        EPENA_WO { $($do_epena_wo Option)* } 
+                        EPENA { $($do_epena Option)* } 
+                        EPDIS_RO { $($do_epdis_ro Option)* }
+                        EPDIS { $($do_epdis Option)* }
+                        SODDFRM_SD1PID { $($do_sodfrm_sd1pid Option)* } 
+                        SD0PID_SEVNFRM { $($do_sd0pid_sevnfrm Option)* }
                         SNAK { SNAK }
                         CNAK { CNAK }
                         STALL { STALL }
                         SNPM { SNPM }
-                        EPTYP { EPTYP }
+                        EPTYP_RO { $($do_eptyp_ro Option)* }
+                        EPTYP { $($do_eptyp Option)* }
                         NAKSTS { NAKSTS }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
+                        EONUM_DPID { $($do_eonum_dpid Option)* }
+                        USBAEP_RO { $($do_usbaep_ro Option)* }
+                        USBAEP { $($do_usbaep Option)* }
+                        MPSIZ_RO { $($do_mpsiz_ro Option)* }
+                        MPSIZ { $($do_mpsiz Option)* }
                     )*
-        	    }
-        	    DOEPCTL1 {
+                }
+                DIEPINT {
                     $(
-                        $doepctl1 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
-                        SODDFRM_SD1PID { SODDFRM_SD1PID }
-                        SD0PID_SEVNFRM { SD0PID_SEVNFRM }
-                        SNAK { SNAK }
-                        CNAK { CNAK }
-                        STALL { STALL }
-                        SNPM { SNPM }
-                        EPTYP { EPTYP }
-                        NAKSTS { NAKSTS }
-                        EONUM_DPID { EONUM_DPID }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
-                    )*
-        	    }
-        	    DOEPCTL2 {
-                    $(
-                        $doepctl2 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
-                        SODDFRM_SD1PID { SODDFRM_SD1PID }
-                        SD0PID_SEVNFRM { SD0PID_SEVNFRM }
-                        SNAK { SNAK }
-                        CNAK { CNAK }
-                        STALL { STALL }
-                        SNPM { SNPM }
-                        EPTYP { EPTYP }
-                        NAKSTS { NAKSTS }
-                        EONUM_DPID { EONUM_DPID }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
-                    )*
-        	    }
-        	    DOEPCTL3 {
-                    $(
-                        $doepctl3 Option;
-                        EPENA { EPENA }
-                        EPDIS { EPDIS }
-                        SODDFRM_SD1PID { SODDFRM_SD1PID }
-                        SD0PID_SEVNFRM { SD0PID_SEVNFRM }
-                        SNAK { SNAK }
-                        CNAK { CNAK }
-                        STALL { STALL }
-                        SNPM { SNPM }
-                        EPTYP { EPTYP }
-                        NAKSTS { NAKSTS }
-                        EONUM_DPID { EONUM_DPID }
-                        USBAEP { USBAEP }
-                        MPSIZ { MPSIZ }
-                    )*
-        	    }
-        	    DIEPINT0 {
-                    $(
-                        $diepint0 Option;
+                        $diepint Option;
                         TXFE { TXFE }
                         INEPNE { INEPNE }
                         ITTXFE { ITTXFE }
@@ -628,164 +374,38 @@ macro_rules! map_otgfs_device {
                         EPDISD { EPDISD }
                         XFRC { XFRC }
                     )*
-        	    }
-        	    DIEPINT1 {
+                }
+                DOEPINT {
                     $(
-                        $diepint1 Option;
-                        TXFE { TXFE }
-                        INEPNE { INEPNE }
-                        ITTXFE { ITTXFE }
-                        TOC { TOC }
-                        EPDISD { EPDISD }
-                        XFRC { XFRC }
-                    )*
-        	    }
-        	    DIEPINT2 {
-                    $(
-                        $diepint2 Option;
-                        TXFE { TXFE }
-                        INEPNE { INEPNE }
-                        ITTXFE { ITTXFE }
-                        TOC { TOC }
-                        EPDISD { EPDISD }
-                        XFRC { XFRC }
-                    )*
-        	    }
-        	    DIEPINT3 {
-                    $(
-                        $diepint3 Option;
-                        TXFE { TXFE }
-                        INEPNE { INEPNE }
-                        ITTXFE { ITTXFE }
-                        TOC { TOC }
-                        EPDISD { EPDISD }
-                        XFRC { XFRC }
-                    )*
-        	    }
-        	    DOEPINT0 {
-                    $(
-                        $doepint0 Option;
+                        $doepint Option;
                         B2BSTUP { B2BSTUP }
                         OTEPDIS { OTEPDIS }
                         STUP { STUP }
                         EPDISD { EPDISD }
                         XFRC { XFRC }
                     )*
-        	    }
-        	    DOEPINT1 {
+                }
+                DIEPTSIZ {
                     $(
-                        $doepint1 Option;
-                        B2BSTUP { B2BSTUP }
-                        OTEPDIS { OTEPDIS }
-                        STUP { STUP }
-                        EPDISD { EPDISD }
-                        XFRC { XFRC }
-                    )*
-        	    }
-        	    DOEPINT2 {
-                    $(
-                        $doepint2 Option;
-                        B2BSTUP { B2BSTUP }
-                        OTEPDIS { OTEPDIS }
-                        STUP { STUP }
-                        EPDISD { EPDISD }
-                        XFRC { XFRC }
-                    )*
-        	    }
-        	    DOEPINT3 {
-                    $(
-                        $doepint3 Option;
-                        B2BSTUP { B2BSTUP }
-                        OTEPDIS { OTEPDIS }
-                        STUP { STUP }
-                        EPDISD { EPDISD }
-                        XFRC { XFRC }
-                    )*
-        	    }
-        	    DIEPTSIZ0 {
-                    $(
-                        $dieptsiz0 Option;
-                        PKTCNT { PKTCNT }
-                        XFRSIZ { XFRSIZ }
-                    )*
-        	    }
-                DIEPTSIZ1 {
-                    $(
-                        $dieptsiz1 Option;
-                        MCNT { MCNT }
+                        $dieptsiz Option;
+                        MCNT { $($mcnt Option)* }
                         PKTCNT { PKTCNT }
                         XFRSIZ { XFRSIZ }
                     )*
                 }
-                DIEPTSIZ2 {
+                DTXFSTS {
                     $(
-                        $dieptsiz2 Option;
-                        MCNT { MCNT }
-                        PKTCNT { PKTCNT }
-                        XFRSIZ { XFRSIZ }
-                    )*
-                }
-                DIEPTSIZ3 {
-                    $(
-                        $dieptsiz3 Option;
-                        MCNT { MCNT }
-                        PKTCNT { PKTCNT }
-                        XFRSIZ { XFRSIZ }
-                    )*
-                }
-        	    DTXFSTS0 {
-                    $(
-                        $dtxfsts0 Option;
+                        $dtxfsts Option;
                         INEPTFSAV { INEPTFSAV }
                     )*
-        	    }
-        	    DTXFSTS1 {
-                    $(
-                        $dtxfsts1 Option;
-                        INEPTFSAV { INEPTFSAV }
-                    )*
-        	    }
-        	    DTXFSTS2 {
-                    $(
-                        $dtxfsts2 Option;
-                        INEPTFSAV { INEPTFSAV }
-                    )*
-        	    }
-        	    DTXFSTS3 {
-                    $(
-                        $dtxfsts3 Option;
-                        INEPTFSAV { INEPTFSAV }
-                    )*
-        	    }
-        	    DOEPTSIZ0 {
-                    $(
-                        $doeptsiz0 Option;
-                        STUPCNT { STUPCNT }
-                        PKTCNT { PKTCNT }
-                        XFRSIZ { XFRSIZ }
-                    )*
-        	    }
-        	    DOEPTSIZ1 {
-                    $(
-                        $doeptsiz1 Option;
-                        RXDPID_STUPCNT { RXDPID_STUPCNT }
-                        PKTCNT { PKTCNT }
-                        XFRSIZ { XFRSIZ }
-                    )*
                 }
-        	    DOEPTSIZ2 {
+                DOEPTSIZ {
                     $(
-                        $doeptsiz2 Option;
-                        RXDPID_STUPCNT { RXDPID_STUPCNT }
-                        PKTCNT { PKTCNT }
-                        XFRSIZ { XFRSIZ }
-                    )*
-                }
-        	    DOEPTSIZ3 {
-                    $(
-                        $doeptsiz3 Option;
-                        RXDPID_STUPCNT { RXDPID_STUPCNT }
-                        PKTCNT { PKTCNT }
+                        $doeptsiz Option;
+                        STUPCNT { $($stupcnt Option)* }
+                        RXDPID_STUPCNT { $($rxdpid_stupcnt Option)* }
+                        PKTCNT_BIT { $($pktcnt_bit Option)* }
+                        PKTCNT_BITS { $($pktcnt_bits Option)* }
                         XFRSIZ { XFRSIZ }
                     )*
                 }
@@ -799,8 +419,7 @@ macro_rules! map_otgfs_device {
     stm32_mcu = "stm32f411",
 ))]
 map_otgfs_device! {
-    "Extracts USB-OTGFS register tokens.",
-    periph_otgfs_device,
+    "Extracts USB-OTGFS register tokens.", periph_otgfs_device,
     "USB-OTGFS peripheral variant.",
     Otgfs,
     OTGFS,
@@ -814,27 +433,6 @@ map_otgfs_device! {
     (DVBUSDIS),
     (DVBUSPULSE),
     (DIEPEMPMSK),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
     (),
     (),
     (),
@@ -864,34 +462,13 @@ map_otgfs_device! {
     (),
     (),
     (),
-    (DIEPCTL0),
-    (),
-    (),
-    (),
-    (DOEPCTL0),
-    (),
-    (),
-    (),
+    (DIEPCTL0,EPENA,,EPDIS,,,,EPTYP,,,USBAEP,,),
+    (DOEPCTL0,EPENA,,EPDIS,,,,EPTYP,,,USBAEP,,MPSIZ,,),
     (DIEPINT0),
-    (),
-    (),
-    (),
     (DOEPINT0),
-    (),
-    (),
-    (),
-    (DIEPTSIZ0),
-    (),
-    (),
-    (),
+    (DIEPTSIZ0,,),
     (DTXFSTS0),
-    (),
-    (),
-    (),
-    (DOEPTSIZ0),
-    (),
-    (),
-    (),
+    (DOEPTSIZ0,STUPCNT,,PKTCNT,,),
 }
 
 #[cfg(any(
@@ -914,34 +491,13 @@ map_otgfs_device! {
     (),
     (),
     (),
-    (),
-    (DIEPCTL1),
-    (),
-    (),
-    (),
-    (DOEPCTL1),
-    (),
-    (),
-    (),
+    (DIEPCTL1,,EPENA,,EPDIS,SODDFRM_SD1PID,SD0PID_SEVNFRM,,EPTYP,EONUM_DPID,,USBAEP,),
+    (DOEPCTL1,,EPENA,,EPDIS,SODDFRM_SD1PID,SD0PID_SEVNFRM,,EPTYP,EONUM_DPID,,USBAEP,,MPSIZ,),
     (DIEPINT1),
-    (),
-    (),
-    (),
     (DOEPINT1),
-    (),
-    (),
-    (),
-    (DIEPTSIZ1),
-    (),
-    (),
-    (),
+    (DIEPTSIZ1,MCNT,),
     (DTXFSTS1),
-    (),
-    (),
-    (),
-    (DOEPTSIZ1),
-    (),
-    (),
+    (DOEPTSIZ1,,RXDPID_STUPCNT,,PKTCNT,),
 }
 
 #[cfg(any(
@@ -964,34 +520,13 @@ map_otgfs_device! {
     (),
     (),
     (),
-    (),
-    (),
-    (DIEPCTL2),
-    (),
-    (),
-    (),
-    (DOEPCTL2),
-    (),
-    (),
-    (),
+    (DIEPCTL2,,EPENA,,EPDIS,SODDFRM_SD1PID,SD0PID_SEVNFRM,,EPTYP,EONUM_DPID,,USBAEP,),
+    (DOEPCTL2,,EPENA,,EPDIS,SODDFRM_SD1PID,SD0PID_SEVNFRM,,EPTYP,EONUM_DPID,,USBAEP,,MPSIZ,),
     (DIEPINT2),
-    (),
-    (),
-    (),
     (DOEPINT2),
-    (),
-    (),
-    (),
-    (DIEPTSIZ2),
-    (),
-    (),
-    (),
+    (DIEPTSIZ2,MCNT,),
     (DTXFSTS2),
-    (),
-    (),
-    (),
-    (DOEPTSIZ2),
-    (),
+    (DOEPTSIZ2,,RXDPID_STUPCNT,,PKTCNT,),
 }
 
 #[cfg(any(
@@ -1014,33 +549,11 @@ map_otgfs_device! {
     (),
     (),
     (),
-    (),
-    (),
-    (),
-    (DIEPCTL3),
-    (),
-    (),
-    (),
-    (DOEPCTL3),
-    (),
-    (),
-    (),
+    (DIEPCTL3,,EPENA,,EPDIS,SODDFRM_SD1PID,SD0PID_SEVNFRM,,EPTYP,EONUM_DPID,,USBAEP,),
+    (DOEPCTL3,,EPENA,,EPDIS,SODDFRM_SD1PID,SD0PID_SEVNFRM,,EPTYP,EONUM_DPID,,USBAEP,,MPSIZ,),
     (DIEPINT3),
-    (),
-    (),
-    (),
     (DOEPINT3),
-    (),
-    (),
-    (),
-    (DIEPTSIZ3),
-    (),
-    (),
-    (),
+    (DIEPTSIZ3,MCNT,),
     (DTXFSTS3),
-    (),
-    (),
-    (),
-    (DOEPTSIZ3),
+    (DOEPTSIZ3,,RXDPID_STUPCNT,,PKTCNT,),
 }
-
