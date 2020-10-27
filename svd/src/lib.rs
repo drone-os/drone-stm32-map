@@ -30,14 +30,13 @@ pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
     svd_config().generate_regs(&mut output, dev, pool_number, pool_size)
 }
 
-/// Generates code for interrupts and register tokens struct.
-pub fn generate_rest() -> Result<()> {
+/// Generates code for register tokens struct.
+pub fn generate_index() -> Result<()> {
     let out_dir = env::var("OUT_DIR")?;
     let out_dir = Path::new(&out_dir);
     let dev = svd_deserialize()?;
     let mut reg_output = File::create(out_dir.join("svd_reg_index.rs"))?;
-    let mut int_output = File::create(out_dir.join("svd_interrupts.rs"))?;
-    svd_config().generate_rest(&mut reg_output, &mut int_output, dev)
+    svd_config().generate_index(&mut reg_output, dev)
 }
 
 fn svd_config() -> Config<'static> {
@@ -89,13 +88,10 @@ fn patch_stm32f102(mut dev: Device) -> Result<Device> {
 
 fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     rcc::fix_2(&mut dev)?;
-    dma::fix_dma1_2(&mut dev)?;
     dma::fix_dma2_1(&mut dev)?;
-    dma::fix_dma2_3(&mut dev)?;
     tim::fix_tim1_1(&mut dev)?;
     tim::fix_tim2_2(&mut dev)?;
     tim::fix_tim2_3(&mut dev)?;
-    tim::fix_tim2_4(&mut dev)?;
     tim::fix_tim3_3(&mut dev)?;
     tim::fix_tim5_1(&mut dev)?;
     tim::fix_tim9_1(&mut dev)?;

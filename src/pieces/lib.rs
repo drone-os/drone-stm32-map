@@ -36,8 +36,6 @@ pub mod thr {
         use drone_cortexm::thr;
         #[allow(unused_imports)]
         use drone_cortexm::thr::prelude::*;
-
-        include!(concat!(env!("OUT_DIR"), "/svd_interrupts.rs"));
     }
 
     pub use self::map::*;

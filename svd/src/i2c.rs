@@ -1,7 +1,7 @@
 //! I2C peripheral patches.
 
 use anyhow::Result;
-use drone_svd::{Access, Device, Interrupt};
+use drone_svd::{Access, Device};
 
 pub fn fix_1(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1SMENR2").new_field(|field| {
@@ -23,20 +23,6 @@ pub fn fix_3(dev: &mut Device) -> Result<()> {
 
 pub fn fix_4(dev: &mut Device) -> Result<()> {
     fix_i2cfmp1(dev, "I2C4")?;
-    dev.periph("I2C4").interrupt.push({
-        let mut interrupt = Interrupt::default();
-        interrupt.name = "I2CFMP1_EV".to_string();
-        interrupt.description = "I2CFMP1 event interrupt".to_string();
-        interrupt.value = 95;
-        interrupt
-    });
-    dev.periph("I2C4").interrupt.push({
-        let mut interrupt = Interrupt::default();
-        interrupt.name = "I2CFMP1_ER".to_string();
-        interrupt.description = "I2CFMP1 error interrupt".to_string();
-        interrupt.value = 96;
-        interrupt
-    });
     dev.periph("I2C4").reg("ICR").field("ALERTC").name = "ALERTCF".to_string();
     dev.periph("I2C4").name = "I2CFMP1".to_string();
     Ok(())
