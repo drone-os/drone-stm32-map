@@ -75,15 +75,15 @@ periph!{
         }
         CRCPR{
             0x20 RwRegBitBand;
-            CRCPOLY{RwRwFieldBits}
+            CRCPOLY{RwRwRegFieldBits}
         }
         RXCRCR{
             0x20 RoRegBitBand;
-            RXCRC {RoRoRregFieldBits}
+            RXCRC {RoRoRegFieldBits}
         }
         TXCRCR{
             0x20 RoRegBitBand;
-            TXCRC{RoRoFieldBits}
+            TXCRC{RoRoRegFieldBits}
         }
 
     }
