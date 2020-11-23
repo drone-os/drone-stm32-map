@@ -57,9 +57,9 @@ periph!{
             RXDMAEN { RwRwRegFieldBitBand }
 
         }
-        Sr{
+        SR{
             0x20 RwRegBitBand;
-            FRE {RoRwRegFieldBitBand}
+            TIFRFE {RoRwRegFieldBitBand} //called FRF in ref manual
             BSY { RoRwRegFieldBitBand }
             OVR { RoRwRegFieldBitBand }
             MODF { RoRwRegFieldBitBand }
@@ -79,11 +79,11 @@ periph!{
         }
         RXCRCR{
             0x20 RoRegBitBand;
-            RXCRC {RoRoRegFieldBits}
+            RxCRC {RoRoRegFieldBits}
         }
         TXCRCR{
             0x20 RoRegBitBand;
-            TXCRC{RoRoRegFieldBits}
+            TxCRC{RoRoRegFieldBits}
         }
 
     }
@@ -130,7 +130,8 @@ macro_rules! map_spi {
                 }
             }
             SPI {
-                $spi;waverunner
+                $spi;
+                CR1{
                     CR1;
                     BIDIMODE { BIDIMODE }
                     BIDIOE { BIDIOE }
@@ -152,12 +153,14 @@ macro_rules! map_spi {
                     ERRIE { ERRIE }
                     RXDMAEN { RXDMAEN }
                     RXNEIE { RXNEIE }
+                    FRF { FRF }
                     SSOE { SSOE }
                     TXDMAEN { TXDMAEN }
                     TXEIE { TXEIE }
                 }
                 SR {
                     SR;
+                    TIFRFE { TIFRFE } 
                     BSY { BSY }
                     CHSIDE { CHSIDE }
                     CRCERR { CRCERR }
@@ -215,9 +218,8 @@ map_spi! {
     SPI2,
 }
 
- // not stm32_mcu = "stm32f410",
  #[cfg(any(
-    stm32_mcu = "STM32F401",
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f411",
@@ -243,11 +245,7 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f411",
     stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI4 register tokens.",
@@ -264,23 +262,62 @@ map_spi! {
 }
 
 #[cfg(any(
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f446",
+    stm32_mcu = "stm32f469",
+))]
+map_spi! {
+    "Extracts SPI4 register tokens.",
+    periph_spi4,
+    "SPI4 peripheral variant.",
+    Spi4,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI4ENR,//in svd it is called ENR 
+    SPI4RST,
+    SPI4LPEN,
+    SPI4,
+}
+
+#[cfg(any(
     stm32_mcu = "stm32f413",
+))]
+map_spi! {
+    "Extracts SPI5 register tokens.",
+    periph_spi5,
+    "SPI5 peripheral variant.",
+    Spi5,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI5EN, 
+    SPI5RST,
+    SPI5LPEN,
+    SPI5,
+}
+
+#[cfg(any(
     stm32_mcu = "stm32f427",
     stm32_mcu = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI5 register tokens.",
-    periph_spi5,APB2LPENR,
+    periph_spi5,
+    "SPI5 peripheral variant.",
+    Spi5,
     APB2ENR,
     APB2RSTR,
     APB2LPENR,
-    SPI5EN,
+    SPI5ENR, //in svd it is called ENR 
     SPI5RST,
     SPI5LPEN,
     SPI5,
 }
+
 #[cfg(any(
     stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI6 register tokens.",
@@ -290,8 +327,8 @@ map_spi! {
     APB2ENR,
     APB2RSTR,
     APB2LPENR,
-    SPI6EN,
+    SPI6ENR,//in svd it is called ENR 
     SPI6RST,
-    SPI6LPEN;
+    SPI6LPEN,
     SPI6,
 }
