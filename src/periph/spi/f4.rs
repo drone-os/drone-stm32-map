@@ -12,54 +12,53 @@ periph!{
     /// Generic SPI peripheral.
     pub struct SpiPeriph;
 
-    RCC{
+    RCC {
         BUSENR {
             0x20 RwRegBitBand Shared;
-            SPIEN { RwRwRegFieldBitBand}
+            SPIEN { RwRwRegFieldBitBand }
         }
-        BUSRSTR{
+        BUSRSTR {
             0x20 RwRegBitBand Shared;
-            SPIRST { RwRwRegFieldBitBand}
+            SPIRST { RwRwRegFieldBitBand }
         }
-        BUSSMENR{
+        BUSSMENR {
             0x20 RwRegBitBand Shared;
-            SPILPEN {RwRwRegFieldBitBand}
+            SPILPEN { RwRwRegFieldBitBand }
         }
     }
 
-    SPI{
-
-        CR1{
+    SPI {
+        CR1 {
             0x20 RwRegBitBand;
-            BIDIMODE { RwRwRegFieldBitBand}
-            BIDIOE {RwRwRegFieldBitBand}
-            CRCEN {RwRwRegFieldBitBand}
-            CRCNEXT {RwRwRegFieldBitBand}
-            DFF {RwRwRegFieldBitBand}
-            RXONLY {RwRwRegFieldBitBand}
-            SSM {RwRwRegFieldBitBand}
-            SSI {RwRwRegFieldBitBand}
-            LSBFIRST {RwRwRegFieldBitBand}
-            SPE {RwRwRegFieldBitBand}
-            BR {RwRwRegFieldBits}
-            MSTR {RwRwRegFieldBitBand}
-            CPOL {RwRwRegFieldBitBand}
-            CPHA {RwRwRegFieldBitBand}
+            BIDIMODE { RwRwRegFieldBitBand }
+            BIDIOE { RwRwRegFieldBitBand }
+            CRCEN { RwRwRegFieldBitBand }
+            CRCNEXT { RwRwRegFieldBitBand }
+            DFF { RwRwRegFieldBitBand }
+            RXONLY { RwRwRegFieldBitBand }
+            SSM { RwRwRegFieldBitBand }
+            SSI { RwRwRegFieldBitBand }
+            LSBFIRST { RwRwRegFieldBitBand }
+            SPE { RwRwRegFieldBitBand }
+            BR { RwRwRegFieldBits }
+            MSTR { RwRwRegFieldBitBand }
+            CPOL { RwRwRegFieldBitBand }
+            CPHA { RwRwRegFieldBitBand }
         }
         CR2{
             0x20 RwRegBitBand;
             TXEIE { RwRwRegFieldBitBand }
             RXNEIE { RwRwRegFieldBitBand }
             ERRIE { RwRwRegFieldBitBand }
-            FRF { RwRwRegFieldBitBand}
+            FRF { RwRwRegFieldBitBand }
             SSOE { RwRwRegFieldBitBand }
             TXDMAEN { RwRwRegFieldBitBand }
             RXDMAEN { RwRwRegFieldBitBand }
 
         }
-        SR{
+        SR {
             0x20 RwRegBitBand;
-            TIFRFE {RoRwRegFieldBitBand} //called FRF in ref manual
+            FRE { RoRwRegFieldBitBand } 
             BSY { RoRwRegFieldBitBand }
             OVR { RoRwRegFieldBitBand }
             MODF { RoRwRegFieldBitBand }
@@ -71,24 +70,23 @@ periph!{
         }
         DR {
             0x20 RwRegBitBand;
-            DR {RwRwRegFieldBits}
+            DR { RwRwRegFieldBits }
         }
-        CRCPR{
+        CRCPR {
             0x20 RwRegBitBand;
-            CRCPOLY{RwRwRegFieldBits}
+            CRCPOLY { RwRwRegFieldBits }
         }
-        RXCRCR{
+        RXCRCR {
             0x20 RoRegBitBand;
-            RxCRC {RoRoRegFieldBits}
+            RxCRC { RoRoRegFieldBits }
         }
-        TXCRCR{
+        TXCRCR {
             0x20 RoRegBitBand;
-            TxCRC{RoRoRegFieldBits}
+            TxCRC { RoRoRegFieldBits }
         }
-
     }
-
 }
+
 macro_rules! map_spi {
     (
         $spi_macro_doc:expr,
@@ -124,14 +122,14 @@ macro_rules! map_spi {
                     $busrstr Shared;
                     SPIRST { $spirst }
                 }
-                BUSSMENR{
+                BUSSMENR {
                     $bussmenr Shared;
                     SPILPEN{ $spilpen }
                 }
             }
             SPI {
                 $spi;
-                CR1{
+                CR1 {
                     CR1;
                     BIDIMODE { BIDIMODE }
                     BIDIOE { BIDIOE }
@@ -160,7 +158,7 @@ macro_rules! map_spi {
                 }
                 SR {
                     SR;
-                    TIFRFE { TIFRFE } 
+                    FRE { TIFRFE } 
                     BSY { BSY }
                     CHSIDE { CHSIDE }
                     CRCERR { CRCERR }

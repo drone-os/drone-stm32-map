@@ -30,7 +30,7 @@ mod f1;
 mod l4_all;
 
 #[cfg(any(
-    stm32_mcu = "stm32F401",
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f410",
@@ -69,7 +69,7 @@ pub use self::l4_all::*;
 
 
 #[cfg(any(
-    stm32_mcu = "stm32F401",
+    stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f410",
