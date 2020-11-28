@@ -42,3 +42,20 @@ pub fn fix_spi3_2(dev: &mut Device) -> Result<()> {
     dev.periph("RCC").reg("APB1SMENR1").field("SP3SMEN").name = "SPI3SMEN".to_string();
     Ok(())
 }
+
+pub fn fix_spi5_1(dev: &mut Device) -> Result<()> {
+    dev.periph("RCC").reg("APB2RSTR").new_field(|field| {
+        field.name = "SPI5RST".to_string();
+        field.description = "SPI5 reset".to_string();
+        field.bit_offset = Some(20);
+        field.bit_width = Some(1);
+    });
+    dev.periph("RCC").reg("APB2LPENR").new_field(|field| {
+        field.name = "SPI5LPEN".to_string();
+        field.description = "SPI 5 clock enable during sleep mode".to_string();
+        field.bit_offset = Some(20);
+        field.bit_width = Some(1);
+    });
+    Ok(())
+}
+

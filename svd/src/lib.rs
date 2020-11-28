@@ -161,6 +161,7 @@ fn patch_stm32f410(mut dev: Device) -> Result<Device> {
     adc::fix_adc1_1(&mut dev)?;
     i2c::fix_3(&mut dev)?;
     i2c::fix_6(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
     Ok(dev)
 }
 

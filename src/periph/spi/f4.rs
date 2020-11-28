@@ -29,7 +29,7 @@ periph!{
 
     SPI {
         CR1 {
-            0x20 RwRegBitBand;
+            0x20 RwRegBitBand Option;
             BIDIMODE { RwRwRegFieldBitBand }
             BIDIOE { RwRwRegFieldBitBand }
             CRCEN { RwRwRegFieldBitBand }
@@ -73,16 +73,33 @@ periph!{
             DR { RwRwRegFieldBits }
         }
         CRCPR {
-            0x20 RwRegBitBand;
+            0x20 RwRegBitBand Option;
             CRCPOLY { RwRwRegFieldBits }
         }
         RXCRCR {
-            0x20 RoRegBitBand;
+            0x20 RoRegBitBand Option;
             RxCRC { RoRoRegFieldBits }
         }
         TXCRCR {
-            0x20 RoRegBitBand;
+            0x20 RoRegBitBand Option;
             TxCRC { RoRoRegFieldBits }
+        }
+        I2SCFGR {
+            0x20 RwRegBitBand Option;
+            I2SMOD { RwRwRegFieldBit }
+            I2SE { RwRwRegFieldBit }
+            I2SCFG { RwRwRegFieldBits }
+            PCMSYNC { RwRwRegFieldBit }
+            I2SSTD { RwRwRegFieldBits }
+            CKPOL { RwRwRegFieldBit }
+            DATLEN { RwRwRegFieldBits }
+            CHLEN { RwRwRegFieldBit }
+        }
+        I2SPR {
+            0x20 RwRegBitBand Option;
+            MCKOE { RwRwRegFieldBit }
+            ODD { RwRwRegFieldBit }
+            I2SDIV { RwRwRegFieldBits }
         }
     }
 }
@@ -100,6 +117,12 @@ macro_rules! map_spi {
         $spirst:ident,
         $spilpen:ident,      
         $spi:ident,
+        ($($cr1:ident)?),
+        ($($crcpr:ident)?),
+        ($($rxcrcr:ident)?),
+        ($($txcrcr:ident)?),
+        ($($i2scfgr:ident)?),
+        ($($i2spr:ident)?),
     ) => {
         periph::map! {
             #[doc = $spi_macro_doc]
@@ -130,21 +153,23 @@ macro_rules! map_spi {
             SPI {
                 $spi;
                 CR1 {
-                    CR1;
-                    BIDIMODE { BIDIMODE }
-                    BIDIOE { BIDIOE }
-                    BR { BR }
-                    CPHA { CPHA }
-                    CPOL { CPOL }
-                    CRCEN { CRCEN }
-                    CRCNEXT { CRCNEXT }
-                    DFF { DFF }
-                    LSBFIRST { LSBFIRST }
-                    MSTR { MSTR }
-                    RXONLY { RXONLY }
-                    SPE { SPE }
-                    SSI { SSI }
-                    SSM { SSM }
+                    $(
+                        $cr1 Option;
+                        BIDIMODE { BIDIMODE }
+                        BIDIOE { BIDIOE }
+                        BR { BR }
+                        CPHA { CPHA }
+                        CPOL { CPOL }
+                        CRCEN { CRCEN }
+                        CRCNEXT { CRCNEXT }
+                        DFF { DFF }
+                        LSBFIRST { LSBFIRST }
+                        MSTR { MSTR }
+                        RXONLY { RXONLY }
+                        SPE { SPE }
+                        SSI { SSI }
+                        SSM { SSM }
+                    )*
                 }
                 CR2 {
                     CR2;
@@ -173,21 +198,49 @@ macro_rules! map_spi {
                     DR { DR }
                 }
                 CRCPR {
-                    CRCPR;
-                    CRCPOLY { CRCPOLY }
+                    $(
+                        $crcpr Option;
+                        CRCPOLY { CRCPOLY }
+                    )*
                 }
                 RXCRCR {
-                    RXCRCR;
-                    RxCRC { RxCRC }
+                    $(
+                        $rxcrcr Option;
+                        RxCRC { RxCRC }
+                    )*
                 }
                 TXCRCR {
-                    TXCRCR;
-                    TxCRC { TxCRC }
+                    $(
+                        $txcrcr Option;
+                        TxCRC { TxCRC }
+                    )*
+                }
+                I2SCFGR {
+                    $(
+                        $i2scfgr Option;
+                        I2SMOD { I2SMOD }
+                        I2SE { I2SE }
+                        I2SCFG { I2SCFG }
+                        PCMSYNC { PCMSYNC }
+                        I2SSTD { I2SSTD }
+                        CKPOL { CKPOL }
+                        DATLEN { DATLEN }
+                        CHLEN { CHLEN }
+                    )*
+                }
+                I2SPR {
+                    $(
+                        $i2spr Option;
+                        MCKOE { MCKOE }
+                        ODD { ODD }
+                        I2SDIV { I2SDIV }
+                    )*
                 }
             }
         }
     };
 }
+
 map_spi! {
     "Extracts SPI1 register tokens.",
     periph_spi1,
@@ -200,6 +253,12 @@ map_spi! {
     SPI1RST,
     SPI1LPEN,
     SPI1,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
 map_spi! {
@@ -214,6 +273,12 @@ map_spi! {
     SPI2RST,
     SPI2LPEN,
     SPI2,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
  #[cfg(any(
@@ -240,6 +305,12 @@ map_spi! {
     SPI3RST,
     SPI3LPEN,
     SPI3,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
 #[cfg(any(
@@ -257,6 +328,12 @@ map_spi! {
     SPI4RST,
     SPI4LPEN,
     SPI4,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
 #[cfg(any(
@@ -276,6 +353,35 @@ map_spi! {
     SPI4RST,
     SPI4LPEN,
     SPI4,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
+}
+
+#[cfg(any(
+    stm32_mcu = "stm32f410",
+))]
+map_spi! {
+    "Extracts SPI5 register tokens.",
+    periph_spi5,
+    "SPI5 peripheral variant.",
+    Spi5,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI5EN, 
+    SPI5RST,
+    SPI5LPEN,
+    SPI5,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
 #[cfg(any(
@@ -293,6 +399,12 @@ map_spi! {
     SPI5RST,
     SPI5LPEN,
     SPI5,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
 #[cfg(any(
@@ -311,6 +423,12 @@ map_spi! {
     SPI5RST,
     SPI5LPEN,
     SPI5,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
 
 #[cfg(any(
@@ -329,4 +447,221 @@ map_spi! {
     SPI6RST,
     SPI6LPEN,
     SPI6,
+    (CR1),
+    (CRCPR),
+    (RXCRCR),
+    (TXCRCR),
+    (),
+    (),
 }
+
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f469",
+))]
+map_spi! {
+    "Extracts I2S2 register tokens.",
+    periph_i2s2ext,
+    "I2S2 peripheral variant.",
+    I2S2ext,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI1EN,
+    SPI1RST,
+    SPI1LPEN,
+    I2S2ext,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+#[cfg(any(
+    stm32_mcu = "stm32f401",
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f411",
+    stm32_mcu = "stm32f412",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f469",
+))]
+map_spi! {
+    "Extracts I2S3 register tokens.",
+    periph_i2s3ext,
+    "I2S3 peripheral variant.",
+    I2S3ext,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    SPI3EN,
+    SPI3RST,
+    SPI3LPEN,
+    I2S3ext,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+// The I2S1 peripheral of stm32f410 is derived from SPI1
+// but has and has no extended node definition in the SVD!
+#[cfg(any(
+    stm32_mcu = "stm32f410",
+))]
+map_spi! {
+    "Extracts I2S1 register tokens.",
+    periph_i2s1,
+    "I2S1 peripheral variant.",
+    I2S1,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI1EN,
+    SPI1RST,
+    SPI1LPEN,
+    SPI1,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+// The I2S2 peripheral of stm32f410 is derived from SPI2
+// but has and has no extended node definition in the SVD!
+#[cfg(any(
+    stm32_mcu = "stm32f410",
+))]
+map_spi! {
+    "Extracts I2S2 register tokens.",
+    periph_i2s2,
+    "I2S2 peripheral variant.",
+    I2S2,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    SPI2EN,
+    SPI2RST,
+    SPI2LPEN,
+    SPI2,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+// The I2S5 peripheral of stm32f410 is derived from SPI5
+// but has and has no extended node definition in the SVD!
+#[cfg(any(
+    stm32_mcu = "stm32f410",
+))]
+map_spi! {
+    "Extracts I2S5 register tokens.",
+    periph_i2s5,
+    "I2S2 peripheral variant.",
+    I2S5,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI5EN, 
+    SPI5RST,
+    SPI5LPEN,
+    SPI5,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+// The I2S1 peripheral of stm32f446 is derived from SPI1
+// but has and has no extended node definition in the SVD!
+#[cfg(any(
+    stm32_mcu = "stm32f446",
+))]
+map_spi! {
+    "Extracts SPI1 register tokens.",
+    periph_i2s1,
+    "SPI1 peripheral variant.",
+    I2S1,
+    APB2ENR,
+    APB2RSTR,
+    APB2LPENR,
+    SPI1EN,
+    SPI1RST,
+    SPI1LPEN,
+    SPI1,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+// The I2S2 peripheral of stm32f446 is derived from SPI2
+// but has and has no extended node definition in the SVD!
+#[cfg(any(
+    stm32_mcu = "stm32f446",
+))]
+map_spi! {
+    "Extracts I2S2 register tokens.",
+    periph_i2s2,
+    "I2S2 peripheral variant.",
+    I2S2,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    SPI2EN,
+    SPI2RST,
+    SPI2LPEN,
+    SPI2,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
+// The I2S3 peripheral of stm32f446 is derived from SPI3
+// but has and has no extended node definition in the SVD!
+#[cfg(any(
+    stm32_mcu = "stm32f446",
+))]
+map_spi! {
+    "Extracts I2S3 register tokens.",
+    periph_i2s3,
+    "I2S3 peripheral variant.",
+    I2S3,
+    APB1ENR,
+    APB1RSTR,
+    APB1LPENR,
+    SPI3EN,
+    SPI3RST,
+    SPI3LPEN,
+    SPI3,
+    (),
+    (),
+    (),
+    (),
+    (I2SCFGR),
+    (I2SPR),
+}
+
