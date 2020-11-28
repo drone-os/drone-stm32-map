@@ -2,7 +2,7 @@ use drone_core::token::Token;
 use drone_stm32_map::stm32_reg_tokens;
 
 stm32_reg_tokens! {
-    struct Regs;
+    index => pub Regs;
 }
 
 #[test]

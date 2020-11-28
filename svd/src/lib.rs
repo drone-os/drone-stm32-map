@@ -1,7 +1,7 @@
 //! STM32 SVD to bindings for Drone, an Embedded Operating System.
 
 #![warn(clippy::pedantic)]
-#![allow(clippy::missing_errors_doc)]
+#![allow(clippy::missing_errors_doc, clippy::unnecessary_wraps)]
 
 pub mod adc;
 pub mod dma;
