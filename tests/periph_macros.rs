@@ -1171,6 +1171,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32f413",
             stm32_mcu = "stm32f417",
             stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
             stm32_mcu = "stm32f437",
             stm32_mcu = "stm32f446",
             stm32_mcu = "stm32f469",

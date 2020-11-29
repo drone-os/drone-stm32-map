@@ -349,6 +349,7 @@ map_uart! {
 
 #[cfg(any(
     stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
 ))]
 map_uart! {
     "Extracts USART3 register tokens.",
