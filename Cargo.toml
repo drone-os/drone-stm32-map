@@ -113,7 +113,7 @@ path = "src/periph/i2c"
 optional = true
 
 [dependencies.drone-stm32-map-periph-otgfs]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/otgfs"
 optional = true
 
