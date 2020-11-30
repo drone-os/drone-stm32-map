@@ -3,7 +3,7 @@
 #![feature(marker_trait_attr)]
 #![feature(proc_macro_hygiene)]
 #![warn(clippy::pedantic)]
-#![allow(intra_doc_link_resolution_failure)]
+#![allow(broken_intra_doc_links)]
 #![no_std]
 
 #[doc(hidden)]
@@ -36,8 +36,6 @@ pub mod thr {
         use drone_cortexm::thr;
         #[allow(unused_imports)]
         use drone_cortexm::thr::prelude::*;
-
-        include!(concat!(env!("OUT_DIR"), "/svd_interrupts.rs"));
     }
 
     pub use self::map::*;

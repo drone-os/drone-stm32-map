@@ -2,7 +2,7 @@
 
 use crate::{copy_field, copy_reg};
 use anyhow::Result;
-use drone_svd::{Access, Device, Interrupt, Register};
+use drone_svd::{Access, Device, Register};
 
 pub fn fix_tim1_1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM1").reg("CCMR1_Input").field("IC2PCS").name = "IC2PSC".to_string();
@@ -86,29 +86,11 @@ pub fn fix_tim2_3(dev: &mut Device) -> Result<()> {
     Ok(())
 }
 
-pub fn fix_tim2_4(dev: &mut Device) -> Result<()> {
-    dev.periph("TIM5").interrupt.push({
-        let mut interrupt = Interrupt::default();
-        interrupt.name = "TIM5".to_string();
-        interrupt.description = "TIM5 global interrupt".to_string();
-        interrupt.value = 50;
-        interrupt
-    });
-    Ok(())
-}
-
 pub fn add_tim3(dev: &mut Device) -> Result<()> {
     dev.new_periph(|peripheral| {
         peripheral.derived_from = Some("TIM2".to_string());
         peripheral.name = "TIM3".to_string();
         peripheral.base_address = 0x4000_0400;
-        peripheral.interrupt.push({
-            let mut interrupt = Interrupt::default();
-            interrupt.name = "TIM3".to_string();
-            interrupt.description = "TIM3 global interrupt".to_string();
-            interrupt.value = 29;
-            interrupt
-        });
     });
     Ok(())
 }

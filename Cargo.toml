@@ -30,14 +30,14 @@ members = [
 
 [package]
 name = "drone-stm32-map"
-version = "0.12.3"
+version = "0.13.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 resolver = "2"
 exclude = ["/svd_files"]
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
-documentation = "https://api.drone-os.com/drone-stm32-map/0.12/drone_stm32_map/"
+documentation = "https://api.drone-os.com/drone-stm32-map/0.13/drone_stm32_map/"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 keywords = [
@@ -76,63 +76,63 @@ tim = ["drone-stm32-map-periph-tim"]
 uart = ["drone-stm32-map-periph-uart"]
 
 [dependencies.drone-core]
-version = "0.12.0"
+version = "0.13.0"
 path = "../drone-core"
 
 [dependencies.drone-cortexm]
-version = "0.12.0"
+version = "0.13.0"
 path = "../drone-cortexm"
 
 [dependencies.drone-stm32-map-pieces]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/pieces"
 
 [dependencies.drone-stm32-map-periph-adc]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/adc"
 optional = true
 
 [dependencies.drone-stm32-map-periph-dma]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/dma"
 optional = true
 
 [dependencies.drone-stm32-map-periph-exti]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/exti"
 optional = true
 
 [dependencies.drone-stm32-map-periph-gpio]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/gpio"
 optional = true
 
 [dependencies.drone-stm32-map-periph-i2c]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/i2c"
 optional = true
 
 [dependencies.drone-stm32-map-periph-otgfs]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/otgfs"
 optional = true
 
 [dependencies.drone-stm32-map-periph-rtc]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/rtc"
 optional = true
 
 [dependencies.drone-stm32-map-periph-spi]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/spi"
 optional = true
 
 [dependencies.drone-stm32-map-periph-tim]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/tim"
 optional = true
 
 [dependencies.drone-stm32-map-periph-uart]
-version = "=0.12.3"
+version = "=0.13.0"
 path = "src/periph/uart"
 optional = true
