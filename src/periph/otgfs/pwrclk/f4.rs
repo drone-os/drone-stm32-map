@@ -1,4 +1,4 @@
-//! USB on the go full speed (OTG_FS) pwrclk peripherals. 
+//! USB on the go full speed (`OTG_FS`) pwrclk peripherals. 
 //!
 //! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
