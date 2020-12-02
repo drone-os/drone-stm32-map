@@ -86,19 +86,19 @@ periph!{
         }
         I2SCFGR {
             0x20 RwRegBitBand Option;
-            I2SMOD { RwRwRegFieldBit }
-            I2SE { RwRwRegFieldBit }
+            I2SMOD { RwRwRegFieldBitBand }
+            I2SE { RwRwRegFieldBitBand }
             I2SCFG { RwRwRegFieldBits }
-            PCMSYNC { RwRwRegFieldBit }
+            PCMSYNC { RwRwRegFieldBitBand }
             I2SSTD { RwRwRegFieldBits }
-            CKPOL { RwRwRegFieldBit }
+            CKPOL { RwRwRegFieldBitBand }
             DATLEN { RwRwRegFieldBits }
-            CHLEN { RwRwRegFieldBit }
+            CHLEN { RwRwRegFieldBitBand }
         }
         I2SPR {
             0x20 RwRegBitBand Option;
-            MCKOE { RwRwRegFieldBit }
-            ODD { RwRwRegFieldBit }
+            MCKOE { RwRwRegFieldBitBand }
+            ODD { RwRwRegFieldBitBand }
             I2SDIV { RwRwRegFieldBits }
         }
     }
