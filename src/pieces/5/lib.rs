@@ -1,5 +1,5 @@
 #![warn(clippy::pedantic)]
-#![allow(intra_doc_link_resolution_failure)]
+#![allow(broken_intra_doc_links)]
 #![no_std]
 
 #[doc(hidden)]
