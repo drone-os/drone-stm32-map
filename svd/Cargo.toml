@@ -2,20 +2,20 @@ cargo-features = ["resolver"]
 
 [package]
 name = "drone-stm32-map-svd"
-version = "0.13.0"
+version = "0.14.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 resolver = "2"
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
-documentation = "https://api.drone-os.com/drone-stm32-map/0.13/drone_stm32_map_svd/"
+documentation = "https://api.drone-os.com/drone-stm32-map/0.14/drone_stm32_map_svd/"
 license = "MIT OR Apache-2.0"
 description = """
 STM32 SVD to bindings for Drone, an Embedded Operating System.
 """
 
 [dependencies.drone-svd]
-version = "0.13.0"
+version = "0.14.0"
 path = "../../drone-svd"
 
 [dependencies]

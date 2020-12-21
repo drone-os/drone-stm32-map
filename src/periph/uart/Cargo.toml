@@ -2,13 +2,13 @@ cargo-features = ["resolver"]
 
 [package]
 name = "drone-stm32-map-periph-uart"
-version = "0.13.0"
+version = "0.14.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
 edition = "2018"
 resolver = "2"
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
-documentation = "https://api.drone-os.com/drone-stm32-map/0.13/drone_stm32_map_periph_uart/"
+documentation = "https://api.drone-os.com/drone-stm32-map/0.14/drone_stm32_map_periph_uart/"
 license = "MIT OR Apache-2.0"
 description = """
 STM32 peripheral mappings for Drone, an Embedded Operating System.
@@ -18,13 +18,13 @@ STM32 peripheral mappings for Drone, an Embedded Operating System.
 path = "lib.rs"
 
 [dependencies.drone-core]
-version = "0.13.0"
+version = "0.14.0"
 path = "../../../../drone-core"
 
 [dependencies.drone-cortexm]
-version = "0.13.0"
+version = "0.14.0"
 path = "../../../../drone-cortexm"
 
 [dependencies.drone-stm32-map-pieces]
-version = "=0.13.0"
+version = "=0.14.0"
 path = "../../pieces"

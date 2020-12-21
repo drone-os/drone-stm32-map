@@ -11,11 +11,8 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
-### v0.13.1 (2020-09-28)
+### unreleased
 - [added] Add support for 'otgfs' on STM32F401 and STM32F411
-
-### v0.13.1 (2020-09-22)
-
 - [added] Add support for 'uart' on STM32F4 series
 
 ### v0.13.0 (2020-11-28)
