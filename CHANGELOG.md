@@ -11,7 +11,7 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
-### unreleased
+### Unreleased
 - [added] Add support for 'otgfs' on STM32F401 and STM32F411
 - [added] Add support for 'uart' on STM32F4 series
 
