@@ -1,15 +1,13 @@
-cortexm_core := 'cortexm4f_r0p1'
-stm32_mcu := 'stm32l4s9'
-export DRONE_RUSTFLAGS := '--cfg cortexm_core="' + cortexm_core + '" ' + '--cfg stm32_mcu="' + stm32_mcu + '"'
-target := 'thumbv7em-none-eabihf'
 features := 'adc dma exti gpio i2c rtc spi tim uart'
+target := `drone print target 2>/dev/null || echo ""`
 
 # Install dependencies
 deps:
-	rustup target add {{target}}
+	type cargo-readme >/dev/null || cargo +stable install cargo-readme
+	type drone >/dev/null || cargo install drone
+	rustup target add $(drone print target)
 	rustup component add clippy
 	rustup component add rustfmt
-	type cargo-readme >/dev/null || cargo +stable install cargo-readme
 
 # Reformat the source code
 fmt:
@@ -17,52 +15,55 @@ fmt:
 
 # Check the source code for mistakes
 lint:
-	cargo clippy --package drone-stm32-map-svd
-	drone env {{target}} -- cargo clippy --features "{{features}}" --all --exclude drone-stm32-map-svd
+	cargo clippy --package drone-stm32-map-svd \
+		--target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	cargo clippy --all --exclude drone-stm32-map-svd --features "{{features}}"
 
 # Build the documentation
 doc:
-	cargo doc --package drone-stm32-map-svd
-	drone env {{target}} -- cargo doc --features "{{features}}" --package drone-stm32-map
+	cargo doc --package drone-stm32-map-svd \
+		--target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	cargo doc --package drone-stm32-map --features "{{features}}"
 
 # Open the documentation in a browser
 doc-open: doc
-	drone env {{target}} -- cargo doc --features "{{features}}" --package drone-stm32-map --open
+	cargo doc --package drone-stm32-map --features "{{features}}" --open
 
 # Run the tests
 test:
-	drone env -- cargo test --features "{{features}} std" --package drone-stm32-map
+	cargo test --package drone-stm32-map --features "{{features}} std" \
+		--target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
 
 # Test all MCUs
 test-all:
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f100"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f101"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f102"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f103"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f107"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f303"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f401"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f405"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f407"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f410"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f411"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f412"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f413"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f427"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f429"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f446"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f469"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x1"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x2"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x3"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x5"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x6"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4r5"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4s5"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4r7"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4s7"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4r9"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
-	DRONE_RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4s9"' drone env -- cargo test --package drone-stm32-map --features "{{features}} std"
+	RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f100"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f101"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f102"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f103"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm3_r1p1" --cfg stm32_mcu="stm32f107"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f303"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f401"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f405"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f407"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f410"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f411"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f412"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f413"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f427"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f429"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f446"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32f469"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x1"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x2"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x3"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x5"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4x6"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4r5"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4s5"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4r7"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4s7"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4r9"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
+	RUSTFLAGS='--cfg cortexm_core="cortexm4f_r0p1" --cfg stm32_mcu="stm32l4s9"' cargo test --package drone-stm32-map --features "{{features}} std" --target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
 
 # Update README.md
 readme:
@@ -87,34 +88,35 @@ version-bump version drone-core-version drone-cortexm-version drone-svd-version:
 
 # Publish to crates.io
 publish:
-	cd svd && cargo publish
+	cd svd && cargo publish \
+		--target=$(rustc --version --verbose | sed -n '/host/{s/.*: //;p}')
 	sleep 30
-	cd src/pieces/1 && drone env {{target}} -- cargo publish
-	cd src/pieces/2 && drone env {{target}} -- cargo publish
-	cd src/pieces/3 && drone env {{target}} -- cargo publish
-	cd src/pieces/4 && drone env {{target}} -- cargo publish
-	cd src/pieces/5 && drone env {{target}} -- cargo publish
-	cd src/pieces/6 && drone env {{target}} -- cargo publish
-	cd src/pieces/7 && drone env {{target}} -- cargo publish
-	cd src/pieces/8 && drone env {{target}} -- cargo publish
-	cd src/pieces/9 && drone env {{target}} -- cargo publish
-	cd src/pieces/10 && drone env {{target}} -- cargo publish
-	cd src/pieces/11 && drone env {{target}} -- cargo publish
-	cd src/pieces/12 && drone env {{target}} -- cargo publish
+	cd src/pieces/1 && cargo publish
+	cd src/pieces/2 && cargo publish
+	cd src/pieces/3 && cargo publish
+	cd src/pieces/4 && cargo publish
+	cd src/pieces/5 && cargo publish
+	cd src/pieces/6 && cargo publish
+	cd src/pieces/7 && cargo publish
+	cd src/pieces/8 && cargo publish
+	cd src/pieces/9 && cargo publish
+	cd src/pieces/10 && cargo publish
+	cd src/pieces/11 && cargo publish
+	cd src/pieces/12 && cargo publish
 	sleep 30
-	cd src/pieces && drone env {{target}} -- cargo publish
+	cd src/pieces && cargo publish
 	sleep 30
-	cd src/periph/adc && drone env {{target}} -- cargo publish
-	cd src/periph/dma && drone env {{target}} -- cargo publish
-	cd src/periph/exti && drone env {{target}} -- cargo publish
-	cd src/periph/gpio && drone env {{target}} -- cargo publish
-	cd src/periph/i2c && drone env {{target}} -- cargo publish
-	cd src/periph/rtc && drone env {{target}} -- cargo publish
-	cd src/periph/spi && drone env {{target}} -- cargo publish
-	cd src/periph/tim && drone env {{target}} -- cargo publish
-	cd src/periph/uart && drone env {{target}} -- cargo publish
+	cd src/periph/adc && cargo publish
+	cd src/periph/dma && cargo publish
+	cd src/periph/exti && cargo publish
+	cd src/periph/gpio && cargo publish
+	cd src/periph/i2c && cargo publish
+	cd src/periph/rtc && cargo publish
+	cd src/periph/spi && cargo publish
+	cd src/periph/tim && cargo publish
+	cd src/periph/uart && cargo publish
 	sleep 30
-	drone env {{target}} -- cargo publish --features "{{features}}"
+	cargo publish --features "{{features}}"
 
 # Publish the docs to api.drone-os.com
 publish-doc: doc
