@@ -198,7 +198,7 @@ macro_rules! map_uart {
                     SBK { SBK }
                 }
                 CR2 {
-                    CR2; 
+                    CR2;
                     LINEN { LINEN }
                     STOP { STOP }
                     CLKEN { $($clken Option)* }
@@ -210,7 +210,7 @@ macro_rules! map_uart {
                     ADD { ADD }
                 }
                 CR3 {
-                    CR3; 
+                    CR3;
                     ONEBIT { ONEBIT }
                     CTSIE { $($ctsie Option)* }
                     CTSE { $($ctse Option)* }
@@ -226,7 +226,7 @@ macro_rules! map_uart {
                 }
                 GTPR {
                     $(
-                        $gtpr Option;  
+                        $gtpr Option;
                         GT { GT }
                         PSC { PSC }
                     )*
@@ -317,8 +317,8 @@ map_uart! {
     stm32_mcu = "stm32f407",
     stm32_mcu = "stm32f412",
     stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f417",
-    stm32_mcu = "stm32f437",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
 ))]
@@ -348,41 +348,11 @@ map_uart! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-))]
-map_uart! {
-    "Extracts USART3 register tokens.",
-    periph_usart3,
-    "USART3 peripheral variant.",
-    Usart3,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    USART3EN,
-    UART3RST,
-    USART3LPEN,
-    USART3,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
-}
-
-#[cfg(any(
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f417",
+    stm32_mcu = "stm32f413",
     stm32_mcu = "stm32f427",
     stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f437",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
 ))]
@@ -412,41 +382,11 @@ map_uart! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f413",
-))]
-map_uart! {
-    "Extracts UART4 register tokens.",
-    periph_uart4,
-    "UART4 peripheral variant.",
-    Uart4,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    UART4EN,
-    UART4RST,
-    UART4LPEN,
-    UART4,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
-}
-
-#[cfg(any(
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f417",
+    stm32_mcu = "stm32f413",
     stm32_mcu = "stm32f427",
     stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f437",
     stm32_mcu = "stm32f446",
     stm32_mcu = "stm32f469",
 ))]
@@ -473,34 +413,6 @@ map_uart! {
     (),
     (),
     (),
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32f413",
-))]
-map_uart! {
-    "Extracts UART5 register tokens.",
-    periph_uart5,
-    "UART5 peripheral variant.",
-    Uart5,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    UART5EN,
-    UART5RST,
-    UART5LPEN,
-    UART5,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
 }
 
 #[cfg(any(
@@ -544,36 +456,9 @@ map_uart! {
 #[cfg(any(
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f417",
-    stm32_mcu = "stm32f437",
-))]
-map_uart! {
-    "Extracts UART7 register tokens.",
-    periph_uart7,
-    "UART7 peripheral variant.",
-    Uart7,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    UART7EN,
-    UART7RST,
-    UART7LPEN,
-    UART7,
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-}
-
-#[cfg(any(
+    stm32_mcu = "stm32f413",
     stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f469",
 ))]
 map_uart! {
@@ -588,53 +473,25 @@ map_uart! {
     UART7RST,
     UART7LPEN,
     UART7,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
 }
-
 
 #[cfg(any(
     stm32_mcu = "stm32f405",
     stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f417",
-    stm32_mcu = "stm32f437",
-))]
-map_uart! {
-    "Extracts UART8 register tokens.",
-    periph_uart8,
-    "UART8 peripheral variant.",
-    Uart8,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    UART8EN,
-    UART8RST,
-    UART8LPEN,
-    UART8,
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-}
-
-#[cfg(any(
+    stm32_mcu = "stm32f413",
     stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
     stm32_mcu = "stm32f469",
 ))]
 map_uart! {
@@ -649,50 +506,20 @@ map_uart! {
     UART8RST,
     UART8LPEN,
     UART8,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f413",
-))]
-map_uart! {
-    "Extracts UART8 register tokens.",
-    periph_uart8,
-    "UART8 peripheral variant.",
-    Uart8,
-    APB1ENR,
-    APB1RSTR,
-    APB1LPENR,
-    UART8EN,
-    UART8RST,
-    UART8LPEN,
-    UART8,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
-}
-
-#[cfg(any(
-    stm32_mcu = "stm32f413",
-))]
+#[cfg(any(stm32_mcu = "stm32f413",))]
 map_uart! {
     "Extracts UART9 register tokens.",
     periph_uart9,
@@ -705,22 +532,20 @@ map_uart! {
     UART9RST,
     UART9LPEN,
     UART9,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
 }
 
-#[cfg(any(
-    stm32_mcu = "stm32f413",
-))]
+#[cfg(any(stm32_mcu = "stm32f413",))]
 map_uart! {
     "Extracts UART10 register tokens.",
     periph_uart10,
@@ -733,15 +558,15 @@ map_uart! {
     UART10RST,
     UART10LPEN,
     UART10,
-    (CTS),
-    (CLKEN),
-    (CPOL),
-    (CPHA),
-    (LBCL),
-    (CTSIE),
-    (CTSE),
-    (RTSE),
-    (SCEN),
-    (NACK),
-    (GTPR),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
 }
