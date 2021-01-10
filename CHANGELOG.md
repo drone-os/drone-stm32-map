@@ -13,6 +13,8 @@ Possible log types:
 
 ### Unreleased
 
+- [added] Add support for 'uart' on STM32F4 series
+
 ### v0.13.0 (2020-11-28)
 
 - [removed] Removed interrupt bindings
