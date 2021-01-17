@@ -101,6 +101,9 @@ fn patch_stm32f401(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_2(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
     i2c::fix_2(&mut dev)?;
+    spi::fix_spi4_1(&mut dev)?;
+    spi::fix_spi4_2(&mut dev)?;
+    spi::fix_spi4_3(&mut dev)?;
     Ok(dev)
 }
 
@@ -127,6 +130,13 @@ fn patch_stm32f405(mut dev: Device) -> Result<Device> {
     uart::fix_uart7_2(&mut dev)?;
     uart::fix_uart8_1(&mut dev)?;
     uart::fix_uart8_2(&mut dev)?;
+    spi::fix_spi4_1(&mut dev)?;
+    spi::fix_spi4_2(&mut dev)?;
+    spi::fix_spi4_3(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi5_2(&mut dev)?;
+    spi::fix_spi6_1(&mut dev)?;
+    spi::fix_spi6_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -153,6 +163,13 @@ fn patch_stm32f407(mut dev: Device) -> Result<Device> {
     uart::fix_uart7_2(&mut dev)?;
     uart::fix_uart8_1(&mut dev)?;
     uart::fix_uart8_2(&mut dev)?;
+    spi::fix_spi4_1(&mut dev)?;
+    spi::fix_spi4_2(&mut dev)?;
+    spi::fix_spi4_3(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi5_2(&mut dev)?;
+    spi::fix_spi6_1(&mut dev)?;
+    spi::fix_spi6_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -167,6 +184,8 @@ fn patch_stm32f410(mut dev: Device) -> Result<Device> {
     adc::fix_adc1_1(&mut dev)?;
     i2c::fix_3(&mut dev)?;
     i2c::fix_6(&mut dev)?;
+    spi::fix_astren(&mut dev, "SPI1")?;
+    spi::fix_spi5_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -185,6 +204,9 @@ fn patch_stm32f411(mut dev: Device) -> Result<Device> {
     tim::fix_tim11_2(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
     i2c::fix_2(&mut dev)?;
+    spi::fix_spi4_2(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi5_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -206,6 +228,10 @@ fn patch_stm32f412(mut dev: Device) -> Result<Device> {
     i2c::fix_2(&mut dev)?;
     i2c::fix_6(&mut dev)?;
     i2c::fix_4(&mut dev)?;
+    spi::fix_astren(&mut dev, "I2S2ext")?;
+    spi::fix_spi4_2(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi5_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -236,6 +262,7 @@ fn patch_stm32f413(mut dev: Device) -> Result<Device> {
     uart::fix_uart9_2(&mut dev)?;
     uart::fix_uart10_1(&mut dev)?;
     uart::fix_uart10_2(&mut dev)?;
+    spi::fix_astren(&mut dev, "SPI5")?;
     Ok(dev)
 }
 
@@ -261,6 +288,9 @@ fn patch_stm32f427(mut dev: Device) -> Result<Device> {
     uart::fix_uart7_3(&mut dev)?;
     uart::fix_uart8_1(&mut dev)?;
     uart::fix_uart8_3(&mut dev)?;
+    spi::fix_spi4_1(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi6_1(&mut dev)?;
     Ok(dev)
 }
 
@@ -288,6 +318,13 @@ fn patch_stm32f429(mut dev: Device) -> Result<Device> {
     uart::fix_uart8_1(&mut dev)?;
     uart::fix_uart8_2(&mut dev)?;
     uart::fix_uart8_3(&mut dev)?;
+    spi::fix_spi4_1(&mut dev)?;
+    spi::fix_spi4_2(&mut dev)?;
+    spi::fix_spi4_3(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi5_2(&mut dev)?;
+    spi::fix_spi6_1(&mut dev)?;
+    spi::fix_spi6_2(&mut dev)?;
     Ok(dev)
 }
 
@@ -306,6 +343,8 @@ fn patch_stm32f446(mut dev: Device) -> Result<Device> {
     adc::fix_adc_com(&mut dev)?;
     adc::fix_adc1_1(&mut dev)?;
     uart::fix_usart3_2(&mut dev)?;
+    spi::fix_astren(&mut dev, "SPI1")?;
+    spi::fix_spi4_1(&mut dev)?;
     Ok(dev)
 }
 
@@ -327,6 +366,9 @@ fn patch_stm32f469(mut dev: Device) -> Result<Device> {
     uart::fix_uart7_3(&mut dev)?;
     uart::fix_uart8_1(&mut dev)?;
     uart::fix_uart8_3(&mut dev)?;
+    spi::fix_spi4_1(&mut dev)?;
+    spi::fix_spi5_1(&mut dev)?;
+    spi::fix_spi6_1(&mut dev)?;
     Ok(dev)
 }
 
