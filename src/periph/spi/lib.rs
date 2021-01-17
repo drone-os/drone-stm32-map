@@ -67,7 +67,6 @@ pub use self::f1::*;
 ))]
 pub use self::l4_all::*;
 
-
 #[cfg(any(
     stm32_mcu = "stm32f401",
     stm32_mcu = "stm32f405",
