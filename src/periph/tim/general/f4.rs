@@ -27,6 +27,13 @@ periph! {
         }
     }
 
+    DBG {
+        DBGMCU {
+            0x20 RwReg Shared;
+            TIMSTOP { RwRwRegFieldBit }
+        }
+    }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -329,6 +336,8 @@ macro_rules! map_general_tim {
         $timen:ident,
         $timrst:ident,
         $timsmen:ident,
+        $dbgmcu:ident,
+        $timstop:ident,
         $tim:ident,
         (
             $($cms:ident)?,
@@ -426,6 +435,13 @@ macro_rules! map_general_tim {
                 BUSSMENR {
                     $bussmenr Shared;
                     TIMSMEN { $timsmen }
+                }
+            }
+
+            DBG {
+                DBGMCU {
+                    $dbgmcu Shared;
+                    TIMSTOP { $timstop }
                 }
             }
 
@@ -765,6 +781,8 @@ map_general_tim! {
     TIM2EN,
     TIM2RST,
     TIM2LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM2_STOP,
     TIM2,
     (CMS, DIR, OPM),
     (CR2),
@@ -804,6 +822,8 @@ map_general_tim! {
     TIM3EN,
     TIM3RST,
     TIM3LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM3_STOP,
     TIM3,
     (CMS, DIR, OPM),
     (CR2),
@@ -843,6 +863,8 @@ map_general_tim! {
     TIM4EN,
     TIM4RST,
     TIM4LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM4_STOP,
     TIM4,
     (CMS, DIR, OPM),
     (CR2),
@@ -870,6 +892,8 @@ map_general_tim! {
     TIM5EN,
     TIM5RST,
     TIM5LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM5_STOP,
     TIM5,
     (CMS, DIR, OPM),
     (CR2),
@@ -897,6 +921,8 @@ map_general_tim! {
     TIM9EN,
     TIM9RST,
     TIM9LPEN,
+    DBGMCU_APB2_FZ,
+    DBG_TIM9_STOP,
     TIM9,
     (,, OPM),
     (),
@@ -936,6 +962,8 @@ map_general_tim! {
     TIM10EN,
     TIM10RST,
     TIM10LPEN,
+    DBGMCU_APB2_FZ,
+    DBG_TIM10_STOP,
     TIM10,
     (,,),
     (),
@@ -963,6 +991,8 @@ map_general_tim! {
     TIM11EN,
     TIM11RST,
     TIM11LPEN,
+    DBGMCU_APB2_FZ,
+    DBG_TIM11_STOP,
     TIM11,
     (,,),
     (),
@@ -1000,6 +1030,8 @@ map_general_tim! {
     TIM12EN,
     TIM12RST,
     TIM12LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM12_STOP,
     TIM12,
     (,, OPM),
     (),
@@ -1037,6 +1069,8 @@ map_general_tim! {
     TIM13EN,
     TIM13RST,
     TIM13LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM13_STOP,
     TIM13,
     (,,),
     (),
@@ -1074,6 +1108,8 @@ map_general_tim! {
     TIM14EN,
     TIM14RST,
     TIM14LPEN,
+    DBGMCU_APB1_FZ,
+    DBG_TIM14_STOP,
     TIM14,
     (,,),
     (),

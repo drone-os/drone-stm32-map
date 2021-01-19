@@ -25,6 +25,13 @@ periph! {
         }
     }
 
+    DBG {
+        DBGMCU {
+            0x20 RwReg Shared;
+            TIMSTOP { RwRwRegFieldBit }
+        }
+    }
+
     TIM {
         CR1 {
             0x20 RwRegBitBand;
@@ -227,6 +234,8 @@ macro_rules! map_advanced_tim {
         $timen:ident,
         $timrst:ident,
         $timsmen:ident,
+        $dbgmcu:ident,
+        $timstop:ident,
         $tim:ident,
         $busenr:ident,
         $busrstr:ident,
@@ -258,6 +267,14 @@ macro_rules! map_advanced_tim {
                     TIMSMEN { $timsmen }
                 }
             }
+
+            DBG {
+                DBGMCU {
+                    $dbgmcu Shared;
+                    TIMSTOP { $timstop }
+                }
+            }
+
             TIM {
                 $tim;
                 CR1 {
@@ -462,6 +479,8 @@ map_advanced_tim! {
     TIM1EN,
     TIM1RST,
     TIM1LPEN,
+    DBGMCU_APB2_FZ,
+    DBG_TIM1_STOP,
     TIM1,
     APB2ENR,
     APB2RSTR,
@@ -486,6 +505,8 @@ map_advanced_tim! {
     TIM8EN,
     TIM8RST,
     TIM8LPEN,
+    DBGMCU_APB2_FZ,
+    DBG_TIM8_STOP,
     TIM8,
     APB2ENR,
     APB2RSTR,
