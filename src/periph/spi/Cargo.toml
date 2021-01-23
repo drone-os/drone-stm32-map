@@ -1,5 +1,3 @@
-cargo-features = ["resolver"]
-
 [package]
 name = "drone-stm32-map-periph-spi"
 version = "0.14.0"
