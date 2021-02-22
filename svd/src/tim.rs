@@ -182,23 +182,50 @@ pub fn fix_tim5_2(dev: &mut Device) -> Result<()> {
     Ok(())
 }
 
-pub fn fix_tim6(dev: &mut Device) -> Result<()> {
+pub fn fix_tim6_1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM6").reg("CR1").remove_field("UIFREMAP");
     dev.periph("TIM6").reg("CNT").remove_field("UIFCPY");
     Ok(())
 }
 
-pub fn fix_tim7(dev: &mut Device) -> Result<()> {
+pub fn fix_tim6_2(dev: &mut Device) -> Result<()> {
+    let mut field = dev.periph("DBG").reg("DBGMCU_APB1_FZ").field("DBG_TIM5_STOP").clone();
+    field.name = "DBG_TIM6_STOP".to_string();
+    field.description = "TIM6 counter stopped when core is halted".to_string();
+    field.bit_offset = Some(4);
+    dev.periph("DBG").reg("DBGMCU_APB1_FZ").add_field(field);
+    Ok(())
+}
+
+pub fn fix_tim7_1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM7").reg("CR1").remove_field("UIFREMAP");
     dev.periph("TIM7").reg("CNT").remove_field("UIFCPY");
     Ok(())
 }
 
-pub fn fix_tim8(dev: &mut Device) -> Result<()> {
+pub fn fix_tim7_2(dev: &mut Device) -> Result<()> {
+    let mut field = dev.periph("DBG").reg("DBGMCU_APB1_FZ").field("DBG_TIM6_STOP").clone();
+    field.name = "DBG_TIM7_STOP".to_string();
+    field.description = "TIM7 counter stopped when core is halted".to_string();
+    field.bit_offset = Some(5);
+    dev.periph("DBG").reg("DBGMCU_APB1_FZ").add_field(field);
+    Ok(())
+}
+
+pub fn fix_tim8_1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM8").reg("CCMR1_Input").field("IC2PCS").name = "IC2PSC".to_string();
     dev.periph("TIM8").reg("CCMR1_Input").field("ICPCS").name = "IC1PSC".to_string();
     dev.periph("TIM8").reg("OR1").remove_field("ETR_ADC3_RMP");
     dev.periph("TIM8").reg("OR1").remove_field("ETR_ADC2_RMP");
+    Ok(())
+}
+
+pub fn fix_tim8_2(dev: &mut Device) -> Result<()> {
+    let mut field = dev.periph("DBG").reg("DBGMCU_APB2_FZ").field("DBG_TIM1_STOP").clone();
+    field.name = "DBG_TIM8_STOP".to_string();
+    field.description = "TIM8 counter stopped when core is halted".to_string();
+    field.bit_offset = Some(1);
+    dev.periph("DBG").reg("DBGMCU_APB2_FZ").add_field(field);
     Ok(())
 }
 
@@ -226,6 +253,33 @@ pub fn fix_tim11_1(dev: &mut Device) -> Result<()> {
 
 pub fn fix_tim11_2(dev: &mut Device) -> Result<()> {
     copy_field(dev, "TIM9", "TIM11", "CR1", "OPM");
+    Ok(())
+}
+
+pub fn fix_tim12(dev: &mut Device) -> Result<()> {
+    let mut field = dev.periph("DBG").reg("DBGMCU_APB1_FZ").field("DBG_TIM7_STOP").clone();
+    field.name = "DBG_TIM12_STOP".to_string();
+    field.description = "TIM12 counter stopped when core is halted".to_string();
+    field.bit_offset = Some(6);
+    dev.periph("DBG").reg("DBGMCU_APB1_FZ").add_field(field);
+    Ok(())
+}
+
+pub fn fix_tim13(dev: &mut Device) -> Result<()> {
+    let mut field = dev.periph("DBG").reg("DBGMCU_APB1_FZ").field("DBG_TIM12_STOP").clone();
+    field.name = "DBG_TIM13_STOP".to_string();
+    field.description = "TIM13 counter stopped when core is halted".to_string();
+    field.bit_offset = Some(7);
+    dev.periph("DBG").reg("DBGMCU_APB1_FZ").add_field(field);
+    Ok(())
+}
+
+pub fn fix_tim14(dev: &mut Device) -> Result<()> {
+    let mut field = dev.periph("DBG").reg("DBGMCU_APB1_FZ").field("DBG_TIM13_STOP").clone();
+    field.name = "DBG_TIM14_STOP".to_string();
+    field.description = "TIM14 counter stopped when core is halted".to_string();
+    field.bit_offset = Some(8);
+    dev.periph("DBG").reg("DBGMCU_APB1_FZ").add_field(field);
     Ok(())
 }
 
