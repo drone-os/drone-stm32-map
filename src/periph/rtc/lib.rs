@@ -35,3 +35,27 @@ mod l4_all;
     stm32_mcu = "stm32l4s9"
 ))]
 pub use self::l4_all::*;
+
+#[cfg(any(
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f415",
+    stm32_mcu = "stm32f417",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f437",
+    stm32_mcu = "stm32f439",
+))]
+mod f4;
+
+#[cfg(any(
+    stm32_mcu = "stm32f405",
+    stm32_mcu = "stm32f407",
+    stm32_mcu = "stm32f415",
+    stm32_mcu = "stm32f417",
+    stm32_mcu = "stm32f427",
+    stm32_mcu = "stm32f429",
+    stm32_mcu = "stm32f437",
+    stm32_mcu = "stm32f439",
+))]
+pub use self::f4::*;
