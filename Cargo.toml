@@ -17,6 +17,7 @@ members = [
     "src/periph/adc",
     "src/periph/dma",
     "src/periph/exti",
+    "src/periph/flash",
     "src/periph/gpio",
     "src/periph/i2c",
     "src/periph/rtc",
@@ -64,6 +65,7 @@ std = ["drone-core/std", "drone-cortexm/std"]
 adc = ["drone-stm32-map-periph-adc"]
 dma = ["drone-stm32-map-periph-dma"]
 exti = ["drone-stm32-map-periph-exti"]
+flash = ["drone-stm32-map-periph-flash"]
 gpio = ["drone-stm32-map-periph-gpio"]
 i2c = ["drone-stm32-map-periph-i2c"]
 rtc = ["drone-stm32-map-periph-rtc"]
@@ -96,6 +98,11 @@ optional = true
 [dependencies.drone-stm32-map-periph-exti]
 version = "=0.14.0"
 path = "src/periph/exti"
+optional = true
+
+[dependencies.drone-stm32-map-periph-flash]
+version = "=0.14.0"
+path = "src/periph/flash"
 optional = true
 
 [dependencies.drone-stm32-map-periph-gpio]

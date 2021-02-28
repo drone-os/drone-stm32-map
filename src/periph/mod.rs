@@ -9,6 +9,8 @@ pub extern crate drone_stm32_map_periph_adc as adc;
 pub extern crate drone_stm32_map_periph_dma as dma;
 #[cfg(feature = "exti")]
 pub extern crate drone_stm32_map_periph_exti as exti;
+#[cfg(feature = "flash")]
+pub extern crate drone_stm32_map_periph_flash as flash;
 #[cfg(feature = "gpio")]
 pub extern crate drone_stm32_map_periph_gpio as gpio;
 #[cfg(feature = "i2c")]

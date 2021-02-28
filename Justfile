@@ -1,4 +1,4 @@
-features := 'adc dma exti gpio i2c rtc spi tim uart'
+features := 'adc dma exti flash gpio i2c rtc spi tim uart'
 target := `drone print target 2>/dev/null || echo ""`
 
 # Install dependencies
@@ -109,6 +109,7 @@ publish:
 	cd src/periph/adc && cargo publish
 	cd src/periph/dma && cargo publish
 	cd src/periph/exti && cargo publish
+	cd src/periph/flash && cargo publish
 	cd src/periph/gpio && cargo publish
 	cd src/periph/i2c && cargo publish
 	cd src/periph/rtc && cargo publish
