@@ -11,7 +11,7 @@ Possible log types:
 - `[fixed]` for any bug fixes.
 - `[security]` to invite users to upgrade in case of vulnerabilities.
 
-### Unreleased
+### v0.14.0 (2021-04-09)
 
 - [added] Add support for `uart` on STM32F4 series
 - [added] Add support for `spi` on STM32F4 series
