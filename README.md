@@ -18,39 +18,54 @@ drop-in replacement for it.
 
 ## Supported Devices
 
-| `stm32_mcu` | Core name             | Reference manual                                                         | Available features                                       |
-|-------------|-----------------------|--------------------------------------------------------------------------|----------------------------------------------------------|
-| `stm32f100` | ARM® Cortex®-M3 r1p1  | [RM0041](https://www.st.com/resource/en/reference_manual/cd00246267.pdf) | `dma` `gpio` `spi` `tim`                                 |
-| `stm32f101` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
-| `stm32f102` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
-| `stm32f103` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
-| `stm32f107` | ARM® Cortex®-M3 r1p1  | [RM0008](https://www.st.com/resource/en/reference_manual/cd00171190.pdf) | `dma` `gpio` `spi` `tim`                                 |
-| `stm32f303` | ARM® Cortex®-M4F r0p1 | [RM0316](https://www.st.com/resource/en/reference_manual/dm00043574.pdf) | `adc` `dma` `exti` `gpio` `i2c` `tim`                    |
-| `stm32f401` | ARM® Cortex®-M4F r0p1 | [RM0368](https://www.st.com/resource/en/reference_manual/dm00096844.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f405` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f407` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f410` | ARM® Cortex®-M4F r0p1 | [RM0401](https://www.st.com/resource/en/reference_manual/dm00180366.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f411` | ARM® Cortex®-M4F r0p1 | [RM0383](https://www.st.com/resource/en/reference_manual/dm00119316.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f412` | ARM® Cortex®-M4F r0p1 | [RM0402](https://www.st.com/resource/en/reference_manual/dm00180369.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f413` | ARM® Cortex®-M4F r0p1 | [RM0430](https://www.st.com/resource/en/reference_manual/dm00305666.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f427` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f429` | ARM® Cortex®-M4F r0p1 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f446` | ARM® Cortex®-M4F r0p1 | [RM0390](https://www.st.com/resource/en/reference_manual/dm00135183.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32f469` | ARM® Cortex®-M4F r0p1 | [RM0386](https://www.st.com/resource/en/reference_manual/dm00127514.pdf) | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`       |
-| `stm32l4x1` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
-| `stm32l4x2` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
-| `stm32l4x3` | ARM® Cortex®-M4F r0p1 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
-| `stm32l4x5` | ARM® Cortex®-M4F r0p1 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
-| `stm32l4x6` | ARM® Cortex®-M4F r0p1 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf) | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`       |
-| `stm32l4r5` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
-| `stm32l4s5` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
-| `stm32l4r7` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
-| `stm32l4s7` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
-| `stm32l4r9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
-| `stm32l4s9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
+| `stm32_mcu` | Core name             | Reference manual | Available features                                         |
+|-------------|-----------------------|------------------|------------------------------------------------------------|
+| `stm32f100` | ARM® Cortex®-M3 r1p1  | [RM0041][RM0041] | `dma` `gpio` `spi` `tim`                                   |
+| `stm32f101` | ARM® Cortex®-M3 r1p1  | [RM0008][RM0008] | `dma` `gpio` `spi` `tim`                                   |
+| `stm32f102` | ARM® Cortex®-M3 r1p1  | [RM0008][RM0008] | `dma` `gpio` `spi` `tim`                                   |
+| `stm32f103` | ARM® Cortex®-M3 r1p1  | [RM0008][RM0008] | `dma` `gpio` `spi` `tim`                                   |
+| `stm32f107` | ARM® Cortex®-M3 r1p1  | [RM0008][RM0008] | `dma` `gpio` `spi` `tim`                                   |
+| `stm32f303` | ARM® Cortex®-M4F r0p1 | [RM0316][RM0316] | `adc` `dma` `exti` `gpio` `i2c` `tim`                      |
+| `stm32f401` | ARM® Cortex®-M4F r0p1 | [RM0368][RM0368] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32f405` | ARM® Cortex®-M4F r0p1 | [RM0090][RM0090] | `adc` `dma` `exti` `flash` `gpio` `i2c` `spi` `tim` `uart` |
+| `stm32f407` | ARM® Cortex®-M4F r0p1 | [RM0090][RM0090] | `adc` `dma` `exti` `flash` `gpio` `i2c` `spi` `tim` `uart` |
+| `stm32f410` | ARM® Cortex®-M4F r0p1 | [RM0401][RM0401] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32f411` | ARM® Cortex®-M4F r0p1 | [RM0383][RM0383] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32f412` | ARM® Cortex®-M4F r0p1 | [RM0402][RM0402] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32f413` | ARM® Cortex®-M4F r0p1 | [RM0430][RM0430] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32f427` | ARM® Cortex®-M4F r0p1 | [RM0090][RM0090] | `adc` `dma` `exti` `flash` `gpio` `i2c` `spi` `tim` `uart` |
+| `stm32f429` | ARM® Cortex®-M4F r0p1 | [RM0090][RM0090] | `adc` `dma` `exti` `flash` `gpio` `i2c` `spi` `tim` `uart` |
+| `stm32f446` | ARM® Cortex®-M4F r0p1 | [RM0390][RM0390] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32f469` | ARM® Cortex®-M4F r0p1 | [RM0386][RM0386] | `adc` `dma` `exti` `gpio` `i2c` `spi` `tim` `uart`         |
+| `stm32l4x1` | ARM® Cortex®-M4F r0p1 | [RM0394][RM0394] | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`         |
+| `stm32l4x2` | ARM® Cortex®-M4F r0p1 | [RM0394][RM0394] | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`         |
+| `stm32l4x3` | ARM® Cortex®-M4F r0p1 | [RM0394][RM0394] | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`         |
+| `stm32l4x5` | ARM® Cortex®-M4F r0p1 | [RM0351][RM0351] | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`         |
+| `stm32l4x6` | ARM® Cortex®-M4F r0p1 | [RM0351][RM0351] | `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`         |
+| `stm32l4r5` | ARM® Cortex®-M4F r0p1 | [RM0432][RM0432] | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`   |
+| `stm32l4s5` | ARM® Cortex®-M4F r0p1 | [RM0432][RM0432] | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`   |
+| `stm32l4r7` | ARM® Cortex®-M4F r0p1 | [RM0432][RM0432] | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`   |
+| `stm32l4s7` | ARM® Cortex®-M4F r0p1 | [RM0432][RM0432] | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`   |
+| `stm32l4r9` | ARM® Cortex®-M4F r0p1 | [RM0432][RM0432] | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`   |
+| `stm32l4s9` | ARM® Cortex®-M4F r0p1 | [RM0432][RM0432] | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart`   |
 
 `stm32_mcu` config flag should be set at the application level according to
 this table.
+
+[RM0008]: https://www.st.com/resource/en/reference_manual/cd00171190.pdf
+[RM0041]: https://www.st.com/resource/en/reference_manual/cd00246267.pdf
+[RM0090]: https://www.st.com/resource/en/reference_manual/dm00031020.pdf
+[RM0316]: https://www.st.com/resource/en/reference_manual/dm00043574.pdf
+[RM0351]: https://www.st.com/resource/en/reference_manual/dm00083560.pdf
+[RM0368]: https://www.st.com/resource/en/reference_manual/dm00096844.pdf
+[RM0383]: https://www.st.com/resource/en/reference_manual/dm00119316.pdf
+[RM0386]: https://www.st.com/resource/en/reference_manual/dm00127514.pdf
+[RM0390]: https://www.st.com/resource/en/reference_manual/dm00135183.pdf
+[RM0394]: https://www.st.com/resource/en/reference_manual/dm00151940.pdf
+[RM0401]: https://www.st.com/resource/en/reference_manual/dm00180366.pdf
+[RM0402]: https://www.st.com/resource/en/reference_manual/dm00180369.pdf
+[RM0430]: https://www.st.com/resource/en/reference_manual/dm00305666.pdf
+[RM0432]: https://www.st.com/resource/en/reference_manual/dm00310109.pdf
 
 ## Documentation
 

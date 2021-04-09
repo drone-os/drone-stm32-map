@@ -405,6 +405,22 @@ fn periph_macros1() {
         let exti40 = drone_stm32_map::periph::exti::periph_exti40!(reg);
     }
     #[cfg(all(
+        feature = "flash",
+        any(
+            stm32_mcu = "stm32f405",
+            stm32_mcu = "stm32f407",
+            stm32_mcu = "stm32f415",
+            stm32_mcu = "stm32f417",
+            stm32_mcu = "stm32f427",
+            stm32_mcu = "stm32f429",
+            stm32_mcu = "stm32f437",
+            stm32_mcu = "stm32f439",
+        )
+    ))]
+    {
+        let flash = drone_stm32_map::periph::flash::periph_flash!(reg);
+    }
+    #[cfg(all(
         feature = "gpio",
         any(
             stm32_mcu = "stm32f100",
