@@ -48,6 +48,7 @@ drop-in replacement for it.
 | `stm32l4s7` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
 | `stm32l4r9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
 | `stm32l4s9` | ARM® Cortex®-M4F r0p1 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
+| `stm32wle5` | ARM® Cortex®-M4  ???? | [RM0461](https://www.st.com/resource/en/reference_manual/dm00530369.pdf) | `adc` `dma` `exti` `gpio` `i2c` `rtc` `spi` `tim` `uart` |
 
 `stm32_mcu` config flag should be set at the application level according to
 this table.
