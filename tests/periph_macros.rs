@@ -29,6 +29,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4s5",
             stm32_mcu = "stm32l4s7",
             stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -55,6 +56,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4s5",
             stm32_mcu = "stm32l4s7",
             stm32_mcu = "stm32l4s9",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -111,6 +113,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -168,6 +171,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -210,6 +214,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -274,6 +279,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -318,6 +324,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -341,6 +348,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -368,6 +376,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -399,6 +408,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4s9",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -435,6 +445,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -656,6 +667,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -687,6 +699,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -722,6 +735,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -757,6 +771,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -791,6 +806,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -870,6 +886,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -900,6 +917,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -1149,6 +1167,10 @@ fn periph_macros1() {
         let tim15 = drone_stm32_map::periph::tim::periph_tim15!(reg);
         let tim16 = drone_stm32_map::periph::tim::periph_tim16!(reg);
     }
+    #[cfg(all(feature = "tim", any(stm32_mcu = "stm32wle5",)))]
+    {
+        let tim16 = drone_stm32_map::periph::tim::periph_tim16!(reg);
+    }
     #[cfg(all(
         feature = "tim",
         any(
@@ -1161,6 +1183,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4s9",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -1180,6 +1203,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -1263,6 +1287,15 @@ fn periph_macros1() {
     #[cfg(all(
         feature = "uart",
         any(
+            stm32_mcu = "stm32wle5",
+        )
+    ))]
+    {
+        let usart1 = drone_stm32_map::periph::uart::periph_usart1!(reg);
+    }
+    #[cfg(all(
+        feature = "uart",
+        any(
             stm32_mcu = "stm32l4r5",
             stm32_mcu = "stm32l4r7",
             stm32_mcu = "stm32l4r9",
@@ -1329,6 +1362,7 @@ fn periph_macros1() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -1370,6 +1404,7 @@ fn periph_macros2() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
@@ -1454,6 +1489,7 @@ fn periph_macros2() {
             stm32_mcu = "stm32l4x3",
             stm32_mcu = "stm32l4x5",
             stm32_mcu = "stm32l4x6",
+            stm32_mcu = "stm32wle5",
         )
     ))]
     {
