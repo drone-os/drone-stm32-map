@@ -2,8 +2,7 @@
 name = "drone-stm32-map-periph-gpio"
 version = "0.15.0"
 authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
-edition = "2018"
-resolver = "2"
+edition = "2021"
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
 documentation = "https://api.drone-os.com/drone-stm32-map/0.15/drone_stm32_map_periph_gpio/"
