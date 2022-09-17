@@ -69,6 +69,7 @@ rtc = ["drone-stm32-map-periph-rtc"]
 spi = ["drone-stm32-map-periph-spi"]
 tim = ["drone-stm32-map-periph-tim"]
 uart = ["drone-stm32-map-periph-uart"]
+all = ["adc", "dma", "exti", "gpio", "i2c", "rtc", "spi", "tim", "uart"]
 
 [dependencies.drone-core]
 version = "0.15.0"

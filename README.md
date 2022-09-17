@@ -1,7 +1,9 @@
 [![crates.io](https://img.shields.io/crates/v/drone-stm32-map.svg)](https://crates.io/crates/drone-stm32-map)
 ![maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 
-# drone-stm32-map
+# Drone STM32 Map
+
+<!-- cargo-rdme start -->
 
 STM32 peripheral mappings for Drone, an Embedded Operating System.
 
@@ -55,7 +57,7 @@ this table.
 ## Documentation
 
 - [Drone Book](https://book.drone-os.com/)
-- [API documentation](https://api.drone-os.com/drone-stm32-map/0.14/)
+- [API documentation](https://api.drone-os.com/drone-stm32-map/0.15/)
 
 The API documentation intentionally skips auto-generated [`reg`] and [`thr`]
 bindings. Otherwise it would use several gigabytes of space and would be
@@ -69,7 +71,7 @@ Add the crate to your `Cargo.toml` dependencies:
 
 ```toml
 [dependencies]
-drone-stm32-map = { version = "0.14.0", features = [...] }
+drone-stm32-map = { version = "0.15.0", features = [...] }
 ```
 
 Add or extend `std` feature as follows:
@@ -78,6 +80,8 @@ Add or extend `std` feature as follows:
 [features]
 std = ["drone-stm32-map/std"]
 ```
+
+<!-- cargo-rdme end -->
 
 ## License
 
