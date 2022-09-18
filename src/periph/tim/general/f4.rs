@@ -43,20 +43,20 @@ periph! {
             CMS { RwRwRegFieldBits Option }
             DIR { RwRwRegFieldBitBand Option }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
             ))]
             OPM { RwRwRegFieldBitBand }
             #[cfg(any(
-                stm32_mcu = "stm32f410",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469"
+                drone_stm32_map = "stm32f410",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469"
             ))]
             OPM { RwRwRegFieldBitBand Option }
             UDIS { RwRwRegFieldBitBand }
@@ -71,55 +71,55 @@ periph! {
         SMCR {
             0x20 RwRegBitBand Option;
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             ETP { RwRwRegFieldBitBand Option }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             ECE { RwRwRegFieldBitBand Option }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             ETPS { RwRwRegFieldBits Option }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             ETF { RwRwRegFieldBits Option }
             MSM { RwRwRegFieldBitBand }
@@ -168,32 +168,32 @@ periph! {
             CC1S { RwRwRegFieldBits }
             CC2S { RwRwRegFieldBits Option }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             OC1CE { RwRwRegFieldBitBand Option }
             OC1FE { RwRwRegFieldBitBand }
             OC1M0_2 { RwRwRegFieldBits }
             OC1PE { RwRwRegFieldBitBand }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             OC2CE { RwRwRegFieldBitBand Option }
             OC2FE { RwRwRegFieldBitBand Option }
@@ -212,32 +212,32 @@ periph! {
             CC3S { RwRwRegFieldBits }
             CC4S { RwRwRegFieldBits }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             OC3CE { RwRwRegFieldBitBand }
             OC3FE { RwRwRegFieldBitBand }
             OC3M { RwRwRegFieldBits }
             OC3PE { RwRwRegFieldBitBand }
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469",
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469",
             ))]
             OC4CE { RwRwRegFieldBitBand }
             OC4FE { RwRwRegFieldBitBand }
@@ -306,16 +306,16 @@ periph! {
         OR1 {
             0x20 RwRegBitBand Option;
             #[cfg(any(
-                stm32_mcu = "stm32f401",
-                stm32_mcu = "stm32f405",
-                stm32_mcu = "stm32f407",
-                stm32_mcu = "stm32f411",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f427",
-                stm32_mcu = "stm32f429",
-                stm32_mcu = "stm32f446",
-                stm32_mcu = "stm32f469"
+                drone_stm32_map = "stm32f401",
+                drone_stm32_map = "stm32f405",
+                drone_stm32_map = "stm32f407",
+                drone_stm32_map = "stm32f411",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f427",
+                drone_stm32_map = "stm32f429",
+                drone_stm32_map = "stm32f446",
+                drone_stm32_map = "stm32f469"
             ))]
             ITR1_RMP { RwRwRegFieldBits Option }
             TI1_RMP { RwRwRegFieldBits Option }
@@ -455,20 +455,20 @@ macro_rules! map_general_tim {
                     CMS { $($cms Option)* }
                     DIR { $($dir Option)* }
                     #[cfg(any(
-                        stm32_mcu = "stm32f401",
-                        stm32_mcu = "stm32f405",
-                        stm32_mcu = "stm32f407",
-                        stm32_mcu = "stm32f411",
-                        stm32_mcu = "stm32f427",
-                        stm32_mcu = "stm32f429",
+                        drone_stm32_map = "stm32f401",
+                        drone_stm32_map = "stm32f405",
+                        drone_stm32_map = "stm32f407",
+                        drone_stm32_map = "stm32f411",
+                        drone_stm32_map = "stm32f427",
+                        drone_stm32_map = "stm32f429",
                     ))]
                     OPM { OPM }
                     #[cfg(any(
-                        stm32_mcu = "stm32f410",
-                        stm32_mcu = "stm32f412",
-                        stm32_mcu = "stm32f413",
-                        stm32_mcu = "stm32f446",
-                        stm32_mcu = "stm32f469"
+                        drone_stm32_map = "stm32f410",
+                        drone_stm32_map = "stm32f412",
+                        drone_stm32_map = "stm32f413",
+                        drone_stm32_map = "stm32f446",
+                        drone_stm32_map = "stm32f469"
                     ))]
                     OPM { $($opm Option)* }
                     UDIS { UDIS }
@@ -486,55 +486,55 @@ macro_rules! map_general_tim {
                     $(
                         $smcr Option;
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         ETP { $($etp Option)* }
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         ECE { $($ece Option)* }
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         ETPS { $($etps Option)* }
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         ETF { $($etf Option)* }
                         MSM { MSM }
@@ -584,32 +584,32 @@ macro_rules! map_general_tim {
                     CC1S { CC1S }
                     CC2S { $($cc2s Option)* }
                     #[cfg(any(
-                        stm32_mcu = "stm32f401",
-                        stm32_mcu = "stm32f405",
-                        stm32_mcu = "stm32f407",
-                        stm32_mcu = "stm32f411",
-                        stm32_mcu = "stm32f412",
-                        stm32_mcu = "stm32f413",
-                        stm32_mcu = "stm32f427",
-                        stm32_mcu = "stm32f429",
-                        stm32_mcu = "stm32f446",
-                        stm32_mcu = "stm32f469",
+                        drone_stm32_map = "stm32f401",
+                        drone_stm32_map = "stm32f405",
+                        drone_stm32_map = "stm32f407",
+                        drone_stm32_map = "stm32f411",
+                        drone_stm32_map = "stm32f412",
+                        drone_stm32_map = "stm32f413",
+                        drone_stm32_map = "stm32f427",
+                        drone_stm32_map = "stm32f429",
+                        drone_stm32_map = "stm32f446",
+                        drone_stm32_map = "stm32f469",
                     ))]
                     OC1CE { $($oc1ce Option)* }
                     OC1FE { OC1FE }
                     OC1M0_2 { OC1M }
                     OC1PE { OC1PE }
                     #[cfg(any(
-                        stm32_mcu = "stm32f401",
-                        stm32_mcu = "stm32f405",
-                        stm32_mcu = "stm32f407",
-                        stm32_mcu = "stm32f411",
-                        stm32_mcu = "stm32f412",
-                        stm32_mcu = "stm32f413",
-                        stm32_mcu = "stm32f427",
-                        stm32_mcu = "stm32f429",
-                        stm32_mcu = "stm32f446",
-                        stm32_mcu = "stm32f469",
+                        drone_stm32_map = "stm32f401",
+                        drone_stm32_map = "stm32f405",
+                        drone_stm32_map = "stm32f407",
+                        drone_stm32_map = "stm32f411",
+                        drone_stm32_map = "stm32f412",
+                        drone_stm32_map = "stm32f413",
+                        drone_stm32_map = "stm32f427",
+                        drone_stm32_map = "stm32f429",
+                        drone_stm32_map = "stm32f446",
+                        drone_stm32_map = "stm32f469",
                     ))]
                     OC2CE { $($oc2ce Option)* }
                     OC2FE { $($oc2fe Option)* }
@@ -629,32 +629,32 @@ macro_rules! map_general_tim {
                         CC3S { CC3S }
                         CC4S { CC4S }
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         OC3CE { OC3CE }
                         OC3FE { OC3FE }
                         OC3M { OC3M }
                         OC3PE { OC3PE }
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         OC4CE { OC4CE }
                         OC4FE { OC4FE }
@@ -737,16 +737,16 @@ macro_rules! map_general_tim {
                     $(
                         $or1 Option;
                         #[cfg(any(
-                            stm32_mcu = "stm32f401",
-                            stm32_mcu = "stm32f405",
-                            stm32_mcu = "stm32f407",
-                            stm32_mcu = "stm32f411",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f427",
-                            stm32_mcu = "stm32f429",
-                            stm32_mcu = "stm32f446",
-                            stm32_mcu = "stm32f469",
+                            drone_stm32_map = "stm32f401",
+                            drone_stm32_map = "stm32f405",
+                            drone_stm32_map = "stm32f407",
+                            drone_stm32_map = "stm32f411",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f427",
+                            drone_stm32_map = "stm32f429",
+                            drone_stm32_map = "stm32f446",
+                            drone_stm32_map = "stm32f469",
                         ))]
                         ITR1_RMP { $($itr1_rmp Option)* }
                         TI1_RMP { $($ti1_rmp Option)* }
@@ -759,16 +759,16 @@ macro_rules! map_general_tim {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM2 register tokens.",
@@ -800,16 +800,16 @@ map_general_tim! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM3 register tokens.",
@@ -841,16 +841,16 @@ map_general_tim! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM4 register tokens.",
@@ -940,16 +940,16 @@ map_general_tim! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM10 register tokens.",
@@ -1010,14 +1010,14 @@ map_general_tim! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM12 register tokens.",
@@ -1049,14 +1049,14 @@ map_general_tim! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM13 register tokens.",
@@ -1088,14 +1088,14 @@ map_general_tim! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_general_tim! {
     "Extracts TIM14 register tokens.",

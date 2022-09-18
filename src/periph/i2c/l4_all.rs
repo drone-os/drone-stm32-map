@@ -356,14 +356,14 @@ map_i2c! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    drone_stm32_map = "stm32l4x2",
+    drone_stm32_map = "stm32l4x6",
+    drone_stm32_map = "stm32l4r5",
+    drone_stm32_map = "stm32l4r7",
+    drone_stm32_map = "stm32l4r9",
+    drone_stm32_map = "stm32l4s5",
+    drone_stm32_map = "stm32l4s7",
+    drone_stm32_map = "stm32l4s9"
 ))]
 map_i2c! {
     "Extracts I2C4 register tokens.",

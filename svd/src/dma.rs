@@ -1,6 +1,6 @@
 //! DMA peripheral patches.
 
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::{Access, Device};
 
 pub fn fix_dma1_1(dev: &mut Device) -> Result<()> {

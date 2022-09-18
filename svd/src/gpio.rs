@@ -1,7 +1,7 @@
 //! GPIO peripheral patches.
 
 use crate::parse_svd;
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::Device;
 
 pub fn add_ascr(dev: &mut Device) -> Result<()> {

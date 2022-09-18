@@ -1,49 +1,49 @@
 //! Analog-to-digital converters common registers.
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f410",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469"
 ))]
 mod f4;
 #[cfg(any(
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    drone_stm32_map = "stm32l4r5",
+    drone_stm32_map = "stm32l4r7",
+    drone_stm32_map = "stm32l4r9",
+    drone_stm32_map = "stm32l4s5",
+    drone_stm32_map = "stm32l4s7",
+    drone_stm32_map = "stm32l4s9"
 ))]
 mod l4_plus;
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f410",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469"
 ))]
 pub use self::f4::*;
 #[cfg(any(
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    drone_stm32_map = "stm32l4r5",
+    drone_stm32_map = "stm32l4r7",
+    drone_stm32_map = "stm32l4r9",
+    drone_stm32_map = "stm32l4s5",
+    drone_stm32_map = "stm32l4s7",
+    drone_stm32_map = "stm32l4s9"
 ))]
 pub use self::l4_plus::*;

@@ -86,10 +86,10 @@ periph! {
         I2SCFGR {
             0x20 RwRegBitBand Option;
             #[cfg(any(
-                stm32_mcu = "stm32f410",
-                stm32_mcu = "stm32f412",
-                stm32_mcu = "stm32f413",
-                stm32_mcu = "stm32f446",
+                drone_stm32_map = "stm32f410",
+                drone_stm32_map = "stm32f412",
+                drone_stm32_map = "stm32f413",
+                drone_stm32_map = "stm32f446",
             ))]
             ASTREN { RwRwRegFieldBitBand }
             I2SMOD { RwRwRegFieldBitBand }
@@ -214,10 +214,10 @@ macro_rules! map_spi {
                     $(
                         $i2scfgr Option;
                         #[cfg(any(
-                            stm32_mcu = "stm32f410",
-                            stm32_mcu = "stm32f412",
-                            stm32_mcu = "stm32f413",
-                            stm32_mcu = "stm32f446",
+                            drone_stm32_map = "stm32f410",
+                            drone_stm32_map = "stm32f412",
+                            drone_stm32_map = "stm32f413",
+                            drone_stm32_map = "stm32f446",
                         ))]
                         ASTREN { ASTREN }
                         I2SMOD { I2SMOD }
@@ -244,13 +244,13 @@ macro_rules! map_spi {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI1 register tokens.",
@@ -269,10 +269,10 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
+    drone_stm32_map = "stm32f410",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
 ))]
 map_spi! {
     "Extracts SPI1 register tokens.",
@@ -291,17 +291,17 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f410",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI2 register tokens.",
@@ -320,16 +320,16 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI3 register tokens.",
@@ -348,13 +348,13 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI4 register tokens.",
@@ -372,7 +372,11 @@ map_spi! {
     (),
 }
 
-#[cfg(any(stm32_mcu = "stm32f411", stm32_mcu = "stm32f412", stm32_mcu = "stm32f413",))]
+#[cfg(any(
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+))]
 map_spi! {
     "Extracts SPI4 register tokens.",
     periph_spi4,
@@ -390,11 +394,11 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI5 register tokens.",
@@ -413,10 +417,10 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f410",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
+    drone_stm32_map = "stm32f410",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
 ))]
 map_spi! {
     "Extracts SPI5 register tokens.",
@@ -435,11 +439,11 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f469",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f469",
 ))]
 map_spi! {
     "Extracts SPI6 register tokens.",

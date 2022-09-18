@@ -54,10 +54,10 @@ periph! {
             0x20 RwRegBitBand;
             BSY { RoRwRegFieldBitBand }
             #[cfg(any(
-                stm32_mcu = "stm32f101",
-                stm32_mcu = "stm32f102",
-                stm32_mcu = "stm32f103",
-                stm32_mcu = "stm32f107",
+                drone_stm32_map = "stm32f101",
+                drone_stm32_map = "stm32f102",
+                drone_stm32_map = "stm32f103",
+                drone_stm32_map = "stm32f107",
             ))]
             CHSIDE { RoRwRegFieldBitBand }
             CRCERR { RwRwRegFieldBitBand }
@@ -66,10 +66,10 @@ periph! {
             RXNE { RoRwRegFieldBitBand }
             TXE { RoRwRegFieldBitBand }
             #[cfg(any(
-                stm32_mcu = "stm32f101",
-                stm32_mcu = "stm32f102",
-                stm32_mcu = "stm32f103",
-                stm32_mcu = "stm32f107",
+                drone_stm32_map = "stm32f101",
+                drone_stm32_map = "stm32f102",
+                drone_stm32_map = "stm32f103",
+                drone_stm32_map = "stm32f107",
             ))]
             UDR { RoRwRegFieldBitBand }
         }
@@ -158,10 +158,10 @@ macro_rules! map_spi {
                     SR;
                     BSY { BSY }
                     #[cfg(any(
-                        stm32_mcu = "stm32f101",
-                        stm32_mcu = "stm32f102",
-                        stm32_mcu = "stm32f103",
-                        stm32_mcu = "stm32f107",
+                        drone_stm32_map = "stm32f101",
+                        drone_stm32_map = "stm32f102",
+                        drone_stm32_map = "stm32f103",
+                        drone_stm32_map = "stm32f107",
                     ))]
                     CHSIDE { CHSIDE }
                     CRCERR { CRCERR }
@@ -170,10 +170,10 @@ macro_rules! map_spi {
                     RXNE { RXNE }
                     TXE { TXE }
                     #[cfg(any(
-                        stm32_mcu = "stm32f101",
-                        stm32_mcu = "stm32f102",
-                        stm32_mcu = "stm32f103",
-                        stm32_mcu = "stm32f107",
+                        drone_stm32_map = "stm32f101",
+                        drone_stm32_map = "stm32f102",
+                        drone_stm32_map = "stm32f103",
+                        drone_stm32_map = "stm32f107",
                     ))]
                     UDR { UDR }
                 }
@@ -223,10 +223,10 @@ map_spi! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_spi! {
     "Extracts SPI3 register tokens.",

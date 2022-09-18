@@ -17,11 +17,11 @@ periph! {
 
     GPIO {
         #[cfg(any(
-            stm32_mcu = "stm32f100",
-            stm32_mcu = "stm32f101",
-            stm32_mcu = "stm32f102",
-            stm32_mcu = "stm32f103",
-            stm32_mcu = "stm32f107",
+            drone_stm32_map = "stm32f100",
+            drone_stm32_map = "stm32f101",
+            drone_stm32_map = "stm32f102",
+            drone_stm32_map = "stm32f103",
+            drone_stm32_map = "stm32f107",
         ))]
         BRR {
             0x20 WoReg Shared;
@@ -33,11 +33,11 @@ periph! {
             BS { WoWoRegFieldBit }
         }
         #[cfg(any(
-            stm32_mcu = "stm32f100",
-            stm32_mcu = "stm32f101",
-            stm32_mcu = "stm32f102",
-            stm32_mcu = "stm32f103",
-            stm32_mcu = "stm32f107"
+            drone_stm32_map = "stm32f100",
+            drone_stm32_map = "stm32f101",
+            drone_stm32_map = "stm32f102",
+            drone_stm32_map = "stm32f103",
+            drone_stm32_map = "stm32f107"
         ))]
         CR {
             0x20 RwReg Shared;
@@ -93,11 +93,11 @@ macro_rules! map_gpio_pin {
             GPIO {
                 $gpio;
                 #[cfg(any(
-                    stm32_mcu = "stm32f100",
-                    stm32_mcu = "stm32f101",
-                    stm32_mcu = "stm32f102",
-                    stm32_mcu = "stm32f103",
-                    stm32_mcu = "stm32f107",
+                    drone_stm32_map = "stm32f100",
+                    drone_stm32_map = "stm32f101",
+                    drone_stm32_map = "stm32f102",
+                    drone_stm32_map = "stm32f103",
+                    drone_stm32_map = "stm32f107",
                 ))]
                 BRR {
                     BRR Shared;
@@ -109,11 +109,11 @@ macro_rules! map_gpio_pin {
                     BS { $bs_ty }
                 }
                 #[cfg(any(
-                    stm32_mcu = "stm32f100",
-                    stm32_mcu = "stm32f101",
-                    stm32_mcu = "stm32f102",
-                    stm32_mcu = "stm32f103",
-                    stm32_mcu = "stm32f107"
+                    drone_stm32_map = "stm32f100",
+                    drone_stm32_map = "stm32f101",
+                    drone_stm32_map = "stm32f102",
+                    drone_stm32_map = "stm32f103",
+                    drone_stm32_map = "stm32f107"
                 ))]
                 CR {
                     $cr_path Shared;
@@ -742,10 +742,10 @@ map_gpio_pins! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_gpio_pins! {
     GpioEHead,
@@ -816,7 +816,11 @@ map_gpio_pins! {
     GPIOE,
 }
 
-#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
+#[cfg(any(
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103"
+))]
 map_gpio_pins! {
     GpioFHead,
     "Extracts GPIO port F pin 0 register tokens.",
@@ -886,7 +890,11 @@ map_gpio_pins! {
     GPIOF,
 }
 
-#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
+#[cfg(any(
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103"
+))]
 map_gpio_pins! {
     GpioGHead,
     "Extracts GPIO port G pin 0 register tokens.",

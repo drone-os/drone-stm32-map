@@ -1,6 +1,6 @@
 //! EXTI peripheral patches.
 
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::Device;
 
 pub fn fix_exti_1(dev: &mut Device) -> Result<()> {

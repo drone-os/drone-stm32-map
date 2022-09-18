@@ -22,21 +22,21 @@ periph::singular! {
 
     ADC_Common {
         #[cfg(any(
-            stm32_mcu = "stm32f405",
-            stm32_mcu = "stm32f407",
-            stm32_mcu = "stm32f410",
-            stm32_mcu = "stm32f412",
-            stm32_mcu = "stm32f413",
-            stm32_mcu = "stm32f427",
-            stm32_mcu = "stm32f429",
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469"
+            drone_stm32_map = "stm32f405",
+            drone_stm32_map = "stm32f407",
+            drone_stm32_map = "stm32f410",
+            drone_stm32_map = "stm32f412",
+            drone_stm32_map = "stm32f413",
+            drone_stm32_map = "stm32f427",
+            drone_stm32_map = "stm32f429",
+            drone_stm32_map = "stm32f446",
+            drone_stm32_map = "stm32f469"
         ))]
         CSR;
         CCR;
         #[cfg(any(
-            stm32_mcu = "stm32f446",
-            stm32_mcu = "stm32f469"
+            drone_stm32_map = "stm32f446",
+            drone_stm32_map = "stm32f469"
         ))]
         CDR;
     }

@@ -1,6 +1,6 @@
 //! RCC peripheral patches.
 
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::{Access, Device};
 
 pub fn fix_1(dev: &mut Device) -> Result<()> {

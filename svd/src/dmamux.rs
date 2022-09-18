@@ -1,7 +1,7 @@
 //! DMAMUX peripheral patches.
 
 use crate::parse_svd;
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::Device;
 
 pub fn add_dmamux1(dev: &mut Device) -> Result<()> {

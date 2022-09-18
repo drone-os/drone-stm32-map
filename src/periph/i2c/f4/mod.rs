@@ -2,7 +2,11 @@
 //!
 //! For STM32F4 series of high-performance MCUs with DSP and FPU instructions.
 
-#[cfg(any(stm32_mcu = "stm32f410", stm32_mcu = "stm32f412", stm32_mcu = "stm32f413"))]
+#[cfg(any(
+    drone_stm32_map = "stm32f410",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413"
+))]
 pub mod fmp;
 
 use drone_core::periph;
@@ -281,16 +285,16 @@ map_i2c! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f401",
-    stm32_mcu = "stm32f405",
-    stm32_mcu = "stm32f407",
-    stm32_mcu = "stm32f411",
-    stm32_mcu = "stm32f412",
-    stm32_mcu = "stm32f413",
-    stm32_mcu = "stm32f427",
-    stm32_mcu = "stm32f429",
-    stm32_mcu = "stm32f446",
-    stm32_mcu = "stm32f469"
+    drone_stm32_map = "stm32f401",
+    drone_stm32_map = "stm32f405",
+    drone_stm32_map = "stm32f407",
+    drone_stm32_map = "stm32f411",
+    drone_stm32_map = "stm32f412",
+    drone_stm32_map = "stm32f413",
+    drone_stm32_map = "stm32f427",
+    drone_stm32_map = "stm32f429",
+    drone_stm32_map = "stm32f446",
+    drone_stm32_map = "stm32f469"
 ))]
 map_i2c! {
     "Extracts I2C3 register tokens.",

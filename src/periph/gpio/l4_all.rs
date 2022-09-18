@@ -51,8 +51,8 @@ periph! {
             AFRH15 { RwRwRegFieldBits }
         }
         #[cfg(any(
-            stm32_mcu = "stm32l4x5",
-            stm32_mcu = "stm32l4x6"
+            drone_stm32_map = "stm32l4x5",
+            drone_stm32_map = "stm32l4x6"
         ))]
         ASCR {
             0x20 RwReg Option;
@@ -74,13 +74,13 @@ periph! {
             ASC15 { RwRwRegFieldBit }
         }
         #[cfg(any(
-            stm32_mcu = "stm32l4x6",
-            stm32_mcu = "stm32l4r5",
-            stm32_mcu = "stm32l4r7",
-            stm32_mcu = "stm32l4r9",
-            stm32_mcu = "stm32l4s5",
-            stm32_mcu = "stm32l4s7",
-            stm32_mcu = "stm32l4s9"
+            drone_stm32_map = "stm32l4x6",
+            drone_stm32_map = "stm32l4r5",
+            drone_stm32_map = "stm32l4r7",
+            drone_stm32_map = "stm32l4r9",
+            drone_stm32_map = "stm32l4s5",
+            drone_stm32_map = "stm32l4s7",
+            drone_stm32_map = "stm32l4s9"
         ))]
         BRR {
             0x20 WoReg;
@@ -340,8 +340,8 @@ macro_rules! map_gpio_port {
                     AFRH15 { AFRH15 }
                 }
                 #[cfg(any(
-                    stm32_mcu = "stm32l4x5",
-                    stm32_mcu = "stm32l4x6"
+                    drone_stm32_map = "stm32l4x5",
+                    drone_stm32_map = "stm32l4x6"
                 ))]
                 ASCR {
                     $(
@@ -365,13 +365,13 @@ macro_rules! map_gpio_port {
                     )*
                 }
                 #[cfg(any(
-                    stm32_mcu = "stm32l4x6",
-                    stm32_mcu = "stm32l4r5",
-                    stm32_mcu = "stm32l4r7",
-                    stm32_mcu = "stm32l4r9",
-                    stm32_mcu = "stm32l4s5",
-                    stm32_mcu = "stm32l4s7",
-                    stm32_mcu = "stm32l4s9"
+                    drone_stm32_map = "stm32l4x6",
+                    drone_stm32_map = "stm32l4r5",
+                    drone_stm32_map = "stm32l4r7",
+                    drone_stm32_map = "stm32l4r9",
+                    drone_stm32_map = "stm32l4s5",
+                    drone_stm32_map = "stm32l4s7",
+                    drone_stm32_map = "stm32l4s9"
                 ))]
                 BRR {
                     BRR;
@@ -642,14 +642,14 @@ map_gpio_port! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    drone_stm32_map = "stm32l4x5",
+    drone_stm32_map = "stm32l4x6",
+    drone_stm32_map = "stm32l4r5",
+    drone_stm32_map = "stm32l4r7",
+    drone_stm32_map = "stm32l4r9",
+    drone_stm32_map = "stm32l4s5",
+    drone_stm32_map = "stm32l4s7",
+    drone_stm32_map = "stm32l4s9"
 ))]
 map_gpio_port! {
     "Extracts GPIO port F register tokens.",
@@ -667,14 +667,14 @@ map_gpio_port! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    drone_stm32_map = "stm32l4x5",
+    drone_stm32_map = "stm32l4x6",
+    drone_stm32_map = "stm32l4r5",
+    drone_stm32_map = "stm32l4r7",
+    drone_stm32_map = "stm32l4r9",
+    drone_stm32_map = "stm32l4s5",
+    drone_stm32_map = "stm32l4s7",
+    drone_stm32_map = "stm32l4s9"
 ))]
 map_gpio_port! {
     "Extracts GPIO port G register tokens.",
@@ -707,13 +707,13 @@ map_gpio_port! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x6",
-    stm32_mcu = "stm32l4r5",
-    stm32_mcu = "stm32l4r7",
-    stm32_mcu = "stm32l4r9",
-    stm32_mcu = "stm32l4s5",
-    stm32_mcu = "stm32l4s7",
-    stm32_mcu = "stm32l4s9"
+    drone_stm32_map = "stm32l4x6",
+    drone_stm32_map = "stm32l4r5",
+    drone_stm32_map = "stm32l4r7",
+    drone_stm32_map = "stm32l4r9",
+    drone_stm32_map = "stm32l4s5",
+    drone_stm32_map = "stm32l4s7",
+    drone_stm32_map = "stm32l4s9"
 ))]
 map_gpio_port! {
     "Extracts GPIO port I register tokens.",

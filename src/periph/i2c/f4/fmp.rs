@@ -303,7 +303,7 @@ macro_rules! map_i2c {
     };
 }
 
-#[cfg(any(stm32_mcu = "stm32f410"))]
+#[cfg(any(drone_stm32_map = "stm32f410"))]
 map_i2c! {
     "Extracts I2C4 register tokens.",
     periph_i2c4,
@@ -320,7 +320,7 @@ map_i2c! {
     I2C4SEL,
 }
 
-#[cfg(any(stm32_mcu = "stm32f412", stm32_mcu = "stm32f413"))]
+#[cfg(any(drone_stm32_map = "stm32f412", drone_stm32_map = "stm32f413"))]
 map_i2c! {
     "Extracts I2CFMP1 register tokens.",
     periph_i2cfmp1,

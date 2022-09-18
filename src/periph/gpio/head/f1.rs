@@ -78,11 +78,11 @@ macro_rules! map_gpio_port_head {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f102",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port A head register tokens.",
@@ -97,11 +97,11 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f102",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port B head register tokens.",
@@ -116,11 +116,11 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f102",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port C head register tokens.",
@@ -135,11 +135,11 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f102",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f102",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port D head register tokens.",
@@ -154,10 +154,10 @@ map_gpio_port_head! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32f100",
-    stm32_mcu = "stm32f101",
-    stm32_mcu = "stm32f103",
-    stm32_mcu = "stm32f107",
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103",
+    drone_stm32_map = "stm32f107",
 ))]
 map_gpio_port_head! {
     "Extracts GPIO port E head register tokens.",
@@ -171,7 +171,11 @@ map_gpio_port_head! {
     IOPERST,
 }
 
-#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
+#[cfg(any(
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103"
+))]
 map_gpio_port_head! {
     "Extracts GPIO port F head register tokens.",
     periph_gpio_f_head,
@@ -184,7 +188,11 @@ map_gpio_port_head! {
     IOPFRST,
 }
 
-#[cfg(any(stm32_mcu = "stm32f100", stm32_mcu = "stm32f101", stm32_mcu = "stm32f103"))]
+#[cfg(any(
+    drone_stm32_map = "stm32f100",
+    drone_stm32_map = "stm32f101",
+    drone_stm32_map = "stm32f103"
+))]
 map_gpio_port_head! {
     "Extracts GPIO port G head register tokens.",
     periph_gpio_g_head,

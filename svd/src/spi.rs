@@ -1,7 +1,7 @@
 //! SPI peripheral patches.
 
 use crate::copy_field;
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::Device;
 
 pub fn fix_astren(dev: &mut Device, periph: &str) -> Result<()> {

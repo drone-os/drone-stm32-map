@@ -1,7 +1,7 @@
 //! TIM peripheral patches.
 
 use crate::{copy_field, copy_reg};
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::{Access, Device, Register};
 
 pub fn fix_tim1_1(dev: &mut Device) -> Result<()> {

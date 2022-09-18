@@ -1,6 +1,6 @@
 //! ADC peripheral patches.
 
-use anyhow::Result;
+use drone_config::Result;
 use drone_svd::Device;
 
 pub fn fix_adc1_1(dev: &mut Device) -> Result<()> {

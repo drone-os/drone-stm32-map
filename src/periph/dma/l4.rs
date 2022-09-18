@@ -72,11 +72,11 @@ macro_rules! map_dma {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
+    drone_stm32_map = "stm32l4x1",
+    drone_stm32_map = "stm32l4x2",
+    drone_stm32_map = "stm32l4x3",
+    drone_stm32_map = "stm32l4x5",
+    drone_stm32_map = "stm32l4x6",
 ))]
 map_dma! {
     "Extracts DMA1 head register tokens.",
@@ -92,11 +92,11 @@ map_dma! {
 }
 
 #[cfg(any(
-    stm32_mcu = "stm32l4x1",
-    stm32_mcu = "stm32l4x2",
-    stm32_mcu = "stm32l4x3",
-    stm32_mcu = "stm32l4x5",
-    stm32_mcu = "stm32l4x6",
+    drone_stm32_map = "stm32l4x1",
+    drone_stm32_map = "stm32l4x2",
+    drone_stm32_map = "stm32l4x3",
+    drone_stm32_map = "stm32l4x5",
+    drone_stm32_map = "stm32l4x6",
 ))]
 map_dma! {
     "Extracts DMA2 head register tokens.",

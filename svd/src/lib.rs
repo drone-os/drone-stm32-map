@@ -16,7 +16,7 @@ pub mod spi;
 pub mod tim;
 pub mod uart;
 
-pub use anyhow::{bail, Result};
+pub use drone_config::{bail, Result};
 
 use drone_svd::{Config, Device};
 use std::{env, fs::File, path::Path};
@@ -48,7 +48,8 @@ fn svd_config() -> Config<'static> {
 
 fn svd_deserialize() -> Result<Device> {
     drone_svd::rerun_if_env_changed();
-    match env::var("CARGO_CFG_STM32_MCU")?.as_ref() {
+    drone_config::validate_drone_crate_config_flag(Some("drone-stm32-map"))?;
+    match env::var("CARGO_CFG_DRONE_STM32_MAP").unwrap().as_ref() {
         "stm32f100" => parse_svd("STM32F100.svd"),
         "stm32f101" => parse_svd("STM32F101.svd"),
         "stm32f102" => patch_stm32f102(parse_svd("STM32F102.svd")?),
@@ -77,7 +78,7 @@ fn svd_deserialize() -> Result<Device> {
         "stm32l4s5" => patch_stm32l4plus(parse_svd("STM32L4S5.svd")?),
         "stm32l4s7" => patch_stm32l4plus(parse_svd("STM32L4S7.svd")?),
         "stm32l4s9" => patch_stm32l4plus(parse_svd("STM32L4S9.svd")?),
-        _ => bail!("invalid `stm32_mcu` cfg flag"),
+        _ => unreachable!(),
     }
 }
 
