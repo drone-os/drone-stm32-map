@@ -17,8 +17,8 @@
         rustFlags = ''--cfg drone_cortexm="cortexm4f_r0p1" --cfg drone_stm32_map="stm32l4s9"'';
         rustChannel = {
           channel = "nightly";
-          date = "2022-09-18";
-          sha256 = "eYFYpSF2PBUJVzZGZrdtDMpVfHkypzTMLWotdEVq7eM=";
+          date = "2022-09-23";
+          sha256 = "lv8DWMZm/vmAfC8RF8nwMXKp2xiMxtsthqTEs7bWyms=";
         };
 
         pkgs = nixpkgs.legacyPackages.${system};
@@ -101,16 +101,18 @@
         updateVersions = pkgs.writeShellScriptBin "update-versions" ''
           sed -i "s/\(api\.drone-os\.com\/drone-stm32-map\/\)[0-9]\+\(\.[0-9]\+\)\+/\1$(echo $1 | sed 's/\(.*\)\.[0-9]\+/\1/')/" \
             Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml src/lib.rs
-          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[package\]/version = \"$1\"/;t;x}" \
-            Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml svd/Cargo.toml
+          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[workspace.package\]/version = \"$1\"/;t;x}" \
+            Cargo.toml
           sed -i "/\[.*\]/h;/version = \"=.*\"/{x;s/\[.*drone-stm32-map-.*\]/version = \"=$1\"/;t;x}" \
-            Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
-          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-core\]/version = \"$2\"/;t;x}" \
-            Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
-          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-cortexm\]/version = \"$3\"/;t;x}" \
-            Cargo.toml src/pieces/*/Cargo.toml src/pieces/Cargo.toml src/periph/*/Cargo.toml
-          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-svd\]/version = \"$4\"/;t;x}" \
-            svd/Cargo.toml
+            Cargo.toml
+          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-cortexm\]/version = \"$2\"/;t;x}" \
+            Cargo.toml
+          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-core\]/version = \"$3\"/;t;x}" \
+            Cargo.toml
+          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-config\]/version = \"$4\"/;t;x}" \
+            Cargo.toml
+          sed -i "/\[.*\]/h;/version = \".*\"/{x;s/\[.*drone-svd\]/version = \"$5\"/;t;x}" \
+            Cargo.toml
           sed -i "s/\(drone-stm32-map.*\)version = \"[^\"]\+\"/\1version = \"$1\"/" \
             src/lib.rs
         '';

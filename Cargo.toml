@@ -25,17 +25,133 @@ members = [
     "src/periph/uart",
 ]
 
-[package]
-name = "drone-stm32-map"
+[workspace.package]
 version = "0.15.0"
-authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
+authors = ["Valentyn Valiaiev <valentine.valyaeff@gmail.com>"]
 edition = "2021"
-exclude = ["/svd_files"]
 repository = "https://github.com/drone-os/drone-stm32-map"
 homepage = "https://www.drone-os.com/"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies.drone-stm32-map-svd]
+version = "=0.15.0"
+path = "svd"
+
+[workspace.dependencies.drone-stm32-map-pieces]
+version = "=0.15.0"
+path = "src/pieces"
+
+[workspace.dependencies.drone-stm32-map-pieces-1]
+version = "=0.15.0"
+path = "src/pieces/1"
+
+[workspace.dependencies.drone-stm32-map-pieces-2]
+version = "=0.15.0"
+path = "src/pieces/2"
+
+[workspace.dependencies.drone-stm32-map-pieces-3]
+version = "=0.15.0"
+path = "src/pieces/3"
+
+[workspace.dependencies.drone-stm32-map-pieces-4]
+version = "=0.15.0"
+path = "src/pieces/4"
+
+[workspace.dependencies.drone-stm32-map-pieces-5]
+version = "=0.15.0"
+path = "src/pieces/5"
+
+[workspace.dependencies.drone-stm32-map-pieces-6]
+version = "=0.15.0"
+path = "src/pieces/6"
+
+[workspace.dependencies.drone-stm32-map-pieces-7]
+version = "=0.15.0"
+path = "src/pieces/7"
+
+[workspace.dependencies.drone-stm32-map-pieces-8]
+version = "=0.15.0"
+path = "src/pieces/8"
+
+[workspace.dependencies.drone-stm32-map-pieces-9]
+version = "=0.15.0"
+path = "src/pieces/9"
+
+[workspace.dependencies.drone-stm32-map-pieces-10]
+version = "=0.15.0"
+path = "src/pieces/10"
+
+[workspace.dependencies.drone-stm32-map-pieces-11]
+version = "=0.15.0"
+path = "src/pieces/11"
+
+[workspace.dependencies.drone-stm32-map-pieces-12]
+version = "=0.15.0"
+path = "src/pieces/12"
+
+[workspace.dependencies.drone-stm32-map-periph-adc]
+version = "=0.15.0"
+path = "src/periph/adc"
+
+[workspace.dependencies.drone-stm32-map-periph-dma]
+version = "=0.15.0"
+path = "src/periph/dma"
+
+[workspace.dependencies.drone-stm32-map-periph-exti]
+version = "=0.15.0"
+path = "src/periph/exti"
+
+[workspace.dependencies.drone-stm32-map-periph-gpio]
+version = "=0.15.0"
+path = "src/periph/gpio"
+
+[workspace.dependencies.drone-stm32-map-periph-i2c]
+version = "=0.15.0"
+path = "src/periph/i2c"
+
+[workspace.dependencies.drone-stm32-map-periph-rtc]
+version = "=0.15.0"
+path = "src/periph/rtc"
+
+[workspace.dependencies.drone-stm32-map-periph-spi]
+version = "=0.15.0"
+path = "src/periph/spi"
+
+[workspace.dependencies.drone-stm32-map-periph-tim]
+version = "=0.15.0"
+path = "src/periph/tim"
+
+[workspace.dependencies.drone-stm32-map-periph-uart]
+version = "=0.15.0"
+path = "src/periph/uart"
+
+[workspace.dependencies.drone-config]
+version = "0.15.0"
+path = "../drone/config"
+
+[workspace.dependencies.drone-core]
+version = "0.15.0"
+path = "../drone-core"
+
+[workspace.dependencies.drone-cortexm]
+version = "0.15.0"
+path = "../drone-cortexm"
+
+[workspace.dependencies.drone-svd]
+version = "0.15.0"
+path = "../drone-svd"
+
+[package]
+name = "drone-stm32-map"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
+exclude = ["/svd_files"]
 documentation = "https://api.drone-os.com/drone-stm32-map/0.15/drone_stm32_map/"
 readme = "README.md"
-license = "MIT OR Apache-2.0"
 keywords = [
     "stm32",
     "cortex",
@@ -71,59 +187,16 @@ tim = ["drone-stm32-map-periph-tim"]
 uart = ["drone-stm32-map-periph-uart"]
 all = ["adc", "dma", "exti", "gpio", "i2c", "rtc", "spi", "tim", "uart"]
 
-[dependencies.drone-core]
-version = "0.15.0"
-path = "../drone-core"
-
-[dependencies.drone-cortexm]
-version = "0.15.0"
-path = "../drone-cortexm"
-
-[dependencies.drone-stm32-map-pieces]
-version = "=0.15.0"
-path = "src/pieces"
-
-[dependencies.drone-stm32-map-periph-adc]
-version = "=0.15.0"
-path = "src/periph/adc"
-optional = true
-
-[dependencies.drone-stm32-map-periph-dma]
-version = "=0.15.0"
-path = "src/periph/dma"
-optional = true
-
-[dependencies.drone-stm32-map-periph-exti]
-version = "=0.15.0"
-path = "src/periph/exti"
-optional = true
-
-[dependencies.drone-stm32-map-periph-gpio]
-version = "=0.15.0"
-path = "src/periph/gpio"
-optional = true
-
-[dependencies.drone-stm32-map-periph-i2c]
-version = "=0.15.0"
-path = "src/periph/i2c"
-optional = true
-
-[dependencies.drone-stm32-map-periph-rtc]
-version = "=0.15.0"
-path = "src/periph/rtc"
-optional = true
-
-[dependencies.drone-stm32-map-periph-spi]
-version = "=0.15.0"
-path = "src/periph/spi"
-optional = true
-
-[dependencies.drone-stm32-map-periph-tim]
-version = "=0.15.0"
-path = "src/periph/tim"
-optional = true
-
-[dependencies.drone-stm32-map-periph-uart]
-version = "=0.15.0"
-path = "src/periph/uart"
-optional = true
+[dependencies]
+drone-core.workspace = true
+drone-cortexm.workspace = true
+drone-stm32-map-periph-adc = { workspace = true, optional = true }
+drone-stm32-map-periph-dma = { workspace = true, optional = true }
+drone-stm32-map-periph-exti = { workspace = true, optional = true }
+drone-stm32-map-periph-gpio = { workspace = true, optional = true }
+drone-stm32-map-periph-i2c = { workspace = true, optional = true }
+drone-stm32-map-periph-rtc = { workspace = true, optional = true }
+drone-stm32-map-periph-spi = { workspace = true, optional = true }
+drone-stm32-map-periph-tim = { workspace = true, optional = true }
+drone-stm32-map-periph-uart = { workspace = true, optional = true }
+drone-stm32-map-pieces.workspace = true

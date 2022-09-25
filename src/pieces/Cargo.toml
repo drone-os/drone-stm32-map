@@ -1,12 +1,12 @@
 [package]
 name = "drone-stm32-map-pieces"
-version = "0.15.0"
-authors = ["Valentine Valyaeff <valentine.valyaeff@gmail.com>"]
-edition = "2021"
-repository = "https://github.com/drone-os/drone-stm32-map"
-homepage = "https://www.drone-os.com/"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+homepage.workspace = true
+license.workspace = true
 documentation = "https://api.drone-os.com/drone-stm32-map/0.15/drone_stm32_map_pieces/"
-license = "MIT OR Apache-2.0"
 description = """
 STM32 peripheral mappings for Drone, an Embedded Operating System.
 """
@@ -14,62 +14,21 @@ STM32 peripheral mappings for Drone, an Embedded Operating System.
 [lib]
 path = "lib.rs"
 
-[dependencies.drone-core]
-version = "0.15.0"
-path = "../../../drone-core"
+[dependencies]
+drone-core.workspace = true
+drone-cortexm.workspace = true
+drone-stm32-map-pieces-10.workspace = true
+drone-stm32-map-pieces-11.workspace = true
+drone-stm32-map-pieces-12.workspace = true
+drone-stm32-map-pieces-1.workspace = true
+drone-stm32-map-pieces-2.workspace = true
+drone-stm32-map-pieces-3.workspace = true
+drone-stm32-map-pieces-4.workspace = true
+drone-stm32-map-pieces-5.workspace = true
+drone-stm32-map-pieces-6.workspace = true
+drone-stm32-map-pieces-7.workspace = true
+drone-stm32-map-pieces-8.workspace = true
+drone-stm32-map-pieces-9.workspace = true
 
-[dependencies.drone-cortexm]
-version = "0.15.0"
-path = "../../../drone-cortexm"
-
-[dependencies.drone-stm32-map-pieces-1]
-version = "=0.15.0"
-path = "1"
-
-[dependencies.drone-stm32-map-pieces-2]
-version = "=0.15.0"
-path = "2"
-
-[dependencies.drone-stm32-map-pieces-3]
-version = "=0.15.0"
-path = "3"
-
-[dependencies.drone-stm32-map-pieces-4]
-version = "=0.15.0"
-path = "4"
-
-[dependencies.drone-stm32-map-pieces-5]
-version = "=0.15.0"
-path = "5"
-
-[dependencies.drone-stm32-map-pieces-6]
-version = "=0.15.0"
-path = "6"
-
-[dependencies.drone-stm32-map-pieces-7]
-version = "=0.15.0"
-path = "7"
-
-[dependencies.drone-stm32-map-pieces-8]
-version = "=0.15.0"
-path = "8"
-
-[dependencies.drone-stm32-map-pieces-9]
-version = "=0.15.0"
-path = "9"
-
-[dependencies.drone-stm32-map-pieces-10]
-version = "=0.15.0"
-path = "10"
-
-[dependencies.drone-stm32-map-pieces-11]
-version = "=0.15.0"
-path = "11"
-
-[dependencies.drone-stm32-map-pieces-12]
-version = "=0.15.0"
-path = "12"
-
-[build-dependencies.drone-stm32-map-svd]
-version = "=0.15.0"
-path = "../../svd"
+[build-dependencies]
+drone-stm32-map-svd.workspace = true
