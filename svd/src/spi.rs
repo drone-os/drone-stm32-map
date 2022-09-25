@@ -1,8 +1,9 @@
 //! SPI peripheral patches.
 
-use crate::copy_field;
 use drone_config::Result;
 use drone_svd::Device;
+
+use crate::copy_field;
 
 pub fn fix_astren(dev: &mut Device, periph: &str) -> Result<()> {
     dev.periph(periph).reg("I2SCFGR").new_field(|field| {

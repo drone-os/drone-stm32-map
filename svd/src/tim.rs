@@ -1,8 +1,9 @@
 //! TIM peripheral patches.
 
-use crate::{copy_field, copy_reg};
 use drone_config::Result;
 use drone_svd::{Access, Device, Register};
+
+use crate::{copy_field, copy_reg};
 
 pub fn fix_tim1_1(dev: &mut Device) -> Result<()> {
     dev.periph("TIM1").reg("CCMR1_Input").field("IC2PCS").name = "IC2PSC".to_string();

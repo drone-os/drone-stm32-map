@@ -16,10 +16,12 @@ pub mod spi;
 pub mod tim;
 pub mod uart;
 
-pub use drone_config::{bail, Result};
+use std::env;
+use std::fs::File;
+use std::path::Path;
 
+pub use drone_config::{bail, Result};
 use drone_svd::{Config, Device};
-use std::{env, fs::File, path::Path};
 
 /// Generates code for register mappings.
 pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
