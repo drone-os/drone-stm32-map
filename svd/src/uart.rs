@@ -1,9 +1,8 @@
 //! UART peripheral patches.
 
+use crate::{copy_field, copy_reg};
 use drone_config::Result;
 use drone_svd::Device;
-
-use crate::{copy_field, copy_reg};
 
 pub fn fix_usart1_1(dev: &mut Device) -> Result<()> {
     copy_field(dev, "USART3", "USART1", "CR3", "UCESM");
