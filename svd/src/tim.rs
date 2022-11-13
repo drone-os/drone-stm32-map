@@ -414,9 +414,9 @@ fn add_third_bit(
     bit_offset: u32,
 ) {
     let field = dev.periph(periph_name).reg(reg_name).field(field_name);
-    field.name = format!("{}0_2", field_name);
+    field.name = format!("{field_name}0_2");
     let mut field = field.clone();
-    field.name = format!("{}3", field_name);
+    field.name = format!("{field_name}3");
     field.bit_offset = Some(bit_offset);
     field.bit_width = Some(1);
     dev.periph(periph_name).reg(reg_name).add_field(field);

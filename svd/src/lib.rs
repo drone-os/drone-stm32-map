@@ -17,10 +17,13 @@ pub mod tim;
 pub mod uart;
 
 pub use drone_config::{bail, Result};
-use drone_svd::{Config, Device};
+use drone_svd::{Device, Generator};
 use std::env;
 use std::fs::File;
+use std::ops::Range;
 use std::path::Path;
+
+const BIT_BAND_REGION: Range<u32> = 0x4000_0000..0x4010_0000;
 
 /// Generates code for register mappings.
 pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
@@ -28,7 +31,7 @@ pub fn generate_regs(pool_number: usize, pool_size: usize) -> Result<()> {
     let out_dir = Path::new(&out_dir);
     let dev = svd_deserialize()?;
     let mut output = File::create(out_dir.join("svd_regs.rs"))?;
-    svd_config().generate_regs(&mut output, dev, pool_number, pool_size)
+    generator().generate_regs(&mut output, dev, pool_number, pool_size)
 }
 
 /// Generates code for register tokens struct.
@@ -37,18 +40,28 @@ pub fn generate_index() -> Result<()> {
     let out_dir = Path::new(&out_dir);
     let dev = svd_deserialize()?;
     let mut reg_output = File::create(out_dir.join("svd_reg_index.rs"))?;
-    svd_config().generate_index(&mut reg_output, dev)
+    generator().generate_index(&mut reg_output, dev)
 }
 
-fn svd_config() -> Config<'static> {
-    let mut options = Config::new("stm32_reg_tokens");
-    options.bit_band(0x4000_0000..0x4010_0000);
-    options.exclude_peripherals(&["FPU", "FPU_CPACR", "ITM", "MPU", "NVIC", "SCB", "STK", "TPIU"]);
-    options
+fn generator() -> Generator<'static> {
+    let mut generator = Generator::new("stm32_reg_tokens");
+    generator.register_traits_callback(|_, _, address| {
+        BIT_BAND_REGION.contains(&address).then(|| "RegBitBand".to_string()).into_iter().collect()
+    });
+    generator.exclude_peripherals(&[
+        "FPU",
+        "FPU_CPACR",
+        "ITM",
+        "MPU",
+        "NVIC",
+        "SCB",
+        "STK",
+        "TPIU",
+    ]);
+    generator
 }
 
 fn svd_deserialize() -> Result<Device> {
-    drone_svd::rerun_if_env_changed();
     drone_config::validate_drone_crate_config_flag(Some("drone-stm32-map"))?;
     match env::var("CARGO_CFG_DRONE_STM32_MAP").unwrap().as_ref() {
         "stm32f100" => parse_svd("STM32F100.svd"),
@@ -531,5 +544,5 @@ fn copy_field(
 }
 
 fn parse_svd(path: &str) -> Result<Device> {
-    drone_svd::parse(format!("{}/files/{}", env!("CARGO_MANIFEST_DIR"), path))
+    drone_svd::parse(format!("{}/files/{path}", env!("CARGO_MANIFEST_DIR")))
 }
