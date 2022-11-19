@@ -74,11 +74,11 @@ Add the crate to your `Cargo.toml` dependencies:
 drone-stm32-map = { version = "0.15.0", features = [...] }
 ```
 
-Add or extend `std` feature as follows:
+Add or extend `host` feature as follows:
 
 ```toml
 [features]
-std = ["drone-stm32-map/std"]
+host = ["drone-stm32-map/host"]
 ```
 
 <!-- cargo-rdme end -->

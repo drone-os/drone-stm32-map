@@ -175,7 +175,7 @@ maintenance = { status = "actively-developed" }
 
 [features]
 default = []
-std = ["drone-core/std", "drone-cortexm/std"]
+host = ["drone-core/host", "drone-cortexm/host"]
 adc = ["drone-stm32-map-periph-adc"]
 dma = ["drone-stm32-map-periph-dma"]
 exti = ["drone-stm32-map-periph-exti"]
